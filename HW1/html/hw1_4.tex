@@ -1,0 +1,96 @@
+
+% This LaTeX was auto-generated from MATLAB code.
+% To make changes, update the MATLAB code and republish this document.
+
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{color}
+
+\sloppy
+\definecolor{lightgray}{gray}{0.5}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+    
+    \begin{verbatim}
+function hw1_4
+set(0,'defaulttextfontname','times','defaulttextfontsize',14);
+set(0,'defaultaxesfontname','times','defaultaxesfontsize',14);
+
+x = -20:0.1:20;
+f = f_func(x);
+
+figure(1)
+plot(x,f,'ko-');
+grid on; xlabel('x'); ylabel('f(x)');
+
+epsilon = 1e-10;
+x0 = -12:0.01:12;
+itermax = 1000;
+
+roots = zeros(length(x0),1);
+flags = zeros(length(x0),1);
+for i = 1:length(x0)
+    [roots(i), flags(i)] = find_root(x0(i),epsilon,itermax);
+end
+
+
+figure(1)
+hold on;
+plot(roots,f_func(roots),'r*');
+hold off;
+
+
+figure(2)
+
+subplot(121);
+plot(x0,roots,'*'); xlabel('x0'); ylabel('roots');
+subplot(122)
+plot(x0,flags,'*'); xlabel('x0'); ylabel('find?');
+
+end
+
+
+function [root,flag] = find_root(x0,epsilon,itermax)
+root = x0;
+flag = false;   % whether you find a root
+for i = 1:itermax
+    f_curr = f_func(x0);
+    f_grad_curr = f_grad_func(x0);
+
+    if abs(f_grad_curr) < epsilon   % denominator is too small, stop
+       break;
+    end
+
+    x1 = x0 - f_curr/f_grad_curr;
+
+    if abs( x1-x0 ) < epsilon
+        flag = true;     % find the root
+        root = x0;
+        break;
+    end
+
+    x0 = x1;
+end
+end
+
+% value of the function at x
+function val = f_func(x)
+val = x.^2/10 + 6 * sin(x) + 2;
+end
+
+% value of the gradient at x
+function val = f_grad_func(x)
+val = x./5 + 6 * cos(x);
+end
+\end{verbatim}
+
+\includegraphics [width=4in]{hw1_4_01.eps}
+
+\includegraphics [width=4in]{hw1_4_02.eps}
+
+
+
+\end{document}
+    

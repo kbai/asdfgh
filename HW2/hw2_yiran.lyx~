@@ -1,0 +1,182 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Problem 2
+\end_layout
+
+\begin_layout Section*
+(a)
+\end_layout
+
+\begin_layout Standard
+Fig.
+ 1 shows the 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ points.
+\end_layout
+
+\begin_layout Section*
+(b) 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $m_{1}$
+\end_inset
+
+ is the intercept with the 
+\begin_inset Formula $y$
+\end_inset
+
+ axis, we estimate from the plot that it should be bounded by 
+\begin_inset Formula $[-150,0]$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $m_{2}$
+\end_inset
+
+ is the slope of the line, we estimate from the plot that it should be bounded
+ by 
+\begin_inset Formula $[1,10]$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+We can start with a larger model space, and do a coarse search with 
+\begin_inset Formula $m1=[-150:0.1:0]$
+\end_inset
+
+, and 
+\begin_inset Formula $m2=[1:0.01:10]$
+\end_inset
+
+.
+ If needed, we can shrink our model space and do a finer search as a second
+ step.
+\end_layout
+
+\begin_layout Subsection*
+(c)-(d)
+\end_layout
+
+\begin_layout Subsection*
+(e)
+\end_layout
+
+\begin_layout Standard
+The optimum solutions are
+\end_layout
+
+\begin_layout Standard
+L2 norm: (-75.5, 3.53)
+\end_layout
+
+\begin_layout Standard
+L1 norm: (-81.9, 3.48)
+\end_layout
+
+\begin_layout Subsection*
+(f)
+\end_layout
+
+\begin_layout Standard
+The optimum solution with least square is: (-75.4631, 3.5301)
+\end_layout
+
+\begin_layout Subsection*
+(g)
+\end_layout
+
+\begin_layout Standard
+The standard result only gives the diagonal term in the model covariance
+ matrix, while the off-diagonal term can be shown in the error ellipse.
+ We see that the two model parameters are negatively correlated in this
+ problem.
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,364 @@
+%% LyX 2.0.5 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt]{article}
+\usepackage[margin=0.75in]{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{amsmath}
+\usepackage{multirow}
+
+
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose}
+
+
+\makeatletter
+\@ifundefined{date}{}{\date{}}
+\makeatother
+
+%Fancy-header package to modify header/page numbering 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\textbf{Ge/ESE 118}} %name of the course
+\chead{\textbf{}} %topic of the homework set
+\rhead{\textbf{Solution 1}} %number of the homework set
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+
+
+\begin{document}
+
+\section{Problem 1 (graded by Kangchen) - 24+1 points}
+
+
+\subsection*{(a) 4 points}
+
+The model parameter vector is $\mathbf{m}=[P,d]^{T}$;
+
+
+\subsection*{(b) 4 points}
+
+$[\frac{\partial u}{\partial P},\frac{\partial u}{\partial d}]=[\frac{d}{(x^{2}+y^{2}+d^{2})^{3/2}},\frac{P(x^{2}+y^{2}-2d^{2})}{(x^{2}+y^{2}+d^{2})^{5/2}}]$;
+
+
+\subsection*{(c) 4 points}
+
+$\begin{bmatrix}\frac{\partial^{2}u}{\partial P^{2}} & \frac{\partial^{2}u}{\partial P\partial d}\\
+\frac{\partial^{2}u}{\partial d\partial P} & \frac{\partial^{2}u}{\partial d^{2}}
+\end{bmatrix}=\begin{bmatrix}0 & \frac{x^{2}+y^{2}-2d^{2}}{(x^{2}+y^{2}+d^{2})^{5/2}}\\
+\frac{x^{2}+y^{2}-2d^{2}}{(x^{2}+y^{2}+d^{2})^{5/2}} & \frac{6Pd^{3}-9pdx^{2}-9pdy^{2}}{(x^{2}+y^{2}+d^{2})^{7/2}}
+\end{bmatrix}$
+
+Note that the $\frac{\partial^{2}u}{\partial P\partial d}=\frac{\partial^{2}u}{\partial d\partial P}$
+given that the function $u(P,d)$ is smooth enough.
+
+
+\subsection*{(d) 4 points}
+
+No, since the two chambers may have different locations$(x,y,d)$
+and different P.
+
+The model parameter vector for two magma chambers should be $[P_{1},P_{2},d_{1},d_{2},x_{1},x_{2},y_{1},y_{2}]^{T}$
+
+and the observed vertical displacement should be:
+
+$u=\frac{P_{1}d_{1}}{((x-x_{1})^{2}+(y-y_{1})^{2}+d_{1}^{2})^{3/2}}+\frac{P_{2}d_{2}}{((x-x_{2})^{2}+(y-y_{2})^{2}+d_{2}^{2})^{3/2}}$
+
+If there are two magma chambers , it is not easy to tell their locations
+$(x,y)$ in the first place. So they need to be inverted from observations.
+Also we need to have two different depth (d) parameters and P(pressure
+related parameters) to describe the two magma chamber.
+
+There are some other acceptable solutions that assume the two magma
+chambers are at the same location and/or have the same P ...
+
+
+\subsection*{(e) 4 points}
+
+8(Or other acceptable solutions)
+
+
+\subsection*{(f) 4 points}
+
+No, because there are 8 degrees of freedom in the model space while
+only 6 degrees of freedom in the data space.
+
+To map from a 8 dimensional model space to 6 dimensional data space
+means that there will be different models being mapped to the same
+point in data space.
+
+This causes the inversion to have multiple solutions and trade off
+between different parameters.
+
+There are also other acceptable solutions. If your number of model
+parameters is smaller than 6, then the solution may not exist. There
+may not be a set of four parameters that fits the 6 data points exactly.
+This is due to error in both model and measurements.
+
+
+\section{Problem 2 (graded by Yiran) - 25 points}
+
+
+\subsection*{(a) 6 points}
+
+Let the matrix $\boldsymbol{A}=\left[\boldsymbol{x}_{1},\boldsymbol{x}_{2},\boldsymbol{x}_{3},\boldsymbol{x}_{4}\right]$,
+then \\
+
+
+\begin{eqnarray*}
+\boldsymbol{A}= & \begin{bmatrix}1 & 0 & 0 & 1\\
+0 & 1 & -1 & 1\\
+0 & 1 & 1 & 1
+\end{bmatrix}\\
+\boldsymbol{A}^{T}\boldsymbol{A}= & \begin{bmatrix}1 & 0 & 0 & 1\\
+0 & 2 & 0 & 2\\
+0 & 0 & 2 & 0\\
+1 & 2 & 0 & 3
+\end{bmatrix}\\
+= & \begin{bmatrix}\boldsymbol{x}_{1}^{T}\boldsymbol{x}_{1} & \boldsymbol{x}_{1}^{T}\boldsymbol{x}_{2} & \boldsymbol{x}_{1}^{T}\boldsymbol{x}_{3} & \boldsymbol{x}_{1}^{T}\boldsymbol{x}_{4}\\
+ & \boldsymbol{x}_{2}^{T}\boldsymbol{x}_{2} & \boldsymbol{x}_{2}^{T}\boldsymbol{x}_{3} & \boldsymbol{x}_{2}^{T}\boldsymbol{x}_{4}\\
+ & \multirow{2}{*}{\makebox[0pt]{\text{sym.}}} & \boldsymbol{x}_{3}^{T}\boldsymbol{x}_{3} & \boldsymbol{x}_{3}^{T}\boldsymbol{x}_{4}\\
+ &  &  & \boldsymbol{x}_{4}^{T}\boldsymbol{x}_{4}
+\end{bmatrix}
+\end{eqnarray*}
+Therefore, we see that $\boldsymbol{x}_{1}$, $\boldsymbol{x}_{2}$,
+$\boldsymbol{x}_{3}$ are orthogonal to each other; and $\boldsymbol{x}_{3}$
+and $\boldsymbol{x}_{4}$ are orthogonal.\\
+ \\
+
+\subsection*{(b) 6 points}
+
+There are two independent vectors in $\left\{ \boldsymbol{x}_{1},\boldsymbol{x}_{2},\boldsymbol{x}_{4}\right\} $,
+choosing any two from them, along with $\boldsymbol{x}_{3}$, which
+is independent with all of them, form a basis. All the bases are:
+
+\begin{center}
+$\left\{ \boldsymbol{x}_{1},\boldsymbol{x}_{2},\boldsymbol{x}_{3}\right\} $,
+$\left\{ \boldsymbol{x}_{1},\boldsymbol{x}_{4},\boldsymbol{x}_{3}\right\} $,
+$\left\{ \boldsymbol{x}_{2},\boldsymbol{x}_{4},\boldsymbol{x}_{3}\right\} $ 
+\par\end{center}
+
+
+\subsection*{(c) 8 points}
+
+By definition\\
+
+
+\begin{eqnarray*}
+\boldsymbol{AX}= & \boldsymbol{XD}
+\end{eqnarray*} where
+\begin{eqnarray*}
+\boldsymbol{X}= & \left[\boldsymbol{x}_{1}\quad\boldsymbol{x}_{2}\quad\boldsymbol{x}_{3}\right]\\
+= & \begin{bmatrix}1 & 0 & 0\\
+0 & 1 & -1\\
+0 & 1 & 1
+\end{bmatrix}\\
+\boldsymbol{D}= & \begin{bmatrix}\lambda_{1} & 0 & 0\\
+0 & \lambda_{2} & 0\\
+0 & 0 & \lambda_{3}
+\end{bmatrix}\\
+= & \begin{bmatrix}2 & 0 & 0\\
+0 & 5 & 0\\
+0 & 0 & 4
+\end{bmatrix}\\
+\end{eqnarray*}
+\\
+ Then\\
+
+\begin{center}
+$\boldsymbol{A}=\boldsymbol{XDX^{-1}}$ 
+\par\end{center}
+
+Since 
+\begin{eqnarray*}
+det(\boldsymbol{X})= & 2\\
+\\
+\boldsymbol{X}^{-1}= & 1/2\begin{bmatrix}2 & 0 & 0\\
+0 & 1 & -1\\
+0 & 1 & -1
+\end{bmatrix}^{T}\\
+= & \begin{bmatrix}1 & 0 & 0\\
+0 & 0.5 & 0.5\\
+0 & -0.5 & 0.5
+\end{bmatrix}
+\end{eqnarray*}
+
+
+Then 
+\begin{eqnarray*}
+\boldsymbol{A}= & \begin{bmatrix}1 & 0 & 0\\
+0 & 1 & -1\\
+0 & 1 & 1
+\end{bmatrix}\begin{bmatrix}2 & 0 & 0\\
+0 & 5 & 0\\
+0 & 0 & 4
+\end{bmatrix}\begin{bmatrix}1 & 0 & 0\\
+0 & 0.5 & 0.5\\
+0 & -0.5 & 0.5
+\end{bmatrix}= & \begin{bmatrix}2 & 0 & 0\\
+0 & 4.5 & 0.5\\
+0 & 0.5 & 4.5
+\end{bmatrix}
+\end{eqnarray*}
+\\
+
+
+
+\subsection*{(d) 5 points}
+
+The vector is stretched by $\lambda_{1}$, $\lambda_{2}$, $\lambda_{3}$
+along the corresponding eigenvector directions $\boldsymbol{x}_{1}$,
+$\boldsymbol{x}_{2}$, $\boldsymbol{x}_{3}$. \\
+ \\
+ Check it with $\boldsymbol{x}=[1\quad2\quad3]^{T}$.\\
+ \\
+ Let $\boldsymbol{v}_{1}=\boldsymbol{X^{-1}x}=[1\quad2.5\quad0.5]^{T}$\\
+
+
+\begin{eqnarray*}
+\boldsymbol{x}= & \boldsymbol{XX^{-1}x}\\
+= & \boldsymbol{Xv_{1}}\\
+= & [\boldsymbol{x}_{1}\quad\boldsymbol{x}_{2}\quad\boldsymbol{x}_{3}]\begin{bmatrix}1\\
+2.5\\
+0.5
+\end{bmatrix}\\
+= & 1\cdot\boldsymbol{x}_{1}+2.5\cdot\boldsymbol{x}_{2}+0.5\cdot\boldsymbol{x}_{3}
+\end{eqnarray*}
+We see that $\boldsymbol{v}_{1}$ is the coordinate of $\boldsymbol{x}$
+in the basis $\left\{ \boldsymbol{x}_{1},\boldsymbol{x}_{2},\boldsymbol{x}_{3}\right\} $.
+\\
+ Then 
+\begin{eqnarray*}
+\boldsymbol{Ax}= & \boldsymbol{XDX^{-1}x}\\
+= & \boldsymbol{XD}\boldsymbol{v}_{1}\\
+= & [\lambda_{1}\boldsymbol{x}_{1}\quad\lambda_{2}\boldsymbol{x}_{2}\quad\lambda_{3}\boldsymbol{x}_{3}]\boldsymbol{v}_{1}\\
+= & \lambda_{1}\cdot1\cdot\boldsymbol{x}_{1}+\lambda_{2}\cdot2.5\cdot\boldsymbol{x}_{2}+\lambda_{3}\cdot0.5\cdot\boldsymbol{x}_{3}\\
+\end{eqnarray*}
+which we see is a stretch of $\boldsymbol{x}$ by $\lambda_{i}$ in
+$\boldsymbol{x}_{i}$.\\
+ This transformation gives \\
+ $2\cdot[1\quad0\quad0]^{T}+12.5\cdot[0\quad1\quad1]^{T}+2\cdot[0\quad-1\quad1]^{T}=[2\quad10.5\quad14.5]^{T}$,
+which is equal to the direct multiplication of $\boldsymbol{Ax}$.
+
+
+\section{Problem 3 (graded by Kangchen) - 24+1 points }
+
+
+\subsection*{(a) 6 points}
+
+This implies $\boldsymbol{v}^{T}\boldsymbol{x}=0$ since $\boldsymbol{v}$
+in $V$ means that $\boldsymbol{v}$ is orthogonal to $\boldsymbol{x}$.
+
+
+\subsection*{(b) 6 points}
+
+This is explaining that the set $V$ is a subspace of $\mathbf{R}^{n}$
+
+$(a_{1}\boldsymbol{v}_{\mathbf{1}}+a_{2}\boldsymbol{v}_{2})^{T}x=a_{1}\boldsymbol{v}_{1}^{T}\boldsymbol{x}+a_{2}\boldsymbol{v}_{2}^{T}\boldsymbol{x}=a_{1}(0)+a_{2}(0)=0$
+
+The first equality is by the distributive axiom of matrix multiplication.
+
+This implies that $(a_{1}\boldsymbol{v}_{1}+a_{2}\boldsymbol{v}_{2})$
+is also orthogonal to $\boldsymbol{x}$.
+
+so $(a_{1}\boldsymbol{v}_{1}+a_{2}\boldsymbol{v}_{2})$ is in $V$
+
+
+\subsection*{(c) 6 points}
+
+Since $\boldsymbol{x}$ is an eigenvector of $\boldsymbol{A}$, we
+assume $\boldsymbol{Ax}=k\boldsymbol{x}$
+
+$(\boldsymbol{Ax}\mathit{)^{T}}x=\boldsymbol{v}^{T}\boldsymbol{A}^{T}\boldsymbol{x}=\boldsymbol{v}^{T}\boldsymbol{A}\boldsymbol{x}=\boldsymbol{v}^{T}(\boldsymbol{A}\boldsymbol{x})=\boldsymbol{v}^{T}k\boldsymbol{x}=k\boldsymbol{v}^{T}\boldsymbol{x}=0$
+
+So $\boldsymbol{Av}$ is also orthogonal to $\boldsymbol{x}$,for
+all $\boldsymbol{v}$ in $V$
+
+
+\subsection*{(d) 6 points}
+
+Given condition: For all $\boldsymbol{v}$ in $V$ ($V$ is not a
+$\boldsymbol{0}$ space)if $\mathbf{\boldsymbol{Av}}$is also in $V$
+,then one can find one eigenvector of $\mathbf{\boldsymbol{A}}$ in
+subspace $V$.
+
+$\mathbf{\boldsymbol{A}}$ is a $n\times n$ matrix.
+
+First we can find one eigenvector $\boldsymbol{\mathbf{\mathbf{x}}_{1}}$
+in $\mathbf{R}^{n}$and we get the subspace $V_{1}$, a subset of
+$R^{n}$ that is orthogonal to $\mathbf{\boldsymbol{x}}_{1}.$
+
+Then we can find another eigenvector $\mathbf{\boldsymbol{x}_{2}}$in
+$V_{1}$ and get the subspace $V_{2}$, a subset of $V_{1}$ that
+is orthogonal to $\mathbf{\boldsymbol{x}}_{1}$and $\mathbf{\boldsymbol{x}}_{2}$.
+
+.........
+
+Then we find $\mathbf{\boldsymbol{x}_{n-1}}$ in $V_{n-2}$ and get
+the subspace $V_{n-1}$a subset of $V_{n-2}$ that is orthogonal to
+$\mathbf{\boldsymbol{x}_{1},\boldsymbol{x}_{2},...\boldsymbol{x}_{n-1}}$.
+
+$V_{n-1}$ will be a one dimensional subspace and we can find the
+last eigenvector $\boldsymbol{x}_{n}$
+
+Thus, we have found that all the eigenvectors are orthogonal to each
+other.
+
+This proof is enough for our purpose. We also attach the following
+proof that is more strict in a mathematical sense. This is not necessary
+to understand.
+
+1) one can find one eigenvector $\mathbf{x}$ in $\mathbf{R^{n}}$.
+Since $\mathbf{R}^{n}$satisfy Given condition. This is trivial.
+
+2) if a subspace $V$ satisfies Given condition, and we have an eigenvector
+$\boldsymbol{x}$ in $V$. Then we prove that the set $U$ that contains
+all vectors in $V$ that are orthogonal to $\boldsymbol{x}$ also
+satisfies Given condition.
+
+It is shown in (b) that $U$ forms a subspace .
+
+for all$\mathbf{\mathbf{\boldsymbol{u}}}$ in $U,$$\mathbf{\boldsymbol{Au}}$
+is in $V$ since $U$ is a subset of $V$
+
+we can write $\mathbf{\boldsymbol{Au}}=c\mathbf{\boldsymbol{x}}+\mathbf{\boldsymbol{w}},\mathbf{\boldsymbol{w}}$is
+in $U$, multiply both sides by $\mathbf{x}^{T}$:
+
+$\boldsymbol{x}^{T}\boldsymbol{A}\boldsymbol{u}=c\boldsymbol{x}^{T}\boldsymbol{x}+\boldsymbol{x}^{T}\boldsymbol{w}=c\boldsymbol{x}^{T}\boldsymbol{x}$
+
+note that on the left hand side:$\boldsymbol{x}^{T}\boldsymbol{Au}=\boldsymbol{u}^{T}\boldsymbol{A}^{T}\boldsymbol{x}=\boldsymbol{u}^{T}\boldsymbol{A}\boldsymbol{x}=k\boldsymbol{u}^{T}\boldsymbol{x}=0$
+
+So $c\boldsymbol{x}^{T}\boldsymbol{x}=c|\boldsymbol{\mathbf{x}}|^{2}=0,$which
+implies that $c=0,$
+
+So for all $\boldsymbol{u}$ in $U$ ,$\mathbf{\boldsymbol{Au}}$
+is also in $U.$ So $U$ satisfies Given condition.
+
+3) That means we can always find oneeigen vector while the remaining
+subspace still satisfies Given condition until it shrinks to $\{\boldsymbol{0}\}.$
+Since each time the dimension of the space is decreased by 1, we can
+find n orthogonal eigen vectors.
+
+
+\section{Problem 4 (graded by Yiran) - 25 points}
+
+(See atttached Matlab code and figures)\\
+ Fig. 1 shows the function and the four roots.\\
+ Fig. 2 shows the root found from each initial guess $x_{0}$. The
+red lines mark the four roots. We also plot the function $f(x)$ in black.\\
+ Fig. 3 shows that for all the initial guesses, the method converges
+within a certain number of iterations.\\
+ \\
+ There are four roots of this function. If the initial guess is close
+enough to a given root, Newton's method will generally find this root that is
+closest to the initial guess, unless the initial guess is close to an extreme point. \\
+If the initial guess is far away from the roots or close to an extreme point, there is no guarantee
+that Newton's method will find the closest root. The jump in x is controlled by the gradient at the current point. If the current
+point is close to an extreme point (and note that there are many extreme
+points of this function), the small gradient will cause a large jump
+to the neighbor of another root. \\
+ To find all the roots of the function, we need to try different initial
+guesses. 
+\end{document}

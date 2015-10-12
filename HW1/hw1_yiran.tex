@@ -1,0 +1,146 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{amsmath}
+\usepackage{multirow}
+
+\title{Homework 1, Problem 2 \& 4}
+\author{Yiran Ma}
+\date{}
+
+%%% BEGIN DOCUMENT
+\begin{document}
+\maketitle
+
+% Problem 2
+\section{Problem 2}
+(a) Let the matrix $ A= \left[   \boldsymbol{x}_{1}, \boldsymbol{x}_{2}, \boldsymbol{x}_{3}, \boldsymbol{x}_{4}    \right] $, then \\
+\begin{eqnarray*}
+A =& \begin{bmatrix}
+1&  0&  0&    1\\
+0&  1&  -1&   1\\
+0&  1&   1&    1\\
+\end{bmatrix} \\
+A^{T}A =& \begin{bmatrix}
+1&  0&  0&    1\\
+0&  2&  0&    2\\
+0&  0&   2&    0\\
+1&  2&   0&    3\\
+\end{bmatrix} \\
+=&\begin{bmatrix}
+\boldsymbol{x}_{1}^{T}\boldsymbol{x}_{1}&  \boldsymbol{x}_{1}^{T}\boldsymbol{x}_{2}&    \boldsymbol{x}_{1}^{T}\boldsymbol{x}_{3}&      \boldsymbol{x}_{1}^{T}\boldsymbol{x}_{4} \\  
+ &       \boldsymbol{x}_{2}^{T}\boldsymbol{x}_{2}&       \boldsymbol{x}_{2}^{T}\boldsymbol{x}_{3}&        \boldsymbol{x}_{2}^{T}\boldsymbol{x}_{4}     \\
+ &  \multirow{2}{*}{\makebox[0pt]{\text{sym.}}}        &          \boldsymbol{x}_{3}^{T}\boldsymbol{x}_{3}&         \boldsymbol{x}_{3}^{T}\boldsymbol{x}_{4}     \\
+ &         &         &     \boldsymbol{x}_{4}^{T}\boldsymbol{x}_{4}\\       
+\end{bmatrix}
+\end{eqnarray*}
+Therefore, we see that $\boldsymbol{x}_{1}$, $\boldsymbol{x}_{2}$, $\boldsymbol{x}_{3}$ are orthogonal to each other; and $\boldsymbol{x}_{3}$ and $\boldsymbol{x}_{4}$ are orthogonal.\\
+\\
+(b) There are two independent vectors in $\left \{ \boldsymbol{x}_{1}, \boldsymbol{x}_{2}, \boldsymbol{x}_{4}  \right \}$, choosing any two from them, along with $\boldsymbol{x}_{3}$, which is independent with all of them, form a basis. All the bases are:
+\begin{center}
+$\left \{ \boldsymbol{x}_{1}, \boldsymbol{x}_{2}, \boldsymbol{x}_{3}  \right \}$, $\left \{ \boldsymbol{x}_{1}, \boldsymbol{x}_{4}, \boldsymbol{x}_{3}  \right \}$, $\left \{ \boldsymbol{x}_{2}, \boldsymbol{x}_{4}, \boldsymbol{x}_{3}  \right \}$
+\end{center}
+(c)
+\begin{eqnarray*}
+A\left[ \frac{1}{\lambda_{1}}\boldsymbol{x}_{1} \quad   \frac{1}{\lambda_{2}}\boldsymbol{x}_{2}  \quad   \frac{1}{\lambda_{3}}\boldsymbol{x}_{3} \right]
+= \left[\boldsymbol{x}_{1} \quad  \boldsymbol{x}_{2}  \quad \boldsymbol{x}_{3} \right] 
+\end{eqnarray*}
+Let
+\begin{eqnarray*}
+B =& \left[ \frac{1}{\lambda_{1}}\boldsymbol{x}_{1} \quad   \frac{1}{\lambda_{2}}\boldsymbol{x}_{2}  \quad   \frac{1}{\lambda_{3}}\boldsymbol{x}_{3} \right]\\
+=
+& \begin{bmatrix}
+\frac{1}{2}&  0&    0\\
+0&  \frac{1}{5}&   -\frac{1}{4}\\
+0&  \frac{1}{5}&    \frac{1}{4}\\
+\end{bmatrix}\\
+C=& \left[   \boldsymbol{x}_{1} \quad \boldsymbol{x}_{2} \quad \boldsymbol{x}_{3}    \right] \\
+=
+&\begin{bmatrix}
+1&  0&  0\\
+0&  1&  -1\\
+0&  1&   1\\
+\end{bmatrix}
+\end{eqnarray*}\\
+Then\\
+\begin{center}
+$A = CB^{-1}$
+\end{center}
+Since
+\begin{eqnarray*}
+det(B)=&1/20\\
+\\
+B^{-1}=&20
+\begin{bmatrix}
+\frac{1}{10}&  0&    0\\
+0&  \frac{1}{8}&   -\frac{1}{10}\\
+0&  \frac{1}{8}&    \frac{1}{10}\\
+\end{bmatrix}^{T}\\
+=
+&\begin{bmatrix}
+2&  0&  0\\
+0&  2.5&  2.5\\
+0&  -2&   2\\
+\end{bmatrix}
+\end{eqnarray*}
+Then
+\begin{eqnarray*}
+A=
+&\begin{bmatrix}
+1&  0&  0\\
+0&  1&  -1\\
+0&  1&   1\\
+\end{bmatrix}
+\begin{bmatrix}
+2&  0&  0\\
+0&  2.5&  2.5\\
+0&  -2&   2\\
+\end{bmatrix}
+=
+&\begin{bmatrix}
+2&  0&  0\\
+0&  4.5&  0.5\\
+0&  0.5&   4.5\\
+\end{bmatrix}
+\end{eqnarray*}\\
+(c)\\
+Since A is an symmetric matrix, we have $A=Q\Lambda Q^{-1}$, where 
+\begin{eqnarray*}
+Q=&\left[ \boldsymbol{\tilde{x}}_{1}\quad  \boldsymbol{\tilde{x}}_{2}\quad \boldsymbol{\tilde{x}}_{3}\right] 
+\end{eqnarray*}
+$\boldsymbol{\tilde{x}}_{i}$ is the normalized $\boldsymbol{x}_{i}$.
+
+In this problem, 
+\begin{eqnarray*}
+Q=\begin{bmatrix}
+1&  0&  0\\
+0&  \frac{\sqrt{2}}{2}&  -\frac{\sqrt{2}}{2}\\
+0&  \frac{\sqrt{2}}{2}&   \frac{\sqrt{2}}{2}\\
+\end{bmatrix}
+\end{eqnarray*}
+It's a 45-degree axial rotation along $\boldsymbol{e}_{1}$.
+\begin{eqnarray*}
+\Lambda=
+&\begin{bmatrix}
+2 &  0&  0\\
+0&  5&  0\\
+0&  0&   4\\
+\end{bmatrix}
+\end{eqnarray*}
+It's stretching along three standard basis directions.\\
+Therefore, the transformation includes: (1) A -45 degree axial rotation along $\boldsymbol{e}_{1}$; (2) 2, 5 and 4 times stretching along the three standard basis directions; (3) A 45 degree axial rotation back.\\
+Check it with $ \boldsymbol{x} = [ 1\quad 2\quad 3 ]^{T} $.
+\begin{eqnarray*}
+v_{1} =& Q^{-1}x =& [1\quad 3.5355 \quad 0.7071]^{T} \\
+v_{2} =& \Lambda v_{1} =& [2\quad 17.6777 \quad 2.8284]^{T}\\
+v_{3} =& Qv_{2} =& [2\quad 10.5\quad 14.5] = Ax
+\end{eqnarray*}
+
+\newpage
+% Problem 4
+\section{Problem 4}
+There is no evidence that Newton's method will find the root closest to the initial guess. Because the "jump" in x is largely controlled by the gradient at current point, a small gradient will cause a large jump to the neighbor of another root.
+
+
+\end{document}

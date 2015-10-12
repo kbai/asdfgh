@@ -1,0 +1,238 @@
+%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt]{article}
+\usepackage[margin=0.75in]{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{amsmath}
+\usepackage{multirow}
+
+\title{Solutions to Homework 1}
+\date{}
+
+\begin{document}
+\maketitle
+\section{Problem 1}
+
+\subsection*{a} The model parameter is $m=[P,d]^{T}$;
+
+\subsection*{b}$[\frac{\partial u}{\partial P},\frac{\partial u}{\partial d}]=[\frac{d}{(x^{2}+y^{2}+d^{2})^{3/2}},\frac{P}{(x^{2}+y^{2}+d^{2})^{3/2}}-\frac{3Pd^{2}}{(x^{2}+y^{2}+d^{2})^{5/2}}]$;
+
+\subsection*{c}$\begin{bmatrix}\frac{\partial^{2}u}{\partial P^{2}} & \frac{\partial^{2}u}{\partial P\partial d}\\
+\frac{\partial^{2}u}{\partial d\partial P} & \frac{\partial^{2}u}{\partial d^{2}}
+\end{bmatrix}=\begin{bmatrix}0 & \frac{1}{(x^{2}+y^{2}+d^{2})^{3/2}}-\frac{3d^{2}}{(x^{2}+y^{2}+d^{2})^{5/2}}\\
+\frac{1}{(x^{2}+y^{2}+d^{2})^{3/2}}-\frac{3d^{2}}{(x^{2}+y^{2}+d^{2})^{5/2}} & \frac{15Pd^{3}}{(x^{2}+y^{2}+d^{2})^{7/2}}-\frac{9Pd}{(x^{2}+y^{2}+d^{2})^{5/2}}
+\end{bmatrix}$
+
+Note that the $\frac{\partial^{2}u}{\partial P\partial d}=\frac{\partial^{2}u}{\partial d\partial P}$
+given that the function $u(P,d)$ is smooth enough.
+
+\subsection*{d} No since the two chambers may have different locations$(x,y,d)$
+and different P.
+
+The model parameters for two magma chambers should be $[P_{1},P_{2},d_{1},d_{2},x_{1},x_{2},y_{1},y_{2}]^{T}$
+
+and the observed vertical displacement should be:
+
+$u=\frac{P_{1}d_{1}}{((x-x_{1})^{2}+(y-y_{1})^{2}+d_{1}^{2})^{3/2}}+\frac{P_{2}d_{2}}{((x-x_{2})^{2}+(y-y_{2})^{2}+d_{2}^{2})^{3/2}}$
+
+Since if there are two magma chambers , it is not easy to tell their
+locations $(x,y)$ in the first place.
+
+So they need to be inverted from observations. Also we need to have
+2 different depth (d) parameters and P(pressure) parameters to describe
+the two magma chamber.
+
+\subsection*{e}8
+
+\subsection*{f}
+
+No. Because there are 8 degrees of freedom in the model space while
+only 6 degrees of freedom in the data space.
+
+To map from a 8 dimensional model space to 6 dimensional data space
+means that there will be different models being mapped to the same
+point in data space.
+
+This causes the inversion to have multiple solutions and trade off
+between different parameters.
+
+\section{Problem 2}
+\subsection*{a}
+Let the matrix $ \boldsymbol{A}= \left[   \boldsymbol{x}_{1}, \boldsymbol{x}_{2}, \boldsymbol{x}_{3}, \boldsymbol{x}_{4}    \right] $, then \\
+\begin{eqnarray*}
+\boldsymbol{A} =& \begin{bmatrix}
+1&  0&  0&    1\\
+0&  1&  -1&   1\\
+0&  1&   1&    1\\
+\end{bmatrix} \\
+\boldsymbol{A}^{T}\boldsymbol{A} =& \begin{bmatrix}
+1&  0&  0&    1\\
+0&  2&  0&    2\\
+0&  0&   2&    0\\
+1&  2&   0&    3\\
+\end{bmatrix} \\
+=&\begin{bmatrix}
+\boldsymbol{x}_{1}^{T}\boldsymbol{x}_{1}&  \boldsymbol{x}_{1}^{T}\boldsymbol{x}_{2}&    \boldsymbol{x}_{1}^{T}\boldsymbol{x}_{3}&      \boldsymbol{x}_{1}^{T}\boldsymbol{x}_{4} \\
+&       \boldsymbol{x}_{2}^{T}\boldsymbol{x}_{2}&       \boldsymbol{x}_{2}^{T}\boldsymbol{x}_{3}&        \boldsymbol{x}_{2}^{T}\boldsymbol{x}_{4}     \\
+&  \multirow{2}{*}{\makebox[0pt]{\text{sym.}}}        &          \boldsymbol{x}_{3}^{T}\boldsymbol{x}_{3}&         \boldsymbol{x}_{3}^{T}\boldsymbol{x}_{4}     \\
+&         &         &     \boldsymbol{x}_{4}^{T}\boldsymbol{x}_{4}\\
+\end{bmatrix}
+\end{eqnarray*}
+Therefore, we see that $\boldsymbol{x}_{1}$, $\boldsymbol{x}_{2}$, $\boldsymbol{x}_{3}$ are orthogonal to each other; and $\boldsymbol{x}_{3}$ and $\boldsymbol{x}_{4}$ are orthogonal.\\
+\\
+\subsection*{b}
+
+There are two independent vectors in $\left \{ \boldsymbol{x}_{1}, \boldsymbol{x}_{2}, \boldsymbol{x}_{4}  \right \}$, choosing any two from them, along with $\boldsymbol{x}_{3}$, which is independent with all of them, form a basis. All the bases are:
+\begin{center}
+$\left \{ \boldsymbol{x}_{1}, \boldsymbol{x}_{2}, \boldsymbol{x}_{3}  \right \}$, $\left \{ \boldsymbol{x}_{1}, \boldsymbol{x}_{4}, \boldsymbol{x}_{3}  \right \}$, $\left \{ \boldsymbol{x}_{2}, \boldsymbol{x}_{4}, \boldsymbol{x}_{3}  \right \}$
+\end{center}
+
+\subsection*{c}
+By definition\\
+\begin{eqnarray*}
+\boldsymbol{AX} =& \boldsymbol{XD} \\
+\\
+\boldsymbol{X} = & \left[   \boldsymbol{x}_{1} \quad \boldsymbol{x}_{2} \quad \boldsymbol{x}_{3}    \right] \\
+=& \begin{bmatrix}
+1&  0&    0\\
+0&  1&   -1\\
+0&  1&    1\\
+\end{bmatrix}\\
+\boldsymbol{D}=& \begin{bmatrix}
+\lambda_{1}&  0&    0\\
+0&  \lambda_{2}&   0\\
+0&  0&    \lambda_{3}\\
+\end{bmatrix}\\
+=&\begin{bmatrix}
+2&  0&    0\\
+0&  5&   0\\
+0&  0&    4\\
+\end{bmatrix}\\
+\end{eqnarray*}\\
+
+Then\\
+\begin{center}
+$\boldsymbol{A} = \boldsymbol{XDX^{-1}}$
+\end{center}
+Since
+\begin{eqnarray*}
+det(\boldsymbol{X})=&2\\
+\\
+\boldsymbol{X}^{-1}=&1/2
+\begin{bmatrix}
+2&  0&    0\\
+0&  1&   -1\\
+0&  1&   -1\\
+\end{bmatrix}^{T}\\
+=
+&\begin{bmatrix}
+1&  0&  0\\
+0&  0.5&  0.5\\
+0&  -0.5&   0.5\\
+\end{bmatrix}
+\end{eqnarray*}
+
+Then
+\begin{eqnarray*}
+\boldsymbol{A}=
+&\begin{bmatrix}
+1&  0&  0\\
+0&  1&  -1\\
+0&  1&   1\\
+\end{bmatrix}
+\begin{bmatrix}
+2&  0&  0\\
+0&  5&  0\\
+0&  0&  4\\
+\end{bmatrix}
+\begin{bmatrix}
+1&  0&  0\\
+0&  0.5&  0.5\\
+0&  -0.5&   0.5\\
+\end{bmatrix}
+=&
+\begin{bmatrix}
+2&  0&  0\\
+0&  4.5&  0.5\\
+0&  0.5&   4.5\\
+\end{bmatrix}
+\end{eqnarray*}\\
+
+
+\subsection*{d}
+The vector is stretched by $\lambda_{1}$, $\lambda_{2}$, $\lambda_{3}$ along the corresponding eigenvector directions $\boldsymbol{x}_{1}$, $\boldsymbol{x}_{2}$, $\boldsymbol{x}_{3}$.
+\\
+\\
+Check it with $ \boldsymbol{x} = [ 1\quad 2\quad 3 ]^{T} $:\\
+(1) Projection: $\boldsymbol{v}_{1} = \boldsymbol{X^{-1}x} = [1\quad 2.5 \quad 0.5]^{T}$\\
+(2) Stretch:$\boldsymbol{v}_{2} = \boldsymbol{D v_{1}} = [2\quad 12.5 \quad 2.0]^{T}$\\
+(3) Back Projection:$\boldsymbol{v}_{3} = \boldsymbol{X  v_{2}} = [2\quad 10.5\quad 14.5]^{T}$\\
+\\
+We see the final result equals to $\boldsymbol{Ax} = [2\quad 10.5\quad 14.5]^{T}$\\
+
+\section{Problem 3}
+
+\subsection*{a}
+This implies $v^{T}x=0$ since $v\in V$ means that $v$ is orthogonal
+to $x$.
+
+\subsection*{b}
+This is simply showing that the set $V$ is a subspace of $R^{n}$ 
+
+$(a_{1}v_{1}+a_{2}v_{2})^{T}x=a_{1}v_{1}^{T}x+a_{2}v_{2}^{T}x=a_{1}(0)+a_{2}(0)=0$
+
+This imply that $(a_{1}v_{1}+a_{2}v_{2})$ is also orthogonal to $x$.
+
+so $(a_{1}v_{1}+a_{2}v_{2})\in V$
+
+\subsection*{c}
+
+
+Since $x$ is an eigen vector of $A$, we assume $Ax=kx$ where $k\in R$
+
+$(Av)^{T}x=v^{T}A^{T}x=v^{T}Ax=v^{T}(Ax)=v^{T}kx=kv^{T}x=0$
+
+So $Av$ is also orthogonal to $x$ $\forall v\in V$
+
+\subsection*{d}
+
+
+Given condition: $\forall v\in V(V\neq\{0\}),$if $Av\in V$ then
+one can find one eigen vector of $A$ in subspace $V$.
+
+$A$ is a $n\times n$ matrix.
+
+1) one can find one eigen vector $x$ in $R^{n}$. Since $R^{n}$satisfy
+Given condition. This is trivial.
+
+2) if a subspace $V$ satisfy Given condition, and we have an eigen
+vector $x\in V$. Then we prove that the set $U=\{u|u^{T}x=0,u\in V\}$
+also satisfy Given condition.
+
+It is shown in (b) that $U$ forms subspace .
+
+$\forall u\in U,$$Au\in V$ since $U\subseteq V$ 
+
+we can write $Au=cx+w,w\in U,c\in R$, multiply both sides by $x^{T}$:
+
+$x^{T}Au=cx^{T}x+x^{T}w=cx^{T}x$
+
+note that on the left hand side:$x^{T}Au=u^{T}A^{T}x=u^{T}Ax=ku^{T}x=0$
+
+So $cx^{T}x=c|x|^{2}=0,$which implies that $c=0,$
+
+So $Au=w\in U,\forall u\in U$. So $U$ satisfy Given condition.
+
+3) That means we can always find one eigen vector while the remaining
+subspace still satisfy Given condition until it shrinks to $\{0\}.$
+Since each time , the dimension of the space is decreased by 1, we
+can find n orthogonal eigen vectors.
+
+\section{Problem 4}
+There are four roots of this function. If the initial guess is close enough to certain root, Newton's method will find this root that is closest to the initial guess.
+\\
+Otherwise, if the initial guess is far away, there is no guarantee that Newton's method will find the closest root. The "jump" in x is controlled by the gradient at current point, a small gradient will cause a large jump to the neighbor of another root.
+
+
+\end{document}
