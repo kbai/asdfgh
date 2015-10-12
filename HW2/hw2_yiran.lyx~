@@ -178,5 +178,17 @@ The standard result only gives the diagonal term in the model covariance
  problem.
 \end_layout
 
+\begin_layout Subsection*
+(h)
+\end_layout
+
+\begin_layout Standard
+The L2 and L1 (grid search) method is more straighforward in showing the
+ error distribution in the model space, and the correlation between model
+ parameters.
+ The least-square solution is fast, and gives the exact solution that minimizes
+ L2 norm error.
+\end_layout
+
 \end_body
 \end_document
