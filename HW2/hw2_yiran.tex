@@ -4,7 +4,7 @@
 \usepackage[latin9]{inputenc}
 \usepackage{amsthm}
 \usepackage{amsmath}
-
+\usepackage{listings}
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
 \numberwithin{equation}{section}
@@ -13,6 +13,9 @@
 \makeatother
 
 \usepackage{babel}
+
+
+
 \begin{document}
 \lstset{language=Matlab,%
 	  %basicstyle=\color{red},
@@ -108,7 +111,9 @@ sym &  & 15Pz_{s}^{3}-9Pz_{s}R_{i} & R_{i}^{2}-9z_{s}^{2}R_{i}\\
 \]
 
 
-\lstinputlisting{compute_gradient_approx_hess.m}
+
+
+\lstinputlisting{hw2q1.m}
 
 
 
@@ -173,4 +178,5 @@ can be better, because it would be less likely to be affected by the
 outliers. If there are several solutions that can minimize the error
 equally well, we can see it in the error map produced by the direct
 search method, and can choose one solution based on some priori information.
+
 \end{document}
