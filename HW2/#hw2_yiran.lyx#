@@ -78,7 +78,7 @@ figs-within-sections
 Problem 1
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection*
 (a)
 \end_layout
 
@@ -138,6 +138,17 @@ define :
 
 \begin_layout Standard
 \begin_inset Formula $\nabla\phi=[\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}lx_{i}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}ly_{i}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{PR_{i}-3Pz_{s}^{2}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{z_{s}}{R_{i}^{3/2}})]^{T}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $H_{i}=\frac{A_{i}}{R_{i}}\begin{bmatrix}\frac{15\,\mathrm{lx_{i}}\,\mathrm{ly_{i}}\,P\,\mathrm{z_{s}}}{2\,R_{i}^{7/2}}\  & \frac{\mathrm{lx_{i}}\,P\,(3R-\mathrm{15z{}_{s}^{2}})}{2\,R_{i}^{7/2}}\\
+\\
+\\
+\\
+\end{bmatrix}$
 \end_inset
 
 

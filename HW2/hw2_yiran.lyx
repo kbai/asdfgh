@@ -75,6 +75,86 @@ figs-within-sections
 \begin_body
 
 \begin_layout Section*
+Problem 1
+\end_layout
+
+\begin_layout Subsection*
+(a)
+\end_layout
+
+\begin_layout Standard
+The model parameter vector 
+\begin_inset Formula $\boldsymbol{m}=[x_{s},y_{s},z_{s},P]^{T}$
+\end_inset
+
+.
+ The forward model is nonlinear, since the partial derivatives 
+\begin_inset Formula $\frac{\partial G}{\partial m_{i}}$
+\end_inset
+
+ are not constant.
+\end_layout
+
+\begin_layout Subsection*
+(b)
+\end_layout
+
+\begin_layout Standard
+For least square problem, we introduce the objective function:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\phi=(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})=\underset{i=1}{\overset{n}{\sum}(\frac{Pz_{s}}{[(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}]^{3/2}}-d_{i})^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+define : 
+\begin_inset Formula $R_{i}=(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $lx_{i}=x_{i}-x_{s}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $ly_{i}=y_{i}-y_{s}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\nabla\phi=[\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}lx_{i}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}ly_{i}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{PR_{i}-3Pz_{s}^{2}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{z_{s}}{R_{i}^{3/2}})]^{T}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $H_{i}=\frac{A_{i}}{R_{i}^{7/2}}\begin{bmatrix}\  & \frac{\mathrm{lx_{i}}\,P\,(3R-\mathrm{15z{}_{s}^{2}})}{}\\
+\\
+\\
+\\
+\end{bmatrix}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 Problem 2
 \end_layout
 
