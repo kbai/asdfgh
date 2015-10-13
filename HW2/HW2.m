@@ -1,9 +1,25 @@
-syms x y p xs ys zs;
-u = p*zs/((x-xs)^2+(y-ys)^2+zs^2).^(3/2);
+syms x y p xs ys zs d;
+u = (p*zs/((x-xs)^2+(y-ys)^2+zs^2).^(3/2)-d)^2;
 f1=diff(u,xs);
 f2=diff(u,ys);
 f3=diff(u,zs);
 f4=diff(u,p);
+
+g11=diff(diff(u,xs),xs);
+g12=diff(diff(u,xs),ys);
+
+g13=diff(diff(u,xs),zs);
+
+g22=diff(diff(u,ys),ys);
+g23=diff(diff(u,ys),zs);
+
+g33=diff(diff(u,zs),zs);
+
+
+
+
+
+
 latex(f1)
 latex(f2)
 latex(f3)

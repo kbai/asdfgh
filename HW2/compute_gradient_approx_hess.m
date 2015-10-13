@@ -1,6 +1,5 @@
 function [ Grad,Hess ,Hess_real] = compute_gradient_approx_hess( x,y,M,residue)
-%COMPUTE_GRADIENT_APPROX_HESS Summary of this function goes here
-%   Detailed explanation goes here
+
 xs = M(1);
 ys = M(2);
 zs = M(3);
@@ -15,7 +14,6 @@ Jacob(:,1) = (3.*p.*zs.*(dx))./(2*(R).^(5/2));
 Jacob(:,2) = (3.*p.*zs.*(dy))./(2*(R).^(5/2));
 Jacob(:,3) = p./(R).^(3/2) - (3*p.*zs.^2)./(R).^(5/2);
 Jacob(:,4) = zs./(R).^(3/2);
-disp('finished');
 
 Grad = 2*(residue')* Jacob;
 %this is the apprximated Hessian;

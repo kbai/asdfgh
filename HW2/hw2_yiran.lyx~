@@ -78,7 +78,7 @@ figs-within-sections
 Problem 1
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection*
 (a)
 \end_layout
 
@@ -106,7 +106,7 @@ For least square problem, we introduce the objective function:
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\phi=(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})=\underset{i=1}{\overset{n}{\sum}(\frac{Pz_{s}}{[(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}]^{3/2}}-d_{i})^{2}}
+\phi=(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})=\underset{}{\overset{n}{\underset{i=1}{\sum}}(\frac{Pz_{s}}{[(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}]^{3/2}}-d_{i})^{2}}
 \]
 
 \end_inset
@@ -116,31 +116,123 @@ For least square problem, we introduce the objective function:
 
 \begin_layout Standard
 define : 
-\begin_inset Formula $R_{i}=(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}$
+\begin_inset Formula 
+\[
+R_{i}=(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}
+\]
+
 \end_inset
 
  
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $lx_{i}=x_{i}-x_{s}$
+\begin_inset Formula 
+\[
+lx_{i}=x_{i}-x_{s}
+\]
+
 \end_inset
 
  
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $ly_{i}=y_{i}-y_{s}$
+\begin_inset Formula 
+\[
+ly_{i}=y_{i}-y_{s}
+\]
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\nabla\phi=[\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}lx_{i}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}ly_{i}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{PR_{i}-3Pz_{s}^{2}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{z_{s}}{R_{i}^{3/2}})]^{T}$
+\begin_inset Formula 
+\[
+A_{i}=\frac{Pz_{s}}{[(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}]^{3/2}}-d_{i}
+\]
+
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+We write the Jacobian matrix: 
+\begin_inset Formula 
+\[
+\boldsymbol{J}=\boldsymbol{\nabla}_{\boldsymbol{m}}G=\frac{\partial G_{i}}{\partial m_{j}}
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\boldsymbol{J}=\begin{bmatrix}\frac{3Pz_{x}lx_{1}}{2R_{1}^{5/2}} & \frac{3Pz_{x}ly_{1}}{2R_{1}^{5/2}} & \frac{PR_{1}-3Pz_{s}^{2}}{2R_{1}^{5/2}} & \frac{z_{s}}{2R_{1}^{3/2}}\\
+\frac{3Pz_{x}lx_{2}}{2R_{2}^{5/2}} & \frac{3Pz_{x}ly_{2}}{2R_{2}^{5/2}} & \frac{PR_{2}-3Pz_{s}^{2}}{2R_{2}^{5/2}} & \frac{z_{s}}{2R_{2}^{3/2}}\\
+... & ... & ... & ...\\
+\frac{3Pz_{x}lx_{n}}{2R_{n}^{5/2}} & \frac{3Pz_{x}ly_{n}}{2R_{n}^{5/2}} & \frac{PR_{n}-3Pz_{s}^{2}}{2R_{n}^{5/2}} & \frac{z_{s}}{2R_{n}^{3/2}}
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boldsymbol{\nabla_{m}}\phi=2(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{J}=[\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}lx_{i}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}ly_{i}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{PR_{i}-3Pz_{s}^{2}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{z_{s}}{R_{i}^{3/2}})]^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boldsymbol{H}(\phi)=\boldsymbol{\nabla_{m}}(\boldsymbol{\nabla_{m}}\phi)=2\nabla(\boldsymbol{J}^{T}(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d}))=2J^{T}J+2(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{\nabla J}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H_{approximate}=2\boldsymbol{J}^{T}\boldsymbol{J}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+2(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{\nabla J}=\underset{i=1}{\overset{n}{\sum}}\frac{A_{i}}{R_{i}^{7/2}}\begin{bmatrix}15Pz_{s}lx_{i}^{2}-3Pz_{s}R_{i} & 15Pz_{s}lx_{i}ly_{i} & 3Plx_{i}R_{i}-15Pz_{s}^{2}lx_{i} & 3z_{s}lx_{i}R_{i}\\
+ & 15Pz_{s}ly_{i}^{2}-3Pz_{s}R_{i} & 3Ply_{i}R_{i}-15Pz_{s}^{2}ly_{i} & 3z_{s}dy_{i}R_{i}\\
+sym &  & 15Pz_{s}^{3}-9Pz_{s}R_{i} & R_{i}^{2}-9z_{s}^{2}R_{i}\\
+ &  &  & 0
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(c)
 \end_layout
 
 \begin_layout Section*
