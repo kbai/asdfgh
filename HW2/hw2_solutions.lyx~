@@ -232,6 +232,23 @@ sym &  & 15Pz_{s}^{3}-9Pz_{s}R_{i} & R_{i}^{2}-9z_{s}^{2}R_{i}\\
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{cc}
+H_{xx}=\text{\underset{i}{\sum}}18P^{2}lx_{i}{}^{2}z{}_{s}^{2}R_{i}^{-5}+30lx_{i}^{2}z_{s}A_{i}R_{i}^{-7/2}-6Pz_{s}A_{i}R_{i}^{-5/2} & H_{yy}=\text{\underset{i}{\sum}}18P^{2}ly_{i}{}^{2}z{}_{s}^{2}R_{i}^{-5}+30ly_{i}^{2}z_{s}A_{i}R_{i}^{-7/2}-6Pz_{s}A_{i}R_{i}^{-5/2}\\
+H_{zz}=\text{\underset{i}{\sum}}2(-6Pz_{s}^{2}R_{i}^{-5/2}+PR_{i}^{-3/2})^{2}+30A_{i}Pz_{s}^{3}R_{i}^{-7/2}-18A_{i}Pz_{s}R_{i}^{-5/2} & H_{pp}=\text{\underset{i}{\sum}}2z_{s}^{2}R_{i}^{-3}\\
+H_{xy}=\text{\underset{i}{\sum}}18P^{2}lx_{i}lyz_{i}{}_{s}^{2}R_{i}^{-5}+30lx_{i}ly_{i}z_{s}A_{i}R_{i}^{-7/2} & H_{xz}=\text{\underset{i}{\sum}}6Plx_{i}A_{i}R_{i}^{-5/2}-30Plx_{i}z_{s}^{2}R_{i}^{-7/2}+6P^{2}lx_{i}z_{s}R_{i}^{-4}-18P^{2}lx_{i}z_{s}^{3}R_{i}^{-5}\\
+H_{xp}=\text{\underset{i}{\sum}}6Plx_{i}z_{s}^{2}R_{i}^{-4}+6lx_{i}z_{s}A_{i}R_{i}^{-5/2} & H_{yz}=\text{\underset{i}{\sum}}6Ply_{i}A_{i}R_{i}^{-5/2}-30Ply_{i}z_{s}^{2}R_{i}^{-7/2}+6P^{2}ly_{i}z_{s}R_{i}^{-4}-18P^{2}lx_{i}ly_{i}z_{s}R^{-5}\\
+H_{yp}=\text{\underset{i}{\sum}}6Ply_{i}z_{s}^{2}R_{i}^{-4}+6ly_{i}z_{s}A_{i}R_{i}^{-5/2} & H_{zp}=\text{\underset{i}{\sum}}-6Pz_{s}^{3}R_{i}^{-4}+2P_{i}z_{s}R_{i}^{-3}-6A_{i}z_{s}^{2}R_{i}^{-5/2}+2A_{i}R_{i}^{-3/2}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 (c)
 \begin_inset CommandInset include
 LatexCommand include
@@ -351,26 +368,56 @@ The standard result only gives the diagonal term in the model covariance
 \end_layout
 
 \begin_layout Standard
-The L2 and L1 (grid search) method is more straighforward in showing the
- error distribution, and the correlation between model parameters.
+The L1 and L2 methods (
+\begin_inset Quotes eld
+\end_inset
+
+grid search
+\begin_inset Quotes erd
+\end_inset
+
+) are more straighforward in showing the error distribution, thus the probabilit
+y of the model parameters over the 
+\begin_inset Quotes eld
+\end_inset
+
+full
+\begin_inset Quotes erd
+\end_inset
+
+ model space.
+ The correlations between model parameters are also clear.
  
 \begin_inset Newline newline
 \end_inset
 
-The least-square solution is fast, and gives the exact solution that minimizes
- L2 norm error.
+The least-square solution (
+\begin_inset Quotes eld
+\end_inset
+
+direct inversion
+\begin_inset Quotes erd
+\end_inset
+
+) is fast, and gives the exact solution that minimizes L2 norm error.
  We can infer some information, such as the correlations between the model
  parameters, from its output matrices.
  However, it is not as straightforward.
- In this small size problem, I would prefer the direct search method.
+ In this small size problem, I would prefer the 
+\begin_inset Quotes eld
+\end_inset
+
+grid search
+\begin_inset Quotes erd
+\end_inset
+
+ method.
 \begin_inset Newline newline
 \end_inset
 
-In this problem, we see that the data points are quite close to a line,
- so we speculate that the errors are small.
- However, if the points are more scattered as the errors are getting bigger,
- the L1 norm method can be better, because it would be less likely to be
- affected by the outliers.
+We know that the errors are small (about 0.1).
+ However, as the errors are getting bigger, the L1 norm method can be better,
+ because it would be less likely to be affected by the outliers.
  If there are several solutions that can minimize the error equally well,
  we can see it in the error map produced by the direct search method, and
  can choose one solution based on some priori information.
