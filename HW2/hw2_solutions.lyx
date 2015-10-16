@@ -295,6 +295,30 @@ The standard deviations are
 \end_layout
 
 \begin_layout Standard
+There is a strong trade off relation between 
+\begin_inset Formula $x_{s},y_{s},z_{s}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $x_{s},y_{s}$
+\end_inset
+
+ is negatively related.
+ 
+\begin_inset Formula $x_{s},z_{s}$
+\end_inset
+
+ is positively related.
+ 
+\begin_inset Formula $x_{s},y_{s}$
+\end_inset
+
+ is positively related.
+ 
+\end_layout
+
+\begin_layout Subsection*
 
 \end_layout
 
