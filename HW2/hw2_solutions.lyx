@@ -219,7 +219,7 @@ H_{approximate}=\boldsymbol{J}^{T}\boldsymbol{J}
 \begin_layout Standard
 \begin_inset Formula 
 \[
-(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{\nabla J}=\underset{i=1}{\overset{n}{\sum}}\frac{A_{i}}{2R_{i}^{7/2}}\begin{bmatrix}15Pz_{s}lx_{i}^{2}-3Pz_{s}R_{i} & 15Pz_{s}lx_{i}ly_{i} & 3Plx_{i}R_{i}-15Pz_{s}^{2}lx_{i} & 3z_{s}lx_{i}R_{i}\\
+(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{\nabla J}=\underset{i=1}{\overset{n}{\sum}}\frac{A_{i}}{R_{i}^{7/2}}\begin{bmatrix}15Pz_{s}lx_{i}^{2}-3Pz_{s}R_{i} & 15Pz_{s}lx_{i}ly_{i} & 3Plx_{i}R_{i}-15Pz_{s}^{2}lx_{i} & 3z_{s}lx_{i}R_{i}\\
  & 15Pz_{s}ly_{i}^{2}-3Pz_{s}R_{i} & 3Ply_{i}R_{i}-15Pz_{s}^{2}ly_{i} & 3z_{s}dy_{i}R_{i}\\
 sym &  & 15Pz_{s}^{3}-9Pz_{s}R_{i} & R_{i}^{2}-9z_{s}^{2}R_{i}\\
  &  &  & 0
@@ -248,14 +248,53 @@ H_{yp}=\text{\underset{i}{\sum}}3Ply_{i}z_{s}^{2}R_{i}^{-4}+3ly_{i}z_{s}A_{i}R_{
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection*
 (c)
+\end_layout
+
+\begin_layout Subsection*
 \begin_inset CommandInset include
 LatexCommand include
 filename "compute_gradient_approx_hess.m"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Subsection*
+(d)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $[x_{s},y_{s},z_{s},P]^{T}=[8.226,-5.307,11.577,30.781]^{T}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(e)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename measurements_error.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The standard deviations are 
+\begin_inset Formula $\sigma_{x_{s}}=0.099670,\sigma_{y_{s}}=0.137469,\sigma_{z_{s}}=0.149719,\sigma_{p}=0.691071$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
