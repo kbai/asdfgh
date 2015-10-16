@@ -10,7 +10,7 @@ figure(1)
 plot(x,f,'ko-');
 grid on; xlabel('x'); ylabel('f(x)');
 
-epsilon = 1e-10;
+epsilon = 1e-7;
 x0 = -12:0.05:12;
 itermax = 1000;
 
