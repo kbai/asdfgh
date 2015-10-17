@@ -331,12 +331,12 @@ Problem 2
 \end_layout
 
 \begin_layout Standard
-Fig.
- 1 shows the 
-\begin_inset Formula $(x,y)$
+\begin_inset Graphics
+	filename p2_figures/p2a_data.jpg
+
 \end_inset
 
- points.
+
 \end_layout
 
 \begin_layout Section*
@@ -351,7 +351,8 @@ Fig.
 \begin_inset Formula $y$
 \end_inset
 
- axis, we estimate from the plot that it should be bounded by 
+ axis.
+ From the plot, we estimate that it should be bounded by 
 \begin_inset Formula $[-150,0]$
 \end_inset
 
@@ -364,8 +365,8 @@ Fig.
 \begin_inset Formula $m_{2}$
 \end_inset
 
- is the slope of the line, we estimate from the plot that it should be bounded
- by 
+ is the slope of the line, we also estimate from the plot that it should
+ be bounded by 
 \begin_inset Formula $[1,10]$
 \end_inset
 
@@ -374,7 +375,9 @@ Fig.
 \begin_inset Newline newline
 \end_inset
 
-We can start with a larger model space, and do a coarse search with 
+The arrays are better not larger than a few megabytes (1 double = 8 bytes).
+ A 1000 by 1000 double-type matrix is 8 megabytes.
+ So, we can choose the discretization as 
 \begin_inset Formula $m1=[-150:0.1:0]$
 \end_inset
 

@@ -106,7 +106,7 @@ For least square problem, we introduce the objective function:
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\phi=(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})=\underset{}{\overset{n}{\underset{i=1}{\sum}}(\frac{Pz_{s}}{[(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}]^{3/2}}-d_{i})^{2}}
+\phi=(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})=\underset{}{\overset{n}{\underset{i=1}{\frac{1}{2}\sum}}(\frac{Pz_{s}}{[(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}]^{3/2}}-d_{i})^{2}}
 \]
 
 \end_inset
@@ -186,7 +186,7 @@ We write the Jacobian matrix:
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\boldsymbol{\nabla_{m}}\phi=2(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{J}=[\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}lx_{i}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}ly_{i}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{PR_{i}-3Pz_{s}^{2}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{z_{s}}{R_{i}^{3/2}})]^{T}
+\boldsymbol{\nabla_{m}}\phi=(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{J}=[\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}lx_{i}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}ly_{i}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{PR_{i}-3Pz_{s}^{2}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{z_{s}}{R_{i}^{3/2}})]^{T}
 \]
 
 \end_inset
@@ -197,7 +197,7 @@ We write the Jacobian matrix:
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\boldsymbol{H}(\phi)=\boldsymbol{\nabla_{m}}(\boldsymbol{\nabla_{m}}\phi)=2\nabla(\boldsymbol{J}^{T}(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d}))=2J^{T}J+2(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{\nabla J}
+\boldsymbol{H}(\phi)=\boldsymbol{\nabla_{m}}(\boldsymbol{\nabla_{m}}\phi)=\nabla(\boldsymbol{J}^{T}(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d}))=\boldsymbol{J}^{T}\boldsymbol{J}+(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{\nabla J}
 \]
 
 \end_inset
@@ -208,7 +208,7 @@ We write the Jacobian matrix:
 \begin_layout Standard
 \begin_inset Formula 
 \[
-H_{approximate}=2\boldsymbol{J}^{T}\boldsymbol{J}
+H_{approximate}=\boldsymbol{J}^{T}\boldsymbol{J}
 \]
 
 \end_inset
@@ -219,7 +219,7 @@ H_{approximate}=2\boldsymbol{J}^{T}\boldsymbol{J}
 \begin_layout Standard
 \begin_inset Formula 
 \[
-2(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{\nabla J}=\underset{i=1}{\overset{n}{\sum}}\frac{A_{i}}{R_{i}^{7/2}}\begin{bmatrix}15Pz_{s}lx_{i}^{2}-3Pz_{s}R_{i} & 15Pz_{s}lx_{i}ly_{i} & 3Plx_{i}R_{i}-15Pz_{s}^{2}lx_{i} & 3z_{s}lx_{i}R_{i}\\
+(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{\nabla J}=\underset{i=1}{\overset{n}{\sum}}\frac{A_{i}}{R_{i}^{7/2}}\begin{bmatrix}15Pz_{s}lx_{i}^{2}-3Pz_{s}R_{i} & 15Pz_{s}lx_{i}ly_{i} & 3Plx_{i}R_{i}-15Pz_{s}^{2}lx_{i} & 3z_{s}lx_{i}R_{i}\\
  & 15Pz_{s}ly_{i}^{2}-3Pz_{s}R_{i} & 3Ply_{i}R_{i}-15Pz_{s}^{2}ly_{i} & 3z_{s}dy_{i}R_{i}\\
 sym &  & 15Pz_{s}^{3}-9Pz_{s}R_{i} & R_{i}^{2}-9z_{s}^{2}R_{i}\\
  &  &  & 0
@@ -235,11 +235,11 @@ sym &  & 15Pz_{s}^{3}-9Pz_{s}R_{i} & R_{i}^{2}-9z_{s}^{2}R_{i}\\
 \begin_inset Formula 
 \[
 \begin{array}{cc}
-H_{xx}=\text{\underset{i}{\sum}}18P^{2}lx_{i}{}^{2}z{}_{s}^{2}R_{i}^{-5}+30lx_{i}^{2}z_{s}A_{i}R_{i}^{-7/2}-6Pz_{s}A_{i}R_{i}^{-5/2} & H_{yy}=\text{\underset{i}{\sum}}18P^{2}ly_{i}{}^{2}z{}_{s}^{2}R_{i}^{-5}+30ly_{i}^{2}z_{s}A_{i}R_{i}^{-7/2}-6Pz_{s}A_{i}R_{i}^{-5/2}\\
-H_{zz}=\text{\underset{i}{\sum}}2(-6Pz_{s}^{2}R_{i}^{-5/2}+PR_{i}^{-3/2})^{2}+30A_{i}Pz_{s}^{3}R_{i}^{-7/2}-18A_{i}Pz_{s}R_{i}^{-5/2} & H_{pp}=\text{\underset{i}{\sum}}2z_{s}^{2}R_{i}^{-3}\\
-H_{xy}=\text{\underset{i}{\sum}}18P^{2}lx_{i}lyz_{i}{}_{s}^{2}R_{i}^{-5}+30lx_{i}ly_{i}z_{s}A_{i}R_{i}^{-7/2} & H_{xz}=\text{\underset{i}{\sum}}6Plx_{i}A_{i}R_{i}^{-5/2}-30Plx_{i}z_{s}^{2}R_{i}^{-7/2}+6P^{2}lx_{i}z_{s}R_{i}^{-4}-18P^{2}lx_{i}z_{s}^{3}R_{i}^{-5}\\
-H_{xp}=\text{\underset{i}{\sum}}6Plx_{i}z_{s}^{2}R_{i}^{-4}+6lx_{i}z_{s}A_{i}R_{i}^{-5/2} & H_{yz}=\text{\underset{i}{\sum}}6Ply_{i}A_{i}R_{i}^{-5/2}-30Ply_{i}z_{s}^{2}R_{i}^{-7/2}+6P^{2}ly_{i}z_{s}R_{i}^{-4}-18P^{2}lx_{i}ly_{i}z_{s}R^{-5}\\
-H_{yp}=\text{\underset{i}{\sum}}6Ply_{i}z_{s}^{2}R_{i}^{-4}+6ly_{i}z_{s}A_{i}R_{i}^{-5/2} & H_{zp}=\text{\underset{i}{\sum}}-6Pz_{s}^{3}R_{i}^{-4}+2P_{i}z_{s}R_{i}^{-3}-6A_{i}z_{s}^{2}R_{i}^{-5/2}+2A_{i}R_{i}^{-3/2}
+H_{xx}=\text{\underset{i}{\sum}}9P^{2}lx_{i}{}^{2}z{}_{s}^{2}R_{i}^{-5}+15lx_{i}^{2}z_{s}A_{i}R_{i}^{-7/2}-3Pz_{s}A_{i}R_{i}^{-5/2} & H_{yy}=\text{\underset{i}{\sum}}9Ply_{i}{}^{2}z{}_{s}^{2}R_{i}^{-5}+15ly_{i}^{2}z_{s}A_{i}R_{i}^{-7/2}-3Pz_{s}A_{i}R_{i}^{-5/2}\\
+H_{zz}=\text{\underset{i}{\sum}}(-6Pz_{s}^{2}R_{i}^{-5/2}+PR_{i}^{-3/2})^{2}+15A_{i}Pz_{s}^{3}R_{i}^{-7/2}-9A_{i}Pz_{s}R_{i}^{-5/2} & H_{pp}=\text{\underset{i}{\sum}}z_{s}^{2}R_{i}^{-3}\\
+H_{xy}=\text{\underset{i}{\sum}}9P^{2}lx_{i}lyz_{i}{}_{s}^{2}R_{i}^{-5}+15lx_{i}ly_{i}z_{s}A_{i}R_{i}^{-7/2} & H_{xz}=\text{\underset{i}{\sum}}3Plx_{i}A_{i}R_{i}^{-5/2}-15Plx_{i}z_{s}^{2}R_{i}^{-7/2}+3Plx_{i}z_{s}R_{i}^{-4}-9P^{2}lx_{i}z_{s}^{3}R_{i}^{-5}\\
+H_{xp}=\text{\underset{i}{\sum}}3Plx_{i}z_{s}^{2}R_{i}^{-4}+3lx_{i}z_{s}A_{i}R_{i}^{-5/2} & H_{yz}=\text{\underset{i}{\sum}}3Ply_{i}A_{i}R_{i}^{-5/2}-15Ply_{i}z_{s}^{2}R_{i}^{-7/2}+3P^{2}ly_{i}z_{s}R_{i}^{-4}-9Plx_{i}ly_{i}z_{s}R^{-5}\\
+H_{yp}=\text{\underset{i}{\sum}}3Ply_{i}z_{s}^{2}R_{i}^{-4}+3ly_{i}z_{s}A_{i}R_{i}^{-5/2} & H_{zp}=\text{\underset{i}{\sum}}-3Pz_{s}^{3}R_{i}^{-4}+P_{i}z_{s}R_{i}^{-3}-3A_{i}z_{s}^{2}R_{i}^{-5/2}+A_{i}R_{i}^{-3/2}
 \end{array}
 \]
 
@@ -248,14 +248,77 @@ H_{yp}=\text{\underset{i}{\sum}}6Ply_{i}z_{s}^{2}R_{i}^{-4}+6ly_{i}z_{s}A_{i}R_{
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection*
 (c)
+\end_layout
+
+\begin_layout Subsection*
 \begin_inset CommandInset include
 LatexCommand include
 filename "compute_gradient_approx_hess.m"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Subsection*
+(d)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $[x_{s},y_{s},z_{s},P]^{T}=[8.226,-5.307,11.577,30.781]^{T}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(e)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename measurements_error.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The standard deviations are 
+\begin_inset Formula $\sigma_{x_{s}}=0.099670,\sigma_{y_{s}}=0.137469,\sigma_{z_{s}}=0.149719,\sigma_{p}=0.691071$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There is a strong trade off relation between 
+\begin_inset Formula $x_{s},y_{s},z_{s}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $x_{s},y_{s}$
+\end_inset
+
+ is negatively related.
+ 
+\begin_inset Formula $x_{s},z_{s}$
+\end_inset
+
+ is positively related.
+ 
+\begin_inset Formula $x_{s},y_{s}$
+\end_inset
+
+ is positively related.
+ 
+\end_layout
+
+\begin_layout Subsection*
 
 \end_layout
 
@@ -268,12 +331,12 @@ Problem 2
 \end_layout
 
 \begin_layout Standard
-Fig.
- 1 shows the 
-\begin_inset Formula $(x,y)$
+\begin_inset Graphics
+	filename p2_figures/p2a_data.jpg
+
 \end_inset
 
- points.
+
 \end_layout
 
 \begin_layout Section*
@@ -288,7 +351,8 @@ Fig.
 \begin_inset Formula $y$
 \end_inset
 
- axis, we estimate from the plot that it should be bounded by 
+ axis.
+ From the plot, we estimate that it should be bounded by 
 \begin_inset Formula $[-150,0]$
 \end_inset
 
@@ -301,8 +365,8 @@ Fig.
 \begin_inset Formula $m_{2}$
 \end_inset
 
- is the slope of the line, we estimate from the plot that it should be bounded
- by 
+ is the slope of the line, we also estimate from the plot that it should
+ be bounded by 
 \begin_inset Formula $[1,10]$
 \end_inset
 
@@ -311,7 +375,9 @@ Fig.
 \begin_inset Newline newline
 \end_inset
 
-We can start with a larger model space, and do a coarse search with 
+The arrays are better not larger than a few megabytes.
+ A 1000 by 1000 double-type matrix is 8 megabytes (1 double = 8 bytes).
+ So, we can choose the discretization as 
 \begin_inset Formula $m1=[-150:0.1:0]$
 \end_inset
 
