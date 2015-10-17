@@ -1,0 +1,482 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage[margin=0.75in]{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{color}
+\definecolor{mygreen}{RGB}{28,172,0}
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose}
+
+
+\makeatletter
+\@ifundefined{date}{}{\date{}}
+\makeatother
+
+%Fancy-header package to modify header/page numbering 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\textbf{Ge/ESE 118}} %name of the course
+\chead{\textbf{}} %topic of the homework set
+\rhead{\textbf{Solution 1}} %number of the homework set
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+
+
+% Matlab script
+\lstset{language=Matlab,%
+      %basicstyle=\color{red},
+  breaklines=true,%
+  morekeywords={matlab2tikz},
+  keywordstyle=\color{blue},%
+  morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+  identifierstyle=\color{black},%}
+  stringstyle=\color{mylilas},
+  commentstyle=\color{mygreen},%
+  showstringspaces=false,%without this there will be a symbol in the places where there is a space
+  numbers=left,%
+  numberstyle={\tiny \color{black}},% size of the numbers
+  numbersep=9pt, % this defines how far the numbers are from the text
+  emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+                                                      %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Problem 1
+\end_layout
+
+\begin_layout Subsection*
+(a)
+\end_layout
+
+\begin_layout Standard
+The model parameter vector 
+\begin_inset Formula $\boldsymbol{m}=[x_{s},y_{s},z_{s},P]^{T}$
+\end_inset
+
+.
+ The forward model is nonlinear, since the partial derivatives 
+\begin_inset Formula $\frac{\partial G}{\partial m_{i}}$
+\end_inset
+
+ are not constant.
+\end_layout
+
+\begin_layout Subsection*
+(b)
+\end_layout
+
+\begin_layout Standard
+For least square problem, we introduce the objective function:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\phi=(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})=\underset{}{\overset{n}{\underset{i=1}{\sum}}(\frac{Pz_{s}}{[(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}]^{3/2}}-d_{i})^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+define : 
+\begin_inset Formula 
+\[
+R_{i}=(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+lx_{i}=x_{i}-x_{s}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+ly_{i}=y_{i}-y_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A_{i}=\frac{Pz_{s}}{[(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}]^{3/2}}-d_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We write the Jacobian matrix: 
+\begin_inset Formula 
+\[
+\boldsymbol{J}=\boldsymbol{\nabla}_{\boldsymbol{m}}G=\frac{\partial G_{i}}{\partial m_{j}}
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\boldsymbol{J}=\begin{bmatrix}\frac{3Pz_{x}lx_{1}}{2R_{1}^{5/2}} & \frac{3Pz_{x}ly_{1}}{2R_{1}^{5/2}} & \frac{PR_{1}-3Pz_{s}^{2}}{2R_{1}^{5/2}} & \frac{z_{s}}{2R_{1}^{3/2}}\\
+\frac{3Pz_{x}lx_{2}}{2R_{2}^{5/2}} & \frac{3Pz_{x}ly_{2}}{2R_{2}^{5/2}} & \frac{PR_{2}-3Pz_{s}^{2}}{2R_{2}^{5/2}} & \frac{z_{s}}{2R_{2}^{3/2}}\\
+... & ... & ... & ...\\
+\frac{3Pz_{x}lx_{n}}{2R_{n}^{5/2}} & \frac{3Pz_{x}ly_{n}}{2R_{n}^{5/2}} & \frac{PR_{n}-3Pz_{s}^{2}}{2R_{n}^{5/2}} & \frac{z_{s}}{2R_{n}^{3/2}}
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boldsymbol{\nabla_{m}}\phi=2(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{J}=[\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}lx_{i}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}ly_{i}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{PR_{i}-3Pz_{s}^{2}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{z_{s}}{R_{i}^{3/2}})]^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boldsymbol{H}(\phi)=\boldsymbol{\nabla_{m}}(\boldsymbol{\nabla_{m}}\phi)=2\nabla(\boldsymbol{J}^{T}(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d}))=2J^{T}J+2(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{\nabla J}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H_{approximate}=2\boldsymbol{J}^{T}\boldsymbol{J}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+2(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{\nabla J}=\underset{i=1}{\overset{n}{\sum}}\frac{A_{i}}{R_{i}^{7/2}}\begin{bmatrix}15Pz_{s}lx_{i}^{2}-3Pz_{s}R_{i} & 15Pz_{s}lx_{i}ly_{i} & 3Plx_{i}R_{i}-15Pz_{s}^{2}lx_{i} & 3z_{s}lx_{i}R_{i}\\
+ & 15Pz_{s}ly_{i}^{2}-3Pz_{s}R_{i} & 3Ply_{i}R_{i}-15Pz_{s}^{2}ly_{i} & 3z_{s}dy_{i}R_{i}\\
+sym &  & 15Pz_{s}^{3}-9Pz_{s}R_{i} & R_{i}^{2}-9z_{s}^{2}R_{i}\\
+ &  &  & 0
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(c)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{compute_gradient_approx_hess.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Problem 2 
+\end_layout
+
+\begin_layout Section*
+(a)
+\end_layout
+
+\begin_layout Standard
+Fig.
+ 1 shows the 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ points.
+\end_layout
+
+\begin_layout Paragraph*
+(b) 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $m_{1}$
+\end_inset
+
+ is the intercept with the 
+\begin_inset Formula $y$
+\end_inset
+
+ axis, we estimate from the plot that it should be bounded by 
+\begin_inset Formula $[-150,0]$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $m_{2}$
+\end_inset
+
+ is the slope of the line, we estimate from the plot that it should be bounded
+ by 
+\begin_inset Formula $[1,10]$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+We can start with a larger model space, and do a coarse search with 
+\begin_inset Formula $m1=[-150:0.1:0]$
+\end_inset
+
+, and 
+\begin_inset Formula $m2=[1:0.01:10]$
+\end_inset
+
+.
+ If needed, we can shrink our model space and do a finer search as a second
+ step.
+\end_layout
+
+\begin_layout Subsection*
+(c)-(d)
+\end_layout
+
+\begin_layout Subsection*
+(e)
+\end_layout
+
+\begin_layout Standard
+The optimum solutions are
+\end_layout
+
+\begin_layout Standard
+L2 norm: (-75.5, 3.53)
+\end_layout
+
+\begin_layout Standard
+L1 norm: (-81.9, 3.48)
+\end_layout
+
+\begin_layout Subsection*
+(f)
+\end_layout
+
+\begin_layout Standard
+The optimum solution with least square is: (-75.4631, 3.5301)
+\end_layout
+
+\begin_layout Subsection*
+(g)
+\end_layout
+
+\begin_layout Standard
+The standard result only gives the diagonal term in the model covariance
+ matrix, while the off-diagonal term can be shown in the error ellipse.
+ We see that the two model parameters are negatively correlated in this
+ problem.
+\end_layout
+
+\begin_layout Subsection*
+(h)
+\end_layout
+
+\begin_layout Standard
+The L1 and L2 methods (
+\begin_inset Quotes eld
+\end_inset
+
+grid search
+\begin_inset Quotes erd
+\end_inset
+
+) are more straighforward in showing the error distribution, thus the probabilit
+y of the model parameters over the 
+\begin_inset Quotes eld
+\end_inset
+
+full
+\begin_inset Quotes erd
+\end_inset
+
+ model space.
+ The correlations between model parameters are also clear.
+ 
+\begin_inset Newline newline
+\end_inset
+
+The least-square solution (
+\begin_inset Quotes eld
+\end_inset
+
+direct inversion
+\begin_inset Quotes erd
+\end_inset
+
+) is fast, and gives the exact solution that minimizes L2 norm error.
+ We can infer some information, such as the correlations between the model
+ parameters, from its output matrices.
+ However, it is not as straightforward.
+ In this small size problem, I would prefer the 
+\begin_inset Quotes eld
+\end_inset
+
+grid search
+\begin_inset Quotes erd
+\end_inset
+
+ method.
+\begin_inset Newline newline
+\end_inset
+
+We know that the errors are small (about 0.1).
+ However, as the errors are getting bigger, the L1 norm method can be better,
+ because it would be less likely to be affected by the outliers.
+ If there are several solutions that can minimize the error equally well,
+ we can see it in the error map produced by the direct search method, and
+ can choose one solution based on some priori information.
+\end_layout
+
+\end_body
+\end_document

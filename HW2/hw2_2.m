@@ -53,33 +53,25 @@ disp([m2_l1  m2_l2  m2_ls]);
 
 end
 
-% Least square solution
-% input: x y data
-% output: optimum parameters m1 m2
-function [m1, m2] = least_square(x,y)
-G = [ones(length(x),1) x(:)];
-tmp = (G'*G)^(-1) * G' * y;
+% LEAST SQUARE SOLUTION
+function [m1, m2] = least_square(xdata,ydata)
+G = [ones(length(xdata),1) xdata(:)];
+tmp = (G'*G)^(-1) * G' * ydata;
 m1 = tmp(1);
 m2 = tmp(2);
 end
 
-% Grid search
-% input:
-%    x y   - data; 
-%    m1 m2 - range for search; 
-%    flag  - norm for misfit
-% output: 
-%     m1_best m2_best err_best - optimum parameters and its misift
-%     err - misfit of each point in model space N(m1) x N(m2)
-function [m1_best,m2_best,err_best,err] = grid_search(x,y,m1,m2,flag)
+% GRID SEARCH
+function [m1_best,m2_best,err_best,err] = grid_search(xdata,ydata,m1,m2,flag)
+% error over the model space
 err = zeros(length(m1),length(m2));
 for i = 1:length(m1)
     for j = 1:length(m2)
-        y_pred = m1(i) + m2(j) * x;
-        err(i,j) = misfit(y,y_pred,flag);
+        err(i,j) = misfit(xdata,ydata,m1(i),m2(i),flag);
     end
 end
 
+% find the optimum solution
 [err_best,id] = min(err(:));
 [I,J] = ind2sub(size(err),id);
 m1_best = m1(I);
@@ -87,11 +79,12 @@ m2_best = m2(J);
 end
 
 % calculate the misfit
-function err = misfit(y0,y1,flag)
+function err = misfit(xdata,ydata,m1,m2,flag)
+ypred = m1 + m2 * xdata;
 if flag == 1       % L1 norm
-    err = sum(abs(y0-y1));
+    err = sum(abs(ypred-ydata));
 elseif flag == 2   % L2 norm
-    err = sum((y0-y1).^2);
+    err = sum((ypred-ydata).^2);
 end
 end
 
