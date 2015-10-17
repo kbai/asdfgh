@@ -281,6 +281,19 @@ sym &  & 15Pz_{s}^{3}-9Pz_{s}R_{i} & R_{i}^{2}-9z_{s}^{2}R_{i}\\
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula $\begin{array}{cc}
+H_{xx}=\text{\underset{i}{\sum}}9P^{2}lx_{i}{}^{2}z{}_{s}^{2}R_{i}^{-5}+15lx_{i}^{2}z_{s}A_{i}R_{i}^{-7/2}-3Pz_{s}A_{i}R_{i}^{-5/2} & H_{yy}=\text{\underset{i}{\sum}}9Ply_{i}{}^{2}z{}_{s}^{2}R_{i}^{-5}+15ly_{i}^{2}z_{s}A_{i}R_{i}^{-7/2}-3Pz_{s}A_{i}R_{i}^{-5/2}\\
+H_{zz}=\text{\underset{i}{\sum}}(-6Pz_{s}^{2}R_{i}^{-5/2}+PR_{i}^{-3/2})^{2}+15A_{i}Pz_{s}^{3}R_{i}^{-7/2}-9A_{i}Pz_{s}R_{i}^{-5/2} & H_{pp}=\text{\underset{i}{\sum}}z_{s}^{2}R_{i}^{-3}\\
+H_{xy}=\text{\underset{i}{\sum}}9P^{2}lx_{i}lyz_{i}{}_{s}^{2}R_{i}^{-5}+15lx_{i}ly_{i}z_{s}A_{i}R_{i}^{-7/2} & H_{xz}=\text{\underset{i}{\sum}}3Plx_{i}A_{i}R_{i}^{-5/2}-15Plx_{i}z_{s}^{2}R_{i}^{-7/2}+3Plx_{i}z_{s}R_{i}^{-4}-9P^{2}lx_{i}z_{s}^{3}R_{i}^{-5}\\
+H_{xp}=\text{\underset{i}{\sum}}3Plx_{i}z_{s}^{2}R_{i}^{-4}+3lx_{i}z_{s}A_{i}R_{i}^{-5/2} & H_{yz}=\text{\underset{i}{\sum}}3Ply_{i}A_{i}R_{i}^{-5/2}-15Ply_{i}z_{s}^{2}R_{i}^{-7/2}+3P^{2}ly_{i}z_{s}R_{i}^{-4}-9Plx_{i}ly_{i}z_{s}R^{-5}\\
+H_{yp}=\text{\underset{i}{\sum}}3Ply_{i}z_{s}^{2}R_{i}^{-4}+3ly_{i}z_{s}A_{i}R_{i}^{-5/2} & H_{zp}=\text{\underset{i}{\sum}}-3Pz_{s}^{3}R_{i}^{-4}+P_{i}z_{s}R_{i}^{-3}-3A_{i}z_{s}^{2}R_{i}^{-5/2}+A_{i}R_{i}^{-3/2}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
 (c)
 \end_layout
 
@@ -312,6 +325,62 @@ normalsize
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection*
+(d)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $[x_{s},y_{s},z_{s},P]^{T}=[8.226,-5.307,11.577,30.781]^{T}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(e)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename measurements_error.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The standard deviations are 
+\begin_inset Formula $\sigma_{x_{s}}=0.099670,\sigma_{y_{s}}=0.137469,\sigma_{z_{s}}=0.149719,\sigma_{p}=0.691071$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There is a strong trade off relation between 
+\begin_inset Formula $x_{s},y_{s},z_{s}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $x_{s},y_{s}$
+\end_inset
+
+ are negatively related.
+ 
+\begin_inset Formula $x_{s},z_{s}$
+\end_inset
+
+ are positively related.
+ 
+\begin_inset Formula $x_{s},y_{s}$
+\end_inset
+
+ are positively related.
+ 
 \end_layout
 
 \begin_layout Section*
