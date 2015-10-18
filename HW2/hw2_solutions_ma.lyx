@@ -496,7 +496,7 @@ We can always shrink our model space and do a finer search as following
 \end_layout
 
 \begin_layout Standard
-The solutions with lowest misifits are
+The solutions with lowest misifit are
 \end_layout
 
 \begin_layout Standard
@@ -524,19 +524,14 @@ The least square solution is: (-75.4631, 3.5301)
 \end_layout
 
 \begin_layout Standard
-We are interested in the range of 
-\begin_inset Formula $(m_{1},m_{2})$
-\end_inset
-
- that can fit the data to certain extent, because they are all highly possible
- model parameters.
+From (d), we infer that the model parameters are negatively correlated,
+ and also the error is underestimated (much larger than 0.1).
+ It is not given in the standard result.
  The standard result gives the standard deviations of each parameter, which
  are the diagonal terms of the model convariance matrix.
  It will underestimate the range of possible model parameters, if the model
  parameters are not independent, or the data error is underestimated.
- From (d), we infer that the model parameters are negatively correlated,
- and also the error is underestimated (much larger than 0.1).
- Therefore, (d) gives a better estimation of the possible model parameters.
+ Therefore, the extra information given in (d) is also very important.
 \end_layout
 
 \begin_layout Subsection*
@@ -582,7 +577,7 @@ direct inversion
  We can also infer the covariances of the model parameters from the model
  covariance matrix.
  However, it is not as straightforward, and sometimes gives an illusion
- that the results have small errors.
+ that the results have small errors/standard deviations.
  In this small size problem, I would prefer the 
 \begin_inset Quotes eld
 \end_inset
@@ -601,6 +596,37 @@ As the errors get bigger, the L1 norm method can be better, because it would
  well, we can see it in the error map produced by the direct search method,
  and can choose one solution based on some priori information.
  Therefore, I will prefer L1 norm.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{hw2_2.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
