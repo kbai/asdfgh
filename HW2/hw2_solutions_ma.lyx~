@@ -28,7 +28,7 @@
 \pagestyle{fancy}
 \lhead{\textbf{Ge/ESE 118}} %name of the course
 \chead{\textbf{}} %topic of the homework set
-\rhead{\textbf{Solution 2}} %number of the homework set
+\rhead{\textbf{Solution 1}} %number of the homework set
 \lfoot{}
 \cfoot{}
 \rfoot{\thepage}
@@ -384,25 +384,24 @@ There is a strong trade off relation between
 \end_layout
 
 \begin_layout Section*
-Problem 2 (graded by Yiran) - 50 points
+Problem 2
 \end_layout
 
-\begin_layout Subsection*
-(a) 4 points
+\begin_layout Section*
+(a)
 \end_layout
 
 \begin_layout Standard
 \begin_inset Graphics
 	filename p2_figures/p2a_data.jpg
-	scale 50
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsection*
-(b) 6 points
+\begin_layout Section*
+(b) 
 \end_layout
 
 \begin_layout Standard
@@ -466,15 +465,7 @@ We can always shrink our model space and do a finer search as following
 \end_layout
 
 \begin_layout Subsection*
-(c) 6 points 
-\end_layout
-
-\begin_layout Standard
-(See attached MATLAB code.)
-\end_layout
-
-\begin_layout Subsection*
-(d) 10 points
+(c)-(d)
 \end_layout
 
 \begin_layout Standard
@@ -492,7 +483,7 @@ We can always shrink our model space and do a finer search as following
 \end_layout
 
 \begin_layout Subsection*
-(e) 4 points
+(e)
 \end_layout
 
 \begin_layout Standard
@@ -508,7 +499,7 @@ L1 norm: (-81.9, 3.48)
 \end_layout
 
 \begin_layout Subsection*
-(f) 10 points
+(f)
 \end_layout
 
 \begin_layout Standard
@@ -520,7 +511,7 @@ The least square solution is: (-75.4631, 3.5301)
 \end_layout
 
 \begin_layout Subsection*
-(g) 4 points
+(g)
 \end_layout
 
 \begin_layout Standard
@@ -528,8 +519,7 @@ We are interested in the range of
 \begin_inset Formula $(m_{1},m_{2})$
 \end_inset
 
- that can fit the data to certain extent, because they are all highly possible
- model parameters.
+ that can fit the data to certain extent.
  The standard result gives the standard deviations of each parameter, which
  are the diagonal terms of the model convariance matrix.
  It will underestimate the range of possible model parameters, if the model
@@ -540,7 +530,7 @@ We are interested in the range of
 \end_layout
 
 \begin_layout Subsection*
-(h) 6 points
+(h)
 \end_layout
 
 \begin_layout Standard
