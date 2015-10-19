@@ -332,6 +332,14 @@ H_{yp}=\text{\underset{i}{\sum}}3Ply_{i}z_{s}^{2}R_{i}^{-4}+3ly_{i}z_{s}A_{i}R_{
 \end_layout
 
 \begin_layout Standard
+Note: this is the exact hessian, set 
+\begin_inset Formula $A_{i}=0$
+\end_inset
+
+ will make the approximated Hessian.
+\end_layout
+
+\begin_layout Standard
 The algorithm for finding solution is :
 \end_layout
 
