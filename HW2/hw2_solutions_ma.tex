@@ -80,17 +80,17 @@ are not constant.
 
 \subsection*{(b)10 points}
 
-For least square problem, we introduce the objective function:
+For least squares problem, we introduce the objective function:
 
 \textcolor{blue}{\tiny{}
 \[
-\phi=(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})=\underset{}{\overset{n}{\underset{i=1}{\sum}}(\frac{Pz_{s}}{[(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}]^{3/2}}-d_{i})^{2}}
+F=\frac{1}{2}(\boldsymbol{d-g}(\boldsymbol{m}))^{T}(\boldsymbol{d-g}(\boldsymbol{m}))=\underset{}{\overset{n}{\frac{1}{2}\underset{i=1}{\sum}}(d_{i}-\frac{Pz_{s}}{[(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}]^{3/2}})^{2}}
 \]
 }{\tiny \par}
 
 define : \textcolor{blue}{\tiny{}
 \[
-R_{i}=(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}
+\eta_{i}=(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}
 \]
  }{\tiny \par}
 
@@ -108,47 +108,47 @@ ly_{i}=y_{i}-y_{s}
 
 \textcolor{blue}{\tiny{}
 \[
-A_{i}=\frac{Pz_{s}}{[(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}]^{3/2}}-d_{i}
+A_{i}=d_{i}-\frac{Pz_{s}}{[(x_{s}-x_{i})^{2}+(y_{s}-y_{i})^{2}+z_{s}^{2}]^{3/2}}
 \]
 }{\tiny \par}
 
-We write the Jacobian matrix: \textcolor{blue}{\tiny{}
+We write the $\hat{\boldsymbol{G}}$ matrix: \textcolor{blue}{\tiny{}
 \[
-\boldsymbol{J}=\boldsymbol{\nabla}_{\boldsymbol{m}}G=\frac{\partial G_{i}}{\partial m_{j}}
+\hat{\boldsymbol{G}}=\boldsymbol{\nabla}_{\boldsymbol{m}}G=\frac{\partial G_{i}}{\partial m_{j}}
 \]
  
 \[
-\boldsymbol{J}=\begin{bmatrix}\frac{3Pz_{x}lx_{1}}{2R_{1}^{5/2}} & \frac{3Pz_{x}ly_{1}}{2R_{1}^{5/2}} & \frac{PR_{1}-3Pz_{s}^{2}}{2R_{1}^{5/2}} & \frac{z_{s}}{2R_{1}^{3/2}}\\
-\frac{3Pz_{x}lx_{2}}{2R_{2}^{5/2}} & \frac{3Pz_{x}ly_{2}}{2R_{2}^{5/2}} & \frac{PR_{2}-3Pz_{s}^{2}}{2R_{2}^{5/2}} & \frac{z_{s}}{2R_{2}^{3/2}}\\
+\hat{\boldsymbol{G}}=\begin{bmatrix}\frac{3Pz_{x}lx_{1}}{2\eta_{1}^{5/2}} & \frac{3Pz_{x}ly_{1}}{2\eta_{1}^{5/2}} & \frac{PR_{1}-3Pz_{s}^{2}}{2\eta_{1}^{5/2}} & \frac{z_{s}}{2\eta_{1}^{3/2}}\\
+\frac{3Pz_{x}lx_{2}}{2\eta_{2}^{5/2}} & \frac{3Pz_{x}ly_{2}}{2\eta_{2}^{5/2}} & \frac{PR_{2}-3Pz_{s}^{2}}{2\eta_{2}^{5/2}} & \frac{z_{s}}{2\eta_{2}^{3/2}}\\
 ... & ... & ... & ...\\
-\frac{3Pz_{x}lx_{n}}{2R_{n}^{5/2}} & \frac{3Pz_{x}ly_{n}}{2R_{n}^{5/2}} & \frac{PR_{n}-3Pz_{s}^{2}}{2R_{n}^{5/2}} & \frac{z_{s}}{2R_{n}^{3/2}}
+\frac{3Pz_{x}lx_{n}}{2\eta_{n}^{5/2}} & \frac{3Pz_{x}ly_{n}}{2\eta_{n}^{5/2}} & \frac{PR_{n}-3Pz_{s}^{2}}{2\eta_{n}^{5/2}} & \frac{z_{s}}{2\eta_{n}^{3/2}}
 \end{bmatrix}
 \]
 }{\tiny \par}
 
 \textcolor{blue}{\tiny{}
 \[
-\boldsymbol{\nabla_{m}}\phi=(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{J}=[\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}lx_{i}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}ly_{i}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{PR_{i}-3Pz_{s}^{2}}{R_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{R_{i}^{3/2}}-d_{i})(\frac{z_{s}}{R_{i}^{3/2}})]^{T}
+\boldsymbol{\nabla_{m}}F=(\boldsymbol{d-g}(\boldsymbol{m}))^{T}\hat{\boldsymbol{G}}=[\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{\eta_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}lx_{i}}{\eta_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{\eta_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}ly_{i}}{\eta_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{\eta_{i}^{3/2}}-d_{i})(\frac{PR_{i}-3Pz_{s}^{2}}{\eta_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{\eta_{i}^{3/2}}-d_{i})(\frac{z_{s}}{\eta_{i}^{3/2}})]^{T}
 \]
 }{\tiny \par}
 
 \textcolor{blue}{\tiny{}
 \[
-\boldsymbol{H}(\phi)=\boldsymbol{\nabla_{m}}(\boldsymbol{\nabla_{m}}\phi)=\nabla(\boldsymbol{J}^{T}(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d}))=\boldsymbol{J}^{T}\boldsymbol{J}+(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{Q}
+\boldsymbol{H}(F)=\boldsymbol{\nabla_{m}}(\boldsymbol{\nabla_{m}}F)=\nabla(\hat{\boldsymbol{G}}^{T}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m})))=\hat{\boldsymbol{G}}^{T}\hat{\boldsymbol{G}}-(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))^{T}\boldsymbol{Q}
 \]
 }{\tiny \par}
 
 \textcolor{blue}{\tiny{}
 \[
-\boldsymbol{H}_{approximate}=\boldsymbol{J}^{T}\boldsymbol{J}
+\boldsymbol{H}_{approximate}=\hat{\boldsymbol{G}}^{T}\hat{\boldsymbol{G}}
 \]
 }{\tiny \par}
 
 \textcolor{blue}{\tiny{}
 \[
-(\boldsymbol{G}(\boldsymbol{m})-\boldsymbol{d})^{T}\boldsymbol{\nabla J}=\underset{i=1}{\overset{n}{\sum}}\frac{A_{i}}{R_{i}^{7/2}}\begin{bmatrix}15Pz_{s}lx_{i}^{2}-3Pz_{s}R_{i} & 15Pz_{s}lx_{i}ly_{i} & 3Plx_{i}R_{i}-15Pz_{s}^{2}lx_{i} & 3z_{s}lx_{i}R_{i}\\
- & 15Pz_{s}ly_{i}^{2}-3Pz_{s}R_{i} & 3Ply_{i}R_{i}-15Pz_{s}^{2}ly_{i} & 3z_{s}dy_{i}R_{i}\\
-sym &  & 15Pz_{s}^{3}-9Pz_{s}R_{i} & R_{i}^{2}-9z_{s}^{2}R_{i}\\
+(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))^{T}\boldsymbol{Q}=\underset{i=1}{\overset{n}{\sum}}\frac{A_{i}}{\eta_{i}7/2}\begin{bmatrix}15Pz_{s}lx_{i}^{2}-3Pz_{s}\eta_{i} & 15Pz_{s}lx_{i}ly_{i} & 3Plx_{i}\eta_{i}-15Pz_{s}^{2}lx_{i} & 3z_{s}lx_{i}\eta_{i}\\
+ & 15Pz_{s}ly_{i}^{2}-3Pz_{s}\eta_{i} & 3Ply_{i}\eta_{i}-15Pz_{s}^{2}ly_{i} & 3z_{s}dy_{i}\eta_{i}\\
+sym &  & 15Pz_{s}^{3}-9Pz_{s}\eta_{i} & R_{i}^{2}-9z_{s}^{2}\eta_{i}\\
  &  &  & 0
 \end{bmatrix}
 \]
@@ -157,11 +157,11 @@ sym &  & 15Pz_{s}^{3}-9Pz_{s}R_{i} & R_{i}^{2}-9z_{s}^{2}R_{i}\\
 \textcolor{blue}{\tiny{}
 \[
 \begin{array}{cc}
-H_{xx}=\text{\ensuremath{\underset{i}{\sum}}}9P^{2}lx_{i}{}^{2}z{}_{s}^{2}R_{i}^{-5}+15lx_{i}^{2}z_{s}A_{i}R_{i}^{-7/2}-3Pz_{s}A_{i}R_{i}^{-5/2} & H_{yy}=\text{\ensuremath{\underset{i}{\sum}}}9Ply_{i}{}^{2}z{}_{s}^{2}R_{i}^{-5}+15ly_{i}^{2}z_{s}A_{i}R_{i}^{-7/2}-3Pz_{s}A_{i}R_{i}^{-5/2}\\
-H_{zz}=\text{\ensuremath{\underset{i}{\sum}}}(-6Pz_{s}^{2}R_{i}^{-5/2}+PR_{i}^{-3/2})^{2}+15A_{i}Pz_{s}^{3}R_{i}^{-7/2}-9A_{i}Pz_{s}R_{i}^{-5/2} & H_{pp}=\text{\ensuremath{\underset{i}{\sum}}}z_{s}^{2}R_{i}^{-3}\\
-H_{xy}=\text{\ensuremath{\underset{i}{\sum}}}9P^{2}lx_{i}lyz_{i}{}_{s}^{2}R_{i}^{-5}+15lx_{i}ly_{i}z_{s}A_{i}R_{i}^{-7/2} & H_{xz}=\text{\ensuremath{\underset{i}{\sum}}}3Plx_{i}A_{i}R_{i}^{-5/2}-15Plx_{i}z_{s}^{2}R_{i}^{-7/2}+3Plx_{i}z_{s}R_{i}^{-4}-9P^{2}lx_{i}z_{s}^{3}R_{i}^{-5}\\
-H_{xp}=\text{\ensuremath{\underset{i}{\sum}}}3Plx_{i}z_{s}^{2}R_{i}^{-4}+3lx_{i}z_{s}A_{i}R_{i}^{-5/2} & H_{yz}=\text{\ensuremath{\underset{i}{\sum}}}3Ply_{i}A_{i}R_{i}^{-5/2}-15Ply_{i}z_{s}^{2}R_{i}^{-7/2}+3P^{2}ly_{i}z_{s}R_{i}^{-4}-9Plx_{i}ly_{i}z_{s}R^{-5}\\
-H_{yp}=\text{\ensuremath{\underset{i}{\sum}}}3Ply_{i}z_{s}^{2}R_{i}^{-4}+3ly_{i}z_{s}A_{i}R_{i}^{-5/2} & H_{zp}=\text{\ensuremath{\underset{i}{\sum}}}-3Pz_{s}^{3}R_{i}^{-4}+P_{i}z_{s}R_{i}^{-3}-3A_{i}z_{s}^{2}R_{i}^{-5/2}+A_{i}R_{i}^{-3/2}
+H_{xx}=\text{\ensuremath{\underset{i}{\sum}}}9P^{2}lx_{i}{}^{2}z{}_{s}^{2}\eta_{i}^{-5}-15lx_{i}^{2}z_{s}A_{i}\eta_{i}^{-7/2}+3Pz_{s}A_{i}\eta_{i}^{-5/2} & H_{yy}=\text{\ensuremath{\underset{i}{\sum}}}9Ply_{i}{}^{2}z{}_{s}^{2}\eta_{i}^{-5}-15ly_{i}^{2}z_{s}A_{i}\eta_{i}^{-7/2}+3Pz_{s}A_{i}\eta_{i}^{-5/2}\\
+H_{zz}=\text{\ensuremath{\underset{i}{\sum}}}(-6Pz_{s}^{2}\eta_{i}^{-5/2}+P\eta_{i}^{-3/2})^{2}-15A_{i}Pz_{s}^{3}\eta_{i}^{-7/2}+9A_{i}Pz_{s}\eta_{i}^{-5/2} & H_{pp}=\text{\ensuremath{\underset{i}{\sum}}}z_{s}^{2}\eta_{i}^{-3}\\
+H_{xy}=\text{\ensuremath{\underset{i}{\sum}}}9P^{2}lx_{i}lyz_{i}{}_{s}^{2}\eta_{i}^{-5}-15lx_{i}ly_{i}z_{s}A_{i}\eta_{i}^{-7/2} & H_{xz}=\text{\ensuremath{\underset{i}{\sum}}}-3Plx_{i}A_{i}\eta_{i}^{-5/2}-15Plx_{i}z_{s}^{2}\eta_{i}^{-7/2}+3Plx_{i}z_{s}\eta_{i}^{-4}-9P^{2}lx_{i}z_{s}^{3}\eta_{i}^{-5}\\
+H_{xp}=\text{\ensuremath{\underset{i}{\sum}}}3Plx_{i}z_{s}^{2}\eta_{i}^{-4}-3lx_{i}z_{s}A_{i}\eta_{i}^{-5/2} & H_{yz}=\text{\ensuremath{\underset{i}{\sum-}}}3Ply_{i}A_{i}\eta_{i}^{-5/2}-15Ply_{i}z_{s}^{2}\eta_{i}^{-7/2}+3P^{2}ly_{i}z_{s}\eta_{i}^{-4}-9Plx_{i}ly_{i}z_{s}\eta_{i}^{-5}\\
+H_{yp}=\text{\ensuremath{\underset{i}{\sum}}}3Ply_{i}z_{s}^{2}\eta_{i}^{-4}-3ly_{i}z_{s}A_{i}\eta_{i}^{-5/2} & H_{zp}=\text{\ensuremath{\underset{i}{\sum}}}-3Pz_{s}^{3}\eta_{i}^{-4}+P_{i}z_{s}\eta_{i}^{-3}+3A_{i}z_{s}^{2}\eta_{i}^{-5/2}-A\eta_{i}^{-3/2}
 \end{array}
 \]
 }{\tiny \par}
@@ -201,7 +201,7 @@ end
 
 \subsection*{(d)10 points}
 
-$[x_{s},y_{s},z_{s},P]^{T}=[8.226,-5.307,11.577,30.781]^{T}$
+$[x_{s},y_{s},z_{s},P]^{T}=[8.137,-5.142,11.507,30.346]^{T}$
 
 
 \subsection*{(e)10 points}
@@ -210,13 +210,10 @@ $[x_{s},y_{s},z_{s},P]^{T}=[8.226,-5.307,11.577,30.781]^{T}$
 
 The standard deviations are $\sigma_{x_{s}}=0.099670,\sigma_{y_{s}}=0.137469,\sigma_{z_{s}}=0.149719,\sigma_{p}=0.691071$
 
-There is a strong trade off relation between $x_{s},y_{s},z_{s}$.
+There is a strong tradeoff relation between $x_{s},y_{s},z_{s}$.
 $x_{s},y_{s}$ are negatively related. $x_{s},z_{s}$ are positively
 related. $z_{s},y_{s}$ are negatively related. Note that we use $z_{s}$
 as depth value. It is always non-negative.
-
-
-\subsection*{Bonus points: The exact Hessian is shown in 1(c) .m file.(10 points)}
 
 
 \section*{Problem 2 (graded by Yiran) - 50 points}
