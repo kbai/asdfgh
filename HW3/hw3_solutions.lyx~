@@ -133,24 +133,37 @@ Problem 1
 \end_layout
 
 \begin_layout Standard
-In a class, among 20 students, 8 are female, and 12 are male.
- 2 of the female students are taller than 170 cm, and 8 of the male students
- are taller than 170.
- Let
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $X$
-\end_inset
+\begin_inset ERT
+status open
 
-: pick one student, gender is female;
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
 \end_layout
 
-\begin_layout Standard
-\begin_inset Formula $Y$
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{hw2_2.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
 \end_inset
 
-: pick one student, taller than 170 cm.
+
 \end_layout
 
 \end_body
