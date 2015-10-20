@@ -133,36 +133,91 @@ Problem 1
 \end_layout
 
 \begin_layout Standard
-
+In a class, among 20 students, 8 are female, and 12 are male.
+ 2 of the female students are taller than 170 cm, and 8 of the male students
+ are taller than 170 cm.
+ Let
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-tiny
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-lstinputlisting{hw2_2.m}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-normalsize
-\end_layout
-
+\begin_inset Formula $X$
 \end_inset
 
+: pick one student, gender is female;
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Y$
+\end_inset
+
+: pick one student, taller than 170 cm.
+\end_layout
+
+\begin_layout Standard
+Then,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(X,Y)$
+\end_inset
+
+ is the probability that pick one student, gender is female and is taller
+ than 170 cm, which is equal to 
+\begin_inset Formula $2/20=0.1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(X)$
+\end_inset
+
+ is the probability that pick one student, gender is female, which is equal
+ to 
+\begin_inset Formula $8/20=0.4$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(Y/X)$
+\end_inset
+
+ is the probability that pick one female student, she is taller than 170
+ cm, which is equal to 
+\begin_inset Formula $2/8=0.25$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(Y)$
+\end_inset
+
+ is the probability that pick one student, taller than 170 cm, which is
+ equal to 
+\begin_inset Formula $(2+8)/20=0.5$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(X/Y)$
+\end_inset
+
+ is the probability that pick one student who is taller than 170 cm, his/her
+ gender is female, which is equal to 
+\begin_inset Formula $2/(2+8)=0.2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
