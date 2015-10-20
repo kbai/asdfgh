@@ -136,21 +136,21 @@ Problem 1
 In a class, among 20 students, 8 are female, and 12 are male.
  2 of the female students are taller than 170 cm, and 8 of the male students
  are taller than 170 cm.
- Let
+ Suppose we randomly pick a student, let
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $X$
+\begin_inset Formula $x$
 \end_inset
 
-: pick one student, gender is female;
+: the student is female;
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $Y$
+\begin_inset Formula $y$
 \end_inset
 
-: pick one student, taller than 170 cm.
+: the student is taller than 170 cm.
 \end_layout
 
 \begin_layout Standard
@@ -158,11 +158,11 @@ Then,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $P(X,Y)$
+\begin_inset Formula $P(x,y)$
 \end_inset
 
- is the probability that pick one student, he/she is female and is taller
- than 170 cm, which is equal to 
+ is the probability that the student is both female and is taller than 170
+ cm, which is equal to 
 \begin_inset Formula $2/20=0.1$
 \end_inset
 
@@ -170,11 +170,10 @@ Then,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $P(X)$
+\begin_inset Formula $P(x)$
 \end_inset
 
- is the probability that pick one student, he/she is female, which is equal
- to 
+ is the probability that the student is female, which is equal to 
 \begin_inset Formula $8/20=0.4$
 \end_inset
 
@@ -182,11 +181,11 @@ Then,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $P(Y/X)$
+\begin_inset Formula $P(y|x)$
 \end_inset
 
- is the probability that pick one female student, she is taller than 170
- cm, which is equal to 
+ is the probability that known the student is female, she is taller than
+ 170 cm, which is equal to 
 \begin_inset Formula $2/8=0.25$
 \end_inset
 
@@ -194,11 +193,11 @@ Then,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $P(Y)$
+\begin_inset Formula $P(y)$
 \end_inset
 
- is the probability that pick one student, he/she is taller than 170 cm,
- which is equal to 
+ is the probability that the student is taller than 170 cm, which is equal
+ to 
 \begin_inset Formula $(2+8)/20=0.5$
 \end_inset
 
@@ -206,10 +205,10 @@ Then,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $P(X/Y)$
+\begin_inset Formula $P(x|y)$
 \end_inset
 
- is the probability that pick one student who is taller than 170 cm, his/her
+ is the probability that known the student is taller than 170 cm, the student
  is female, which is equal to 
 \begin_inset Formula $2/(2+8)=0.2$
 \end_inset
@@ -218,14 +217,598 @@ Then,
 \begin_inset Newline newline
 \end_inset
 
-Then, we see that:
+We see that:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $P(X,Y)=P(X|Y)P$
+\begin_inset Formula $P(x,y)=P(x|y)P(y)=P(y|x)P(x)$
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section*
+(b)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\backslash
+textit{Independent}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Let
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x:$
+\end_inset
+
+ I get an A for Ge/ESE118.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y$
+\end_inset
+
+: The next president of the U.S.
+ is an Republician.
+\end_layout
+
+\begin_layout Standard
+This two events are independent, because 
+\begin_inset Formula $x$
+\end_inset
+
+ happens, does not affect the probability of 
+\begin_inset Formula $y$
+\end_inset
+
+, vice versa.
+\end_layout
+
+\begin_layout Standard
+Let's assume 
+\begin_inset Formula $P(x)=3/5$
+\end_inset
+
+, and 
+\begin_inset Formula $P(y)=1/2$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Suppose I get an A with 
+\begin_inset Formula $P(x)$
+\end_inset
+
+.
+ It doesn't affect the election at all, and there is still 1 in 2 odds that
+ the next president will be an Republician.
+ Therefore, to make both happen, 
+\begin_inset Formula $P(x,y)=P(x)P(y)$
+\end_inset
+
+.
+ Similary, suppose the Republician win the election with 
+\begin_inset Formula $P(y)$
+\end_inset
+
+.
+ It doesn't affect my odd to get an A, and to make both happen, 
+\begin_inset Formula $P(x,y)=P(y)P(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Intuitively, the rule holds because with 
+\begin_inset Formula $P(x)$
+\end_inset
+
+, 
+\begin_inset Formula $x$
+\end_inset
+
+happens, but it doesn't affect the odd that 
+\begin_inset Formula $y$
+\end_inset
+
+happens, so I need to multiply 
+\begin_inset Formula $P(y)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\backslash
+textit{Dependent}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Let
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x$
+\end_inset
+
+: The next president of the U.S.
+ is an Democratic.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y$
+\end_inset
+
+: The next president of the U.S.
+ is an Republician.
+\end_layout
+
+\begin_layout Standard
+This two events are not independent, because either of them happens, will
+ affect the proability of the other.
+ 
+\end_layout
+
+\begin_layout Standard
+Let's assume 
+\begin_inset Formula $P(x)=P(y)=\frac{1}{2}$
+\end_inset
+
+.
+ Because it's impossible that the next president is both an Democratic and
+ an Republician, 
+\begin_inset Formula $P(x,y)=0\neq P(x)P(y)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+(c)
+\end_layout
+
+\begin_layout Subsection*
+(c.i)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+E(x) & = & \int_{-\infty}^{\infty}xP(x)dx
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $x$
+\end_inset
+
+ is an odd function, and 
+\begin_inset Formula $P(x)$
+\end_inset
+
+ is an even function, their product is an odd function.
+ Integration of an odd function over symmetric boundaries as 
+\begin_inset Formula $[-\infty,\infty]$
+\end_inset
+
+ is 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Therefore,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+E(x)=0
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(c.ii)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+E(x^{2}) & = & \int_{-\infty}^{\infty}x^{2}P(x)dx\\
+ & = & \int_{-\infty}^{\infty}x^{2}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)dx
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\left[\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)\right]' & = & -\frac{x}{\sigma^{2}}\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+E(x^{2}) & = & -\frac{\sigma}{\sqrt{2\pi}}\int_{-\infty}^{\infty}x\left[\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)\right]'dx\\
+ & = & -\frac{\sigma}{\sqrt{2\pi}}\left[\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)\bigg|_{-\infty}^{\infty}-\int_{-\infty}^{\infty}\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)dx\right]\\
+ & = & \frac{\sigma}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)dx\\
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\int_{-\infty}^{\infty}e^{-x^{2}/2}dx & = & \sqrt{2\pi}\\
+ & = & \int_{-\infty}^{\infty}\exp\left[-\frac{\left(\frac{x}{\sigma}\right)^{2}}{2}\right]d\left(\frac{x}{\sigma}\right)\\
+ & = & \frac{1}{\sigma}\int_{-\infty}^{\infty}\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)dx
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+E(x^{2}) & = & \frac{\sigma}{\sqrt{2\pi}}\sqrt{2\pi}\sigma=\sigma^{2}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+(d)
+\end_layout
+
+\begin_layout Subsection*
+(d.i)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+P(d_{i}|L) & = & \frac{3}{4}\mathcal{\mathcal{N}}(L,\sigma)+\frac{1}{4}\mathcal{N}(L+1,\sigma)\\
+ & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)\\
+ & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-L)^{2}\right)+\frac{3}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-(L+1))^{2}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\sigma=0.1$
+\end_inset
+
+ cm, and 
+\begin_inset Formula $L$
+\end_inset
+
+, 
+\begin_inset Formula $d_{i}$
+\end_inset
+
+ are in cm.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename p1_figures/d_i.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(d.ii)
+\end_layout
+
+\begin_layout Standard
+From Bayes' theorem,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+P(L|d_{i}) & = & \frac{P(d_{i}|L)P(L)}{P(d_{i})}\\
+ & \propto & P(d_{i}|L)=\frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where we assume the prior distribution 
+\begin_inset Formula $P(L)$
+\end_inset
+
+ is uniform, and 
+\begin_inset Formula $P(d_{i})$
+\end_inset
+
+ is a constant (but different for different 
+\begin_inset Formula $d_{i}$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+The constant ahead of 
+\begin_inset Formula $P(d_{i}|L)$
+\end_inset
+
+ (denoted as 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $c$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+) is determined by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\int_{-\infty}^{\infty}P(L|d_{i})dL & = & 1\\
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In (d.i)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\int_{-\infty}^{\infty}P(d_{i}|L)d(d_{i}) & = & 1
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can re-write 
+\begin_inset Formula $P(d_{i}|L)$
+\end_inset
+
+ as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+P(d_{i}|L) & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i})^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-(d_{i}-1))^{2}}{2\sigma^{2}}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Compare with the origional format, we see that
+\begin_inset Formula 
+\begin{eqnarray*}
+\int_{-\infty}^{\infty} & P(d_{i}|L)dL & =1
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore, the constant 
+\begin_inset Formula $c=1$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+P(L|d_{i}) & = & P(d_{i}|L)\\
+ & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i})^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-(d_{i}-1))^{2}}{2\sigma^{2}}\right)\\
+ & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(L-d_{i})^{2}\right)+\frac{3}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(L-(d_{i}-1))^{2}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename p1_figures/d_ii.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(d.iii)
+\end_layout
+
+\begin_layout Standard
+We can use the distribution of 
+\begin_inset Formula $L$
+\end_inset
+
+ from the first measurement as prior distribution to compute a posterior
+ distribution after the second measurement
+\begin_inset Formula 
+\begin{eqnarray*}
+P(L|d_{1}=8.3,d_{2}=9.1) & \propto & P(d_{2}=9.1|L)P(L|d_{1}=8.3)\\
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since we only care about the maximum of the LHS, instead of its value; for
+ the RHS, absortbing the 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}$
+\end_inset
+
+ terms
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ into the constant
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+P(L|d_{1}=8.3,d_{2}=9.1) & \propto & \left[3\exp\left(-50(9.1-L)^{2}\right)+\exp\left(-50(8.1-L)^{2}\right)\right]\left[3\exp\left(-50(L-8.3)^{2}\right)+\exp\left(-50(L-7.3))^{2}\right)\right]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename p1_figures/d_iii.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From the plot, we see that the best estimate of 
+\begin_inset Formula $L$
+\end_inset
+
+ is 
+\begin_inset Formula $8.2$
+\end_inset
+
+ 
 \end_layout
 
 \end_body
