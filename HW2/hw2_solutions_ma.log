@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  18 OCT 2015 18:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  19 OCT 2015 18:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -421,7 +421,7 @@ e
 
 \c@lstlisting=\count118
 Runaway argument?
-{\tiny {} \[ \boldsymbol {J}=\boldsymbol {\nabla }_{\boldsymbol {m}}G\ETC.
+{\tiny {} \[ \hat {\boldsymbol {G}}=\boldsymbol {\nabla }_{\boldsymbol \ETC.
 ! Paragraph ended before \@textcolor was complete.
 <to be read again> 
                    \par 
@@ -433,7 +433,7 @@ l.127 }
        {\tiny \par}
 ? 
 
-Overfull \hbox (8.48381pt too wide) detected at line 167
+Overfull \hbox (3.734pt too wide) detected at line 167
 []
  []
 
@@ -455,55 +455,46 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <6> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 13.
 )
-(./nonlinear_solver.m) [2] (./HW2.m)
+(./nonlinear_solver.m) (./HW2.m [2])
 <measurements_error.pdf, id=33, 614.295pt x 794.97pt>
 File: measurements_error.pdf Graphic file (type pdf)
 
 <use measurements_error.pdf>
 Package pdftex.def Info: measurements_error.pdf used on input line 209.
-(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-
-Overfull \hbox (108.40349pt too wide) in paragraph at lines 209--210
-[] 
- []
-
-[3]
-Overfull \vbox (132.75029pt too high) has occurred while \output is active []
-
-
-[4 <./measurements_error.pdf>]
+(pdftex.def)             Requested size: 491.43666pt x 635.97687pt.
+ [3] [4 <./measurements_error.pdf>]
 <p2_figures/p2a_data.jpg, id=46, 562.1pt x 421.575pt>
 File: p2_figures/p2a_data.jpg Graphic file (type jpg)
 
 <use p2_figures/p2a_data.jpg>
-Package pdftex.def Info: p2_figures/p2a_data.jpg used on input line 227.
-(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
-
-<p2_figures/p2d_misift.jpg, id=47, 562.1pt x 421.575pt>
+Package pdftex.def Info: p2_figures/p2a_data.jpg used on input line 224.
+(pdftex.def)             Requested size: 449.68062pt x 337.26045pt.
+ [5 <./p2_figures/p2a_data.jpg>]
+<p2_figures/p2d_misift.jpg, id=50, 562.1pt x 421.575pt>
 File: p2_figures/p2d_misift.jpg Graphic file (type jpg)
 
 <use p2_figures/p2d_misift.jpg>
-Package pdftex.def Info: p2_figures/p2d_misift.jpg used on input line 254.
+Package pdftex.def Info: p2_figures/p2d_misift.jpg used on input line 251.
 (pdftex.def)             Requested size: 562.09863pt x 421.57396pt.
 
-Overfull \hbox (56.20863pt too wide) in paragraph at lines 253--255
+Overfull \hbox (56.20863pt too wide) in paragraph at lines 250--252
 [] 
  []
 
-[5 <./p2_figures/p2a_data.jpg>] [6 <./p2_figures/p2d_misift.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 286--303
+[6 <./p2_figures/p2d_misift.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 281--296
 
  []
 
 (./hw2_2.m [7]) [8] (./hw2_solutions_ma.aux) ) 
 Here is how much of TeX's memory you used:
- 8259 strings out of 493089
- 118586 string characters out of 6134842
- 398247 words of memory out of 5000000
- 11616 multiletter control sequences out of 15000+600000
+ 8262 strings out of 493089
+ 118610 string characters out of 6134842
+ 356247 words of memory out of 5000000
+ 11619 multiletter control sequences out of 15000+600000
  17122 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,12n,43p,531b,1806s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,12n,43p,545b,1806s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-di
 st/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2015/texmf-dist
 /fonts/type1/public/amsfonts/cmextra/cmbsy6.pfb></usr/local/texlive/2015/texmf-
@@ -530,7 +521,7 @@ pe1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
 1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
 public/cm-super/sfrm0600.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pu
 blic/cm-super/sfrm1200.pfb>
-Output written on hw2_solutions_ma.pdf (8 pages, 411931 bytes).
+Output written on hw2_solutions_ma.pdf (8 pages, 410122 bytes).
 PDF statistics:
  137 PDF objects out of 1000 (max. 8388607)
  97 compressed objects within 1 object stream

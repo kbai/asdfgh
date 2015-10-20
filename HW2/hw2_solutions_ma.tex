@@ -220,21 +220,21 @@ as depth value. It is always non-negative.
 
 \subsection*{(a) 4 points}
 
-\includegraphics[scale=0.5]{p2_figures/p2a_data}
+\includegraphics[scale=0.8]{p2_figures/p2a_data}
 
 
 \subsection*{(b) 6 points}
 
 $m_{1}$ is the intercept with the $y$ axis. From the plot, we estimate
-that it should be bounded by $[-150,0]$. \\
+that it should be bounded by $[-200,50]$. \\
 $m_{2}$ is the slope of the line, we also estimate from the plot
 that it should be bounded by $[1,10]$. \\
 As suggested in the problem, the arrays are better no larger than
 a few megabytes (1 double = 8 bytes) to avoid ``out of memory''
 error. A 1000 by 1000 double-type matrix is 8 megabytes. Therefore,
-we can choose the discretization as $m1=[-150:0.1:0]$, and $m2=[1:0.01:10]$,
+we can choose the discretization as $m1=[-200:0.1:50]$, and $m2=[1:0.01:10]$,
 so that the matrices of size length(m1) by length(m2) (e.g. the error
-matrix plotted in (d)), will be in appropriate size.\\
+matrix plotted in (d)), will be an appropriate size.\\
 We can always shrink our model space and do a finer search as following
 steps.
 
@@ -268,13 +268,11 @@ The least square solution is: (-75.4631, 3.5301)
 \subsection*{(g) 4 points}
 
 From (d), we infer that the model parameters are negatively correlated,
-and also the error is underestimated (much larger than 0.1). It is
-not given in the standard result. The standard result gives the standard
-deviations of each parameter, which are the diagonal terms of the
-model convariance matrix. It will underestimate the range of possible
-model parameters, if the model parameters are not independent, or
-the data error is underestimated. Therefore, the extra information
-given in (d) is also very important.
+and also the data error is underestimated (should be much larger than
+0.1, which is the number your friend told you). It is not given in
+the standard result. In addition, if the underestimated data error
+is used to evaluate the $\sigma_{m}$ in the standard result, $\sigma_{m}$
+can also be underestimated.
 
 
 \subsection*{(h) 6 points}
@@ -284,17 +282,15 @@ The L1 and L2 methods (``grid search'') are more straighforward
 in showing the error distribution, thus the probability of the model
 parameters over the ``full'' model space. \\
 The least-square solution (``direct inversion'') is fast, and gives
-the exact solution that minimizes L2 norm error. We can also infer
-the covariances of the model parameters from the model covariance
-matrix. However, it is not as straightforward, and sometimes gives
-an illusion that the results have small errors/standard deviations.
-In this small size problem, I would prefer the ``grid search'' method.\\
+the exact solution that minimizes L2 norm error. However, it is not
+as straightforward in showing all possible model parameters. In this
+small size problem, I would prefer the ``grid search'' method.\\
 As the errors get bigger, the L1 norm method can be better, because
 it would be less likely to be affected by the outliers. Moreover,
 if there are several solutions that can minimize the error equally
-well, we can see it in the error map produced by the direct search
-method, and can choose one solution based on some priori information.
-Therefore, I will prefer L1 norm.\\
+well, we can see it in the error map produced by the grid search method,
+and can choose one solution based on some priori information. Therefore,
+I will prefer L1 norm.\\
 \tiny
 \lstinputlisting{hw2_2.m}
 \normalsize

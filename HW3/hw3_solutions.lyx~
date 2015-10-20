@@ -140,14 +140,14 @@ In a class, among 20 students, 8 are female, and 12 are male.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $X$
+\begin_inset Formula $x$
 \end_inset
 
 : pick one student, gender is female;
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $Y$
+\begin_inset Formula $y$
 \end_inset
 
 : pick one student, taller than 170 cm.
@@ -158,10 +158,10 @@ Then,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $P(X,Y)$
+\begin_inset Formula $P(x,y)$
 \end_inset
 
- is the probability that pick one student, gender is female and is taller
+ is the probability that pick one student, he/she is female and is taller
  than 170 cm, which is equal to 
 \begin_inset Formula $2/20=0.1$
 \end_inset
@@ -170,10 +170,10 @@ Then,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $P(X)$
+\begin_inset Formula $P(x)$
 \end_inset
 
- is the probability that pick one student, gender is female, which is equal
+ is the probability that pick one student, he/she is female, which is equal
  to 
 \begin_inset Formula $8/20=0.4$
 \end_inset
@@ -182,7 +182,7 @@ Then,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $P(Y/X)$
+\begin_inset Formula $P(y|x)$
 \end_inset
 
  is the probability that pick one female student, she is taller than 170
@@ -194,11 +194,11 @@ Then,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $P(Y)$
+\begin_inset Formula $P(y)$
 \end_inset
 
- is the probability that pick one student, taller than 170 cm, which is
- equal to 
+ is the probability that pick one student, he/she is taller than 170 cm,
+ which is equal to 
 \begin_inset Formula $(2+8)/20=0.5$
 \end_inset
 
@@ -206,15 +206,34 @@ Then,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $P(X/Y)$
+\begin_inset Formula $P(x|y)$
 \end_inset
 
  is the probability that pick one student who is taller than 170 cm, his/her
- gender is female, which is equal to 
+ is female, which is equal to 
 \begin_inset Formula $2/(2+8)=0.2$
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+Then, we see that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(x,y)=P(x|y)P(y)=P(y|x)P(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+(b)
+\end_layout
+
+\begin_layout Standard
+Independent events:
 \end_layout
 
 \begin_layout Standard

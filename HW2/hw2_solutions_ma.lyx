@@ -571,7 +571,7 @@ Problem 2 (graded by Yiran) - 50 points
 \begin_layout Standard
 \begin_inset Graphics
 	filename p2_figures/p2a_data.jpg
-	scale 50
+	scale 80
 
 \end_inset
 
@@ -592,7 +592,7 @@ Problem 2 (graded by Yiran) - 50 points
 
  axis.
  From the plot, we estimate that it should be bounded by 
-\begin_inset Formula $[-150,0]$
+\begin_inset Formula $[-200,50]$
 \end_inset
 
 .
@@ -626,7 +626,7 @@ out of memory
  error.
  A 1000 by 1000 double-type matrix is 8 megabytes.
  Therefore, we can choose the discretization as 
-\begin_inset Formula $m1=[-150:0.1:0]$
+\begin_inset Formula $m1=[-200:0.1:50]$
 \end_inset
 
 , and 
@@ -634,7 +634,7 @@ out of memory
 \end_inset
 
 , so that the matrices of size length(m1) by length(m2) (e.g.
- the error matrix plotted in (d)), will be in appropriate size.
+ the error matrix plotted in (d)), will be an appropriate size.
 \begin_inset Newline newline
 \end_inset
 
@@ -702,13 +702,18 @@ The least square solution is: (-75.4631, 3.5301)
 
 \begin_layout Standard
 From (d), we infer that the model parameters are negatively correlated,
- and also the error is underestimated (much larger than 0.1).
+ and also the data error is underestimated (should be much larger than 0.1,
+ which is the number your friend told you).
  It is not given in the standard result.
- The standard result gives the standard deviations of each parameter, which
- are the diagonal terms of the model convariance matrix.
- It will underestimate the range of possible model parameters, if the model
- parameters are not independent, or the data error is underestimated.
- Therefore, the extra information given in (d) is also very important.
+ In addition, if the underestimated data error is used to evaluate the 
+\begin_inset Formula $\sigma_{m}$
+\end_inset
+
+ in the standard result, 
+\begin_inset Formula $\sigma_{m}$
+\end_inset
+
+ can also be underestimated.
 \end_layout
 
 \begin_layout Subsection*
@@ -751,10 +756,7 @@ direct inversion
 \end_inset
 
 ) is fast, and gives the exact solution that minimizes L2 norm error.
- We can also infer the covariances of the model parameters from the model
- covariance matrix.
- However, it is not as straightforward, and sometimes gives an illusion
- that the results have small errors/standard deviations.
+ However, it is not as straightforward in showing all possible model parameters.
  In this small size problem, I would prefer the 
 \begin_inset Quotes eld
 \end_inset
@@ -770,7 +772,7 @@ grid search
 As the errors get bigger, the L1 norm method can be better, because it would
  be less likely to be affected by the outliers.
  Moreover, if there are several solutions that can minimize the error equally
- well, we can see it in the error map produced by the direct search method,
+ well, we can see it in the error map produced by the grid search method,
  and can choose one solution based on some priori information.
  Therefore, I will prefer L1 norm.
 \begin_inset Newline newline
