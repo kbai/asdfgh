@@ -10,16 +10,16 @@ R = ((x - xs).^2 + (y - ys).^2 + zs^2);
 dx = x-xs;
 dy = y-ys;
 
-Jacob(:,1) = (3.*p.*zs.*(dx))./((R).^(5/2));
-Jacob(:,2) = (3.*p.*zs.*(dy))./((R).^(5/2));
-Jacob(:,3) = p./(R).^(3/2) - (3*p.*zs.^2)./(R).^(5/2);
-Jacob(:,4) = zs./(R).^(3/2);
+Ghat(:,1) = (3.*p.*zs.*(dx))./((R).^(5/2));
+Ghat(:,2) = (3.*p.*zs.*(dy))./((R).^(5/2));
+Ghat(:,3) = p./(R).^(3/2) - (3*p.*zs.^2)./(R).^(5/2);
+Ghat(:,4) = zs./(R).^(3/2);
 
-Grad = (residue')* Jacob;
+Grad = (residue')* Ghat;
 
 
 
-Hess = (Jacob')*Jacob;
+Hess = (Ghat')*Ghat;
 %this is the apprximated Hessian;
 
 

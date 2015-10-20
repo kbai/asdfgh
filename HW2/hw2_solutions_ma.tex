@@ -1,11 +1,10 @@
-%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[12pt,english]{article}
-\usepackage[T1]{fontenc}
 \usepackage[latin9]{inputenc}
 \usepackage{color}
-\usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{amsmath}
 \usepackage{graphicx}
 
 \makeatletter
@@ -173,17 +172,17 @@ The algorithm for finding solution is :
 
 $\boldsymbol{m}=\boldsymbol{m}_{0}$ (set initial guess)
 
-$\boldsymbol{r}=(G(\boldsymbol{m})-\boldsymbol{d})$
+$\boldsymbol{r}=(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))$
 
-while $\boldsymbol{r^{T}r}$>errorbound
+while $\boldsymbol{r^{T}r}$\textgreater{}errorbound
 
-......compute Hessian $\boldsymbol{H}(\boldsymbol{m})$ and $\boldsymbol{J}^{T}\boldsymbol{r}$
+......compute Hessian $\boldsymbol{H}(\boldsymbol{m})$ and $\hat{\boldsymbol{G}}^{T}\boldsymbol{r}$
 
-......$\Delta\boldsymbol{m}=\boldsymbol{H}^{-1}\boldsymbol{J}^{T}\boldsymbol{r}$
+......$\Delta\boldsymbol{m}=\boldsymbol{H}^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{r}$
 
-......$\boldsymbol{m}=\boldsymbol{m}-\Delta\boldsymbol{m}$
+......$\boldsymbol{m}=\boldsymbol{m}+\Delta\boldsymbol{m}$
 
-......$\boldsymbol{r}=(G(\boldsymbol{m})-\boldsymbol{d})$
+......$\boldsymbol{r}=(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))$
 
 end
 
@@ -206,7 +205,7 @@ $[x_{s},y_{s},z_{s},P]^{T}=[8.137,-5.142,11.507,30.346]^{T}$
 
 \subsection*{(e)10 points}
 
-\includegraphics{measurements_error}
+\includegraphics[scale=0.8]{measurements_error}
 
 The standard deviations are $\sigma_{x_{s}}=0.099670,\sigma_{y_{s}}=0.137469,\sigma_{z_{s}}=0.149719,\sigma_{p}=0.691071$
 

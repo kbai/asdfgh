@@ -355,7 +355,7 @@ The algorithm for finding solution is :
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\boldsymbol{r}=(G(\boldsymbol{m})-\boldsymbol{d})$
+\begin_inset Formula $\boldsymbol{r}=(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))$
 \end_inset
 
 
@@ -375,7 +375,7 @@ while
 \end_inset
 
  and 
-\begin_inset Formula $\boldsymbol{J}^{T}\boldsymbol{r}$
+\begin_inset Formula $\hat{\boldsymbol{G}}^{T}\boldsymbol{r}$
 \end_inset
 
 
@@ -383,7 +383,7 @@ while
 
 \begin_layout Standard
 ......
-\begin_inset Formula $\Delta\boldsymbol{m}=\boldsymbol{H}^{-1}\boldsymbol{J}^{T}\boldsymbol{r}$
+\begin_inset Formula $\Delta\boldsymbol{m}=\boldsymbol{H}^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{r}$
 \end_inset
 
 
@@ -391,7 +391,7 @@ while
 
 \begin_layout Standard
 ......
-\begin_inset Formula $\boldsymbol{m}=\boldsymbol{m}-\Delta\boldsymbol{m}$
+\begin_inset Formula $\boldsymbol{m}=\boldsymbol{m}+\Delta\boldsymbol{m}$
 \end_inset
 
 
@@ -399,7 +399,7 @@ while
 
 \begin_layout Standard
 ......
-\begin_inset Formula $\boldsymbol{r}=(G(\boldsymbol{m})-\boldsymbol{d})$
+\begin_inset Formula $\boldsymbol{r}=(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))$
 \end_inset
 
 
@@ -516,6 +516,7 @@ normalsize
 \begin_inset Graphics
 	filename measurements_error.pdf
 	lyxscale 60
+	scale 80
 
 \end_inset
 
