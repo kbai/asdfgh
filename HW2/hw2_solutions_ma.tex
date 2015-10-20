@@ -1,10 +1,11 @@
-%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[12pt,english]{article}
+\usepackage[T1]{fontenc}
 \usepackage[latin9]{inputenc}
 \usepackage{color}
-\usepackage{amsthm}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{graphicx}
 
 \makeatletter
@@ -174,7 +175,7 @@ $\boldsymbol{m}=\boldsymbol{m}_{0}$ (set initial guess)
 
 $\boldsymbol{r}=(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))$
 
-while $\boldsymbol{r^{T}r}$\textgreater{}errorbound
+while $\boldsymbol{r^{T}r}$>errorbound
 
 ......compute Hessian $\boldsymbol{H}(\boldsymbol{m})$ and $\hat{\boldsymbol{G}}^{T}\boldsymbol{r}$
 
@@ -262,14 +263,15 @@ L1 norm: (-81.9, 3.48)
 \subsection*{(f) 10 points}
 
 (See attached MATLAB code.)\\
-The least square solution is: (-75.4631, 3.5301)
+The least squares solution is: (-75.4631, 3.5301)
 
 
 \subsection*{(g) 4 points}
 
 From (d), we infer that the model parameters are negatively correlated,
 and also the data error is underestimated (should be much larger than
-0.1, which is the number your friend told you). It is not given in
+0.1, which is the number your friend told you). The fact that there
+is (negative) correlation between model parameters is not part of
 the standard result. In addition, if the underestimated data error
 is used to evaluate the $\sigma_{m}$ in the standard result, $\sigma_{m}$
 can also be underestimated.
@@ -281,7 +283,7 @@ can also be underestimated.
 The L1 and L2 methods (``grid search'') are more straighforward
 in showing the error distribution, thus the probability of the model
 parameters over the ``full'' model space. \\
-The least-square solution (``direct inversion'') is fast, and gives
+The least-squares solution (``direct inversion'') is fast, and gives
 the exact solution that minimizes L2 norm error. However, it is not
 as straightforward in showing all possible model parameters. In this
 small size problem, I would prefer the ``grid search'' method.\\

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  19 OCT 2015 18:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  19 OCT 2015 20:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -482,14 +482,14 @@ Overfull \hbox (56.20863pt too wide) in paragraph at lines 250--252
  []
 
 [6 <./p2_figures/p2d_misift.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 281--296
+Underfull \hbox (badness 10000) in paragraph at lines 282--297
 
  []
 
 (./hw2_2.m [7]) [8] (./hw2_solutions_ma.aux) ) 
 Here is how much of TeX's memory you used:
  8262 strings out of 493089
- 118610 string characters out of 6134842
+ 118608 string characters out of 6134842
  356247 words of memory out of 5000000
  11619 multiletter control sequences out of 15000+600000
  17122 words of font info for 47 fonts, out of 8000000 for 9000
@@ -521,7 +521,7 @@ pe1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
 1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
 public/cm-super/sfrm0600.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pu
 blic/cm-super/sfrm1200.pfb>
-Output written on hw2_solutions_ma.pdf (8 pages, 410122 bytes).
+Output written on hw2_solutions_ma.pdf (8 pages, 410092 bytes).
 PDF statistics:
  137 PDF objects out of 1000 (max. 8388607)
  97 compressed objects within 1 object stream

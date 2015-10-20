@@ -355,7 +355,7 @@ The algorithm for finding solution is :
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\boldsymbol{r}=(G(\boldsymbol{m})-\boldsymbol{d})$
+\begin_inset Formula $\boldsymbol{r}=(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))$
 \end_inset
 
 
@@ -375,7 +375,7 @@ while
 \end_inset
 
  and 
-\begin_inset Formula $\boldsymbol{J}^{T}\boldsymbol{r}$
+\begin_inset Formula $\hat{\boldsymbol{G}}^{T}\boldsymbol{r}$
 \end_inset
 
 
@@ -383,7 +383,7 @@ while
 
 \begin_layout Standard
 ......
-\begin_inset Formula $\Delta\boldsymbol{m}=\boldsymbol{H}^{-1}\boldsymbol{J}^{T}\boldsymbol{r}$
+\begin_inset Formula $\Delta\boldsymbol{m}=\boldsymbol{H}^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{r}$
 \end_inset
 
 
@@ -391,7 +391,7 @@ while
 
 \begin_layout Standard
 ......
-\begin_inset Formula $\boldsymbol{m}=\boldsymbol{m}-\Delta\boldsymbol{m}$
+\begin_inset Formula $\boldsymbol{m}=\boldsymbol{m}+\Delta\boldsymbol{m}$
 \end_inset
 
 
@@ -399,7 +399,7 @@ while
 
 \begin_layout Standard
 ......
-\begin_inset Formula $\boldsymbol{r}=(G(\boldsymbol{m})-\boldsymbol{d})$
+\begin_inset Formula $\boldsymbol{r}=(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))$
 \end_inset
 
 
@@ -516,6 +516,7 @@ normalsize
 \begin_inset Graphics
 	filename measurements_error.pdf
 	lyxscale 60
+	scale 80
 
 \end_inset
 
@@ -570,7 +571,7 @@ Problem 2 (graded by Yiran) - 50 points
 \begin_layout Standard
 \begin_inset Graphics
 	filename p2_figures/p2a_data.jpg
-	scale 50
+	scale 80
 
 \end_inset
 
@@ -692,7 +693,7 @@ L1 norm: (-81.9, 3.48)
 \begin_inset Newline newline
 \end_inset
 
-The least square solution is: (-75.4631, 3.5301)
+The least squares solution is: (-75.4631, 3.5301)
 \end_layout
 
 \begin_layout Subsection*
@@ -703,7 +704,8 @@ The least square solution is: (-75.4631, 3.5301)
 From (d), we infer that the model parameters are negatively correlated,
  and also the data error is underestimated (should be much larger than 0.1,
  which is the number your friend told you).
- It is not given in the standard result.
+ The fat that there is (negative) correlation between model parameters is
+ not part of the standard result.
  In addition, if the underestimated data error is used to evaluate the 
 \begin_inset Formula $\sigma_{m}$
 \end_inset
@@ -746,7 +748,7 @@ full
 \begin_inset Newline newline
 \end_inset
 
-The least-square solution (
+The least-squares solution (
 \begin_inset Quotes eld
 \end_inset
 
