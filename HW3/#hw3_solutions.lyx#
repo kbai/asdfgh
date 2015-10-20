@@ -877,14 +877,6 @@ H_{ij} & = & g_{i}^{T}g_{j}
 
 \end_layout
 
-\begin_layout Standard
-The diagonal components of 
-\begin_inset Formula $\boldsymbol{H}$
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection*
 (c) 5 points
 \end_layout
@@ -913,24 +905,11 @@ It shows the projection of
 \end_layout
 
 \begin_layout Standard
-This equation implies that 
+This equation implies that the projection of 
 \begin_inset Formula $Gm$
 \end_inset
 
- is the projection of 
-\begin_inset Formula $d$
-\end_inset
-
- in the model space.
- Thus, the least-squares solution 
-\begin_inset Formula $m$
-\end_inset
-
- is the coordinate of 
-\begin_inset Formula $d$
-\end_inset
-
- in the model space.
+ into the model space
 \end_layout
 
 \end_body

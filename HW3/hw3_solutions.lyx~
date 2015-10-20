@@ -573,7 +573,7 @@ where
 \begin_layout Standard
 \begin_inset Graphics
 	filename p1_figures/d_i.jpg
-	scale 50
+	scale 80
 
 \end_inset
 
@@ -718,7 +718,7 @@ P(L|d_{i}) & = & P(d_{i}|L)\\
 \begin_layout Standard
 \begin_inset Graphics
 	filename p1_figures/d_ii.jpg
-	scale 50
+	scale 80
 
 \end_inset
 
@@ -782,7 +782,8 @@ Since we only care about the maximum of the LHS, instead of its value; for
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(L|d_{1}=8.3,d_{2}=9.1) & \propto & \left[3\exp\left(-50(9.1-L)^{2}\right)+\exp\left(-50(8.1-L)^{2}\right)\right]\left[3\exp\left(-50(L-8.3)^{2}\right)+\exp\left(-50(L-7.3))^{2}\right)\right]
+P(L|d_{1}=8.3,d_{2}=9.1) & \propto & \left[3\exp\left(-50(9.1-L)^{2}\right)+\exp\left(-50(8.1-L)^{2}\right)\right]\\
+ &  & \cdot\left[3\exp\left(-50(L-8.3)^{2}\right)+\exp\left(-50(L-7.3))^{2}\right)\right]
 \end{eqnarray*}
 
 \end_inset
@@ -793,6 +794,7 @@ P(L|d_{1}=8.3,d_{2}=9.1) & \propto & \left[3\exp\left(-50(9.1-L)^{2}\right)+\exp
 \begin_layout Standard
 \begin_inset Graphics
 	filename p1_figures/d_iii.jpg
+	scale 80
 
 \end_inset
 
@@ -822,6 +824,105 @@ Because the two measurement differs
  After the 1 cm correction, the second measurement should be 8.1.
  The mean of 8.3 and 8.1 is 8.2, which is our estimation through the analysis
  above.
+\end_layout
+
+\begin_layout Section*
+(Extra Credit) Problem 3
+\end_layout
+
+\begin_layout Subsection*
+(a) 5 points
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ has M elements, the maximum dimension of 
+\begin_inset Formula $G$
+\end_inset
+
+ spanned by 
+\begin_inset Formula $\{g_{i},i=1...N\}$
+\end_inset
+
+ is M.
+ Therefore,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+dim\left(R(G)\right) & \leq & M<N=dim(R^{N})
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(b) 10 points
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+H_{ij} & = & g_{i}^{T}g_{j}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(c) 5 points
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+G^{T}d & = & (g_{1}^{T}d,...,g_{M}^{T}d)^{T}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It shows the projection of 
+\begin_inset Formula $d$
+\end_inset
+
+ into the model space.
+\end_layout
+
+\begin_layout Subsection*
+(d) 5 points
+\end_layout
+
+\begin_layout Standard
+This equation implies that 
+\begin_inset Formula $Gm$
+\end_inset
+
+ is the projection of 
+\begin_inset Formula $d$
+\end_inset
+
+ in the model space.
+ Thus, the least-squares solution 
+\begin_inset Formula $m$
+\end_inset
+
+ is the coordinate of 
+\begin_inset Formula $d$
+\end_inset
+
+ in the model space.
 \end_layout
 
 \end_body
