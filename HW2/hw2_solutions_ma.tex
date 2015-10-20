@@ -128,7 +128,7 @@ We write the $\hat{\boldsymbol{G}}$ matrix: \textcolor{blue}{\tiny{}
 
 \textcolor{blue}{\tiny{}
 \[
-\boldsymbol{\nabla_{m}}F=(\boldsymbol{d-g}(\boldsymbol{m}))^{T}\hat{\boldsymbol{G}}=[\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{\eta_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}u_{i}}{\eta_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{\eta_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}ly_{i}}{\eta_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{\eta_{i}^{3/2}}-d_{i})(\frac{PR_{i}-3Pz_{s}^{2}}{\eta_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{\eta_{i}^{3/2}}-d_{i})(\frac{z_{s}}{\eta_{i}^{3/2}})]^{T}
+\boldsymbol{\nabla_{m}}F=(\boldsymbol{d-g}(\boldsymbol{m}))^{T}\hat{\boldsymbol{G}}=[\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{\eta_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}u_{i}}{\eta_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}(}\frac{Pz_{s}}{\eta_{i}^{3/2}}-d_{i})(\frac{3Pz_{x}v_{i}}{\eta_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{\eta_{i}^{3/2}}-d_{i})(\frac{PR_{i}-3Pz_{s}^{2}}{\eta_{i}^{5/2}}),\underset{i=1}{\overset{n}{\sum}}(\frac{Pz_{s}}{\eta_{i}^{3/2}}-d_{i})(\frac{z_{s}}{\eta_{i}^{3/2}})]^{T}
 \]
 }{\tiny \par}
 
@@ -159,7 +159,7 @@ sym &  & 15Pz_{s}^{3}-9Pz_{s}\eta_{i} & R_{i}^{2}-9z_{s}^{2}\eta_{i}\\
 \begin{array}{cc}
 H_{xx}=\text{\ensuremath{\underset{i}{\sum}}}9P^{2}u_{i}{}^{2}z{}_{s}^{2}\eta_{i}^{-5}-15u_{i}^{2}z_{s}A_{i}\eta_{i}^{-7/2}+3Pz_{s}A_{i}\eta_{i}^{-5/2} & H_{yy}=\text{\ensuremath{\underset{i}{\sum}}}9Pv_{i}{}^{2}z{}_{s}^{2}\eta_{i}^{-5}-15v_{i}^{2}z_{s}A_{i}\eta_{i}^{-7/2}+3Pz_{s}A_{i}\eta_{i}^{-5/2}\\
 H_{zz}=\text{\ensuremath{\underset{i}{\sum}}}(-6Pz_{s}^{2}\eta_{i}^{-5/2}+P\eta_{i}^{-3/2})^{2}-15A_{i}Pz_{s}^{3}\eta_{i}^{-7/2}+9A_{i}Pz_{s}\eta_{i}^{-5/2} & H_{pp}=\text{\ensuremath{\underset{i}{\sum}}}z_{s}^{2}\eta_{i}^{-3}\\
-H_{xy}=\text{\ensuremath{\underset{i}{\sum}}}9P^{2}u_{i}v_{i}z_{i}{}_{s}^{2}\eta_{i}^{-5}-15u_{i}v_{i}z_{s}A_{i}\eta_{i}^{-7/2} & H_{xz}=\text{\ensuremath{\underset{i}{\sum}}}-3Pu_{i}A_{i}\eta_{i}^{-5/2}-15Puz_{s}^{2}\eta_{i}^{-7/2}+3Puz_{s}\eta_{i}^{-4}-9P^{2}uz_{s}^{3}\eta_{i}^{-5}\\
+H_{xy}=\text{\ensuremath{\underset{i}{\sum}}}9P^{2}u_{i}v_{i}z_{i}{}_{s}^{2}\eta_{i}^{-5}-15u_{i}v_{i}z_{s}A_{i}\eta_{i}^{-7/2} & H_{xz}=\text{\ensuremath{\underset{i}{\sum}}}-3Pu_{i}A_{i}\eta_{i}^{-5/2}-15Pu_{i}z_{s}^{2}\eta_{i}^{-7/2}+3Pu_{i}z_{s}\eta_{i}^{-4}-9P^{2}u_{i}z_{s}^{3}\eta_{i}^{-5}\\
 H_{xp}=\text{\ensuremath{\underset{i}{\sum}}}3Pu_{i}z_{s}^{2}\eta_{i}^{-4}-3u_{i}z_{s}A_{i}\eta_{i}^{-5/2} & H_{yz}=\text{\ensuremath{\underset{i}{\sum-}}}3Pv_{i}A_{i}\eta_{i}^{-5/2}-15Pv_{i}z_{s}^{2}\eta_{i}^{-7/2}+3P^{2}v_{i}z_{s}\eta_{i}^{-4}-9Pu_{i}v_{i}z\eta_{i}^{-5}\\
 H_{yp}=\text{\ensuremath{\underset{i}{\sum}}}3Pv_{i}z\eta_{i}^{-4}-3v_{i}z_{s}A_{i}\eta_{i}^{-5/2} & H_{zp}=\text{\ensuremath{\underset{i}{\sum}}}-3Pz_{s}^{3}\eta_{i}^{-4}+P_{i}z_{s}\eta_{i}^{-3}+3A_{i}z_{s}^{2}\eta_{i}^{-5/2}-A\eta_{i}^{-3/2}
 \end{array}
@@ -206,14 +206,14 @@ $[x_{s},y_{s},z_{s},P]^{T}=[8.137,-5.142,11.507,30.346]^{T}$
 
 \subsection*{(e)10 points}
 
-\includegraphics[scale=0.8]{measurements_error}
-
 The standard deviations are $\sigma_{x_{s}}=0.099670,\sigma_{y_{s}}=0.137469,\sigma_{z_{s}}=0.149719,\sigma_{p}=0.691071$
 
 There is a strong tradeoff relation between $x_{s},y_{s},z_{s}$.
 $x_{s},y_{s}$ are negatively related. $x_{s},z_{s}$ are positively
 related. $z_{s},y_{s}$ are negatively related. Note that we use $z_{s}$
 as depth value. It is always non-negative.
+
+\includegraphics[scale=0.8]{measurements_error}
 
 
 \section*{Problem 2 (graded by Yiran) - 50 points}
