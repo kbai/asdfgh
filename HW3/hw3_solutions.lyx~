@@ -827,6 +827,277 @@ Because the two measurement differs
 \end_layout
 
 \begin_layout Section*
+problem 2 (graded by Kangchen) - 50 points
+\end_layout
+
+\begin_layout Subsection*
+(a)12 points
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(\boldsymbol{m})\propto e^{-F(\boldsymbol{m})}$
+\end_inset
+
+where 
+\begin_inset Formula $F(\boldsymbol{m})=\sum\frac{(d_{k}-g_{k}(\boldsymbol{m}))^{2}}{2\sigma_{k}^{2}}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection*
+(b)12 points
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $d'_{k}=d_{k}/\sigma_{k}$
+\end_inset
+
+, the relation between 
+\begin_inset Formula $\boldsymbol{d}'$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{d}$
+\end_inset
+
+ can be written in matrix form 
+\begin_inset Formula $\boldsymbol{d}'=\boldsymbol{W}\boldsymbol{d}$
+\end_inset
+
+ where 
+\begin_inset Formula $W_{ij}=\delta_{ij}\frac{1}{\sigma_{j}}$
+\end_inset
+
+ (
+\begin_inset Formula $\delta_{ij}=1$
+\end_inset
+
+ if 
+\begin_inset Formula $i=j$
+\end_inset
+
+ , 
+\begin_inset Formula $\delta_{ij}=0$
+\end_inset
+
+ if 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection*
+(c)12 points
+\color black
+
+\begin_inset Formula 
+\[
+F=\frac{1}{2}(\boldsymbol{d'-g'}(\boldsymbol{m}))^{T}(\boldsymbol{d'-g}'(\boldsymbol{m}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+the gradient:  
+\begin_inset Formula $\boldsymbol{\nabla}F=\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+the approximated hessian: 
+\begin_inset Formula $\boldsymbol{H}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So the least squares solution: 
+\begin_inset Formula $\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})^{-1}\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Substitute 
+\begin_inset Formula $\hat{\boldsymbol{G}'}=\boldsymbol{W}\hat{\boldsymbol{G}}$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{d}'=\boldsymbol{W}\boldsymbol{d}$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{g}'=\boldsymbol{W}\boldsymbol{g}$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{C}=\boldsymbol{W}^{T}\boldsymbol{W}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))=(\hat{\boldsymbol{G}}^{T}\boldsymbol{C}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{C}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(d)14 points
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{./HW3_Q1/compute_gradient_approx_hess.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{./HW3_Q1/nonlinear_solver.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{./HW3_Q1/compute_residue.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{./HW3_Q1/HW3_Q1.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boldsymbol{m}=[8.3068,-5.3425,11.8179,31.8569]^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boldsymbol{error}=[-4.99\times10^{-5},1.20\times10^{-5}-2.95\times10^{-3},3.59\times10^{-4},-2.87\times10^{-5},2.74\times10^{-6}]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can find that since we put a smaller weight on station 3, its error is
+ the largest.
+\end_layout
+
+\begin_layout Standard
+Since we put a larger weight on station 5 6 , their errors are smaller.
+\end_layout
+
+\begin_layout Section*
 (Extra Credit) Problem 3
 \end_layout
 
@@ -872,6 +1143,14 @@ dim\left(R(G)\right) & \leq & M<N=dim(R^{N})
 H_{ij} & = & g_{i}^{T}g_{j}
 \end{eqnarray*}
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The diagonal components of 
+\begin_inset Formula $\boldsymbol{H}$
 \end_inset
 
 
