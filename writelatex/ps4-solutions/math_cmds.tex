@@ -1,0 +1,44 @@
+%Fractions
+\newcommand\fr[2]{\frac{#1}{#2}} %Regular fraction
+
+%Braces, Brackets, Parentheses, etc.
+\newcommand\brcs[1]{\{#1\}} %Braces
+\newcommand\brckts[1]{\left[#1\right]} %Brackets
+\newcommand\lr[1]{\left(#1\right)} %Parentheses
+\newcommand\abs[1]{\Big\lvert#1\Big\rvert} %Absolute value
+\newcommand\ltwo[1]{\lVert#1\rVert_2} %L2-norm
+\newcommand\linf[1]{\lVert#1\rVert_\infty} %L2-norm
+
+%Linear algebra
+\renewcommand\v[1]{\mathbf{#1}}
+\newcommand\tr[1]{\text{tr}\left( \mathbf{#1}\right)} %Trace
+\renewcommand\det[1]{\text{det}\left( \mathbf{#1}\right)} %Determinant
+
+%Trigonometric & special functions
+\newcommand\sinb[1]{\, \sin\left(#1\right)} %Sine with parentheses: sin(x)
+\newcommand\cosb[1]{\, \cos\left(#1\right)} %Cosine with parentheses: cos(x)
+\newcommand\tanb[1]{\, \tan\left(#1\right)} %Tangent with parentheses: tan(x)
+\newcommand\cotb[1]{\, \cot\left(#1\right)} %Cotangent with parentheses: cot(x)
+\newcommand\sinc[1]{\, \text{sinc}\left(#1\right)} %Sinc function: sinc = sin(x)/x
+
+%Calculus
+\renewcommand\d[1]{\, \text{d}#1} %Differential for integrals
+\newcommand\der[2]{\frac{\text{d}#1}{\text{d}#2}} %Ordinary derivate first order
+\newcommand\dder[2]{\frac{\text{d}^2#1}{\text{d}#2^2}} %Ordinary derivate second order
+\newcommand\od[3]{\frac{\text{d}^{#3}#1}{\text{d}#2^{#3}}} %Ordinary derivate any order
+\newcommand\pder[2]{\frac{\partial#1}{\partial#2}} %Partial derivate first order
+\newcommand\pdder[2]{\frac{\partial^2#1}{\partial#2^2}} %Partial derivate second order
+\newcommand\pd[3]{\frac{\partial^{#3}#1}{\partial#2^{#3}}} %Partial derivative any order
+
+%Fourier transform
+\newcommand\ft[1]{\hat{#1}} %Fourier coefficient
+
+%Probability theory, Statistics
+\newcommand\ex[1]{\mathbb{E}\left[#1\right]} %Expectation
+\newcommand\pr[1]{\mathbb{P}\left(#1\right)} %Probability
+\newcommand\Var[1]{\text{Var}\left(#1\right)} %Variance
+\newcommand\Cov[1]{\text{Cov}\left(#1\right)} %Covariance
+\newcommand\one{\mathbf{1}} %Unity
+
+%Miscellaneous 
+\renewcommand\mod{\text{mod}} %Modulo
