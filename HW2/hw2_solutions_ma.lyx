@@ -482,6 +482,33 @@ tiny
 
 
 \backslash
+lstinputlisting{compute_residue.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 lstinputlisting{HW2.m}
 \end_layout
 

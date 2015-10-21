@@ -25,7 +25,7 @@ r=compute_residue(x,y,M,d);
 %deltaM = (Hess+lambda*eye(4))\Grad';
 deltaM= (Hess)\Grad';
 
-M=M-deltaM;
+M=M+deltaM;
 
 if (norm(r)<1e-5)
     break;
