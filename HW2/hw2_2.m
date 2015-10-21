@@ -10,10 +10,11 @@ figure(1)
 plot(x,y,'k*'); 
 grid on; axis equal;
 xlabel('x'); ylabel('y');
-
+xlim([-250 250]); ylim([-250 250]);
+set(gca,'XTick',[-250:50:250]);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % grid search
-m1 = -150:0.1:0;
+m1 = -200:0.1:50;
 m2 = 1:0.01:10;
 
 % L1 norm
