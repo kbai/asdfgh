@@ -269,7 +269,7 @@ Let
 \end_layout
 
 \begin_layout Standard
-This two events are independent, because 
+These two events are independent, because 
 \begin_inset Formula $x$
 \end_inset
 
@@ -595,7 +595,7 @@ P(L|d_{i}) & = & \frac{P(d_{i}|L)P(L)}{P(d_{i})}\\
 \end_layout
 
 \begin_layout Standard
-Where we assume the prior distribution 
+where we assume the prior distribution 
 \begin_inset Formula $P(L)$
 \end_inset
 
@@ -1187,7 +1187,7 @@ The diagonal elements of
 \end_inset
 
 , the coordinates are 
-\begin_inset Formula $(m_{1},...,m_{M})$
+\begin_inset Formula $(m_{1},...,m_{N})$
 \end_inset
 
 .
