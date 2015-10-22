@@ -70,10 +70,10 @@
 \usepackage{babel}
 \begin{document}
 
-\section*{Problem 1}
+\section*{Problem 1 (graded by Yiran) - 50 points}
 
 
-\subsection*{(a)}
+\subsection*{(a) 4 points}
 
 In a class, among 20 students, 8 are female, and 12 are male. 2 of
 the female students are taller than 170 cm, and 8 of the male students
@@ -104,7 +104,7 @@ We see that:
 $P(x,y)=P(x|y)P(y)=P(y|x)P(x)$
 
 
-\section*{(b)}
+\subsection*{(b) 8 points}
 
 \textbf{\textit{Independent}}\\
 Let
@@ -135,17 +135,17 @@ $x$: The next president of the U.S. is an Democratic.
 
 $y$: The next president of the U.S. is an Republician.
 
-This two events are not independent, because either of them happens,
+These two events are not independent, because either of them happens,
 will affect the proability of the other. 
 
 Let's assume $P(x)=P(y)=\frac{1}{2}$. Because it's impossible that
 the next president is both an Democratic and an Republician, $P(x,y)=0\neq P(x)P(y)$.
 
 
-\section*{(c)}
+\subsection*{(c) 8 points}
 
 
-\subsection*{(c.i)}
+\subsection*{(c.i) 3 points}
 
 \begin{eqnarray*}
 E(x) & = & \int_{-\infty}^{\infty}xP(x)dx
@@ -162,7 +162,7 @@ E(x)=0
 
 
 
-\subsection*{(c.ii)}
+\subsection*{(c.ii) 5 points}
 
 \begin{eqnarray*}
 E(x^{2}) & = & \int_{-\infty}^{\infty}x^{2}P(x)dx\\
@@ -203,10 +203,10 @@ E(x^{2}) & = & \frac{\sigma}{\sqrt{2\pi}}\sqrt{2\pi}\sigma=\sigma^{2}
 
 
 
-\section*{(d)}
+\subsection*{(d) 30 points}
 
 
-\subsection*{(d.i)}
+\subsection*{(d.i) 10 points}
 
 \begin{eqnarray*}
 P(d_{i}|L) & = & \frac{3}{4}\mathcal{\mathcal{N}}(L,\sigma)+\frac{1}{4}\mathcal{N}(L+1,\sigma)\\
@@ -220,7 +220,7 @@ where $\sigma=0.1$ cm, and $L$, $d_{i}$ are in cm.
 \includegraphics[scale=0.8]{p1_figures/d_i}
 
 
-\subsection*{(d.ii)}
+\subsection*{(d.ii) 10 points}
 
 From Bayes' theorem,
 
@@ -237,14 +237,7 @@ The constant ahead of $P(d_{i}|L)$ (denoted as ``$c$'') is determined
 by
 
 \begin{eqnarray*}
-\int_{-\infty}^{\infty}P(L|d_{i})dL & = & 1\\
-\end{eqnarray*}
-
-
-In (d.i)
-
-\begin{eqnarray*}
-\int_{-\infty}^{\infty}P(d_{i}|L)d(d_{i}) & = & 1
+\int_{-\infty}^{\infty}P(L|d_{i})dL & =\text{\ensuremath{\int}}_{-\infty}^{\infty}cP(d_{i}|L)dL & =1\\
 \end{eqnarray*}
 
 
@@ -255,7 +248,11 @@ P(d_{i}|L) & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i}
 \end{eqnarray*}
 
 
-Compare with the origional format, we see that
+which is a summation of two normal distributions (centered at $d_{i}$,
+and $d_{i}-1$), weighted by $\frac{3}{4}$ and $\frac{1}{4}$.
+
+Then
+
 \begin{eqnarray*}
 \int_{-\infty}^{\infty} & P(d_{i}|L)dL & =1
 \end{eqnarray*}
@@ -273,7 +270,7 @@ P(L|d_{i}) & = & P(d_{i}|L)\\
 \includegraphics[scale=0.8]{p1_figures/d_ii}
 
 
-\subsection*{(d.iii)}
+\subsection*{(d.iii) 10 points}
 
 We can use the distribution of $L$ from the first measurement as
 prior distribution to compute a posterior distribution after the second
@@ -306,7 +303,7 @@ the analysis above.
 \newpage{}
 
 
-\section*{problem 2 (graded by Kangchen) - 50 points}
+\section*{Problem 2 (graded by Kangchen) - 50 points}
 
 
 \subsection*{(a)12 points}
@@ -328,32 +325,17 @@ F=\frac{1}{2}(\boldsymbol{d'-g'}(\boldsymbol{m}))^{T}(\boldsymbol{d'-g}'(\boldsy
 \]
 }}
 
-the gradient is: 
-\[
-\boldsymbol{\nabla}F=\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))
-\]
+the gradient: $\boldsymbol{\nabla}F=\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))$
 
+the approximated hessian: $\boldsymbol{H}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})$
 
-the approximated hessian is: 
-\[
-\boldsymbol{H}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})
-\]
-
-
-the least squares solution is: 
-\[
-\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})^{-1}\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))
-\]
-
+So the least squares solution: $\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})^{-1}\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))$
 
 Substitute $\hat{\boldsymbol{G}'}=\boldsymbol{W}\hat{\boldsymbol{G}}$,
 $\boldsymbol{d}'=\boldsymbol{W}\boldsymbol{d}$, $\boldsymbol{g}'=\boldsymbol{W}\boldsymbol{g}$,
 $\boldsymbol{C}=\boldsymbol{W}^{T}\boldsymbol{W}$
 
-\[
-\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))=(\hat{\boldsymbol{G}}^{T}\boldsymbol{C}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{C}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))
-\]
-
+$\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))=(\hat{\boldsymbol{G}}^{T}\boldsymbol{C}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{C}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))$
 
 
 \subsection*{(d)14 points\tiny
@@ -372,7 +354,7 @@ $\boldsymbol{C}=\boldsymbol{W}^{T}\boldsymbol{W}$
 
 
 \[
-\boldsymbol{error}=\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m})=[-4.99\times10^{-5},1.20\times10^{-5}-2.95\times10^{-3},3.59\times10^{-4},-2.87\times10^{-5},2.74\times10^{-6}]^{T}
+\boldsymbol{error}=[-4.99\times10^{-5},1.20\times10^{-5}-2.95\times10^{-3},3.59\times10^{-4},-2.87\times10^{-5},2.74\times10^{-6}]
 \]
 
 
@@ -384,7 +366,7 @@ Since we put a larger weight on station 5 6 , their errors are smaller.
 \newpage{}
 
 
-\section*{(Extra Credit) Problem 3}
+\section*{(Extra Credit) Problem 3 (graded by Yiran) - 25 points}
 
 
 \subsection*{(a) 5 points}

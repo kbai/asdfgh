@@ -269,7 +269,7 @@ Let
 \end_layout
 
 \begin_layout Standard
-This two events are independent, because 
+These two events are independent, because 
 \begin_inset Formula $x$
 \end_inset
 
@@ -595,7 +595,7 @@ P(L|d_{i}) & = & \frac{P(d_{i}|L)P(L)}{P(d_{i})}\\
 \end_layout
 
 \begin_layout Standard
-Where we assume the prior distribution 
+where we assume the prior distribution 
 \begin_inset Formula $P(L)$
 \end_inset
 
@@ -836,7 +836,7 @@ Because the two measurement differs
 \end_layout
 
 \begin_layout Section*
-problem 2 (graded by Kangchen) - 50 points
+Problem 2 (graded by Kangchen) - 50 points
 \end_layout
 
 \begin_layout Subsection*
@@ -913,36 +913,24 @@ F=\frac{1}{2}(\boldsymbol{d'-g'}(\boldsymbol{m}))^{T}(\boldsymbol{d'-g}'(\boldsy
 \end_layout
 
 \begin_layout Standard
-the gradient is: 
-\begin_inset Formula 
-\[
-\boldsymbol{\nabla}F=\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))
-\]
-
+the gradient: 
+\begin_inset Formula $\boldsymbol{\nabla}F=\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-the approximated hessian is: 
-\begin_inset Formula 
-\[
-\boldsymbol{H}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})
-\]
-
+the approximated hessian: 
+\begin_inset Formula $\boldsymbol{H}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-the least squares solution is: 
-\begin_inset Formula 
-\[
-\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})^{-1}\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))
-\]
-
+So the least squares solution: 
+\begin_inset Formula $\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})^{-1}\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))$
 \end_inset
 
 
@@ -969,11 +957,7 @@ Substitute
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\[
-\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))=(\hat{\boldsymbol{G}}^{T}\boldsymbol{C}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{C}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))
-\]
-
+\begin_inset Formula $\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))=(\hat{\boldsymbol{G}}^{T}\boldsymbol{C}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{C}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))$
 \end_inset
 
 
@@ -1105,7 +1089,7 @@ normalsize
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\boldsymbol{error}=\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m})=[-4.99\times10^{-5},1.20\times10^{-5}-2.95\times10^{-3},3.59\times10^{-4},-2.87\times10^{-5},2.74\times10^{-6}]^{T}
+\boldsymbol{error}=[-4.99\times10^{-5},1.20\times10^{-5}-2.95\times10^{-3},3.59\times10^{-4},-2.87\times10^{-5},2.74\times10^{-6}]
 \]
 
 \end_inset
