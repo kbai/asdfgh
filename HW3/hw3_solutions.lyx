@@ -306,7 +306,7 @@ Suppose I get an A with
 \end_inset
 
 .
- Similary, suppose the Republician win the election with 
+ Similary, suppose the Republician wins the election with 
 \begin_inset Formula $P(y)$
 \end_inset
 
@@ -319,19 +319,13 @@ Suppose I get an A with
 \end_layout
 
 \begin_layout Standard
-Intuitively, the rule holds because with 
+Intuitively, the rule holds because the two events are independent - one
+ happens does not affect the other; therefore, to make both happen, we need
+ to multiply 
 \begin_inset Formula $P(x)$
 \end_inset
 
-, 
-\begin_inset Formula $x$
-\end_inset
-
-happens, but it doesn't affect the odd that 
-\begin_inset Formula $y$
-\end_inset
-
-happens, so I need to multiply 
+ and 
 \begin_inset Formula $P(y)$
 \end_inset
 
@@ -492,7 +486,7 @@ Then
 \begin_inset Formula 
 \begin{eqnarray*}
 E(x^{2}) & = & -\frac{\sigma}{\sqrt{2\pi}}\int_{-\infty}^{\infty}x\left[\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)\right]'dx\\
- & = & -\frac{\sigma}{\sqrt{2\pi}}\left[\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)\bigg|_{-\infty}^{\infty}-\int_{-\infty}^{\infty}\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)dx\right]\\
+ & = & -\frac{\sigma}{\sqrt{2\pi}}\left[x\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)\bigg|_{-\infty}^{\infty}-\int_{-\infty}^{\infty}\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)dx\right]\\
  & = & \frac{\sigma}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)dx\\
 \end{eqnarray*}
 
@@ -1121,15 +1115,15 @@ Since we put a larger weight on station 5 6 , their errors are smaller.
 
 \begin_layout Standard
 Since 
-\begin_inset Formula $g_{i}$
+\begin_inset Formula $\boldsymbol{g_{i}}$
 \end_inset
 
  has M elements, the maximum dimension of 
-\begin_inset Formula $G$
+\begin_inset Formula $\boldsymbol{G}$
 \end_inset
 
  spanned by 
-\begin_inset Formula $\{g_{i},i=1...N\}$
+\begin_inset Formula $\{\boldsymbol{g_{i}},i=1...N\}$
 \end_inset
 
  is M.
@@ -1139,7 +1133,7 @@ Since
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-dim\left(R(G)\right) & \leq & M<N=dim(R^{N})
+dim\left(R(\boldsymbol{G})\right) & \leq & M<N=dim(R^{N})
 \end{eqnarray*}
 
 \end_inset
@@ -1154,7 +1148,7 @@ dim\left(R(G)\right) & \leq & M<N=dim(R^{N})
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-H_{ij} & = & g_{i}^{T}g_{j}
+\boldsymbol{H_{ij}} & = & \boldsymbol{g_{i}}^{T}\boldsymbol{g_{j}}
 \end{eqnarray*}
 
 \end_inset
@@ -1163,11 +1157,58 @@ H_{ij} & = & g_{i}^{T}g_{j}
 \end_layout
 
 \begin_layout Standard
-The diagonal components of 
+The diagonal elements of 
 \begin_inset Formula $\boldsymbol{H}$
 \end_inset
 
+ are the squared lengths of the column vectors of 
+\begin_inset Formula $\boldsymbol{G}$
+\end_inset
 
+, the off-diagnoal elements measure how much the column vectors of 
+\begin_inset Formula $\boldsymbol{G}$
+\end_inset
+
+ project onto each other.
+ Suppose we project a vector 
+\begin_inset Formula $\boldsymbol{d}$
+\end_inset
+
+ into the column space of 
+\begin_inset Formula $\boldsymbol{G}$
+\end_inset
+
+, the coordinates are 
+\begin_inset Formula $(m_{1},...,m_{M})$
+\end_inset
+
+.
+ If the length of certain column vector 
+\begin_inset Formula $\boldsymbol{g_{i}}$
+\end_inset
+
+ is small, an error in 
+\begin_inset Formula $\boldsymbol{d}$
+\end_inset
+
+ will cause a big error in 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+.
+ The error in 
+\begin_inset Formula $\boldsymbol{d}$
+\end_inset
+
+ also tends to affect those 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+ similarly if their corresponding column vectors 
+\begin_inset Formula $\boldsymbol{g_{i}}$
+\end_inset
+
+ are near parallel.
 \end_layout
 
 \begin_layout Subsection*
@@ -1177,7 +1218,7 @@ The diagonal components of
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-G^{T}d & = & (g_{1}^{T}d,...,g_{M}^{T}d)^{T}
+\boldsymbol{G}^{T}\boldsymbol{d} & = & (\boldsymbol{g_{1}}^{T}\boldsymbol{d},...,\boldsymbol{g_{M}}^{T}\boldsymbol{d})^{T}
 \end{eqnarray*}
 
 \end_inset
@@ -1186,8 +1227,8 @@ G^{T}d & = & (g_{1}^{T}d,...,g_{M}^{T}d)^{T}
 \end_layout
 
 \begin_layout Standard
-It shows the projection of 
-\begin_inset Formula $d$
+which is the projection of 
+\begin_inset Formula $\boldsymbol{d}$
 \end_inset
 
  into the model space.
@@ -1199,20 +1240,20 @@ It shows the projection of
 
 \begin_layout Standard
 This equation implies that 
-\begin_inset Formula $Gm$
+\begin_inset Formula $\boldsymbol{Gm}$
 \end_inset
 
- is the projection of 
-\begin_inset Formula $d$
+ equals the projection of 
+\begin_inset Formula $\boldsymbol{d}$
 \end_inset
 
  in the model space.
  Thus, the least-squares solution 
-\begin_inset Formula $m$
+\begin_inset Formula $\boldsymbol{m}$
 \end_inset
 
  is the coordinate of 
-\begin_inset Formula $d$
+\begin_inset Formula $\boldsymbol{d}$
 \end_inset
 
  in the model space.
