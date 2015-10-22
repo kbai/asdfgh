@@ -6,6 +6,7 @@
 \usepackage{color}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{esint}
 
@@ -120,12 +121,12 @@ Let's assume $P(x)=3/5$, and $P(y)=1/2$.
 Suppose I get an A with $P(x)$. It doesn't affect the election at
 all, and there is still 1 in 2 odds that the next president will be
 an Republician. Therefore, to make both happen, $P(x,y)=P(x)P(y)$.
-Similary, suppose the Republician win the election with $P(y)$. It
-doesn't affect my odd to get an A, and to make both happen, $P(x,y)=P(y)P(x)$.
+Similary, suppose the Republician wins the election with $P(y)$.
+It doesn't affect my odd to get an A, and to make both happen, $P(x,y)=P(y)P(x)$.
 
-Intuitively, the rule holds because with $P(x)$, $x$happens, but
-it doesn't affect the odd that $y$happens, so I need to multiply
-$P(y)$.\\
+Intuitively, the rule holds because the two events are independent
+- one happens does not affect the other; therefore, to make both happen,
+we need to multiply $P(x)$ and $P(y)$.\\
 \\
 \textbf{\textit{Dependent}}\\
 Let
@@ -180,7 +181,7 @@ Then
 
 \begin{eqnarray*}
 E(x^{2}) & = & -\frac{\sigma}{\sqrt{2\pi}}\int_{-\infty}^{\infty}x\left[\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)\right]'dx\\
- & = & -\frac{\sigma}{\sqrt{2\pi}}\left[\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)\bigg|_{-\infty}^{\infty}-\int_{-\infty}^{\infty}\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)dx\right]\\
+ & = & -\frac{\sigma}{\sqrt{2\pi}}\left[x\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)\bigg|_{-\infty}^{\infty}-\int_{-\infty}^{\infty}\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)dx\right]\\
  & = & \frac{\sigma}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)dx\\
 \end{eqnarray*}
 
@@ -327,17 +328,32 @@ F=\frac{1}{2}(\boldsymbol{d'-g'}(\boldsymbol{m}))^{T}(\boldsymbol{d'-g}'(\boldsy
 \]
 }}
 
-the gradient: $\boldsymbol{\nabla}F=\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))$
+the gradient is: 
+\[
+\boldsymbol{\nabla}F=\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))
+\]
 
-the approximated hessian: $\boldsymbol{H}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})$
 
-So the least squares solution: $\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})^{-1}\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))$
+the approximated hessian is: 
+\[
+\boldsymbol{H}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})
+\]
+
+
+the least squares solution is: 
+\[
+\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})^{-1}\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))
+\]
+
 
 Substitute $\hat{\boldsymbol{G}'}=\boldsymbol{W}\hat{\boldsymbol{G}}$,
 $\boldsymbol{d}'=\boldsymbol{W}\boldsymbol{d}$, $\boldsymbol{g}'=\boldsymbol{W}\boldsymbol{g}$,
 $\boldsymbol{C}=\boldsymbol{W}^{T}\boldsymbol{W}$
 
-$\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))=(\hat{\boldsymbol{G}}^{T}\boldsymbol{C}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{C}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))$
+\[
+\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))=(\hat{\boldsymbol{G}}^{T}\boldsymbol{C}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{C}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))
+\]
+
 
 
 \subsection*{(d)14 points\tiny
@@ -356,7 +372,7 @@ $\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}\
 
 
 \[
-\boldsymbol{error}=[-4.99\times10^{-5},1.20\times10^{-5}-2.95\times10^{-3},3.59\times10^{-4},-2.87\times10^{-5},2.74\times10^{-6}]
+\boldsymbol{error}=\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m})=[-4.99\times10^{-5},1.20\times10^{-5}-2.95\times10^{-3},3.59\times10^{-4},-2.87\times10^{-5},2.74\times10^{-6}]^{T}
 \]
 
 
@@ -373,11 +389,12 @@ Since we put a larger weight on station 5 6 , their errors are smaller.
 
 \subsection*{(a) 5 points}
 
-Since $g_{i}$ has M elements, the maximum dimension of $G$ spanned
-by $\{g_{i},i=1...N\}$ is M. Therefore,
+Since $\boldsymbol{g_{i}}$ has M elements, the maximum dimension
+of $\boldsymbol{G}$ spanned by $\{\boldsymbol{g_{i}},i=1...N\}$
+is M. Therefore,
 
 \begin{eqnarray*}
-dim\left(R(G)\right) & \leq & M<N=dim(R^{N})
+dim\left(R(\boldsymbol{G})\right) & \leq & M<N=dim(\mathbb{R}^{N})
 \end{eqnarray*}
 
 
@@ -385,26 +402,36 @@ dim\left(R(G)\right) & \leq & M<N=dim(R^{N})
 \subsection*{(b) 10 points}
 
 \begin{eqnarray*}
-H_{ij} & = & g_{i}^{T}g_{j}
+\boldsymbol{H_{ij}} & = & \boldsymbol{g_{i}}^{T}\boldsymbol{g_{j}}
 \end{eqnarray*}
 
 
-The diagonal components of $\boldsymbol{H}$
+The diagonal elements of $\boldsymbol{H}$ are the squared lengths
+of the column vectors of $\boldsymbol{G}$, the off-diagnoal elements
+measure how much the column vectors of $\boldsymbol{G}$ project onto
+each other. Suppose we project a vector $\boldsymbol{d}$ into the
+column space of $\boldsymbol{G}$, the coordinates are $(m_{1},...,m_{M})$.
+If the length of certain column vector $\boldsymbol{g_{i}}$ is small,
+an error in $\boldsymbol{d}$ will cause a big error in $m_{i}$.
+The error in $\boldsymbol{d}$ also tends to affect those $m_{i}$
+similarly if their corresponding column vectors $\boldsymbol{g_{i}}$
+are near parallel.
 
 
 \subsection*{(c) 5 points}
 
 \begin{eqnarray*}
-G^{T}d & = & (g_{1}^{T}d,...,g_{M}^{T}d)^{T}
+\boldsymbol{G}^{T}\boldsymbol{d} & = & (\boldsymbol{g_{1}}^{T}\boldsymbol{d},...,\boldsymbol{g_{M}}^{T}\boldsymbol{d})^{T}
 \end{eqnarray*}
 
 
-It shows the projection of $d$ into the model space.
+which is the projection of $\boldsymbol{d}$ into the model space.
 
 
 \subsection*{(d) 5 points}
 
-This equation implies that $Gm$ is the projection of $d$ in the
-model space. Thus, the least-squares solution $m$ is the coordinate
-of $d$ in the model space.
+This equation implies that $\boldsymbol{Gm}$ equals the projection
+of $\boldsymbol{d}$ in the model space. Thus, the least-squares solution
+$\boldsymbol{m}$ is the coordinate of $\boldsymbol{d}$ in the model
+space.
 \end{document}

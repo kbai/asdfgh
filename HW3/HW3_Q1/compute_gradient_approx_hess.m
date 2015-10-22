@@ -1,6 +1,6 @@
-function [ Grad, Hess] = compute_gradient_approx_hess( x,y,M,residue,weigh)
+function [ Grad, Hess] = compute_gradient_approx_hess( x,y,M,residue,weight)
 
-W =diag(weigh);
+W =diag(weight);
 
 C=W'*W;
 
@@ -27,7 +27,6 @@ Hess = (Ghat')*C*Ghat;
 %this is the apprximated Hessian;
 
 
-Hess = 0.5*(Hess + Hess');
 
 end
 
