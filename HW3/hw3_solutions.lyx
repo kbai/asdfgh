@@ -1133,7 +1133,7 @@ Since
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-dim\left(R(\boldsymbol{G})\right) & \leq & M<N=dim(R^{N})
+dim\left(R(\boldsymbol{G})\right) & \leq & M<N=dim(ℝ^{N})
 \end{eqnarray*}
 
 \end_inset

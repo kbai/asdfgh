@@ -1170,7 +1170,45 @@ The diagonal elements of
 \end_inset
 
  project onto each other.
- 
+ Suppose we project a vector 
+\begin_inset Formula $\boldsymbol{d}$
+\end_inset
+
+ into the column space of 
+\begin_inset Formula $\boldsymbol{G}$
+\end_inset
+
+, the coordinates are 
+\begin_inset Formula $(m_{1},...,m_{M})$
+\end_inset
+
+.
+ If the length of certain column vector 
+\begin_inset Formula $\boldsymbol{g_{i}}$
+\end_inset
+
+ is small, an error in 
+\begin_inset Formula $\boldsymbol{d}$
+\end_inset
+
+ will cause a big error in 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+.
+ The error in 
+\begin_inset Formula $\boldsymbol{d}$
+\end_inset
+
+ also tends to affect those 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+ similarly if their corresponding column vectors 
+\begin_inset Formula $\boldsymbol{g_{i}}$
+\end_inset
+
+ are near parallel.
 \end_layout
 
 \begin_layout Subsection*
