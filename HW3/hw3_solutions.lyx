@@ -125,11 +125,11 @@ figs-within-sections
 \begin_body
 
 \begin_layout Section*
-Problem 1
+Problem 1 (graded by Yiran) - 50 points
 \end_layout
 
 \begin_layout Subsection*
-(a)
+(a) 4 points
 \end_layout
 
 \begin_layout Standard
@@ -227,8 +227,8 @@ We see that:
 
 \end_layout
 
-\begin_layout Section*
-(b)
+\begin_layout Subsection*
+(b) 8 points
 \end_layout
 
 \begin_layout Standard
@@ -376,7 +376,7 @@ Let
 \end_layout
 
 \begin_layout Standard
-This two events are not independent, because either of them happens, will
+These two events are not independent, because either of them happens, will
  affect the proability of the other.
  
 \end_layout
@@ -395,12 +395,12 @@ Let's assume
 .
 \end_layout
 
-\begin_layout Section*
-(c)
+\begin_layout Subsection*
+(c) 8 points
 \end_layout
 
 \begin_layout Subsection*
-(c.i)
+(c.i) 3 points
 \end_layout
 
 \begin_layout Standard
@@ -448,7 +448,7 @@ E(x)=0
 \end_layout
 
 \begin_layout Subsection*
-(c.ii)
+(c.ii) 5 points
 \end_layout
 
 \begin_layout Standard
@@ -527,12 +527,12 @@ E(x^{2}) & = & \frac{\sigma}{\sqrt{2\pi}}\sqrt{2\pi}\sigma=\sigma^{2}
 
 \end_layout
 
-\begin_layout Section*
-(d)
+\begin_layout Subsection*
+(d) 30 points
 \end_layout
 
 \begin_layout Subsection*
-(d.i)
+(d.i) 10 points
 \end_layout
 
 \begin_layout Standard
@@ -575,7 +575,7 @@ where
 \end_layout
 
 \begin_layout Subsection*
-(d.ii)
+(d.ii) 10 points
 \end_layout
 
 \begin_layout Standard
@@ -634,22 +634,7 @@ The constant ahead of
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\int_{-\infty}^{\infty}P(L|d_{i})dL & = & 1\\
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In (d.i)
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-\int_{-\infty}^{\infty}P(d_{i}|L)d(d_{i}) & = & 1
+\int_{-\infty}^{\infty}P(L|d_{i})dL & =\text{\int}_{-\infty}^{\infty}cP(d_{i}|L)dL & =1\\
 \end{eqnarray*}
 
 \end_inset
@@ -677,7 +662,30 @@ P(d_{i}|L) & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i}
 \end_layout
 
 \begin_layout Standard
-Compare with the origional format, we see that
+which is a summation of two normal distributions (centered at 
+\begin_inset Formula $d_{i}$
+\end_inset
+
+, and 
+\begin_inset Formula $d_{i}-1$
+\end_inset
+
+), weighted by 
+\begin_inset Formula $\frac{3}{4}$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{1}{4}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
 \int_{-\infty}^{\infty} & P(d_{i}|L)dL & =1
@@ -720,7 +728,7 @@ P(L|d_{i}) & = & P(d_{i}|L)\\
 \end_layout
 
 \begin_layout Subsection*
-(d.iii)
+(d.iii) 10 points
 \end_layout
 
 \begin_layout Standard
@@ -1122,7 +1130,7 @@ Since we put a larger weight on station 5 6 , their errors are smaller.
 \end_layout
 
 \begin_layout Section*
-(Extra Credit) Problem 3
+(Extra Credit) Problem 3 (graded by Yiran) - 25 points
 \end_layout
 
 \begin_layout Subsection*

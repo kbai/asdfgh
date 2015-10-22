@@ -125,11 +125,11 @@ figs-within-sections
 \begin_body
 
 \begin_layout Section*
-Problem 1
+Problem 1 (graded by Yiran) - 50 points
 \end_layout
 
 \begin_layout Subsection*
-(a)
+(a) 4 points
 \end_layout
 
 \begin_layout Standard
@@ -227,8 +227,8 @@ We see that:
 
 \end_layout
 
-\begin_layout Section*
-(b)
+\begin_layout Subsection*
+(b) 8 points
 \end_layout
 
 \begin_layout Standard
@@ -376,7 +376,7 @@ Let
 \end_layout
 
 \begin_layout Standard
-This two events are not independent, because either of them happens, will
+These two events are not independent, because either of them happens, will
  affect the proability of the other.
  
 \end_layout
@@ -395,12 +395,12 @@ Let's assume
 .
 \end_layout
 
-\begin_layout Section*
-(c)
+\begin_layout Subsection*
+(c) 8 points
 \end_layout
 
 \begin_layout Subsection*
-(c.i)
+(c.i) 3 points
 \end_layout
 
 \begin_layout Standard
@@ -448,7 +448,7 @@ E(x)=0
 \end_layout
 
 \begin_layout Subsection*
-(c.ii)
+(c.ii) 5 points
 \end_layout
 
 \begin_layout Standard
@@ -527,12 +527,12 @@ E(x^{2}) & = & \frac{\sigma}{\sqrt{2\pi}}\sqrt{2\pi}\sigma=\sigma^{2}
 
 \end_layout
 
-\begin_layout Section*
-(d)
+\begin_layout Subsection*
+(d) 30 points
 \end_layout
 
 \begin_layout Subsection*
-(d.i)
+(d.i) 10 points
 \end_layout
 
 \begin_layout Standard
@@ -575,7 +575,7 @@ where
 \end_layout
 
 \begin_layout Subsection*
-(d.ii)
+(d.ii) 10 points
 \end_layout
 
 \begin_layout Standard
@@ -634,22 +634,7 @@ The constant ahead of
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\int_{-\infty}^{\infty}P(L|d_{i})dL & = & 1\\
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In (d.i)
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-\int_{-\infty}^{\infty}P(d_{i}|L)d(d_{i}) & = & 1
+\int_{-\infty}^{\infty}P(L|d_{i})dL & =\text{\int}_{-\infty}^{\infty}cP(d_{i}|L)dL & =1\\
 \end{eqnarray*}
 
 \end_inset
@@ -720,7 +705,7 @@ P(L|d_{i}) & = & P(d_{i}|L)\\
 \end_layout
 
 \begin_layout Subsection*
-(d.iii)
+(d.iii) 10 points
 \end_layout
 
 \begin_layout Standard
@@ -1106,7 +1091,7 @@ Since we put a larger weight on station 5 6 , their errors are smaller.
 \end_layout
 
 \begin_layout Section*
-(Extra Credit) Problem 3
+(Extra Credit) Problem 3 (graded by Yiran) - 25 points
 \end_layout
 
 \begin_layout Subsection*
@@ -1133,7 +1118,7 @@ Since
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-dim\left(R(\boldsymbol{G})\right) & \leq & M<N=dim(R^{N})
+dim\left(R(\boldsymbol{G})\right) & \leq & M<N=dim(ℝ^{N})
 \end{eqnarray*}
 
 \end_inset
@@ -1197,10 +1182,18 @@ The diagonal elements of
 
 .
  The error in 
-\begin_inset Formula $\\b$
+\begin_inset Formula $\boldsymbol{d}$
 \end_inset
 
-will also affect two column vectors are near parallel
+ also tends to affect those 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+ similarly if their corresponding column vectors 
+\begin_inset Formula $\boldsymbol{g_{i}}$
+\end_inset
+
+ are near parallel.
 \end_layout
 
 \begin_layout Subsection*
