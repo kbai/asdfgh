@@ -1122,16 +1122,12 @@ Since we put a larger weight on station 5 6 , their errors are smaller.
 \end_layout
 
 \begin_layout Standard
-Since 
-\begin_inset Formula $\boldsymbol{g_{i}}$
-\end_inset
-
- has M elements, the maximum dimension of 
+The maximum dimension of 
 \begin_inset Formula $\boldsymbol{G}$
 \end_inset
 
  spanned by 
-\begin_inset Formula $\{\boldsymbol{g_{i}},i=1...N\}$
+\begin_inset Formula $\{\boldsymbol{g_{i}},i=1...M\}$
 \end_inset
 
  is M.
@@ -1187,7 +1183,7 @@ The diagonal elements of
 \end_inset
 
 , the coordinates are 
-\begin_inset Formula $(m_{1},...,m_{N})$
+\begin_inset Formula $(m_{1},...,m_{M})$
 \end_inset
 
 .
@@ -1226,7 +1222,7 @@ The diagonal elements of
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\boldsymbol{G}^{T}\boldsymbol{d} & = & (\boldsymbol{g_{1}}^{T}\boldsymbol{d},...,\boldsymbol{g_{N}}^{T}\boldsymbol{d})^{T}
+\boldsymbol{G}^{T}\boldsymbol{d} & = & (\boldsymbol{g_{1}}^{T}\boldsymbol{d},...,\boldsymbol{g_{M}}^{T}\boldsymbol{d})^{T}
 \end{eqnarray*}
 
 \end_inset
