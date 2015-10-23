@@ -184,8 +184,8 @@ Then,
 \begin_inset Formula $P(y|x)$
 \end_inset
 
- is the probability that known the student is female, she is taller than
- 170 cm, which is equal to 
+ is the probability that the student is taller than 170 cm, given it is
+ known the student is female, which is equal to 
 \begin_inset Formula $2/8=0.25$
 \end_inset
 
@@ -208,8 +208,8 @@ Then,
 \begin_inset Formula $P(x|y)$
 \end_inset
 
- is the probability that known the student is taller than 170 cm, the student
- is female, which is equal to 
+ is the probability that the student is female, given it is known the student
+ is taller than 170 cm, which is equal to 
 \begin_inset Formula $2/(2+8)=0.2$
 \end_inset
 
@@ -221,7 +221,7 @@ We see that:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $P(x,y)=P(x|y)P(y)=P(y|x)P(x)$
+\begin_inset Formula $P(x,y)=P(y|x)P(x)=P(x|y)P(y)$
 \end_inset
 
 
@@ -265,11 +265,11 @@ Let
 \end_inset
 
 : The next president of the U.S.
- is an Republician.
+ is Republican.
 \end_layout
 
 \begin_layout Standard
-These two events are independent, because 
+These two events are independent, because if 
 \begin_inset Formula $x$
 \end_inset
 
@@ -277,7 +277,7 @@ These two events are independent, because
 \begin_inset Formula $y$
 \end_inset
 
-, vice versa.
+, and vice versa.
 \end_layout
 
 \begin_layout Standard
@@ -300,13 +300,13 @@ Suppose I get an A with
 
 .
  It doesn't affect the election at all, and there is still 1 in 2 odds that
- the next president will be an Republician.
+ the next president will be Republican.
  Therefore, to make both happen, 
 \begin_inset Formula $P(x,y)=P(x)P(y)$
 \end_inset
 
 .
- Similary, suppose the Republician wins the election with 
+ Similaly, suppose the Republican wins the election with 
 \begin_inset Formula $P(y)$
 \end_inset
 
@@ -320,8 +320,8 @@ Suppose I get an A with
 
 \begin_layout Standard
 Intuitively, the rule holds because the two events are independent - one
- happens does not affect the other; therefore, to make both happen, we need
- to multiply 
+ happening does not affect the other; therefore, to make both happen, we
+ need to multiply 
 \begin_inset Formula $P(x)$
 \end_inset
 
@@ -364,7 +364,7 @@ Let
 \end_inset
 
 : The next president of the U.S.
- is an Democratic.
+ is Democratic.
 \end_layout
 
 \begin_layout Standard
@@ -372,12 +372,12 @@ Let
 \end_inset
 
 : The next president of the U.S.
- is an Republician.
+ is Republican.
 \end_layout
 
 \begin_layout Standard
-These two events are not independent, because either of them happens, will
- affect the proability of the other.
+These two events are not independent, because if either of them happens,
+ it will affect the proability of the other.
  
 \end_layout
 
@@ -387,8 +387,8 @@ Let's assume
 \end_inset
 
 .
- Because it's impossible that the next president is both an Democratic and
- an Republician, 
+ Because it's impossible that the next president is both Democratic and
+ Republican, 
 \begin_inset Formula $P(x,y)=0\neq P(x)P(y)$
 \end_inset
 
@@ -540,7 +540,7 @@ E(x^{2}) & = & \frac{\sigma}{\sqrt{2\pi}}\sqrt{2\pi}\sigma=\sigma^{2}
 \begin{eqnarray*}
 P(d_{i}|L) & = & \frac{3}{4}\mathcal{\mathcal{N}}(L,\sigma)+\frac{1}{4}\mathcal{N}(L+1,\sigma)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)\\
- & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-L)^{2}\right)+\frac{3}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-(L+1))^{2}\right)
+ & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-L)^{2}\right)+\frac{5}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-(L+1))^{2}\right)
 \end{eqnarray*}
 
 \end_inset
@@ -585,7 +585,7 @@ From Bayes' theorem,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(L|d_{i}) & = & \frac{P(d_{i}|L)P(L)}{P(d_{i})}\\
+P(L|d_{i}) & \propto & P(d_{i}|L)P(L)\\
  & \propto & P(d_{i}|L)=\frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)
 \end{eqnarray*}
 
@@ -599,36 +599,31 @@ where we assume the prior distribution
 \begin_inset Formula $P(L)$
 \end_inset
 
- is uniform, and 
-\begin_inset Formula $P(d_{i})$
-\end_inset
-
- is a constant (but different for different 
-\begin_inset Formula $d_{i}$
-\end_inset
-
-).
+ is uniform.
  
 \end_layout
 
 \begin_layout Standard
-The constant ahead of 
-\begin_inset Formula $P(d_{i}|L)$
+Let
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+P(L|d_{i}) & = & cP(d_{i}|L)
+\end{eqnarray*}
+
 \end_inset
 
- (denoted as 
-\begin_inset Quotes eld
-\end_inset
 
+\end_layout
 
+\begin_layout Standard
+where 
 \begin_inset Formula $c$
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
-) is determined by
+ is a constant and is determined by
 \end_layout
 
 \begin_layout Standard
@@ -643,42 +638,20 @@ The constant ahead of
 \end_layout
 
 \begin_layout Standard
-We can re-write 
-\begin_inset Formula $P(d_{i}|L)$
-\end_inset
-
- as
+Since
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(d_{i}|L) & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i})^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-(d_{i}-1))^{2}}{2\sigma^{2}}\right)
+P(d_{i}|L) & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)\\
+ & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i})^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-(d_{i}-1))^{2}}{2\sigma^{2}}\right)\\
+ & = & \frac{3}{4}\mathcal{N}(d_{i},\sigma)+\frac{1}{4}\mathcal{N}(d_{i}-1,\sigma)
 \end{eqnarray*}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-which is a summation of two normal distributions (centered at 
-\begin_inset Formula $d_{i}$
-\end_inset
-
-, and 
-\begin_inset Formula $d_{i}-1$
-\end_inset
-
-), weighted by 
-\begin_inset Formula $\frac{3}{4}$
-\end_inset
-
- and 
-\begin_inset Formula $\frac{1}{4}$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -707,9 +680,9 @@ Therefore, the constant
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(L|d_{i}) & = & P(d_{i}|L)\\
+P(L|d_{i}) & = & cP(d_{i}|L)=P(d_{i}|L)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i})^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-(d_{i}-1))^{2}}{2\sigma^{2}}\right)\\
- & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(L-d_{i})^{2}\right)+\frac{3}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(L-(d_{i}-1))^{2}\right)
+ & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(L-d_{i})^{2}\right)+\frac{5}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(L-(d_{i}-1))^{2}\right)
 \end{eqnarray*}
 
 \end_inset
@@ -732,15 +705,15 @@ P(L|d_{i}) & = & P(d_{i}|L)\\
 \end_layout
 
 \begin_layout Standard
-We can use the distribution of 
-\begin_inset Formula $L$
-\end_inset
+From Bayes' theorem,
+\end_layout
 
- from the first measurement as prior distribution to compute a posterior
- distribution after the second measurement
+\begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(L|d_{1}=8.3,d_{2}=9.1) & \propto & P(d_{2}=9.1|L)P(L|d_{1}=8.3)\\
+P(L|\{d_{1}=8.3,d_{2}=9.1\}) & \propto & P(\{d_{1}=8.3,d_{2}=9.1\}|L)P(L)\\
+ & \propto & P(\{d_{1}=8.3,d_{2}=9.1\}|L)\\
+ & = & P(d_{1}|L)P(d_{2}|L)
 \end{eqnarray*}
 
 \end_inset
@@ -749,8 +722,17 @@ P(L|d_{1}=8.3,d_{2}=9.1) & \propto & P(d_{2}=9.1|L)P(L|d_{1}=8.3)\\
 \end_layout
 
 \begin_layout Standard
+We can use the distribution of 
+\begin_inset Formula $L$
+\end_inset
+
+ from the first measurement as prior distribution to compute a posterior
+ distribution after the second measuremen
+\end_layout
+
+\begin_layout Standard
 Since we only care about the maximum of the LHS, instead of its value; for
- the RHS, absortbing the 
+ the RHS, absorbing the 
 \family roman
 \series medium
 \shape up
@@ -784,13 +766,31 @@ Since we only care about the maximum of the LHS, instead of its value; for
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(L|d_{1}=8.3,d_{2}=9.1) & \propto & \left[3\exp\left(-50(9.1-L)^{2}\right)+\exp\left(-50(8.1-L)^{2}\right)\right]\\
- &  & \cdot\left[3\exp\left(-50(L-8.3)^{2}\right)+\exp\left(-50(L-7.3))^{2}\right)\right]
+P(L|\{d_{1}=8.3,d_{2}=9.1\}) & \propto & \left[3\exp\left(-50(8.3-L)^{2}\right)+\exp\left(-50(7.3-L)^{2}\right)\right]\\
+ &  & \cdot\left[3\exp\left(-50(9.1-L)^{2}\right)+\exp\left(-50(8.1-L))^{2}\right)\right]
 \end{eqnarray*}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Use MATLAB to plot the function, and find its maximum for 
+\begin_inset Formula $L=[6:0.01:10]$
+\end_inset
+
+.
+ We see that the best estimate of 
+\begin_inset Formula $L$
+\end_inset
+
+ is 
+\begin_inset Formula $8.2$
+\end_inset
+
+ cm.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -804,20 +804,7 @@ P(L|d_{1}=8.3,d_{2}=9.1) & \propto & \left[3\exp\left(-50(9.1-L)^{2}\right)+\exp
 \end_layout
 
 \begin_layout Standard
-From the plot, we see that the best estimate of 
-\begin_inset Formula $L$
-\end_inset
-
- is 
-\begin_inset Formula $8.2$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-Because the two measurement differs 
+Because the two measurements differ 
 \begin_inset Formula $\approx1$
 \end_inset
 
@@ -1122,16 +1109,12 @@ Since we put a larger weight on station 5 6 , their errors are smaller.
 \end_layout
 
 \begin_layout Standard
-Since 
-\begin_inset Formula $\boldsymbol{g_{i}}$
-\end_inset
-
- has M elements, the maximum dimension of 
+The maximum dimension of 
 \begin_inset Formula $\boldsymbol{G}$
 \end_inset
 
  spanned by 
-\begin_inset Formula $\{\boldsymbol{g_{i}},i=1...N\}$
+\begin_inset Formula $\{\boldsymbol{g_{i}},i=1...M\}$
 \end_inset
 
  is M.
@@ -1187,7 +1170,7 @@ The diagonal elements of
 \end_inset
 
 , the coordinates are 
-\begin_inset Formula $(m_{1},...,m_{N})$
+\begin_inset Formula $(m_{1},...,m_{M})$
 \end_inset
 
 .
@@ -1226,7 +1209,7 @@ The diagonal elements of
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\boldsymbol{G}^{T}\boldsymbol{d} & = & (\boldsymbol{g_{1}}^{T}\boldsymbol{d},...,\boldsymbol{g_{N}}^{T}\boldsymbol{d})^{T}
+\boldsymbol{G}^{T}\boldsymbol{d} & = & (\boldsymbol{g_{1}}^{T}\boldsymbol{d},...,\boldsymbol{g_{M}}^{T}\boldsymbol{d})^{T}
 \end{eqnarray*}
 
 \end_inset
