@@ -1,6 +1,6 @@
 %% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
-\documentclass[12pt,english]{article}
+\documentclass[12pt,canadien,english]{article}
 \usepackage[T1]{fontenc}
 \usepackage[latin9]{inputenc}
 \usepackage{color}
@@ -91,17 +91,17 @@ taller than 170 cm, which is equal to $2/20=0.1$.
 $P(x)$ is the probability that the student is female, which is equal
 to $8/20=0.4$.
 
-$P(y|x)$ is the probability that known the student is female, she
-is taller than 170 cm, which is equal to $2/8=0.25$.
+$P(y|x)$ is the probability that the student is taller than 170 cm,
+given it is known the student is female, which is equal to $2/8=0.25$.
 
 $P(y)$ is the probability that the student is taller than 170 cm,
 which is equal to $(2+8)/20=0.5$.
 
-$P(x|y)$ is the probability that known the student is taller than
-170 cm, the student is female, which is equal to $2/(2+8)=0.2$.\\
+$P(x|y)$ is the probability that the student is female, given it
+is known the student is taller than 170 cm, which is equal to $2/(2+8)=0.2$.\\
 We see that:
 
-$P(x,y)=P(x|y)P(y)=P(y|x)P(x)$
+$P(x,y)=P(y|x)P(x)=P(x|y)P(y)$
 
 
 \subsection*{(b) 8 points}
@@ -111,35 +111,35 @@ Let
 
 $x:$ I get an A for Ge/ESE118.
 
-$y$: The next president of the U.S. is an Republician.
+$y$: The next president of the U.S. is Republican.
 
-This two events are independent, because $x$ happens, does not affect
-the probability of $y$, vice versa.
+These two events are independent, because if $x$ happens, does not
+affect the probability of $y$, and vice versa.
 
 Let's assume $P(x)=3/5$, and $P(y)=1/2$. 
 
 Suppose I get an A with $P(x)$. It doesn't affect the election at
 all, and there is still 1 in 2 odds that the next president will be
-an Republician. Therefore, to make both happen, $P(x,y)=P(x)P(y)$.
-Similary, suppose the Republician wins the election with $P(y)$.
-It doesn't affect my odd to get an A, and to make both happen, $P(x,y)=P(y)P(x)$.
+Republican. Therefore, to make both happen, $P(x,y)=P(x)P(y)$. Similaly,
+suppose the Republican wins the election with $P(y)$. It doesn't
+affect my odd to get an A, and to make both happen, $P(x,y)=P(y)P(x)$.
 
 Intuitively, the rule holds because the two events are independent
-- one happens does not affect the other; therefore, to make both happen,
-we need to multiply $P(x)$ and $P(y)$.\\
+- one happening does not affect the other; therefore, to make both
+happen, we need to multiply $P(x)$ and $P(y)$.\\
 \\
 \textbf{\textit{Dependent}}\\
 Let
 
-$x$: The next president of the U.S. is an Democratic.
+$x$: The next president of the U.S. is Democratic.
 
-$y$: The next president of the U.S. is an Republician.
+$y$: The next president of the U.S. is Republican.
 
-These two events are not independent, because either of them happens,
-will affect the proability of the other. 
+These two events are not independent, because if either of them happens,
+it will affect the proability of the other. 
 
 Let's assume $P(x)=P(y)=\frac{1}{2}$. Because it's impossible that
-the next president is both an Democratic and an Republician, $P(x,y)=0\neq P(x)P(y)$.
+the next president is both Democratic and Republican, $P(x,y)=0\neq P(x)P(y)$.
 
 
 \subsection*{(c) 8 points}
@@ -211,7 +211,7 @@ E(x^{2}) & = & \frac{\sigma}{\sqrt{2\pi}}\sqrt{2\pi}\sigma=\sigma^{2}
 \begin{eqnarray*}
 P(d_{i}|L) & = & \frac{3}{4}\mathcal{\mathcal{N}}(L,\sigma)+\frac{1}{4}\mathcal{N}(L+1,\sigma)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)\\
- & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-L)^{2}\right)+\frac{3}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-(L+1))^{2}\right)
+ & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-L)^{2}\right)+\frac{5}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-(L+1))^{2}\right)
 \end{eqnarray*}
 
 
@@ -225,31 +225,35 @@ where $\sigma=0.1$ cm, and $L$, $d_{i}$ are in cm.
 From Bayes' theorem,
 
 \begin{eqnarray*}
-P(L|d_{i}) & = & \frac{P(d_{i}|L)P(L)}{P(d_{i})}\\
+P(L|d_{i}) & \propto & P(d_{i}|L)P(L)\\
  & \propto & P(d_{i}|L)=\frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)
 \end{eqnarray*}
 
 
-Where we assume the prior distribution $P(L)$ is uniform, and $P(d_{i})$
-is a constant (but different for different $d_{i}$). 
+where we assume the prior distribution $P(L)$ is uniform. 
 
-The constant ahead of $P(d_{i}|L)$ (denoted as ``$c$'') is determined
-by
+Let
+
+\begin{eqnarray*}
+P(L|d_{i}) & = & cP(d_{i}|L)
+\end{eqnarray*}
+
+
+where $c$ is a constant and is determined by
 
 \begin{eqnarray*}
 \int_{-\infty}^{\infty}P(L|d_{i})dL & =\text{\ensuremath{\int}}_{-\infty}^{\infty}cP(d_{i}|L)dL & =1\\
 \end{eqnarray*}
 
 
-We can re-write $P(d_{i}|L)$ as
+Since
 
 \begin{eqnarray*}
-P(d_{i}|L) & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i})^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-(d_{i}-1))^{2}}{2\sigma^{2}}\right)
+P(d_{i}|L) & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)\\
+ & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i})^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-(d_{i}-1))^{2}}{2\sigma^{2}}\right)\\
+ & = & \frac{3}{4}\mathcal{N}(d_{i},\sigma)+\frac{1}{4}\mathcal{N}(d_{i}-1,\sigma)
 \end{eqnarray*}
 
-
-which is a summation of two normal distributions (centered at $d_{i}$,
-and $d_{i}-1$), weighted by $\frac{3}{4}$ and $\frac{1}{4}$.
 
 Then
 
@@ -261,9 +265,9 @@ Then
 Therefore, the constant $c=1$ 
 
 \begin{eqnarray*}
-P(L|d_{i}) & = & P(d_{i}|L)\\
+P(L|d_{i}) & = & cP(d_{i}|L)=P(d_{i}|L)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i})^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-(d_{i}-1))^{2}}{2\sigma^{2}}\right)\\
- & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(L-d_{i})^{2}\right)+\frac{3}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(L-(d_{i}-1))^{2}\right)
+ & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(L-d_{i})^{2}\right)+\frac{5}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(L-(d_{i}-1))^{2}\right)
 \end{eqnarray*}
 
 
@@ -272,29 +276,36 @@ P(L|d_{i}) & = & P(d_{i}|L)\\
 
 \subsection*{(d.iii) 10 points}
 
-We can use the distribution of $L$ from the first measurement as
-prior distribution to compute a posterior distribution after the second
-measurement
+From Bayes' theorem,
+
 \begin{eqnarray*}
-P(L|d_{1}=8.3,d_{2}=9.1) & \propto & P(d_{2}=9.1|L)P(L|d_{1}=8.3)\\
+P(L|\{d_{1}=8.3,d_{2}=9.1\}) & \propto & P(\{d_{1}=8.3,d_{2}=9.1\}|L)P(L)\\
+ & \propto & P(\{d_{1}=8.3,d_{2}=9.1\}|L)\\
+ & = & P(d_{1}|L)P(d_{2}|L)
 \end{eqnarray*}
 
 
+We can use the distribution of $L$ from the first measurement as
+prior distribution to compute a posterior distribution after the second
+measuremen
+
 Since we only care about the maximum of the LHS, instead of its value;
-for the RHS, absortbing the $\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}$
+for the RHS, absorbing the $\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}$
 terms into the constant
 
 \begin{eqnarray*}
-P(L|d_{1}=8.3,d_{2}=9.1) & \propto & \left[3\exp\left(-50(9.1-L)^{2}\right)+\exp\left(-50(8.1-L)^{2}\right)\right]\\
- &  & \cdot\left[3\exp\left(-50(L-8.3)^{2}\right)+\exp\left(-50(L-7.3))^{2}\right)\right]
+P(L|\{d_{1}=8.3,d_{2}=9.1\}) & \propto & \left[3\exp\left(-50(8.3-L)^{2}\right)+\exp\left(-50(7.3-L)^{2}\right)\right]\\
+ &  & \cdot\left[3\exp\left(-50(9.1-L)^{2}\right)+\exp\left(-50(8.1-L))^{2}\right)\right]
 \end{eqnarray*}
 
 
+Use MATLAB to plot the function, and find its maximum for $L=[6:0.01:10]$.
+We see that the best estimate of $L$ is $8.2$ cm. It's not an approximate
+number, since the accuracy is to $0.01$ cm.
+
 \includegraphics[scale=0.8]{p1_figures/d_iii}
 
-From the plot, we see that the best estimate of $L$ is $8.2$. 
-
-Because the two measurement differs $\approx1$, it's likely that
+Because the two measurements differ $\approx1$, it's likely that
 in the second measurement, the one quarter chance of additional 1
 cm happens. After the 1 cm correction, the second measurement should
 be 8.1. The mean of 8.3 and 8.1 is 8.2, which is our estimation through
@@ -308,34 +319,162 @@ the analysis above.
 
 \subsection*{(a)12 points}
 
-$P(\boldsymbol{m})\propto e^{-F(\boldsymbol{m})}$where $F(\boldsymbol{m})=\sum\frac{(d_{k}-g_{k}(\boldsymbol{m}))^{2}}{2\sigma_{k}^{2}}$ 
+According to Bayes' Theorem:
+
+\[
+P(\boldsymbol{m}|d)\propto P(d|\boldsymbol{m})P(\boldsymbol{m})
+\]
+ 
+
+we assume a uniform prior distribution $P(\boldsymbol{m})$ equals
+constant.
+
+\[
+P(\boldsymbol{m}|d)\propto P(d|\boldsymbol{m})P(\boldsymbol{m})
+\]
+
+
+\[
+P(\boldsymbol{m}|d_{1},d_{2},...,d_{n})\propto P(d_{1},d_{2},...,d_{n}|\boldsymbol{m})=P(d_{1}|\boldsymbol{m})P(d_{2}|\boldsymbol{m})P(d_{3}|\boldsymbol{m})...P(d_{n}|\boldsymbol{m})
+\]
+
+
+\[
+P(d_{k}|\boldsymbol{m})=e^{-\frac{(d_{k}-g_{k}(\boldsymbol{m}))^{2}}{2\sigma_{k}^{2}}}
+\]
+
+
+So we multiply these terms together:
+
+$P(\boldsymbol{m}|\boldsymbol{d})\propto e^{-F(\boldsymbol{m})}$
+where $F(\boldsymbol{m})=\sum\frac{(d_{k}-g_{k}(\boldsymbol{m}))^{2}}{2\sigma_{k}^{2}}$
 
 
 \subsection*{(b)12 points}
 
 Since $d'_{k}=d_{k}/\sigma_{k}$, the relation between $\boldsymbol{d}'$
 and $\boldsymbol{d}$ can be written in matrix form $\boldsymbol{d}'=\boldsymbol{W}\boldsymbol{d}$
-where $W_{ij}=\delta_{ij}\frac{1}{\sigma_{j}}$ ($\delta_{ij}=1$
-if $i=j$ , $\delta_{ij}=0$ if $i\neq j$).
+where 
 
+$\boldsymbol{W}=\begin{bmatrix}\frac{1}{\sigma_{1}}\\
+ & \frac{1}{\sigma_{2}}\\
+ &  & \frac{1}{\sigma_{3}}\\
+ &  &  & ...\\
+ &  &  &  & \frac{1}{\sigma_{k}}
+\end{bmatrix}$ and $\boldsymbol{W}\boldsymbol{d=}\begin{bmatrix}\frac{1}{\sigma_{1}}\\
+ & \frac{1}{\sigma_{2}}\\
+ &  & \frac{1}{\sigma_{3}}\\
+ &  &  & ...\\
+ &  &  &  & \frac{1}{\sigma_{k}}
+\end{bmatrix}\begin{bmatrix}d_{1}\\
+d_{2}\\
+d_{3}\\
+...\\
+d_{k}
+\end{bmatrix}=\begin{bmatrix}\frac{d_{1}}{\sigma_{1}}\\
+\frac{d_{2}}{\sigma_{2}}\\
+\frac{d_{3}}{\sigma_{3}}\\
+...\\
+\frac{d_{k}}{\sigma_{k}}
+\end{bmatrix}$
 
-\subsection*{(c)12 points\textcolor{black}{
+Similarly, we have $\boldsymbol{g}'=\boldsymbol{W}\boldsymbol{g}$
+since 
+
 \[
-F=\frac{1}{2}(\boldsymbol{d'-g'}(\boldsymbol{m}))^{T}(\boldsymbol{d'-g}'(\boldsymbol{m}))
+\boldsymbol{W}\boldsymbol{g=}\begin{bmatrix}\frac{1}{\sigma_{1}}\\
+ & \frac{1}{\sigma_{2}}\\
+ &  & \frac{1}{\sigma_{3}}\\
+ &  &  & ...\\
+ &  &  &  & \frac{1}{\sigma_{k}}
+\end{bmatrix}\begin{bmatrix}g_{1}\\
+g_{2}\\
+g_{3}\\
+...\\
+g_{k}
+\end{bmatrix}=\begin{bmatrix}\frac{g_{1}}{\sigma_{1}}\\
+\frac{g_{2}}{\sigma_{2}}\\
+\frac{g_{3}}{\sigma_{3}}\\
+...\\
+\frac{g_{k}}{\sigma_{k}}
+\end{bmatrix}
 \]
-}}
 
-the gradient: $\boldsymbol{\nabla}F=\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))$
 
-the approximated hessian: $\boldsymbol{H}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})$
 
-So the least squares solution: $\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})^{-1}\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))$
+\subsection*{(c)12 points\foreignlanguage{canadien}{\textcolor{black}{\normalsize{}
+\[
+F=\frac{1}{2}\sum(d'_{k}-g'_{k}(\boldsymbol{m}))^{2}=(\boldsymbol{d'-g'}(\boldsymbol{m}))^{T}(\boldsymbol{d'-g}'(\boldsymbol{m}))
+\]
+}}}
+
+the gradient: 
+\[
+\boldsymbol{\nabla}F=\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))
+\]
+
+
+the approximate Hessian: 
+\[
+\boldsymbol{H}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})
+\]
+
+
+So the least squares solution: 
+\[
+\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})^{-1}\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))
+\]
+
+
+\[
+\boldsymbol{m}=\boldsymbol{m}_{0}+\Delta\boldsymbol{m}
+\]
+
+
+since 
+\[
+\hat{G}'_{jl}=\frac{\partial g'_{j}}{\partial m_{l}}=\frac{1}{\sigma_{j}}\frac{\partial g{}_{j}}{\partial m_{l}}=\frac{1}{\sigma_{j}}\hat{G}{}_{jl}
+\]
+
+
+$\begin{bmatrix}\frac{1}{\sigma_{1}}\\
+ & \frac{1}{\sigma_{2}}\\
+ &  & \frac{1}{\sigma_{3}}\\
+ &  &  & ...\\
+ &  &  &  & \frac{1}{\sigma_{k}}
+\end{bmatrix}\begin{bmatrix}\frac{\partial g{}_{1}}{\partial m_{1}} & \frac{\partial g{}_{1}}{\partial m_{2}} & ... & \frac{\partial g{}_{1}}{\partial m_{k}}\\
+\frac{\partial g{}_{2}}{\partial m_{1}} & \frac{\partial g{}_{2}}{\partial m_{2}} & ... & \frac{\partial g{}_{2}}{\partial m_{k}}\\
+\frac{\partial g{}_{3}}{\partial m_{1}} & \frac{\partial g{}_{3}}{\partial m_{2}} & ... & \frac{\partial g{}_{3}}{\partial m_{k}}\\
+\frac{\partial g{}_{4}}{\partial m_{1}} & \frac{\partial g{}_{4}}{\partial m_{2}} & ... & \frac{\partial g{}_{4}}{\partial m_{k}}\\
+... & ... & ... & ...\\
+\frac{\partial g{}_{n}}{\partial m_{1}} & \frac{\partial g{}_{n}}{\partial m_{2}} & ... & \frac{\partial g{}_{n}}{\partial m_{k}}
+\end{bmatrix}=\begin{bmatrix}\frac{1}{\sigma_{1}}\frac{\partial g{}_{1}}{\partial m_{1}} & \frac{1}{\sigma_{1}}\frac{\partial g{}_{1}}{\partial m_{2}} & ... & \frac{1}{\sigma_{1}}\frac{\partial g{}_{1}}{\partial m_{k}}\\
+\frac{1}{\sigma_{2}}\frac{\partial g{}_{2}}{\partial m_{1}} & \frac{1}{\sigma_{2}}\frac{\partial g{}_{2}}{\partial m_{2}} & ... & \frac{1}{\sigma_{2}}\frac{\partial g{}_{2}}{\partial m_{k}}\\
+\frac{1}{\sigma_{3}}\frac{\partial g{}_{3}}{\partial m_{1}} & \frac{1}{\sigma_{3}}\frac{\partial g{}_{3}}{\partial m_{2}} & ... & \frac{1}{\sigma_{3}}\frac{\partial g{}_{3}}{\partial m_{k}}\\
+\frac{1}{\sigma_{4}}\frac{\partial g{}_{4}}{\partial m_{1}} & \frac{1}{\sigma_{4}}\frac{\partial g{}_{4}}{\partial m_{2}} & ... & \frac{1}{\sigma_{4}}\frac{\partial g{}_{4}}{\partial m_{k}}\\
+... & ... & ... & ...\\
+\frac{1}{\sigma_{n}}\frac{\partial g{}_{n}}{\partial m_{1}} & \frac{1}{\sigma_{n}}\frac{\partial g{}_{n}}{\partial m_{2}} & ... & \frac{1}{\sigma_{n}}\frac{\partial g{}_{n}}{\partial m_{k}}
+\end{bmatrix}=\begin{bmatrix}\frac{\partial g'{}_{1}}{\partial m_{1}} & \frac{\partial g'{}_{1}}{\partial m_{2}} & ... & \frac{\partial g'{}_{1}}{\partial m_{k}}\\
+\frac{\partial g'_{2}}{\partial m_{1}} & \frac{\partial g'_{2}}{\partial m_{2}} & ... & \frac{\partial g'_{2}}{\partial m_{k}}\\
+\frac{\partial g'_{3}}{\partial m_{1}} & \frac{\partial g'{}_{3}}{\partial m_{2}} & ... & \frac{\partial g'{}_{3}}{\partial m_{k}}\\
+\frac{\partial'g{}_{4}}{\partial m_{1}} & \frac{\partial'g{}_{4}}{\partial m_{2}} & ... & \frac{\partial g'_{4}}{\partial m_{k}}\\
+... & ... & ... & ...\\
+\frac{\partial'g{}_{n}}{\partial m_{1}} & \frac{\partial'g{}_{n}}{\partial m_{2}} & ... & \frac{\partial'g{}_{n}}{\partial m_{k}}
+\end{bmatrix}$
+
+so 
+\[
+\hat{\boldsymbol{G}}'=\boldsymbol{W}\hat{\boldsymbol{G}}'
+\]
+
 
 Substitute $\hat{\boldsymbol{G}'}=\boldsymbol{W}\hat{\boldsymbol{G}}$,
-$\boldsymbol{d}'=\boldsymbol{W}\boldsymbol{d}$, $\boldsymbol{g}'=\boldsymbol{W}\boldsymbol{g}$,
-$\boldsymbol{C}=\boldsymbol{W}^{T}\boldsymbol{W}$
+$\boldsymbol{d}'=\boldsymbol{W}\boldsymbol{d}$, $\boldsymbol{g}'=\boldsymbol{W}\boldsymbol{g}$, 
 
-$\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))=(\hat{\boldsymbol{G}}^{T}\boldsymbol{C}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{C}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))$
+\[
+\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))
+\]
+
 
 
 \subsection*{(d)14 points\tiny
@@ -343,7 +482,7 @@ $\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}\
 \normalsize\tiny
 \lstinputlisting{./HW3_Q1/nonlinear_solver.m}
 \normalsize\tiny
-\lstinputlisting{./HW3_Q1/compute_residue.m}
+\lstinputlisting{./HW3_Q1/compute_misfit.m}
 \normalsize\tiny
 \lstinputlisting{./HW3_Q1/HW3_Q1.m}
 \normalsize}
@@ -371,8 +510,7 @@ Since we put a larger weight on station 5 6 , their errors are smaller.
 
 \subsection*{(a) 5 points}
 
-Since $\boldsymbol{g_{i}}$ has M elements, the maximum dimension
-of $\boldsymbol{G}$ spanned by $\{\boldsymbol{g_{i}},i=1...N\}$
+The maximum dimension of $\boldsymbol{G}$ spanned by $\{\boldsymbol{g_{i}},i=1...M\}$
 is M. Therefore,
 
 \begin{eqnarray*}
@@ -391,13 +529,7 @@ dim\left(R(\boldsymbol{G})\right) & \leq & M<N=dim(\mathbb{R}^{N})
 The diagonal elements of $\boldsymbol{H}$ are the squared lengths
 of the column vectors of $\boldsymbol{G}$, the off-diagnoal elements
 measure how much the column vectors of $\boldsymbol{G}$ project onto
-each other. Suppose we project a vector $\boldsymbol{d}$ into the
-column space of $\boldsymbol{G}$, the coordinates are $(m_{1},...,m_{M})$.
-If the length of certain column vector $\boldsymbol{g_{i}}$ is small,
-an error in $\boldsymbol{d}$ will cause a big error in $m_{i}$.
-The error in $\boldsymbol{d}$ also tends to affect those $m_{i}$
-similarly if their corresponding column vectors $\boldsymbol{g_{i}}$
-are near parallel.
+each other. 
 
 
 \subsection*{(c) 5 points}
@@ -408,6 +540,14 @@ are near parallel.
 
 
 which is the projection of $\boldsymbol{d}$ into the model space.
+
+Let's continue the discussions in (b). Suppose we project a vector
+$\boldsymbol{d}$ into the column space of $\boldsymbol{G}$, the
+coordinates are $(m_{1},...,m_{M})$. If the length of certain column
+vector $\boldsymbol{g_{i}}$ is small, an error in $\boldsymbol{d}$
+will cause a big error in $m_{i}$. The error in $\boldsymbol{d}$
+also tends to affect those $m_{i}$ similarly if their corresponding
+column vectors $\boldsymbol{g_{i}}$ are near parallel.
 
 
 \subsection*{(d) 5 points}

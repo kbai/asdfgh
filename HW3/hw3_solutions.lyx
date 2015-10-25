@@ -835,14 +835,74 @@ Problem 2 (graded by Kangchen) - 50 points
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $P(\boldsymbol{m})\propto e^{-F(\boldsymbol{m})}$
-\end_inset
+According to Bayes' Theorem:
+\end_layout
 
-where 
-\begin_inset Formula $F(\boldsymbol{m})=\sum\frac{(d_{k}-g_{k}(\boldsymbol{m}))^{2}}{2\sigma_{k}^{2}}$
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(\boldsymbol{m}|d)\propto P(d|\boldsymbol{m})P(\boldsymbol{m})
+\]
+
 \end_inset
 
  
+\end_layout
+
+\begin_layout Standard
+we assume a uniform prior distribution 
+\begin_inset Formula $P(\boldsymbol{m})$
+\end_inset
+
+ equals constant.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(\boldsymbol{m}|d)\propto P(d|\boldsymbol{m})P(\boldsymbol{m})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(\boldsymbol{m}|d_{1},d_{2},...,d_{n})\propto P(d_{1},d_{2},...,d_{n}|\boldsymbol{m})=P(d_{1}|\boldsymbol{m})P(d_{2}|\boldsymbol{m})P(d_{3}|\boldsymbol{m})...P(d_{n}|\boldsymbol{m})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(d_{k}|\boldsymbol{m})=e^{-\frac{(d_{k}-g_{k}(\boldsymbol{m}))^{2}}{2\sigma_{k}^{2}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we multiply these terms together:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(\boldsymbol{m}|\boldsymbol{d})\propto e^{-F(\boldsymbol{m})}$
+\end_inset
+
+ where 
+\begin_inset Formula $F(\boldsymbol{m})=\sum\frac{(d_{k}-g_{k}(\boldsymbol{m}))^{2}}{2\sigma_{k}^{2}}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -867,35 +927,82 @@ Since
 \end_inset
 
  where 
-\begin_inset Formula $W_{ij}=\delta_{ij}\frac{1}{\sigma_{j}}$
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\boldsymbol{W}=\begin{bmatrix}\frac{1}{\sigma_{1}}\\
+ & \frac{1}{\sigma_{2}}\\
+ &  & \frac{1}{\sigma_{3}}\\
+ &  &  & ...\\
+ &  &  &  & \frac{1}{\sigma_{k}}
+\end{bmatrix}$
 \end_inset
 
- (
-\begin_inset Formula $\delta_{ij}=1$
+ and 
+\begin_inset Formula $\boldsymbol{W}\boldsymbol{d=}\begin{bmatrix}\frac{1}{\sigma_{1}}\\
+ & \frac{1}{\sigma_{2}}\\
+ &  & \frac{1}{\sigma_{3}}\\
+ &  &  & ...\\
+ &  &  &  & \frac{1}{\sigma_{k}}
+\end{bmatrix}\begin{bmatrix}d_{1}\\
+d_{2}\\
+d_{3}\\
+...\\
+d_{k}
+\end{bmatrix}=\begin{bmatrix}\frac{d_{1}}{\sigma_{1}}\\
+\frac{d_{2}}{\sigma_{2}}\\
+\frac{d_{3}}{\sigma_{3}}\\
+...\\
+\frac{d_{k}}{\sigma_{k}}
+\end{bmatrix}$
 \end_inset
 
- if 
-\begin_inset Formula $i=j$
+
+\end_layout
+
+\begin_layout Standard
+Similarly, we have 
+\begin_inset Formula $\boldsymbol{g}'=\boldsymbol{W}\boldsymbol{g}$
 \end_inset
 
- , 
-\begin_inset Formula $\delta_{ij}=0$
+ since 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boldsymbol{W}\boldsymbol{g=}\begin{bmatrix}\frac{1}{\sigma_{1}}\\
+ & \frac{1}{\sigma_{2}}\\
+ &  & \frac{1}{\sigma_{3}}\\
+ &  &  & ...\\
+ &  &  &  & \frac{1}{\sigma_{k}}
+\end{bmatrix}\begin{bmatrix}g_{1}\\
+g_{2}\\
+g_{3}\\
+...\\
+g_{k}
+\end{bmatrix}=\begin{bmatrix}\frac{g_{1}}{\sigma_{1}}\\
+\frac{g_{2}}{\sigma_{2}}\\
+\frac{g_{3}}{\sigma_{3}}\\
+...\\
+\frac{g_{k}}{\sigma_{k}}
+\end{bmatrix}
+\]
+
 \end_inset
 
- if 
-\begin_inset Formula $i\neq j$
-\end_inset
 
-).
 \end_layout
 
 \begin_layout Subsection*
 (c)12 points
+\size normal
 \color black
+\lang canadien
 
 \begin_inset Formula 
 \[
-F=\frac{1}{2}(\boldsymbol{d'-g'}(\boldsymbol{m}))^{T}(\boldsymbol{d'-g}'(\boldsymbol{m}))
+F=\frac{1}{2}\sum(d'_{k}-g'_{k}(\boldsymbol{m}))^{2}=(\boldsymbol{d'-g'}(\boldsymbol{m}))^{T}(\boldsymbol{d'-g}'(\boldsymbol{m}))
 \]
 
 \end_inset
@@ -905,15 +1012,23 @@ F=\frac{1}{2}(\boldsymbol{d'-g'}(\boldsymbol{m}))^{T}(\boldsymbol{d'-g}'(\boldsy
 
 \begin_layout Standard
 the gradient: 
-\begin_inset Formula $\boldsymbol{\nabla}F=\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))$
+\begin_inset Formula 
+\[
+\boldsymbol{\nabla}F=\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))
+\]
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-the approximated hessian: 
-\begin_inset Formula $\boldsymbol{H}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})$
+the approximate Hessian: 
+\begin_inset Formula 
+\[
+\boldsymbol{H}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})
+\]
+
 \end_inset
 
 
@@ -921,7 +1036,76 @@ the approximated hessian:
 
 \begin_layout Standard
 So the least squares solution: 
-\begin_inset Formula $\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})^{-1}\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))$
+\begin_inset Formula 
+\[
+\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})^{-1}\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boldsymbol{m}=\boldsymbol{m}_{0}+\Delta\boldsymbol{m}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+since 
+\begin_inset Formula 
+\[
+\hat{G}'_{jl}=\frac{\partial g'_{j}}{\partial m_{l}}=\frac{1}{\sigma_{j}}\frac{\partial g{}_{j}}{\partial m_{l}}=\frac{1}{\sigma_{j}}\hat{G}{}_{jl}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{bmatrix}\frac{1}{\sigma_{1}}\\
+ & \frac{1}{\sigma_{2}}\\
+ &  & \frac{1}{\sigma_{3}}\\
+ &  &  & ...\\
+ &  &  &  & \frac{1}{\sigma_{k}}
+\end{bmatrix}\begin{bmatrix}\frac{\partial g{}_{1}}{\partial m_{1}} & \frac{\partial g{}_{1}}{\partial m_{2}} & ... & \frac{\partial g{}_{1}}{\partial m_{k}}\\
+\frac{\partial g{}_{2}}{\partial m_{1}} & \frac{\partial g{}_{2}}{\partial m_{2}} & ... & \frac{\partial g{}_{2}}{\partial m_{k}}\\
+\frac{\partial g{}_{3}}{\partial m_{1}} & \frac{\partial g{}_{3}}{\partial m_{2}} & ... & \frac{\partial g{}_{3}}{\partial m_{k}}\\
+\frac{\partial g{}_{4}}{\partial m_{1}} & \frac{\partial g{}_{4}}{\partial m_{2}} & ... & \frac{\partial g{}_{4}}{\partial m_{k}}\\
+... & ... & ... & ...\\
+\frac{\partial g{}_{n}}{\partial m_{1}} & \frac{\partial g{}_{n}}{\partial m_{2}} & ... & \frac{\partial g{}_{n}}{\partial m_{k}}
+\end{bmatrix}=\begin{bmatrix}\frac{1}{\sigma_{1}}\frac{\partial g{}_{1}}{\partial m_{1}} & \frac{1}{\sigma_{1}}\frac{\partial g{}_{1}}{\partial m_{2}} & ... & \frac{1}{\sigma_{1}}\frac{\partial g{}_{1}}{\partial m_{k}}\\
+\frac{1}{\sigma_{2}}\frac{\partial g{}_{2}}{\partial m_{1}} & \frac{1}{\sigma_{2}}\frac{\partial g{}_{2}}{\partial m_{2}} & ... & \frac{1}{\sigma_{2}}\frac{\partial g{}_{2}}{\partial m_{k}}\\
+\frac{1}{\sigma_{3}}\frac{\partial g{}_{3}}{\partial m_{1}} & \frac{1}{\sigma_{3}}\frac{\partial g{}_{3}}{\partial m_{2}} & ... & \frac{1}{\sigma_{3}}\frac{\partial g{}_{3}}{\partial m_{k}}\\
+\frac{1}{\sigma_{4}}\frac{\partial g{}_{4}}{\partial m_{1}} & \frac{1}{\sigma_{4}}\frac{\partial g{}_{4}}{\partial m_{2}} & ... & \frac{1}{\sigma_{4}}\frac{\partial g{}_{4}}{\partial m_{k}}\\
+... & ... & ... & ...\\
+\frac{1}{\sigma_{n}}\frac{\partial g{}_{n}}{\partial m_{1}} & \frac{1}{\sigma_{n}}\frac{\partial g{}_{n}}{\partial m_{2}} & ... & \frac{1}{\sigma_{n}}\frac{\partial g{}_{n}}{\partial m_{k}}
+\end{bmatrix}=\begin{bmatrix}\frac{\partial g'{}_{1}}{\partial m_{1}} & \frac{\partial g'{}_{1}}{\partial m_{2}} & ... & \frac{\partial g'{}_{1}}{\partial m_{k}}\\
+\frac{\partial g'_{2}}{\partial m_{1}} & \frac{\partial g'_{2}}{\partial m_{2}} & ... & \frac{\partial g'_{2}}{\partial m_{k}}\\
+\frac{\partial g'_{3}}{\partial m_{1}} & \frac{\partial g'{}_{3}}{\partial m_{2}} & ... & \frac{\partial g'{}_{3}}{\partial m_{k}}\\
+\frac{\partial'g{}_{4}}{\partial m_{1}} & \frac{\partial'g{}_{4}}{\partial m_{2}} & ... & \frac{\partial g'_{4}}{\partial m_{k}}\\
+... & ... & ... & ...\\
+\frac{\partial'g{}_{n}}{\partial m_{1}} & \frac{\partial'g{}_{n}}{\partial m_{2}} & ... & \frac{\partial'g{}_{n}}{\partial m_{k}}
+\end{bmatrix}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so 
+\begin_inset Formula 
+\[
+\hat{\boldsymbol{G}}'=\boldsymbol{W}\hat{\boldsymbol{G}}'
+\]
+
 \end_inset
 
 
@@ -941,14 +1125,14 @@ Substitute
 \end_inset
 
 , 
-\begin_inset Formula $\boldsymbol{C}=\boldsymbol{W}^{T}\boldsymbol{W}$
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))=(\hat{\boldsymbol{G}}^{T}\boldsymbol{C}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{C}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))$
+\begin_inset Formula 
+\[
+\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))
+\]
+
 \end_inset
 
 
@@ -1024,7 +1208,7 @@ tiny
 
 
 \backslash
-lstinputlisting{./HW3_Q1/compute_residue.m}
+lstinputlisting{./HW3_Q1/compute_misfit.m}
 \end_layout
 
 \begin_layout Plain Layout
