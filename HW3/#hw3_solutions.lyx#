@@ -636,7 +636,11 @@ Then
 \end_layout
 
 \begin_layout Standard
-Therefore, 
+Therefore, the constant 
+\begin_inset Formula $c=1$
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
@@ -681,6 +685,15 @@ P(L|\{d_{1}=8.3,d_{2}=9.1\}) & \propto & P(\{d_{1}=8.3,d_{2}=9.1\}|L)P(L)\\
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+We can use the distribution of 
+\begin_inset Formula $L$
+\end_inset
+
+ from the first measurement as prior distribution to compute a posterior
+ distribution after the second measuremen
 \end_layout
 
 \begin_layout Standard
@@ -740,6 +753,11 @@ Use MATLAB to plot the function, and find its maximum for
 
  is 
 \begin_inset Formula $8.2$
+\end_inset
+
+ cm.
+ It's not an approximate number, since the accuracy is to 
+\begin_inset Formula $0.01$
 \end_inset
 
  cm.

@@ -538,7 +538,7 @@ E(x^{2}) & = & \frac{\sigma}{\sqrt{2\pi}}\sqrt{2\pi}\sigma=\sigma^{2}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(d_{i}|L) & = & \frac{3}{4}\mathcal{\mathcal{N}}(L,\sigma)+\frac{1}{4}\mathcal{N}(L+1,\sigma)\\
+P(d_{i}|L) & = & \frac{3}{4}\mathcal{\mathcal{N}}(d_{i}|L,\sigma)+\frac{1}{4}\mathcal{N}(d_{i}|L+1,\sigma)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)\\
  & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-L)^{2}\right)+\frac{5}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-(L+1))^{2}\right)
 \end{eqnarray*}
@@ -604,40 +604,6 @@ where we assume the prior distribution
 \end_layout
 
 \begin_layout Standard
-Let
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-P(L|d_{i}) & = & cP(d_{i}|L)
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-where 
-\begin_inset Formula $c$
-\end_inset
-
- is a constant and is determined by
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-\int_{-\infty}^{\infty}P(L|d_{i})dL & =\text{\int}_{-\infty}^{\infty}cP(d_{i}|L)dL & =1\\
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Since
 \end_layout
 
@@ -646,7 +612,7 @@ Since
 \begin{eqnarray*}
 P(d_{i}|L) & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i})^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-(d_{i}-1))^{2}}{2\sigma^{2}}\right)\\
- & = & \frac{3}{4}\mathcal{N}(d_{i},\sigma)+\frac{1}{4}\mathcal{N}(d_{i}-1,\sigma)
+ & = & \frac{3}{4}\mathcal{N}(L|d_{i},\sigma)+\frac{1}{4}\mathcal{N}(L|d_{i}-1,\sigma)
 \end{eqnarray*}
 
 \end_inset
@@ -680,7 +646,7 @@ Therefore, the constant
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(L|d_{i}) & = & cP(d_{i}|L)=P(d_{i}|L)\\
+P(L|d_{i}) & = & P(d_{i}|L)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i})^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-(d_{i}-1))^{2}}{2\sigma^{2}}\right)\\
  & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(L-d_{i})^{2}\right)+\frac{5}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(L-(d_{i}-1))^{2}\right)
 \end{eqnarray*}
@@ -719,15 +685,6 @@ P(L|\{d_{1}=8.3,d_{2}=9.1\}) & \propto & P(\{d_{1}=8.3,d_{2}=9.1\}|L)P(L)\\
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-We can use the distribution of 
-\begin_inset Formula $L$
-\end_inset
-
- from the first measurement as prior distribution to compute a posterior
- distribution after the second measuremen
 \end_layout
 
 \begin_layout Standard
@@ -790,7 +747,6 @@ Use MATLAB to plot the function, and find its maximum for
 \end_inset
 
  cm.
- 
 \end_layout
 
 \begin_layout Standard
@@ -831,14 +787,74 @@ Problem 2 (graded by Kangchen) - 50 points
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $P(\boldsymbol{m})\propto e^{-F(\boldsymbol{m})}$
-\end_inset
+According to Bayes' Theorem:
+\end_layout
 
-where 
-\begin_inset Formula $F(\boldsymbol{m})=\sum\frac{(d_{k}-g_{k}(\boldsymbol{m}))^{2}}{2\sigma_{k}^{2}}$
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(\boldsymbol{m}|d)\propto P(d|\boldsymbol{m})P(\boldsymbol{m})
+\]
+
 \end_inset
 
  
+\end_layout
+
+\begin_layout Standard
+we assume a uniform prior distribution 
+\begin_inset Formula $P(\boldsymbol{m})$
+\end_inset
+
+ equals constant.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(\boldsymbol{m}|d)\propto P(d|\boldsymbol{m})P(\boldsymbol{m})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(\boldsymbol{m}|d_{1},d_{2},...,d_{n})\propto P(d_{1},d_{2},...,d_{n}|\boldsymbol{m})=P(d_{1}|\boldsymbol{m})P(d_{2}|\boldsymbol{m})P(d_{3}|\boldsymbol{m})...P(d_{n}|\boldsymbol{m})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(d_{k}|\boldsymbol{m})=e^{-\frac{(d_{k}-g_{k}(\boldsymbol{m}))^{2}}{2\sigma_{k}^{2}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we multiply these terms together:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(\boldsymbol{m}|\boldsymbol{d})\propto e^{-F(\boldsymbol{m})}$
+\end_inset
+
+ where 
+\begin_inset Formula $F(\boldsymbol{m})=\sum\frac{(d_{k}-g_{k}(\boldsymbol{m}))^{2}}{2\sigma_{k}^{2}}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -863,35 +879,82 @@ Since
 \end_inset
 
  where 
-\begin_inset Formula $W_{ij}=\delta_{ij}\frac{1}{\sigma_{j}}$
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\boldsymbol{W}=\begin{bmatrix}\frac{1}{\sigma_{1}}\\
+ & \frac{1}{\sigma_{2}}\\
+ &  & \frac{1}{\sigma_{3}}\\
+ &  &  & ...\\
+ &  &  &  & \frac{1}{\sigma_{k}}
+\end{bmatrix}$
 \end_inset
 
- (
-\begin_inset Formula $\delta_{ij}=1$
+ and 
+\begin_inset Formula $\boldsymbol{W}\boldsymbol{d=}\begin{bmatrix}\frac{1}{\sigma_{1}}\\
+ & \frac{1}{\sigma_{2}}\\
+ &  & \frac{1}{\sigma_{3}}\\
+ &  &  & ...\\
+ &  &  &  & \frac{1}{\sigma_{k}}
+\end{bmatrix}\begin{bmatrix}d_{1}\\
+d_{2}\\
+d_{3}\\
+...\\
+d_{k}
+\end{bmatrix}=\begin{bmatrix}\frac{d_{1}}{\sigma_{1}}\\
+\frac{d_{2}}{\sigma_{2}}\\
+\frac{d_{3}}{\sigma_{3}}\\
+...\\
+\frac{d_{k}}{\sigma_{k}}
+\end{bmatrix}$
 \end_inset
 
- if 
-\begin_inset Formula $i=j$
+
+\end_layout
+
+\begin_layout Standard
+Similarly, we have 
+\begin_inset Formula $\boldsymbol{g}'=\boldsymbol{W}\boldsymbol{g}$
 \end_inset
 
- , 
-\begin_inset Formula $\delta_{ij}=0$
+ since 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boldsymbol{W}\boldsymbol{g=}\begin{bmatrix}\frac{1}{\sigma_{1}}\\
+ & \frac{1}{\sigma_{2}}\\
+ &  & \frac{1}{\sigma_{3}}\\
+ &  &  & ...\\
+ &  &  &  & \frac{1}{\sigma_{k}}
+\end{bmatrix}\begin{bmatrix}g_{1}\\
+g_{2}\\
+g_{3}\\
+...\\
+g_{k}
+\end{bmatrix}=\begin{bmatrix}\frac{g_{1}}{\sigma_{1}}\\
+\frac{g_{2}}{\sigma_{2}}\\
+\frac{g_{3}}{\sigma_{3}}\\
+...\\
+\frac{g_{k}}{\sigma_{k}}
+\end{bmatrix}
+\]
+
 \end_inset
 
- if 
-\begin_inset Formula $i\neq j$
-\end_inset
 
-).
 \end_layout
 
 \begin_layout Subsection*
 (c)12 points
+\size normal
 \color black
+\lang canadien
 
 \begin_inset Formula 
 \[
-F=\frac{1}{2}(\boldsymbol{d'-g'}(\boldsymbol{m}))^{T}(\boldsymbol{d'-g}'(\boldsymbol{m}))
+F=\frac{1}{2}\sum(d'_{k}-g'_{k}(\boldsymbol{m}))^{2}=(\boldsymbol{d'-g'}(\boldsymbol{m}))^{T}(\boldsymbol{d'-g}'(\boldsymbol{m}))
 \]
 
 \end_inset
@@ -901,15 +964,23 @@ F=\frac{1}{2}(\boldsymbol{d'-g'}(\boldsymbol{m}))^{T}(\boldsymbol{d'-g}'(\boldsy
 
 \begin_layout Standard
 the gradient: 
-\begin_inset Formula $\boldsymbol{\nabla}F=\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))$
+\begin_inset Formula 
+\[
+\boldsymbol{\nabla}F=\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))
+\]
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-the approximated hessian: 
-\begin_inset Formula $\boldsymbol{H}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})$
+the approximate Hessian: 
+\begin_inset Formula 
+\[
+\boldsymbol{H}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})
+\]
+
 \end_inset
 
 
@@ -917,7 +988,76 @@ the approximated hessian:
 
 \begin_layout Standard
 So the least squares solution: 
-\begin_inset Formula $\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})^{-1}\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))$
+\begin_inset Formula 
+\[
+\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}'}^{T}\hat{\boldsymbol{G}'})^{-1}\hat{\boldsymbol{G}'}^{T}(\boldsymbol{d}'-\boldsymbol{g}'(\boldsymbol{m}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boldsymbol{m}=\boldsymbol{m}_{0}+\Delta\boldsymbol{m}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+since 
+\begin_inset Formula 
+\[
+\hat{G}'_{jl}=\frac{\partial g'_{j}}{\partial m_{l}}=\frac{1}{\sigma_{j}}\frac{\partial g{}_{j}}{\partial m_{l}}=\frac{1}{\sigma_{j}}\hat{G}{}_{jl}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{bmatrix}\frac{1}{\sigma_{1}}\\
+ & \frac{1}{\sigma_{2}}\\
+ &  & \frac{1}{\sigma_{3}}\\
+ &  &  & ...\\
+ &  &  &  & \frac{1}{\sigma_{k}}
+\end{bmatrix}\begin{bmatrix}\frac{\partial g{}_{1}}{\partial m_{1}} & \frac{\partial g{}_{1}}{\partial m_{2}} & ... & \frac{\partial g{}_{1}}{\partial m_{k}}\\
+\frac{\partial g{}_{2}}{\partial m_{1}} & \frac{\partial g{}_{2}}{\partial m_{2}} & ... & \frac{\partial g{}_{2}}{\partial m_{k}}\\
+\frac{\partial g{}_{3}}{\partial m_{1}} & \frac{\partial g{}_{3}}{\partial m_{2}} & ... & \frac{\partial g{}_{3}}{\partial m_{k}}\\
+\frac{\partial g{}_{4}}{\partial m_{1}} & \frac{\partial g{}_{4}}{\partial m_{2}} & ... & \frac{\partial g{}_{4}}{\partial m_{k}}\\
+... & ... & ... & ...\\
+\frac{\partial g{}_{n}}{\partial m_{1}} & \frac{\partial g{}_{n}}{\partial m_{2}} & ... & \frac{\partial g{}_{n}}{\partial m_{k}}
+\end{bmatrix}=\begin{bmatrix}\frac{1}{\sigma_{1}}\frac{\partial g{}_{1}}{\partial m_{1}} & \frac{1}{\sigma_{1}}\frac{\partial g{}_{1}}{\partial m_{2}} & ... & \frac{1}{\sigma_{1}}\frac{\partial g{}_{1}}{\partial m_{k}}\\
+\frac{1}{\sigma_{2}}\frac{\partial g{}_{2}}{\partial m_{1}} & \frac{1}{\sigma_{2}}\frac{\partial g{}_{2}}{\partial m_{2}} & ... & \frac{1}{\sigma_{2}}\frac{\partial g{}_{2}}{\partial m_{k}}\\
+\frac{1}{\sigma_{3}}\frac{\partial g{}_{3}}{\partial m_{1}} & \frac{1}{\sigma_{3}}\frac{\partial g{}_{3}}{\partial m_{2}} & ... & \frac{1}{\sigma_{3}}\frac{\partial g{}_{3}}{\partial m_{k}}\\
+\frac{1}{\sigma_{4}}\frac{\partial g{}_{4}}{\partial m_{1}} & \frac{1}{\sigma_{4}}\frac{\partial g{}_{4}}{\partial m_{2}} & ... & \frac{1}{\sigma_{4}}\frac{\partial g{}_{4}}{\partial m_{k}}\\
+... & ... & ... & ...\\
+\frac{1}{\sigma_{n}}\frac{\partial g{}_{n}}{\partial m_{1}} & \frac{1}{\sigma_{n}}\frac{\partial g{}_{n}}{\partial m_{2}} & ... & \frac{1}{\sigma_{n}}\frac{\partial g{}_{n}}{\partial m_{k}}
+\end{bmatrix}=\begin{bmatrix}\frac{\partial g'{}_{1}}{\partial m_{1}} & \frac{\partial g'{}_{1}}{\partial m_{2}} & ... & \frac{\partial g'{}_{1}}{\partial m_{k}}\\
+\frac{\partial g'_{2}}{\partial m_{1}} & \frac{\partial g'_{2}}{\partial m_{2}} & ... & \frac{\partial g'_{2}}{\partial m_{k}}\\
+\frac{\partial g'_{3}}{\partial m_{1}} & \frac{\partial g'{}_{3}}{\partial m_{2}} & ... & \frac{\partial g'{}_{3}}{\partial m_{k}}\\
+\frac{\partial'g{}_{4}}{\partial m_{1}} & \frac{\partial'g{}_{4}}{\partial m_{2}} & ... & \frac{\partial g'_{4}}{\partial m_{k}}\\
+... & ... & ... & ...\\
+\frac{\partial'g{}_{n}}{\partial m_{1}} & \frac{\partial'g{}_{n}}{\partial m_{2}} & ... & \frac{\partial'g{}_{n}}{\partial m_{k}}
+\end{bmatrix}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so 
+\begin_inset Formula 
+\[
+\hat{\boldsymbol{G}}'=\boldsymbol{W}\hat{\boldsymbol{G}}'
+\]
+
 \end_inset
 
 
@@ -937,14 +1077,14 @@ Substitute
 \end_inset
 
 , 
-\begin_inset Formula $\boldsymbol{C}=\boldsymbol{W}^{T}\boldsymbol{W}$
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))=(\hat{\boldsymbol{G}}^{T}\boldsymbol{C}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{C}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))$
+\begin_inset Formula 
+\[
+\Delta\boldsymbol{m}=(\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}\hat{\boldsymbol{G}})^{-1}\hat{\boldsymbol{G}}^{T}\boldsymbol{W}^{T}\boldsymbol{W}(\boldsymbol{d}-\boldsymbol{g}(\boldsymbol{m}))
+\]
+
 \end_inset
 
 
@@ -1020,7 +1160,7 @@ tiny
 
 
 \backslash
-lstinputlisting{./HW3_Q1/compute_residue.m}
+lstinputlisting{./HW3_Q1/compute_misfit.m}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1161,6 +1301,34 @@ The diagonal elements of
 \end_inset
 
  project onto each other.
+ 
+\end_layout
+
+\begin_layout Subsection*
+(c) 5 points
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\boldsymbol{G}^{T}\boldsymbol{d} & = & (\boldsymbol{g_{1}}^{T}\boldsymbol{d},...,\boldsymbol{g_{M}}^{T}\boldsymbol{d})^{T}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which is the projection of 
+\begin_inset Formula $\boldsymbol{d}$
+\end_inset
+
+ into the model space.
+\end_layout
+
+\begin_layout Standard
+Let's continue the discussions in (b).
  Suppose we project a vector 
 \begin_inset Formula $\boldsymbol{d}$
 \end_inset
@@ -1200,29 +1368,6 @@ The diagonal elements of
 \end_inset
 
  are near parallel.
-\end_layout
-
-\begin_layout Subsection*
-(c) 5 points
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-\boldsymbol{G}^{T}\boldsymbol{d} & = & (\boldsymbol{g_{1}}^{T}\boldsymbol{d},...,\boldsymbol{g_{M}}^{T}\boldsymbol{d})^{T}
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-which is the projection of 
-\begin_inset Formula $\boldsymbol{d}$
-\end_inset
-
- into the model space.
 \end_layout
 
 \begin_layout Subsection*
