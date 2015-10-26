@@ -1,5 +1,5 @@
 
-function[M]=nonlinear_solver(x,y,d,Minit)
+function[M]=nonlinear_solver(x,y,ui,Minit)
 
 M = Minit;
 
@@ -9,7 +9,7 @@ misfit = 0;
 
 for ii = 1:1:1000
     
-misfit = compute_misfit(x,y,M,d);
+misfit = compute_misfit(x,y,M,ui);
 
 
 [Grad,Hess] = compute_gradient_approx_hess(x,y,M,misfit);
