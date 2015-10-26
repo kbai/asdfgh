@@ -482,7 +482,7 @@ tiny
 
 
 \backslash
-lstinputlisting{compute_residue.m}
+lstinputlisting{compute_misfit.m}
 \end_layout
 
 \begin_layout Plain Layout
