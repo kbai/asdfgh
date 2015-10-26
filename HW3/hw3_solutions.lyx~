@@ -556,7 +556,7 @@ E(x^{2}) & = & \frac{\sigma}{\sqrt{2\pi}}\sqrt{2\pi}\sigma=\sigma^{2}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(d_{i}|L) & = & \frac{3}{4}\mathcal{\mathcal{N}}(d_{i}|L,\sigma)+\frac{1}{4}\mathcal{N}(d_{i}|L+1,\sigma)\\
+P(d_{i}|L) & = & \frac{3}{4}P_{Gauss}(d_{i}|L,\sigma)+\frac{1}{4}P_{Gauss}(d_{i}|L+1,\sigma)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)\\
  & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-L)^{2}\right)+\frac{5}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-(L+1))^{2}\right)
 \end{eqnarray*}
@@ -630,7 +630,7 @@ Since
 \begin{eqnarray*}
 P(d_{i}|L) & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i})^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-(d_{i}-1))^{2}}{2\sigma^{2}}\right)\\
- & = & \frac{3}{4}\mathcal{N}(L|d_{i},\sigma)+\frac{1}{4}\mathcal{N}(L|d_{i}-1,\sigma)
+ & = & \frac{3}{4}P_{Gauss}(L|d_{i},\sigma)+\frac{1}{4}P_{Gauss}(L|d_{i}-1,\sigma)
 \end{eqnarray*}
 
 \end_inset
@@ -1101,7 +1101,10 @@ Substitute
 \end_layout
 
 \begin_layout Subsection*
-(d)14 points
+(d)14points
+\end_layout
+
+\begin_layout Subsection*
 \begin_inset ERT
 status open
 
@@ -1116,7 +1119,7 @@ tiny
 
 
 \backslash
-lstinputlisting{./HW3_Q1/compute_gradient_approx_hess.m}
+lstinputlisting{./HW3_Q2/HW3_Q2.m}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1143,7 +1146,7 @@ tiny
 
 
 \backslash
-lstinputlisting{./HW3_Q1/nonlinear_solver.m}
+lstinputlisting{./HW3_Q2/compute_gradient_approx_hess.m}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1170,7 +1173,7 @@ tiny
 
 
 \backslash
-lstinputlisting{./HW3_Q1/compute_misfit.m}
+lstinputlisting{./HW3_Q2/nonlinear_solver.m}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1197,7 +1200,7 @@ tiny
 
 
 \backslash
-lstinputlisting{./HW3_Q1/HW3_Q1.m}
+lstinputlisting{./HW3_Q2/compute_misfit.m}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1235,8 +1238,13 @@ normalsize
 \end_layout
 
 \begin_layout Standard
-We can find that since we put a smaller weight on station 3, its error is
- the largest.
+The solution is not very different from the previous one 
+\begin_inset Formula $[8.137,-5.142,11.507,30.346]^{T}$
+\end_inset
+
+.
+ We can find that since we put a smaller weight on station 3, its error
+ is the largest.
 \end_layout
 
 \begin_layout Standard
@@ -1296,12 +1304,10 @@ Since
 \boldsymbol{H} & = & \boldsymbol{G}^{T}\boldsymbol{G}\\
  & = & \left[\begin{array}{c}
 \boldsymbol{g_{1}}^{T}\\
-\boldsymbol{g_{2}}^{T}\\
 \vdots\\
-\boldsymbol{g_{M-1}}^{T}\\
 \boldsymbol{g_{M}}^{T}
-\end{array}\right]\left[\begin{array}{ccccc}
-\boldsymbol{g_{1}} & \boldsymbol{g_{2}} & ... & \boldsymbol{g_{M-1}} & \boldsymbol{g_{M}}\end{array}\right]
+\end{array}\right]\left[\begin{array}{ccc}
+\boldsymbol{g_{1}} & ... & \boldsymbol{g_{M}}\end{array}\right]
 \end{eqnarray*}
 
 \end_inset
@@ -1325,13 +1331,13 @@ then
 \end_layout
 
 \begin_layout Standard
-Since
+Note that
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\boldsymbol{g_{i}}^{T}\boldsymbol{g_{j}} & = & ||\boldsymbol{g_{i}}||_{2}||\boldsymbol{g_{j}}||_{2}\cos(\angle(\boldsymbol{g_{i}},\boldsymbol{g_{j}}))
+\boldsymbol{g_{i}}^{T}\boldsymbol{g_{j}} & = & \boldsymbol{g_{i}}\cdot\boldsymbol{g_{j}}=||\boldsymbol{g_{i}}||_{2}||\boldsymbol{g_{j}}||_{2}\cos(\angle(\boldsymbol{g_{i}},\boldsymbol{g_{j}}))
 \end{eqnarray*}
 
 \end_inset
@@ -1340,7 +1346,7 @@ Since
 \end_layout
 
 \begin_layout Standard
-The diagonal elements of 
+We see the diagonal elements of 
 \begin_inset Formula $\boldsymbol{H}$
 \end_inset
 
@@ -1348,22 +1354,23 @@ The diagonal elements of
 \begin_inset Formula $\boldsymbol{G}$
 \end_inset
 
-, the off-diagnoal elements measure how much the column vectors of 
+.
+ The off-diagonal elements measure how much the column vectors of 
 \begin_inset Formula $\boldsymbol{G}$
 \end_inset
 
- project onto each other.
+ project onto each other, which is related to the angle between the two
+ vectors - if the two vectors are orthogonal to each other, the projection
+ equals zero.
  
-\end_layout
-
-\begin_layout Standard
-We see that the cosine factor if the two vectors are orthogonal to each
- other, It is related to the orientation of the two vectors with respect
- to each other, as well as the lengths of the two vectors.
 \end_layout
 
 \begin_layout Subsection*
 (c) 5 points
+\end_layout
+
+\begin_layout Standard
+Similarly,
 \end_layout
 
 \begin_layout Standard
@@ -1378,11 +1385,15 @@ We see that the cosine factor if the two vectors are orthogonal to each
 \end_layout
 
 \begin_layout Standard
-which is the projection of 
+is a column vector whose elements measure how much 
 \begin_inset Formula $\boldsymbol{d}$
 \end_inset
 
- into the model space.
+ projects onto the different vector 
+\begin_inset Formula $\boldsymbol{g_{i}}$
+\end_inset
+
+ in the model space.
 \end_layout
 
 \begin_layout Subsection*
@@ -1390,17 +1401,40 @@ which is the projection of
 \end_layout
 
 \begin_layout Standard
-This equation implies that 
-\begin_inset Formula $\boldsymbol{Gm_{LLS}}$
+The given equation can be written as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\boldsymbol{G}^{T}(\boldsymbol{Gm}_{LLS}) & = & \boldsymbol{G}^{T}\boldsymbol{d}
+\end{eqnarray*}
+
 \end_inset
 
- equals the projection of 
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\boldsymbol{m}_{LLS}$
+\end_inset
+
+ denotes the linear least square solution.
+\end_layout
+
+\begin_layout Standard
+This equation implies that 
+\begin_inset Formula $\boldsymbol{Gm}_{LLS}$
+\end_inset
+
+, which is a vector in the model space, equals the projection of 
 \begin_inset Formula $\boldsymbol{d}$
 \end_inset
 
  in the model space.
  Thus, the least-squares solution 
-\begin_inset Formula $\boldsymbol{m_{LLS}}$
+\begin_inset Formula $\boldsymbol{m}_{LLS}$
 \end_inset
 
  is the coordinate of 

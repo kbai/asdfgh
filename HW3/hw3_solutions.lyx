@@ -556,7 +556,7 @@ E(x^{2}) & = & \frac{\sigma}{\sqrt{2\pi}}\sqrt{2\pi}\sigma=\sigma^{2}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(d_{i}|L) & = & \frac{3}{4}\mathcal{\mathcal{N}}(d_{i}|L,\sigma)+\frac{1}{4}\mathcal{N}(d_{i}|L+1,\sigma)\\
+P(d_{i}|L) & = & \frac{3}{4}P_{Gauss}(d_{i}|L,\sigma)+\frac{1}{4}P_{Gauss}(d_{i}|L+1,\sigma)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)\\
  & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-L)^{2}\right)+\frac{5}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-(L+1))^{2}\right)
 \end{eqnarray*}
@@ -630,7 +630,7 @@ Since
 \begin{eqnarray*}
 P(d_{i}|L) & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i})^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-(d_{i}-1))^{2}}{2\sigma^{2}}\right)\\
- & = & \frac{3}{4}\mathcal{N}(L|d_{i},\sigma)+\frac{1}{4}\mathcal{N}(L|d_{i}-1,\sigma)
+ & = & \frac{3}{4}P_{Gauss}(L|d_{i},\sigma)+\frac{1}{4}P_{Gauss}(L|d_{i}-1,\sigma)
 \end{eqnarray*}
 
 \end_inset
@@ -1331,7 +1331,7 @@ then
 \end_layout
 
 \begin_layout Standard
-Remember that
+Note that
 \end_layout
 
 \begin_layout Standard
@@ -1354,11 +1354,15 @@ We see the diagonal elements of
 \begin_inset Formula $\boldsymbol{G}$
 \end_inset
 
-, and the off-diagonal elements measure how much the column vectors of 
+.
+ The off-diagonal elements measure how much the column vectors of 
 \begin_inset Formula $\boldsymbol{G}$
 \end_inset
 
- project onto each other.
+ project onto each other, which is related to the angle between the two
+ vectors - if the two vectors are orthogonal to each other, the projection
+ equals zero.
+ 
 \end_layout
 
 \begin_layout Subsection*
@@ -1389,7 +1393,7 @@ is a column vector whose elements measure how much
 \begin_inset Formula $\boldsymbol{g_{i}}$
 \end_inset
 
-.
+ in the model space.
 \end_layout
 
 \begin_layout Subsection*
@@ -1416,7 +1420,7 @@ where
 \begin_inset Formula $\boldsymbol{m}_{LLS}$
 \end_inset
 
- denotes the linear least square solution.
+ denotes the linear least squares solution.
 \end_layout
 
 \begin_layout Standard
@@ -1424,12 +1428,12 @@ This equation implies that
 \begin_inset Formula $\boldsymbol{Gm}_{LLS}$
 \end_inset
 
- equals the projection of 
+, which is a vector in the model space, equals the projection of 
 \begin_inset Formula $\boldsymbol{d}$
 \end_inset
 
  in the model space.
- Thus, the least-squares solution 
+ Thus, the least squares solution 
 \begin_inset Formula $\boldsymbol{m}_{LLS}$
 \end_inset
 
