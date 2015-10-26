@@ -496,7 +496,7 @@ E(x^{2}) & = & -\frac{\sigma}{\sqrt{2\pi}}\int_{-\infty}^{\infty}x\left[\exp\lef
 \end_layout
 
 \begin_layout Standard
-where
+where we use
 \end_layout
 
 \begin_layout Standard
@@ -803,7 +803,7 @@ According to Bayes' Theorem:
 \begin_layout Standard
 \begin_inset Formula 
 \[
-P(\boldsymbol{m}|d)\propto P(d|\boldsymbol{m})P(\boldsymbol{m})
+P(\boldsymbol{m}|\mathbf{d})\propto P(\boldsymbol{d}|\boldsymbol{m})P(\boldsymbol{m})
 \]
 
 \end_inset
@@ -822,7 +822,7 @@ we assume a uniform prior distribution
 \begin_layout Standard
 \begin_inset Formula 
 \[
-P(\boldsymbol{m}|d)\propto P(d|\boldsymbol{m})P(\boldsymbol{m})
+P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m})P(\boldsymbol{m})
 \]
 
 \end_inset
@@ -833,7 +833,7 @@ P(\boldsymbol{m}|d)\propto P(d|\boldsymbol{m})P(\boldsymbol{m})
 \begin_layout Standard
 \begin_inset Formula 
 \[
-P(\boldsymbol{m}|d_{1},d_{2},...,d_{n})\propto P(d_{1},d_{2},...,d_{n}|\boldsymbol{m})=P(d_{1}|\boldsymbol{m})P(d_{2}|\boldsymbol{m})P(d_{3}|\boldsymbol{m})...P(d_{n}|\boldsymbol{m})
+P(\boldsymbol{m}|\{d_{1},d_{2},...,d_{n}\})\propto P(\{d_{1},d_{2},...,d_{n}\}|\boldsymbol{m})=P(d_{1}|\boldsymbol{m})P(d_{2}|\boldsymbol{m})P(d_{3}|\boldsymbol{m})...P(d_{n}|\boldsymbol{m})
 \]
 
 \end_inset

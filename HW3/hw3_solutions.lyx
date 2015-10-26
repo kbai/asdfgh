@@ -803,7 +803,7 @@ According to Bayes' Theorem:
 \begin_layout Standard
 \begin_inset Formula 
 \[
-P(\boldsymbol{m}|d)\propto P(d|\boldsymbol{m})P(\boldsymbol{m})
+P(\boldsymbol{m}|\mathbf{d})\propto P(\boldsymbol{d}|\boldsymbol{m})P(\boldsymbol{m})
 \]
 
 \end_inset
@@ -822,7 +822,7 @@ we assume a uniform prior distribution
 \begin_layout Standard
 \begin_inset Formula 
 \[
-P(\boldsymbol{m}|d)\propto P(d|\boldsymbol{m})P(\boldsymbol{m})
+P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m})P(\boldsymbol{m})
 \]
 
 \end_inset
@@ -833,7 +833,7 @@ P(\boldsymbol{m}|d)\propto P(d|\boldsymbol{m})P(\boldsymbol{m})
 \begin_layout Standard
 \begin_inset Formula 
 \[
-P(\boldsymbol{m}|d_{1},d_{2},...,d_{n})\propto P(d_{1},d_{2},...,d_{n}|\boldsymbol{m})=P(d_{1}|\boldsymbol{m})P(d_{2}|\boldsymbol{m})P(d_{3}|\boldsymbol{m})...P(d_{n}|\boldsymbol{m})
+P(\boldsymbol{m}|\{d_{1},d_{2},...,d_{n}\})\propto P(\{d_{1},d_{2},...,d_{n}\}|\boldsymbol{m})=P(d_{1}|\boldsymbol{m})P(d_{2}|\boldsymbol{m})P(d_{3}|\boldsymbol{m})...P(d_{n}|\boldsymbol{m})
 \]
 
 \end_inset
@@ -1101,7 +1101,10 @@ Substitute
 \end_layout
 
 \begin_layout Subsection*
-(d)14 points
+(d)14points
+\end_layout
+
+\begin_layout Subsection*
 \begin_inset ERT
 status open
 
@@ -1116,7 +1119,7 @@ tiny
 
 
 \backslash
-lstinputlisting{./HW3_Q1/compute_gradient_approx_hess.m}
+lstinputlisting{./HW3_Q2/HW3_Q2.m}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1143,7 +1146,7 @@ tiny
 
 
 \backslash
-lstinputlisting{./HW3_Q1/nonlinear_solver.m}
+lstinputlisting{./HW3_Q2/compute_gradient_approx_hess.m}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1170,7 +1173,7 @@ tiny
 
 
 \backslash
-lstinputlisting{./HW3_Q1/compute_misfit.m}
+lstinputlisting{./HW3_Q2/nonlinear_solver.m}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1197,7 +1200,7 @@ tiny
 
 
 \backslash
-lstinputlisting{./HW3_Q1/HW3_Q1.m}
+lstinputlisting{./HW3_Q2/compute_misfit.m}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1235,8 +1238,13 @@ normalsize
 \end_layout
 
 \begin_layout Standard
-We can find that since we put a smaller weight on station 3, its error is
- the largest.
+The solution is not very different from the previous one 
+\begin_inset Formula $[8.137,-5.142,11.507,30.346]^{T}$
+\end_inset
+
+.
+ We can find that since we put a smaller weight on station 3, its error
+ is the largest.
 \end_layout
 
 \begin_layout Standard

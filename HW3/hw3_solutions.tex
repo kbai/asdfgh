@@ -186,6 +186,16 @@ E(x^{2}) & = & -\frac{\sigma}{\sqrt{2\pi}}\int_{-\infty}^{\infty}x\left[\exp\lef
 \end{eqnarray*}
 
 
+where we use
+
+\begin{eqnarray*}
+\lim_{x\to\infty} & x\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)= & \lim_{x\to\infty}\frac{x}{\exp\left(\frac{x^{2}}{2\sigma^{2}}\right)}\\
+ & = & \lim_{x\to\infty}\frac{x'}{\left[\exp\left(\frac{x^{2}}{2\sigma^{2}}\right)\right]'}\\
+ & = & \lim_{x\to\infty}\frac{1}{\exp(\frac{x^{2}}{2\sigma^{2}})\frac{x}{\sigma^{2}}}\\
+ & = & 0
+\end{eqnarray*}
+
+
 Since
 
 \begin{eqnarray*}
@@ -209,7 +219,7 @@ E(x^{2}) & = & \frac{\sigma}{\sqrt{2\pi}}\sqrt{2\pi}\sigma=\sigma^{2}
 \subsection*{(d.i) 10 points}
 
 \begin{eqnarray*}
-P(d_{i}|L) & = & \frac{3}{4}\mathcal{\mathcal{N}}(L,\sigma)+\frac{1}{4}\mathcal{N}(L+1,\sigma)\\
+P(d_{i}|L) & = & \frac{3}{4}\mathcal{\mathcal{N}}(d_{i}|L,\sigma)+\frac{1}{4}\mathcal{N}(d_{i}|L+1,\sigma)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)\\
  & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-L)^{2}\right)+\frac{5}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-(L+1))^{2}\right)
 \end{eqnarray*}
@@ -232,26 +242,12 @@ P(L|d_{i}) & \propto & P(d_{i}|L)P(L)\\
 
 where we assume the prior distribution $P(L)$ is uniform. 
 
-Let
-
-\begin{eqnarray*}
-P(L|d_{i}) & = & cP(d_{i}|L)
-\end{eqnarray*}
-
-
-where $c$ is a constant and is determined by
-
-\begin{eqnarray*}
-\int_{-\infty}^{\infty}P(L|d_{i})dL & =\text{\ensuremath{\int}}_{-\infty}^{\infty}cP(d_{i}|L)dL & =1\\
-\end{eqnarray*}
-
-
 Since
 
 \begin{eqnarray*}
 P(d_{i}|L) & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i})^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-(d_{i}-1))^{2}}{2\sigma^{2}}\right)\\
- & = & \frac{3}{4}\mathcal{N}(d_{i},\sigma)+\frac{1}{4}\mathcal{N}(d_{i}-1,\sigma)
+ & = & \frac{3}{4}\mathcal{N}(L|d_{i},\sigma)+\frac{1}{4}\mathcal{N}(L|d_{i}-1,\sigma)
 \end{eqnarray*}
 
 
@@ -262,10 +258,8 @@ Then
 \end{eqnarray*}
 
 
-Therefore, the constant $c=1$ 
-
 \begin{eqnarray*}
-P(L|d_{i}) & = & cP(d_{i}|L)=P(d_{i}|L)\\
+P(L|d_{i}) & = & P(d_{i}|L)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i})^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-(d_{i}-1))^{2}}{2\sigma^{2}}\right)\\
  & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(L-d_{i})^{2}\right)+\frac{5}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(L-(d_{i}-1))^{2}\right)
 \end{eqnarray*}
@@ -285,10 +279,6 @@ P(L|\{d_{1}=8.3,d_{2}=9.1\}) & \propto & P(\{d_{1}=8.3,d_{2}=9.1\}|L)P(L)\\
 \end{eqnarray*}
 
 
-We can use the distribution of $L$ from the first measurement as
-prior distribution to compute a posterior distribution after the second
-measuremen
-
 Since we only care about the maximum of the LHS, instead of its value;
 for the RHS, absorbing the $\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}$
 terms into the constant
@@ -300,8 +290,7 @@ P(L|\{d_{1}=8.3,d_{2}=9.1\}) & \propto & \left[3\exp\left(-50(8.3-L)^{2}\right)+
 
 
 Use MATLAB to plot the function, and find its maximum for $L=[6:0.01:10]$.
-We see that the best estimate of $L$ is $8.2$ cm. It's not an approximate
-number, since the accuracy is to $0.01$ cm.
+We see that the best estimate of $L$ is $8.2$ cm.
 
 \includegraphics[scale=0.8]{p1_figures/d_iii}
 
@@ -322,7 +311,7 @@ the analysis above.
 According to Bayes' Theorem:
 
 \[
-P(\boldsymbol{m}|d)\propto P(d|\boldsymbol{m})P(\boldsymbol{m})
+P(\boldsymbol{m}|\mathbf{d})\propto P(\boldsymbol{d}|\boldsymbol{m})P(\boldsymbol{m})
 \]
  
 
@@ -330,12 +319,12 @@ we assume a uniform prior distribution $P(\boldsymbol{m})$ equals
 constant.
 
 \[
-P(\boldsymbol{m}|d)\propto P(d|\boldsymbol{m})P(\boldsymbol{m})
+P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m})P(\boldsymbol{m})
 \]
 
 
 \[
-P(\boldsymbol{m}|d_{1},d_{2},...,d_{n})\propto P(d_{1},d_{2},...,d_{n}|\boldsymbol{m})=P(d_{1}|\boldsymbol{m})P(d_{2}|\boldsymbol{m})P(d_{3}|\boldsymbol{m})...P(d_{n}|\boldsymbol{m})
+P(\boldsymbol{m}|\{d_{1},d_{2},...,d_{n}\})\propto P(\{d_{1},d_{2},...,d_{n}\}|\boldsymbol{m})=P(d_{1}|\boldsymbol{m})P(d_{2}|\boldsymbol{m})P(d_{3}|\boldsymbol{m})...P(d_{n}|\boldsymbol{m})
 \]
 
 
@@ -477,14 +466,17 @@ $\boldsymbol{d}'=\boldsymbol{W}\boldsymbol{d}$, $\boldsymbol{g}'=\boldsymbol{W}\
 
 
 
-\subsection*{(d)14 points\tiny
-\lstinputlisting{./HW3_Q1/compute_gradient_approx_hess.m}
+\subsection*{(d)14points}
+
+
+\subsection*{\tiny
+\lstinputlisting{./HW3_Q2/HW3_Q2.m}
 \normalsize\tiny
-\lstinputlisting{./HW3_Q1/nonlinear_solver.m}
+\lstinputlisting{./HW3_Q2/compute_gradient_approx_hess.m}
 \normalsize\tiny
-\lstinputlisting{./HW3_Q1/compute_misfit.m}
+\lstinputlisting{./HW3_Q2/nonlinear_solver.m}
 \normalsize\tiny
-\lstinputlisting{./HW3_Q1/HW3_Q1.m}
+\lstinputlisting{./HW3_Q2/compute_misfit.m}
 \normalsize}
 
 \[
@@ -497,6 +489,7 @@ $\boldsymbol{d}'=\boldsymbol{W}\boldsymbol{d}$, $\boldsymbol{g}'=\boldsymbol{W}\
 \]
 
 
+The solution is not very different from the previous one $[8.137,-5.142,11.507,30.346]^{T}$.
 We can find that since we put a smaller weight on station 3, its error
 is the largest.
 
@@ -521,6 +514,23 @@ dim\left(R(\boldsymbol{G})\right) & \leq & M<N=dim(\mathbb{R}^{N})
 
 \subsection*{(b) 10 points}
 
+Since
+
+\begin{eqnarray*}
+\boldsymbol{H} & = & \boldsymbol{G}^{T}\boldsymbol{G}\\
+ & = & \left[\begin{array}{c}
+\boldsymbol{g_{1}}^{T}\\
+\boldsymbol{g_{2}}^{T}\\
+\vdots\\
+\boldsymbol{g_{M-1}}^{T}\\
+\boldsymbol{g_{M}}^{T}
+\end{array}\right]\left[\begin{array}{ccccc}
+\boldsymbol{g_{1}} & \boldsymbol{g_{2}} & ... & \boldsymbol{g_{M-1}} & \boldsymbol{g_{M}}\end{array}\right]
+\end{eqnarray*}
+
+
+then
+
 \begin{eqnarray*}
 \boldsymbol{H_{ij}} & = & \boldsymbol{g_{i}}^{T}\boldsymbol{g_{j}}
 \end{eqnarray*}
@@ -529,7 +539,15 @@ dim\left(R(\boldsymbol{G})\right) & \leq & M<N=dim(\mathbb{R}^{N})
 The diagonal elements of $\boldsymbol{H}$ are the squared lengths
 of the column vectors of $\boldsymbol{G}$, the off-diagnoal elements
 measure how much the column vectors of $\boldsymbol{G}$ project onto
-each other. 
+each other. Because
+
+\begin{eqnarray*}
+\boldsymbol{g_{i}}^{T}\boldsymbol{g_{j}} & = & ||\boldsymbol{g_{i}}||_{2}||\boldsymbol{g_{j}}||_{2}\cos(\angle(\boldsymbol{g_{i}},\boldsymbol{g_{j}}))
+\end{eqnarray*}
+
+
+It is related to the orientation of the two vectors with respect to
+each other, as well as the lengths of the two vectors.
 
 
 \subsection*{(c) 5 points}
@@ -552,8 +570,8 @@ column vectors $\boldsymbol{g_{i}}$ are near parallel.
 
 \subsection*{(d) 5 points}
 
-This equation implies that $\boldsymbol{Gm}$ equals the projection
+This equation implies that $\boldsymbol{Gm_{LLS}}$ equals the projection
 of $\boldsymbol{d}$ in the model space. Thus, the least-squares solution
-$\boldsymbol{m}$ is the coordinate of $\boldsymbol{d}$ in the model
-space.
+$\boldsymbol{m_{LLS}}$ is the coordinate of $\boldsymbol{d}$ in
+the model space.
 \end{document}
