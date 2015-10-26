@@ -504,8 +504,7 @@ where
 \begin{eqnarray*}
 \lim_{x\to\infty} & x\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)= & \lim_{x\to\infty}\frac{x}{\exp\left(\frac{x^{2}}{2\sigma^{2}}\right)}\\
  & = & \lim_{x\to\infty}\frac{x'}{\left[\exp\left(\frac{x^{2}}{2\sigma^{2}}\right)\right]'}\\
- & = & \lim_{x\to\infty}\frac{1}{\exp(\frac{x^{2}}{2\sigma^{2}})\frac{x}{\sigma^{2}}}\\
- & = & 0
+ & = & \lim_{x\to\infty}\frac{1}{\exp(x^{2})}
 \end{eqnarray*}
 
 \end_inset

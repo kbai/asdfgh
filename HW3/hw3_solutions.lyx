@@ -496,6 +496,24 @@ E(x^{2}) & = & -\frac{\sigma}{\sqrt{2\pi}}\int_{-\infty}^{\infty}x\left[\exp\lef
 \end_layout
 
 \begin_layout Standard
+where we use
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\lim_{x\to\infty} & x\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)= & \lim_{x\to\infty}\frac{x}{\exp\left(\frac{x^{2}}{2\sigma^{2}}\right)}\\
+ & = & \lim_{x\to\infty}\frac{x'}{\left[\exp\left(\frac{x^{2}}{2\sigma^{2}}\right)\right]'}\\
+ & = & \lim_{x\to\infty}\frac{1}{\exp(\frac{x^{2}}{2\sigma^{2}})\frac{x}{\sigma^{2}}}\\
+ & = & 0
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Since
 \end_layout
 
@@ -538,7 +556,7 @@ E(x^{2}) & = & \frac{\sigma}{\sqrt{2\pi}}\sqrt{2\pi}\sigma=\sigma^{2}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(d_{i}|L) & = & \frac{3}{4}\mathcal{\mathcal{N}}(L,\sigma)+\frac{1}{4}\mathcal{N}(L+1,\sigma)\\
+P(d_{i}|L) & = & \frac{3}{4}\mathcal{\mathcal{N}}(d_{i}|L,\sigma)+\frac{1}{4}\mathcal{N}(d_{i}|L+1,\sigma)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)\\
  & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-L)^{2}\right)+\frac{5}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(d_{i}-(L+1))^{2}\right)
 \end{eqnarray*}
@@ -604,40 +622,6 @@ where we assume the prior distribution
 \end_layout
 
 \begin_layout Standard
-Let
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-P(L|d_{i}) & = & cP(d_{i}|L)
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-where 
-\begin_inset Formula $c$
-\end_inset
-
- is a constant and is determined by
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-\int_{-\infty}^{\infty}P(L|d_{i})dL & =\text{\int}_{-\infty}^{\infty}cP(d_{i}|L)dL & =1\\
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Since
 \end_layout
 
@@ -646,7 +630,7 @@ Since
 \begin{eqnarray*}
 P(d_{i}|L) & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-L)^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(d_{i}-(L+1))^{2}}{2\sigma^{2}}\right)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i})^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-(d_{i}-1))^{2}}{2\sigma^{2}}\right)\\
- & = & \frac{3}{4}\mathcal{N}(d_{i},\sigma)+\frac{1}{4}\mathcal{N}(d_{i}-1,\sigma)
+ & = & \frac{3}{4}\mathcal{N}(L|d_{i},\sigma)+\frac{1}{4}\mathcal{N}(L|d_{i}-1,\sigma)
 \end{eqnarray*}
 
 \end_inset
@@ -670,17 +654,9 @@ Then
 \end_layout
 
 \begin_layout Standard
-Therefore, the constant 
-\begin_inset Formula $c=1$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(L|d_{i}) & = & cP(d_{i}|L)=P(d_{i}|L)\\
+P(L|d_{i}) & = & P(d_{i}|L)\\
  & = & \frac{3}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-d_{i})^{2}}{2\sigma^{2}}\right)+\frac{1}{4}\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(L-(d_{i}-1))^{2}}{2\sigma^{2}}\right)\\
  & = & \frac{15}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(L-d_{i})^{2}\right)+\frac{5}{2}\frac{1}{\sqrt{2\pi}}\exp\left(-50(L-(d_{i}-1))^{2}\right)
 \end{eqnarray*}
@@ -719,15 +695,6 @@ P(L|\{d_{1}=8.3,d_{2}=9.1\}) & \propto & P(\{d_{1}=8.3,d_{2}=9.1\}|L)P(L)\\
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-We can use the distribution of 
-\begin_inset Formula $L$
-\end_inset
-
- from the first measurement as prior distribution to compute a posterior
- distribution after the second measuremen
 \end_layout
 
 \begin_layout Standard
@@ -787,11 +754,6 @@ Use MATLAB to plot the function, and find its maximum for
 
  is 
 \begin_inset Formula $8.2$
-\end_inset
-
- cm.
- It's not an approximate number, since the accuracy is to 
-\begin_inset Formula $0.01$
 \end_inset
 
  cm.
@@ -1325,6 +1287,33 @@ dim\left(R(\boldsymbol{G})\right) & \leq & M<N=dim(ℝ^{N})
 \end_layout
 
 \begin_layout Standard
+Since
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\boldsymbol{H} & = & \boldsymbol{G}^{T}\boldsymbol{G}\\
+ & = & \left[\begin{array}{c}
+\boldsymbol{g_{1}}^{T}\\
+\boldsymbol{g_{2}}^{T}\\
+\vdots\\
+\boldsymbol{g_{M-1}}^{T}\\
+\boldsymbol{g_{M}}^{T}
+\end{array}\right]\left[\begin{array}{ccccc}
+\boldsymbol{g_{1}} & \boldsymbol{g_{2}} & ... & \boldsymbol{g_{M-1}} & \boldsymbol{g_{M}}\end{array}\right]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+then
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
 \boldsymbol{H_{ij}} & = & \boldsymbol{g_{i}}^{T}\boldsymbol{g_{j}}
@@ -1349,7 +1338,23 @@ The diagonal elements of
 \end_inset
 
  project onto each other.
- 
+ Because
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\boldsymbol{g_{i}}^{T}\boldsymbol{g_{j}} & = & ||\boldsymbol{g_{i}}||_{2}||\boldsymbol{g_{j}}||_{2}\cos(\angle(\boldsymbol{g_{i}},\boldsymbol{g_{j}}))
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is related to the orientation of the two vectors with respect to each
+ other, as well as the lengths of the two vectors.
 \end_layout
 
 \begin_layout Subsection*
@@ -1424,7 +1429,7 @@ Let's continue the discussions in (b).
 
 \begin_layout Standard
 This equation implies that 
-\begin_inset Formula $\boldsymbol{Gm}$
+\begin_inset Formula $\boldsymbol{Gm_{LLS}}$
 \end_inset
 
  equals the projection of 
@@ -1433,7 +1438,7 @@ This equation implies that
 
  in the model space.
  Thus, the least-squares solution 
-\begin_inset Formula $\boldsymbol{m}$
+\begin_inset Formula $\boldsymbol{m_{LLS}}$
 \end_inset
 
  is the coordinate of 
