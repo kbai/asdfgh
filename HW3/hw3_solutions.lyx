@@ -496,6 +496,24 @@ E(x^{2}) & = & -\frac{\sigma}{\sqrt{2\pi}}\int_{-\infty}^{\infty}x\left[\exp\lef
 \end_layout
 
 \begin_layout Standard
+where we use
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\lim_{x\to\infty} & x\exp\left(-\frac{x^{2}}{2\sigma^{2}}\right)= & \lim_{x\to\infty}\frac{x}{\exp\left(\frac{x^{2}}{2\sigma^{2}}\right)}\\
+ & = & \lim_{x\to\infty}\frac{x'}{\left[\exp\left(\frac{x^{2}}{2\sigma^{2}}\right)\right]'}\\
+ & = & \lim_{x\to\infty}\frac{1}{\exp(\frac{x^{2}}{2\sigma^{2}})\frac{x}{\sigma^{2}}}\\
+ & = & 0
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Since
 \end_layout
 
@@ -633,10 +651,6 @@ Then
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Therefore, 
 \end_layout
 
 \begin_layout Standard
@@ -1273,6 +1287,33 @@ dim\left(R(\boldsymbol{G})\right) & \leq & M<N=dim(ℝ^{N})
 \end_layout
 
 \begin_layout Standard
+Since
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\boldsymbol{H} & = & \boldsymbol{G}^{T}\boldsymbol{G}\\
+ & = & \left[\begin{array}{c}
+\boldsymbol{g_{1}}^{T}\\
+\boldsymbol{g_{2}}^{T}\\
+\vdots\\
+\boldsymbol{g_{M-1}}^{T}\\
+\boldsymbol{g_{M}}^{T}
+\end{array}\right]\left[\begin{array}{ccccc}
+\boldsymbol{g_{1}} & \boldsymbol{g_{2}} & ... & \boldsymbol{g_{M-1}} & \boldsymbol{g_{M}}\end{array}\right]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+then
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
 \boldsymbol{H_{ij}} & = & \boldsymbol{g_{i}}^{T}\boldsymbol{g_{j}}
@@ -1297,7 +1338,23 @@ The diagonal elements of
 \end_inset
 
  project onto each other.
- 
+ Because
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\boldsymbol{g_{i}}^{T}\boldsymbol{g_{j}} & = & ||\boldsymbol{g_{i}}||_{2}||\boldsymbol{g_{j}}||_{2}\cos(\angle(\boldsymbol{g_{i}},\boldsymbol{g_{j}}))
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is related to the orientation of the two vectors with respect to each
+ other, as well as the lengths of the two vectors.
 \end_layout
 
 \begin_layout Subsection*
@@ -1372,7 +1429,7 @@ Let's continue the discussions in (b).
 
 \begin_layout Standard
 This equation implies that 
-\begin_inset Formula $\boldsymbol{Gm}$
+\begin_inset Formula $\boldsymbol{Gm_{LLS}}$
 \end_inset
 
  equals the projection of 
@@ -1381,7 +1438,7 @@ This equation implies that
 
  in the model space.
  Thus, the least-squares solution 
-\begin_inset Formula $\boldsymbol{m}$
+\begin_inset Formula $\boldsymbol{m_{LLS}}$
 \end_inset
 
  is the coordinate of 
