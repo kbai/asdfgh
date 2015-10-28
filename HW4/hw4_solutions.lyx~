@@ -4,35 +4,29 @@
 \begin_header
 \textclass article
 \begin_preamble
-\title{PS4 Solutions}
-
-%TEMPLATE HEADER
-%This is the homework solution template
-
-
-%AMS-TeX packages
-\usepackage{amsthm}\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{bm}% bold math
+\usepackage[margin=0.75in]{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{amsmath}
+\usepackage{multirow}
 \usepackage{listings}
-\usepackage{color}%red, green, blue, yellow, cyan, magenta, black, white
-\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\usepackage{color}
+\usepackage{CJK}
+\definecolor{mygreen}{RGB}{28,172,0}
 \definecolor{mylilas}{RGB}{170,55,241}
 
-%Redefining sections as problems
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose}
 
-\newenvironment{problem}{\@startsection
-       {section}
-       {1}
-       {-.2em}
-       {-3.5ex plus -1ex minus -.2ex}
-       {0.2ex plus .2ex}
-       {\pagebreak[3]%forces pagebreak when space is small; use \eject for better results
-       \Large\sc\noindent{Problem }}\\}{\makeatother}
+
+\makeatletter
+\@ifundefined{date}{}{\date{}}
+\makeatother
 
 %Fancy-header package to modify header/page numbering 
 \usepackage{fancyhdr}
-
+\pagestyle{fancy}
 \lhead{\textbf{Ge/ESE 118}} %name of the course
 \chead{\textbf{}} %topic of the homework set
 \rhead{\textbf{Solution 4}} %number of the homework set
@@ -40,10 +34,24 @@
 \cfoot{}
 \rfoot{\thepage}
 
-%Include frequently used commands used for equations
-\input{math_cmds.tex}
 
-%CONTENTS OF THE HW SET SOLUTION BEGIN HERE
+% Matlab script
+\lstset{language=Matlab,%
+      %basicstyle=\color{red},
+  breaklines=true,%
+  morekeywords={matlab2tikz},
+  keywordstyle=\color{blue},%
+  morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+  identifierstyle=\color{black},%}
+  stringstyle=\color{mylilas},
+  commentstyle=\color{mygreen},%
+  showstringspaces=false,%without this there will be a symbol in the places where there is a space
+  numbers=left,%
+  numberstyle={\tiny \color{black}},% size of the numbers
+  numbersep=9pt, % this defines how far the numbers are from the text
+  emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+                                                      %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -112,7 +120,7 @@
 \begin_body
 
 \begin_layout Subsection*
-Problem 1 (graded by Dunzhu) 30 points
+Problem 1 (graded by Yiran) 30 points
 \end_layout
 
 \begin_layout Subsubsection*
@@ -120,10 +128,10 @@ Problem 1 (graded by Dunzhu) 30 points
 \end_layout
 
 \begin_layout Standard
-Here 
+The misfit function 
 \begin_inset Formula 
 \begin{eqnarray*}
-F(m)=\sum_{i}\frac{(d_{i}-g_{i}(m))^{2}}{2\sigma_{d}^{2}}
+F(\boldsymbol{m})=\sum_{i}\frac{(d_{i}-g_{i}(\boldsymbol{m}))^{2}}{2\sigma_{d}^{2}}
 \end{eqnarray*}
 
 \end_inset
@@ -132,18 +140,22 @@ F(m)=\sum_{i}\frac{(d_{i}-g_{i}(m))^{2}}{2\sigma_{d}^{2}}
 \end_layout
 
 \begin_layout Standard
+Then, the posterior PDF
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(m|d)\propto P(d|m)\propto\exp\left(-F(m)\right)\approx\exp\left(-F(m_{0})-\frac{\partial F}{\partial m}^{T}(m-m_{0})-\frac{1}{2}(m-m_{0})^{T}\frac{\partial^{2}F}{\partial m\partial m}(m-m_{0})\right)
+P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m})\propto\exp\left(-F(\boldsymbol{m})\right)\approx\exp\left(-F(\boldsymbol{m}_{0})-\frac{\partial F}{\partial\boldsymbol{m}}^{T}(\boldsymbol{m}-\boldsymbol{m}_{0})-\frac{1}{2}(\boldsymbol{m}-\boldsymbol{m}_{0})^{T}\frac{\partial^{2}F}{\partial\boldsymbol{m}\partial\boldsymbol{m}}(\boldsymbol{m}-\boldsymbol{m}_{0})\right)
 \end{eqnarray*}
 
 \end_inset
 
-Above equation has the form of a multivariate Gaussian distribution, So
- the covariance matrix will be 
+ has the form of a multivariate Gaussian distribution, So the covariance
+ matrix will be 
 \begin_inset Formula 
 \begin{eqnarray*}
-cov(m)=\left(\frac{\partial^{2}F}{\partial m\partial m}|_{m=m_{0}}\right)^{-1}=H^{-1}
+cov(\boldsymbol{m})=\left(\frac{\partial^{2}F}{\partial\boldsymbol{m}\partial\boldsymbol{m}}|_{\boldsymbol{m}=\boldsymbol{m}_{0}}\right)^{-1}=\boldsymbol{H}^{-1}
 \end{eqnarray*}
 
 \end_inset
@@ -152,8 +164,12 @@ Note we want to know covariance matrix when
 \begin_inset Formula $m_{0}$
 \end_inset
 
- is the best least square model.
- Using hw2's convention, define 
+ is the least squares solution.
+ 
+\end_layout
+
+\begin_layout Standard
+Using HW2's convention, define 
 \begin_inset Formula 
 \begin{eqnarray*}
 \hat{G}_{i,k}=\frac{\partial g_{i}}{\partial m_{k}}
@@ -161,7 +177,14 @@ Note we want to know covariance matrix when
 
 \end_inset
 
-Now 
+
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
 H\approx\frac{\hat{G}^{T}\hat{G}}{\sigma_{d}^{2}}
@@ -173,77 +196,37 @@ H\approx\frac{\hat{G}^{T}\hat{G}}{\sigma_{d}^{2}}
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lstinputlisting
-\end_layout
-
+In HW2, we didn't include the data error in the hessian.
+ So we need to modify it by dividing 
+\begin_inset Formula $\sigma_{d}^{2}$
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
+ when calculate the model covariance matrix.
+ 
 \end_layout
 
-\end_inset
-
-hw4p1.m
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- the output is 
-\end_layout
-
-\begin_layout Verbatim
-C0 =
+\begin_layout Standard
+(See MATLAB code) The output model covariance matrix is:
 \end_layout
 
 \begin_layout Verbatim
 
-\end_layout
-
-\begin_layout Verbatim
-    0.3651   -0.8059    0.7507   -1.3922    0.0480
-\end_layout
-
-\begin_layout Verbatim
-   -0.8059    2.8090   -2.5992    1.9509   -0.0010
-\end_layout
-
-\begin_layout Verbatim
-    0.7507   -2.5992    2.4548   -1.7962    0.0010
-\end_layout
-
-\begin_layout Verbatim
-   -1.3922    1.9509   -1.7962    6.5912   -0.2971
-\end_layout
-
-\begin_layout Verbatim
-    0.0480   -0.0010    0.0010   -0.2971    0.0171
+    0.0101   -0.0123    0.0095    0.0548    
 \end_layout
 
 \begin_layout Verbatim
 
+   -0.0123    0.0198   -0.0156   -0.0853     
 \end_layout
 
 \begin_layout Verbatim
 
+    0.0095   -0.0156    0.0237    0.1034     
+\end_layout
+
+\begin_layout Verbatim
+
+    0.0548   -0.0853    0.1034    0.4985
 \end_layout
 
 \begin_layout Subsubsection*
@@ -262,104 +245,73 @@ The covariance matrix calculated here will be similar to the Monte Carlo
 
 \begin_layout Standard
 Diagonal element shows the variance of each parameter.
- For example, we can notice 
-\begin_inset Formula $\sigma_{t}^{2}=0.3651$
+ The square root of the diagonal elements gives the standard deviations:
+ 
+\begin_inset Formula $\sigma_{x_{s}}=0.1006$
 \end_inset
 
 , 
-\begin_inset Formula $\sigma_{x}^{2}=2.8099\approx\sigma_{y}^{2}=2.4548$
+\begin_inset Formula $\sigma_{y_{s}}=0.1405$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{z_{s}}=0.1538$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{P}=0.7060$
 \end_inset
 
 .
- 
-\begin_inset Formula $\sigma_{z}$
+ The number is very close to that estimated before: 
+\begin_inset Formula $\sigma_{x_{s}}=0.099670,\sigma_{y_{s}}=0.137469,\sigma_{z_{s}}=0.149719,\sigma_{P}=0.691071$
 \end_inset
 
- is much larger than 
-\begin_inset Formula $\sigma_{x}$
+.
+\end_layout
+
+\begin_layout Standard
+The off diagonal shows the covariance between parameters.
+ Note also it's common to change the covariance matrix to correlation matrix
+ (
+\begin_inset Formula $\rho_{xy}=\frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}$
+\end_inset
+
+).
+ The correlation matrix is:
+\end_layout
+
+\begin_layout Verbatim
+
+    1.0000   -0.8685    0.6127    0.7721    
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.8685    1.0000   -0.7200   -0.8598     
+\end_layout
+
+\begin_layout Verbatim
+
+    0.6127   -0.7200    1.0000    0.9520     
+\end_layout
+
+\begin_layout Verbatim
+
+    0.7721   -0.8598    0.9520    1.0000
+\end_layout
+
+\begin_layout Standard
+we see that there are strong trade-offs between mode parameters.
+ The strong negative correlation between 
+\begin_inset Formula $x_{s}$
 \end_inset
 
  and 
-\begin_inset Formula $\sigma_{y}$
+\begin_inset Formula $y_{s}$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Standard
-The off diagonal shows trade off between parameters.
- For example, 
-\begin_inset Formula $\sigma_{xy}=-2.5992$
-\end_inset
-
-, explains the linear shape of 
-\begin_inset Formula $(x_{s},y_{s})$
-\end_inset
-
-in HW2.
- Also note 
-\begin_inset Formula $\sigma_{zt}=-1.3922$
-\end_inset
-
- indicate strong trade off between 
-\begin_inset Formula $z_{s}$
-\end_inset
-
- and 
-\begin_inset Formula $t_{s}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Note also it's common to change the covariance matrix to correlation matrix.
- For example, 
-\begin_inset Formula $\rho_{xy}=\sigma_{xy}/(\sigma_{x}\sigma_{y})$
-\end_inset
-
-.
- In this case
-\end_layout
-
-\begin_layout Verbatim
-S=diag(sqrt(diag(C0)));
-\end_layout
-
-\begin_layout Verbatim
-rho = S^(-1)*C0*S^(-1)
-\end_layout
-
-\begin_layout Verbatim
-rho =
-\end_layout
-
-\begin_layout Verbatim
-    1.0000   -0.7958    0.7929   -0.8975    0.6065
-\end_layout
-
-\begin_layout Verbatim
-   -0.7958    1.0000   -0.9898    0.4534   -0.0046
-\end_layout
-
-\begin_layout Verbatim
-    0.7929   -0.9898    1.0000   -0.4465    0.0047
-\end_layout
-
-\begin_layout Verbatim
-   -0.8975    0.4534   -0.4465    1.0000   -0.8840
-\end_layout
-
-\begin_layout Verbatim
-    0.6065   -0.0046    0.0047   -0.8840    1.0000
-\end_layout
-
-\begin_layout Standard
-the correlation matrix shows 
-\begin_inset Formula $\rho_{zv}=-0.8840$
-\end_inset
-
-, also a strong tradeoff.
+, for example, is also shown in the plot in HW2.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -370,36 +322,37 @@ the correlation matrix shows
 Now 
 \begin_inset Formula 
 \begin{eqnarray*}
-F(m)=\frac{1}{2\sigma^{2}}(d-Gm)^{T}(d-Gm)
+F(\boldsymbol{m}) & = & \frac{1}{2\sigma^{2}}(\boldsymbol{d}-\boldsymbol{Gm})^{T}(\boldsymbol{d}-\boldsymbol{Gm})
 \end{eqnarray*}
 
 \end_inset
 
 where 
-\begin_inset Formula $\sigma=40$
+\begin_inset Formula $\sigma=0.1$
 \end_inset
 
 , and 
 \begin_inset Formula 
 \begin{eqnarray*}
-G=[ones(length(x),1),x]\\
-m=[m1,m2]^{T}
+\boldsymbol{G} & = & \left[\begin{array}{cc}
+\boldsymbol{1} & \boldsymbol{x}\end{array}\right]\\
+\boldsymbol{m} & = & [m1,m2]^{T}
 \end{eqnarray*}
 
 \end_inset
 
-So the Hessian is 
+The Hessian is 
 \begin_inset Formula 
 \begin{eqnarray*}
-H=\frac{1}{\sigma^{2}}G^{T}G
+\boldsymbol{H} & = & \frac{1}{\sigma^{2}}\boldsymbol{G}^{T}\boldsymbol{G}
 \end{eqnarray*}
 
 \end_inset
 
-and thus 
+and 
 \begin_inset Formula 
 \begin{eqnarray*}
-cov(m)=H^{-1}
+cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
 \end{eqnarray*}
 
 \end_inset
@@ -407,48 +360,23 @@ cov(m)=H^{-1}
 
 \end_layout
 
-\begin_layout Verbatim
-G=[ones(length(x),1), x(:)];
-\end_layout
-
-\begin_layout Verbatim
-sigma=40;
-\end_layout
-
-\begin_layout Verbatim
-cov0 = inv(G'*G/sigma^2)
+\begin_layout Standard
+(see MATLAB code) The output covariance matrix is:
 \end_layout
 
 \begin_layout Verbatim
 
-\end_layout
-
-\begin_layout Verbatim
-cov0 =
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-       164.83       -3.084
-\end_layout
-
-\begin_layout Verbatim
-       -3.084      0.11213
+   1.0e-03 *
 \end_layout
 
 \begin_layout Verbatim
 
+    0.3429   -0.0019    
 \end_layout
 
 \begin_layout Verbatim
 
-\end_layout
-
-\begin_layout Verbatim
-
+   -0.0019    0.0004
 \end_layout
 
 \begin_layout Subsubsection*
@@ -490,39 +418,22 @@ Since in this case, we assume uniform prior, then
 \end_layout
 
 \begin_layout Standard
-First calculate the misfit 
-\begin_inset Formula $F(m)$
+First calculate the misfit
+\begin_inset Formula $F(\boldsymbol{m})$
 \end_inset
 
- for different models.
- Then the likelihood 
-\begin_inset Formula $P(d|m_{1},m_{2})$
-\end_inset
+ for the full parameter space.
+\end_layout
 
- can be calculated using 
-\begin_inset Formula $\exp(-F(m))$
-\end_inset
-
-.
- Then the 
-\begin_inset Formula $P(m_{1},m_{2}|d)$
-\end_inset
-
- follows from Bayesian law and uniform prior.
- Then we can integrate 
-\begin_inset Formula $P(m_{1},m_{2}|d)$
-\end_inset
-
- to get the marginal pdf.
- Finally, we need to make sure the result is normallized properly (it's
- indeed a pdf, whose integration is 1).
+\begin_layout Standard
+From Bayesian law and uniform prior,
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(m_{1},m_{2}|d)\propto\exp(-F(m))\\
-P(m_{1},m_{2}|d)=\frac{\exp{F(m)}}{\int dm_{1}\int dm_{2}\exp{F(m)}}
+P(\boldsymbol{m}|\boldsymbol{d}) & \propto & P(\boldsymbol{d}|\boldsymbol{m})\\
+ & \propto & \exp(-F(\boldsymbol{m}))\\
 \end{eqnarray*}
 
 \end_inset
@@ -531,11 +442,13 @@ P(m_{1},m_{2}|d)=\frac{\exp{F(m)}}{\int dm_{1}\int dm_{2}\exp{F(m)}}
 \end_layout
 
 \begin_layout Standard
-and marginal 
+Normalize the pdf so its integral over the model space equals 1.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(m_{1}|d)=\int dm_{2}\left(\frac{\exp{F(m)}}{\int dm_{1}\int dm_{2}\exp{F(m)}}\right)\\
-P(m_{2}|d)=\int dm_{1}\left(\frac{\exp{F(m)}}{\int dm_{1}\int dm_{2}\exp{F(m)}}\right)\\
+P(\boldsymbol{m}|\boldsymbol{d}) & = & \frac{\exp(-F(\boldsymbol{m}))}{\int\exp(F(\boldsymbol{m})d\boldsymbol{m})}
 \end{eqnarray*}
 
 \end_inset
@@ -544,92 +457,35 @@ P(m_{2}|d)=\int dm_{1}\left(\frac{\exp{F(m)}}{\int dm_{1}\int dm_{2}\exp{F(m)}}\
 \end_layout
 
 \begin_layout Standard
-We can use summation to approximate the integration.
-\end_layout
+\begin_inset Formula 
+\begin{eqnarray*}
+P(m_{1},m_{2}|\boldsymbol{d}) & = & \frac{\exp(-F(m_{1},m_{2}))}{\int\int P(m_{1},m_{2}|d)dm_{1}dm_{2}}
+\end{eqnarray*}
 
-\begin_layout Verbatim
-minmis = min(misfit2(:));  % minimum misfit
-\end_layout
+\end_inset
 
-\begin_layout Verbatim
-Pd_m = exp(- (misfit2-minmis) / (2*sigma^2)  ); % likelihood, without normalize
- 
-\end_layout
 
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-Pd_m = Pd_m / sum(Pd_m(:)); 
-\end_layout
-
-\begin_layout Verbatim
-Pm1_d = sum(Pd_m,2)/(m1(2)-m1(1));   %% now int (Pm1_d) dm1 = 1
-\end_layout
-
-\begin_layout Verbatim
-Pm2_d = sum(Pd_m,1)/(m2(2)-m2(1));
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-subplot(121);
-\end_layout
-
-\begin_layout Verbatim
-plot(m1,Pm1_d);
-\end_layout
-
-\begin_layout Verbatim
-subplot(122);
-\end_layout
-
-\begin_layout Verbatim
-plot(m2,Pm2_d);
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename p1e.pdf
-	width 12cm
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-(e): Marginal pdf for 
-\begin_inset Formula $m_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $m_{2}$
-\end_inset
-
-.
- 
-\end_layout
+The marginals are: 
+\begin_inset Formula 
+\begin{eqnarray*}
+P(m_{1}|d) & = & \int P(m_{1},m_{2}|d)dm_{2}\\
+P(m_{2}|d) & = & \int P(m_{1},m_{2}|d)dm_{1}\\
+\end{eqnarray*}
 
 \end_inset
 
 
 \end_layout
 
+\begin_layout Standard
+We can approximate the integral with rectangle method (
+\begin_inset Formula $\int f(x)dx=\sum_{i}f(x_{i})\triangle x$
 \end_inset
 
-
+).
 \end_layout
 
 \begin_layout Subsubsection*
@@ -648,18 +504,22 @@ status open
 \end_layout
 
 \begin_layout Verbatim
+
 Em1 =  sum(Pm1_d(:) .* m1(:) * (m1(2)-m1(1)) ) ;
 \end_layout
 
 \begin_layout Verbatim
+
 Em1m1 = sum(Pm1_d(:) .* m1(:).^2 * (m1(2)-m1(1)) ) ;
 \end_layout
 
 \begin_layout Verbatim
+
 Em2 =  sum(Pm2_d(:) .* m2(:) * (m2(2)-m2(1)) ) ;
 \end_layout
 
 \begin_layout Verbatim
+
 Em2m2 = sum(Pm2_d(:) .* m2(:).^2 * (m2(2)-m2(1)) ) ;
 \end_layout
 
@@ -668,10 +528,12 @@ Em2m2 = sum(Pm2_d(:) .* m2(:).^2 * (m2(2)-m2(1)) ) ;
 \end_layout
 
 \begin_layout Verbatim
+
 sigma_m1 = sqrt(Em1m1-Em1*Em1)
 \end_layout
 
 \begin_layout Verbatim
+
 sigma_m2 = sqrt(Em2m2-Em2*Em2)
 \end_layout
 
@@ -680,6 +542,7 @@ sigma_m2 = sqrt(Em2m2-Em2*Em2)
 \end_layout
 
 \begin_layout Verbatim
+
 sigma_m1 =
 \end_layout
 
@@ -688,6 +551,7 @@ sigma_m1 =
 \end_layout
 
 \begin_layout Verbatim
+
        12.838
 \end_layout
 
@@ -700,6 +564,7 @@ sigma_m1 =
 \end_layout
 
 \begin_layout Verbatim
+
 sigma_m2 =
 \end_layout
 
@@ -708,6 +573,7 @@ sigma_m2 =
 \end_layout
 
 \begin_layout Verbatim
+
       0.33485
 \end_layout
 
@@ -1586,26 +1452,32 @@ Here is the full code:
 \end_layout
 
 \begin_layout Verbatim
+
 function hw4p3()
 \end_layout
 
 \begin_layout Verbatim
+
 rng(0); % this generate determined random variable
 \end_layout
 
 \begin_layout Verbatim
+
 xi=[0 10 15 6 -7 3]';
 \end_layout
 
 \begin_layout Verbatim
+
 yi=[0 0 6 13 10 7]';
 \end_layout
 
 \begin_layout Verbatim
+
 zi=[0 0 0 0 0 0]';
 \end_layout
 
 \begin_layout Verbatim
+
 ti=[322.418 321.031 321.228 323.093 324.415 322.706]';
 \end_layout
 
@@ -1614,10 +1486,12 @@ ti=[322.418 321.031 321.228 323.093 324.415 322.706]';
 \end_layout
 
 \begin_layout Verbatim
+
 sig = 0.1;
 \end_layout
 
 \begin_layout Verbatim
+
 mu = 4.8;
 \end_layout
 
@@ -1626,10 +1500,12 @@ mu = 4.8;
 \end_layout
 
 \begin_layout Verbatim
+
 M0=do_one_ti(xi,yi,zi,ti);
 \end_layout
 
 \begin_layout Verbatim
+
 ti_0=predict(xi,yi,zi,M0);
 \end_layout
 
@@ -1638,6 +1514,7 @@ ti_0=predict(xi,yi,zi,M0);
 \end_layout
 
 \begin_layout Verbatim
+
 function M=do_one_ti(xi,yi,zi,ti)
 \end_layout
 
@@ -1646,99 +1523,123 @@ function M=do_one_ti(xi,yi,zi,ti)
 \end_layout
 
 \begin_layout Verbatim
+
 M=[300 20 -10 10 2]'; % initial guess
 \end_layout
 
 \begin_layout Verbatim
+
 for step = 1:10
 \end_layout
 
 \begin_layout Verbatim
+
     M(5);
 \end_layout
 
 \begin_layout Verbatim
+
     grad=zeros(5,1);
 \end_layout
 
 \begin_layout Verbatim
+
     hess=zeros(5,5);   
 \end_layout
 
 \begin_layout Verbatim
+
     for i=1:length(xi)
 \end_layout
 
 \begin_layout Verbatim
+
         [tmp_grad, tmp_hess]=get_grad_hessian(xi(i),yi(i),zi(i),ti(i),M);
     
 \end_layout
 
 \begin_layout Verbatim
+
         grad = grad + tmp_grad;
 \end_layout
 
 \begin_layout Verbatim
+
         hess = hess + tmp_hess;   
 \end_layout
 
 \begin_layout Verbatim
+
     end
 \end_layout
 
 \begin_layout Verbatim
+
     
 \end_layout
 
 \begin_layout Verbatim
+
     %adjust the final values of gamma and the Hessian to account for the
 \end_layout
 
 \begin_layout Verbatim
+
     %velocity priors
 \end_layout
 
 \begin_layout Verbatim
+
     grad(end) = grad(end) + 1/(M(5)) + (M(5)-4.8)/(0.1)^2;
 \end_layout
 
 \begin_layout Verbatim
+
     hess(end,end) = hess(end,end) + 1/0.1^2 - 1/M(5).^2;
 \end_layout
 
 \begin_layout Verbatim
+
        
 \end_layout
 
 \begin_layout Verbatim
+
     err(step) = (norm(predict(xi,yi,zi,M)-ti)^2);   
 \end_layout
 
 \begin_layout Verbatim
+
   %  if(step > 1 && err(step) > err(step-1))
 \end_layout
 
 \begin_layout Verbatim
+
   %      break;
 \end_layout
 
 \begin_layout Verbatim
+
   %  end
 \end_layout
 
 \begin_layout Verbatim
+
 	M = M- inv(hess)*grad;
 \end_layout
 
 \begin_layout Verbatim
+
 end
 \end_layout
 
 \begin_layout Verbatim
+
 M
 \end_layout
 
 \begin_layout Verbatim
+
 plot(err);
 \end_layout
 
@@ -1747,30 +1648,37 @@ plot(err);
 \end_layout
 
 \begin_layout Verbatim
+
 function [grad,hess] = get_grad_hessian(xi,yi,zi,ti,M)
 \end_layout
 
 \begin_layout Verbatim
+
 ts=M(1); xs=M(2); ys=M(3); zs=M(4); v=M(5);
 \end_layout
 
 \begin_layout Verbatim
+
 R=sqrt((xs-xi)^2 + (ys-yi)^2 + (zs-zi)^2);
 \end_layout
 
 \begin_layout Verbatim
+
 nx=(xs-xi)/R;
 \end_layout
 
 \begin_layout Verbatim
+
 ny=(ys-yi)/R;
 \end_layout
 
 \begin_layout Verbatim
+
 nz=(zs-zi)/R;
 \end_layout
 
 \begin_layout Verbatim
+
 e=(ts+R/v-ti);
 \end_layout
 
@@ -1779,6 +1687,7 @@ e=(ts+R/v-ti);
 \end_layout
 
 \begin_layout Verbatim
+
 sig = 0.1;
 \end_layout
 
@@ -1787,14 +1696,17 @@ sig = 0.1;
 \end_layout
 
 \begin_layout Verbatim
+
 grad = e*[1 nx/v ny/v nz/v -R/v^2]';
 \end_layout
 
 \begin_layout Verbatim
+
 sen = [1 nx/v ny/v nz/v -R/v^2]';
 \end_layout
 
 \begin_layout Verbatim
+
 hess = sen*sen'; % approximate hess
 \end_layout
 
@@ -1803,14 +1715,17 @@ hess = sen*sen'; % approximate hess
 \end_layout
 
 \begin_layout Verbatim
+
 %need to add ajustment for sigma given for the data
 \end_layout
 
 \begin_layout Verbatim
+
 hess = hess/0.01^2;
 \end_layout
 
 \begin_layout Verbatim
+
 grad = grad/0.01^2;
 \end_layout
 
@@ -1819,6 +1734,7 @@ grad = grad/0.01^2;
 \end_layout
 
 \begin_layout Verbatim
+
 %hess(end,end) = hess(end,end) + 1/sig^2 - 1/v^2;
 \end_layout
 
@@ -1827,6 +1743,7 @@ grad = grad/0.01^2;
 \end_layout
 
 \begin_layout Verbatim
+
 function r=predict(xi,yi,zi,M)
 \end_layout
 
@@ -1835,26 +1752,32 @@ function r=predict(xi,yi,zi,M)
 \end_layout
 
 \begin_layout Verbatim
+
 ts=M(1); xs=M(2); ys=M(3); zs=M(4); v=M(5);
 \end_layout
 
 \begin_layout Verbatim
+
 r=xi*0;
 \end_layout
 
 \begin_layout Verbatim
+
 for i=1:length(xi)
 \end_layout
 
 \begin_layout Verbatim
+
     R=sqrt((xs-xi(i))^2 + (ys-yi(i))^2 + (zs-zi(i))^2);
 \end_layout
 
 \begin_layout Verbatim
+
     r(i)=(ts+R/v);
 \end_layout
 
 \begin_layout Verbatim
+
 end
 \end_layout
 
