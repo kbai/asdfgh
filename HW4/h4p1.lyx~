@@ -1,0 +1,643 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage[margin=0.75in]{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{CJK}
+\definecolor{mygreen}{RGB}{28,172,0}
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose}
+
+
+\makeatletter
+\@ifundefined{date}{}{\date{}}
+\makeatother
+
+%Fancy-header package to modify header/page numbering 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\textbf{Ge/ESE 118}} %name of the course
+\chead{\textbf{}} %topic of the homework set
+\rhead{\textbf{Solution 3}} %number of the homework set
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+
+
+% Matlab script
+\lstset{language=Matlab,%
+      %basicstyle=\color{red},
+  breaklines=true,%
+  morekeywords={matlab2tikz},
+  keywordstyle=\color{blue},%
+  morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+  identifierstyle=\color{black},%}
+  stringstyle=\color{mylilas},
+  commentstyle=\color{mygreen},%
+  showstringspaces=false,%without this there will be a symbol in the places where there is a space
+  numbers=left,%
+  numberstyle={\tiny \color{black}},% size of the numbers
+  numbersep=9pt, % this defines how far the numbers are from the text
+  emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+                                                      %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection*
+Problem 1 (graded by Yiran) 40 points
+\end_layout
+
+\begin_layout Subsubsection*
+(a) - 5 points
+\end_layout
+
+\begin_layout Standard
+The misfit function 
+\begin_inset Formula 
+\begin{eqnarray*}
+F(\boldsymbol{m}) & = & \sum_{i}\frac{(d_{i}-g_{i}(\boldsymbol{m}))^{2}}{2\sigma_{d}^{2}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then, the posterior PDF
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m})\propto\exp\left(-F(\boldsymbol{m})\right)\approx\exp\left(-F(\boldsymbol{m}_{0})-\frac{\partial F}{\partial\boldsymbol{m}}^{T}(\boldsymbol{m}-\boldsymbol{m}_{0})-\frac{1}{2}(\boldsymbol{m}-\boldsymbol{m}_{0})^{T}\frac{\partial^{2}F}{\partial\boldsymbol{m}\partial\boldsymbol{m}}(\boldsymbol{m}-\boldsymbol{m}_{0})\right)
+\end{eqnarray*}
+
+\end_inset
+
+ has the form of a multivariate Gaussian distribution, and the covariance
+ matrix is 
+\begin_inset Formula 
+\begin{eqnarray*}
+cov(\boldsymbol{m})=\left(\frac{\partial^{2}F}{\partial\boldsymbol{m}\partial\boldsymbol{m}}|_{\boldsymbol{m}=\boldsymbol{m}_{0}}\right)^{-1}=\boldsymbol{H}^{-1}
+\end{eqnarray*}
+
+\end_inset
+
+Note we want to know covariance matrix when 
+\begin_inset Formula $m_{0}$
+\end_inset
+
+ is the least squares solution.
+ 
+\end_layout
+
+\begin_layout Standard
+Using HW2's convention, define 
+\begin_inset Formula 
+\begin{eqnarray*}
+\hat{G}_{i,k}=\frac{\partial g_{i}}{\partial m_{k}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+H\approx\frac{\hat{G}^{T}\hat{G}}{\sigma_{d}^{2}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In HW2, we didn't include the data error in the hessian.
+ So we need to modify it by dividing 
+\begin_inset Formula $\sigma_{d}^{2}$
+\end_inset
+
+ when calculate the model covariance matrix.
+ 
+\end_layout
+
+\begin_layout Standard
+(See MATLAB code) The output model covariance matrix is:
+\end_layout
+
+\begin_layout Verbatim
+
+    0.0101   -0.0123    0.0095    0.0548    
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.0123    0.0198   -0.0156   -0.0853     
+\end_layout
+
+\begin_layout Verbatim
+
+    0.0095   -0.0156    0.0237    0.1034     
+\end_layout
+
+\begin_layout Verbatim
+
+    0.0548   -0.0853    0.1034    0.4985
+\end_layout
+
+\begin_layout Subsubsection*
+(b)- 5 points
+\end_layout
+
+\begin_layout Standard
+The covariance matrix calculated here will be similar to the Monte Carlo
+ simulation in HW2.
+\end_layout
+
+\begin_layout Standard
+Diagonal element shows the variance of each parameter.
+ The square root of the diagonal elements gives the standard deviations:
+ 
+\begin_inset Formula $\sigma_{x_{s}}=0.1006$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{y_{s}}=0.1405$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{z_{s}}=0.1538$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{P}=0.7060$
+\end_inset
+
+.
+ The number is very close to that estimated before: 
+\begin_inset Formula $\sigma_{x_{s}}=0.099670,\sigma_{y_{s}}=0.137469,\sigma_{z_{s}}=0.149719,\sigma_{P}=0.691071$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The off diagonal shows the covariance between parameters.
+ We can scale the covariance matrix to correlation matrix (
+\begin_inset Formula $\rho_{xy}=\frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}$
+\end_inset
+
+).
+ The correlation matrix is:
+\end_layout
+
+\begin_layout Verbatim
+
+    1.0000   -0.8685    0.6127    0.7721    
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.8685    1.0000   -0.7200   -0.8598     
+\end_layout
+
+\begin_layout Verbatim
+
+    0.6127   -0.7200    1.0000    0.9520     
+\end_layout
+
+\begin_layout Verbatim
+
+    0.7721   -0.8598    0.9520    1.0000
+\end_layout
+
+\begin_layout Standard
+we see that there are strong trade-offs between mode parameters.
+ The strong negative correlation between 
+\begin_inset Formula $x_{s}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{s}$
+\end_inset
+
+, for example, is also shown in the plot in HW2.
+\end_layout
+
+\begin_layout Subsubsection*
+(c)- 5 points
+\end_layout
+
+\begin_layout Standard
+Now 
+\begin_inset Formula 
+\begin{eqnarray*}
+F(\boldsymbol{m}) & = & \frac{1}{2\sigma^{2}}(\boldsymbol{d}-\boldsymbol{Gm})^{T}(\boldsymbol{d}-\boldsymbol{Gm})
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\sigma=0.1$
+\end_inset
+
+, and 
+\begin_inset Formula 
+\begin{eqnarray*}
+\boldsymbol{G} & = & \left[\begin{array}{cc}
+\boldsymbol{1} & \boldsymbol{x}\end{array}\right]\\
+\boldsymbol{m} & = & [m1,m2]^{T}
+\end{eqnarray*}
+
+\end_inset
+
+The Hessian is 
+\begin_inset Formula 
+\begin{eqnarray*}
+\boldsymbol{H} & = & \frac{1}{\sigma^{2}}\boldsymbol{G}^{T}\boldsymbol{G}
+\end{eqnarray*}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{eqnarray*}
+cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(see MATLAB code) The output covariance matrix is:
+\end_layout
+
+\begin_layout Verbatim
+
+   1.0e-03 *
+\end_layout
+
+\begin_layout Verbatim
+
+    0.3429   -0.0019    
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.0019    0.0004
+\end_layout
+
+\begin_layout Subsubsection*
+(d)- 5 points
+\end_layout
+
+\begin_layout Standard
+The model covariance is calculated from the distribution 
+\begin_inset Formula $P(\boldsymbol{m}|\boldsymbol{d})$
+\end_inset
+
+.
+ The square root of the eigenvalues and eigenvectors of the model covariance
+ matrix measure the shape (length and direction of the semiaxes) of the
+ isocontour of 
+\begin_inset Formula $P(\boldsymbol{m}|\boldsymbol{d}$
+\end_inset
+
+).
+ The shape of the isocontour of 
+\begin_inset Formula $P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m})\propto\exp(-F(\boldsymbol{m}))$
+\end_inset
+
+ is scaled to the isocontour of the error ellipse 
+\begin_inset Formula $F(\boldsymbol{m})$
+\end_inset
+
+ , which we plotted in HW2.
+\end_layout
+
+\begin_layout Standard
+The eigenvectors of the covariance matrix are:
+\begin_inset Formula $\left[\begin{array}{cc}
+-0.0054 & -1.0000\end{array}\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\left[\begin{array}{cc}
+-1.0000 & 0.0054\end{array}\right]$
+\end_inset
+
+, correspond to an angle of 
+\begin_inset Formula $89.7^{o}$
+\end_inset
+
+ and 
+\begin_inset Formula $179.7^{o}$
+\end_inset
+
+ measured clockwise from x axis; the ratio of the length of the semiaxis
+ is 
+\begin_inset Formula $\sqrt{\lambda_{1}}/\sqrt{\lambda_{2}}=0.0319$
+\end_inset
+
+.
+ We see that it is true for the error ellipse as shown below (notice the
+ difference in the scale of x and y axis).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename p1_figures/errorellip.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(e)- 5 points
+\end_layout
+
+\begin_layout Standard
+First calculate the misfit 
+\begin_inset Formula $F(\boldsymbol{m})$
+\end_inset
+
+ for the full parameter space.
+\end_layout
+
+\begin_layout Standard
+From Bayesian law and uniform prior,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+P(\boldsymbol{m}|\boldsymbol{d}) & \propto & P(\boldsymbol{d}|\boldsymbol{m})\\
+ & \propto & \exp(-F(\boldsymbol{m}))\\
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Normalize the pdf so its integral over the model space equals 1.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+P(\boldsymbol{m}|\boldsymbol{d}) & = & \frac{\exp(-F(\boldsymbol{m}))}{\int\exp(F(\boldsymbol{m})d\boldsymbol{m})}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+that is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+P(m_{1},m_{2}|\boldsymbol{d}) & = & \frac{\exp(-F(m_{1},m_{2}))}{\int\int P(m_{1},m_{2}|d)dm_{1}dm_{2}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The marginals are: 
+\begin_inset Formula 
+\begin{eqnarray*}
+P(m_{1}|d) & = & \int P(m_{1},m_{2}|d)dm_{2}\\
+P(m_{2}|d) & = & \int P(m_{1},m_{2}|d)dm_{1}\\
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can approximate the integral with rectangle method: 
+\begin_inset Formula $\int f(x)dx=\sum_{i}f(x_{i})\triangle x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename p1_figures/margin.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(f)- 5 points
+\end_layout
+
+\begin_layout Standard
+By definition
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\sigma_{m_{i}}^{2}=E[m_{i}^{2}]-(E[m_{i}])^{2} & = & \int p(m_{i}|d)m_{i}^{2}dm_{i}-\left(\int p(m_{i}|d)m_{i}dm_{i}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(see MATLAB code) We get 
+\begin_inset Formula $\sigma_{m1}=0.0185$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{m2}=0.0006$
+\end_inset
+
+, which are equal to square root of the diagonal elements of the covariance
+ matrix calculated in (c).
+\end_layout
+
+\begin_layout Subsubsection*
+MATLAB code for (a)-(b)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{p1/hw2_1.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+MATLAB code for (c)-(f)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{p1_2/hw2_2.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
