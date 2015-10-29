@@ -318,14 +318,6 @@ we see that there are strong trade-offs between model parameters.
 \end_layout
 
 \begin_layout Standard
-(1) Result using given data error 
-\begin_inset Formula $\sigma=0.1$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Now 
 \begin_inset Formula 
 \begin{eqnarray*}
@@ -386,11 +378,7 @@ cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
    -0.0019    0.0004
 \end_layout
 
-\begin_layout Standard
-(2) Result using estimated data error 
-\begin_inset Formula $s=26.3$
-\end_inset
-
+\begin_layout Verbatim
 
 \end_layout
 
@@ -433,10 +421,6 @@ s & = & \sqrt{\frac{1}{m-n}F(\mbox{\boldsymbol{m_{L_{2}}}})}\approx26.3
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Using this new data error, we do the same calculation as above.
 \end_layout
 
 \begin_layout Standard
@@ -675,7 +659,7 @@ We get
 \begin_inset Formula $\sigma_{m2}=0.0006$
 \end_inset
 
-, which are very close to square root of the diagonal elements of the covariance
+, which are equal to square root of the diagonal elements of the covariance
  matrix calculated in (c).
 \end_layout
 
@@ -693,10 +677,10 @@ We get
 \end_inset
 
 , 
-\begin_inset Formula $\sigma_{m2}=0.1577$
+\begin_inset Formula $\sigma_{m2}=0.0006$
 \end_inset
 
-, which are very close to square root of the diagonal elements of the covariance
+, which are equal to square root of the diagonal elements of the covariance
  matrix calculated in (c).
 \end_layout
 

@@ -215,18 +215,22 @@ So we need to modify the hessian in HW2 by dividing
 \end_layout
 
 \begin_layout Verbatim
+
     0.0101   -0.0123    0.0095    0.0548    
 \end_layout
 
 \begin_layout Verbatim
+
    -0.0123    0.0198   -0.0156   -0.0853     
 \end_layout
 
 \begin_layout Verbatim
+
     0.0095   -0.0156    0.0237    0.1034     
 \end_layout
 
 \begin_layout Verbatim
+
     0.0548   -0.0853    0.1034    0.4985
 \end_layout
 
@@ -277,18 +281,22 @@ The off diagonal shows the covariance between parameters.
 \end_layout
 
 \begin_layout Verbatim
+
     1.0000   -0.8685    0.6127    0.7721    
 \end_layout
 
 \begin_layout Verbatim
+
    -0.8685    1.0000   -0.7200   -0.8598     
 \end_layout
 
 \begin_layout Verbatim
+
     0.6127   -0.7200    1.0000    0.9520     
 \end_layout
 
 \begin_layout Verbatim
+
     0.7721   -0.8598    0.9520    1.0000
 \end_layout
 
@@ -307,6 +315,14 @@ we see that there are strong trade-offs between model parameters.
 
 \begin_layout Subsubsection*
 (c)- 8 points
+\end_layout
+
+\begin_layout Standard
+(1) Result using given data error 
+\begin_inset Formula $\sigma=0.1$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -356,15 +372,81 @@ cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
 \end_layout
 
 \begin_layout Verbatim
+
    1.0e-03 *
 \end_layout
 
 \begin_layout Verbatim
+
     0.3429   -0.0019    
 \end_layout
 
 \begin_layout Verbatim
+
    -0.0019    0.0004
+\end_layout
+
+\begin_layout Standard
+(2) Result using estimated data error
+\end_layout
+
+\begin_layout Standard
+In this problem , the data error is strongly underestimated.
+ We need to re-estimate the data error, and re-calculate the model covariance
+ matrix based on the new data error.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $s$
+\end_inset
+
+ our estimation of the data error, 
+\begin_inset Formula $m=30$
+\end_inset
+
+ the number of observation, 
+\begin_inset Formula $n=2$
+\end_inset
+
+ the number of model parameter, 
+\begin_inset Formula $\boldsymbol{m_{L_{2}}}$
+\end_inset
+
+ the least squares solution
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+s & = & \sqrt{\frac{1}{m-n}F(\mbox{\boldsymbol{m_{L_{2}}}})}\approx26.3
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using this new data error, we do the same calculation as above.
+\end_layout
+
+\begin_layout Standard
+(see MATLAB code) The output covariance matrix is:
+\end_layout
+
+\begin_layout Verbatim
+
+   23.7090   -0.1283    
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.1283    0.0249
 \end_layout
 
 \begin_layout Subsubsection*
@@ -514,8 +596,34 @@ We can approximate the integral with rectangle method:
 \end_layout
 
 \begin_layout Standard
+(1) Result using given data error 
+\begin_inset Formula $\sigma=0.1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Graphics
 	filename p1_figures/margin.jpg
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(2) Result using estimated data error 
+\begin_inset Formula $s=26.3$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename p1_figures/margins.jpg
 	scale 70
 
 \end_inset
@@ -543,7 +651,19 @@ By definition
 \end_layout
 
 \begin_layout Standard
-(see MATLAB code) We get 
+(see MATLAB code) 
+\end_layout
+
+\begin_layout Standard
+(1) Result using given data error 
+\begin_inset Formula $\sigma=0.1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We get 
 \begin_inset Formula $\sigma_{m1}=0.0185$
 \end_inset
 
@@ -551,7 +671,28 @@ By definition
 \begin_inset Formula $\sigma_{m2}=0.0006$
 \end_inset
 
-, which are equal to square root of the diagonal elements of the covariance
+, which are very close to square root of the diagonal elements of the covariance
+ matrix calculated in (c).
+\end_layout
+
+\begin_layout Standard
+(2) Result using estimated data error 
+\begin_inset Formula $s=26.3$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We get 
+\begin_inset Formula $\sigma_{m1}=4.8692$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{m2}=0.1577$
+\end_inset
+
+, which are very close to square root of the diagonal elements of the covariance
  matrix calculated in (c).
 \end_layout
 
@@ -608,7 +749,7 @@ tiny
 
 
 \backslash
-lstinputlisting{p1_2/hw2_2.m}
+lstinputlisting{p1_2/hw2_2s.m}
 \end_layout
 
 \begin_layout Plain Layout
