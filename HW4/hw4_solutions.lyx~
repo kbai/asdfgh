@@ -120,7 +120,7 @@
 \begin_body
 
 \begin_layout Subsection*
-Problem 1 (graded by Yiran) 30 points
+Problem 1 (graded by Yiran) 40 points
 \end_layout
 
 \begin_layout Subsubsection*
@@ -131,7 +131,7 @@ Problem 1 (graded by Yiran) 30 points
 The misfit function 
 \begin_inset Formula 
 \begin{eqnarray*}
-F(\boldsymbol{m})=\sum_{i}\frac{(d_{i}-g_{i}(\boldsymbol{m}))^{2}}{2\sigma_{d}^{2}}
+F(\boldsymbol{m}) & = & \sum_{i}\frac{(d_{i}-g_{i}(\boldsymbol{m}))^{2}}{2\sigma_{d}^{2}}
 \end{eqnarray*}
 
 \end_inset
@@ -151,7 +151,7 @@ P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m})\propto\
 
 \end_inset
 
- has the form of a multivariate Gaussian distribution, So the covariance
+ has the form of a multivariate Gaussian distribution, so the covariance
  matrix will be 
 \begin_inset Formula 
 \begin{eqnarray*}
@@ -236,11 +236,6 @@ In HW2, we didn't include the data error in the hessian.
 \begin_layout Standard
 The covariance matrix calculated here will be similar to the Monte Carlo
  simulation in HW2.
- They should be more and more similar when 
-\begin_inset Formula $\sigma_{d}\rightarrow0$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -384,33 +379,56 @@ cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
 \end_layout
 
 \begin_layout Standard
-Since in this case, we assume uniform prior, then 
-\begin_inset Formula $P(m|d)\propto P(d|m)$
+The model covariance is calculated from the distribution 
+\begin_inset Formula $P(\boldsymbol{m}|\boldsymbol{d})$
 \end_inset
 
 .
- The full parameter space calculate the likelihood 
-\begin_inset Formula $P(d|m)$
+ The square root of the eigenvalues and eigenvectors of the model covariance
+ matrix measure the shape (length and direction of the semiaxes) of the
+ isocontour of 
+\begin_inset Formula $P(\boldsymbol{m}|\boldsymbol{d}$
 \end_inset
 
-, while the covariance is calculated from distribution 
-\begin_inset Formula $P(m|d)$
+).
+ The shape of the isocontour of 
+\begin_inset Formula $P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m})\propto\exp(-F(\boldsymbol{m}))$
 \end_inset
 
-.
- So the error map in full-parameter-space in HW2, forms an ellipsoid, whose
- axis length and rotation angle is all determined by this covariance matrix.
- For example, the box containing the error ellipsoid has height/width ratio
- about 
-\begin_inset Formula $(500-100)/(2-(-8))\approx4/1$
+ which is scaled to the isocontour of the error ellipse 
+\begin_inset Formula $F(\boldsymbol{m})$
 \end_inset
 
-, which is similar to 
-\begin_inset Formula $\sqrt{164.83/0.11213}$
+ we plotted in HW2.
+\end_layout
+
+\begin_layout Standard
+The eigenvectors of the covariance matrix are
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left[\begin{array}{cc}
+-0.0054 & -1.0000\end{array}\right]$
 \end_inset
 
-.
- The off diagnoal is negative, explains the negative slope in HW2.
+ , 
+\begin_inset Formula $\left[\begin{array}{cc}
+-1.0000 & 0.0054\end{array}\right]$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+and the corresponding eigenvalues are 
+\begin_inset Formula $\lambda_{1}=0.0003*1e-3$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{2}=0.3429*1e-3$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -418,7 +436,7 @@ Since in this case, we assume uniform prior, then
 \end_layout
 
 \begin_layout Standard
-First calculate the misfit
+First calculate the misfit 
 \begin_inset Formula $F(\boldsymbol{m})$
 \end_inset
 
@@ -488,14 +506,27 @@ We can approximate the integral with rectangle method (
 ).
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename p1_figures/margin.jpg
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection*
 (f)- 5 points
 \end_layout
 
 \begin_layout Standard
+By definition
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\sigma_{m1}^{2}=E[m_{1}^{2}]-(E[m_{1}])^{2}=\int p(m_{1}|d)m_{1}^{2}dm_{1}-\left(\int p(m_{1}|d)m_{1}dm_{1}\right)
+\sigma_{m_{i}}^{2}=E[m_{i}^{2}]-(E[m_{i}])^{2} & = & \int p(m_{i}|d)m_{i}^{2}dm_{i}-\left(\int p(m_{i}|d)m_{i}dm_{i}\right)
 \end{eqnarray*}
 
 \end_inset
@@ -503,95 +534,17 @@ We can approximate the integral with rectangle method (
 
 \end_layout
 
-\begin_layout Verbatim
-
-Em1 =  sum(Pm1_d(:) .* m1(:) * (m1(2)-m1(1)) ) ;
-\end_layout
-
-\begin_layout Verbatim
-
-Em1m1 = sum(Pm1_d(:) .* m1(:).^2 * (m1(2)-m1(1)) ) ;
-\end_layout
-
-\begin_layout Verbatim
-
-Em2 =  sum(Pm2_d(:) .* m2(:) * (m2(2)-m2(1)) ) ;
-\end_layout
-
-\begin_layout Verbatim
-
-Em2m2 = sum(Pm2_d(:) .* m2(:).^2 * (m2(2)-m2(1)) ) ;
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-sigma_m1 = sqrt(Em1m1-Em1*Em1)
-\end_layout
-
-\begin_layout Verbatim
-
-sigma_m2 = sqrt(Em2m2-Em2*Em2)
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-sigma_m1 =
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-       12.838
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-sigma_m2 =
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-      0.33485
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
 \begin_layout Standard
-Note that 
-\begin_inset Formula $\sigma_{m1}$
+(see MATLAB code) We get 
+\begin_inset Formula $\sigma_{m1}=0.0185$
 \end_inset
 
 , 
-\begin_inset Formula $\sigma_{m2}$
+\begin_inset Formula $\sigma_{m2}=0.0006$
 \end_inset
 
- is equal to square root of the diagnoal of the covirance matrix calculated
- in (c).
+, which are equal to square root of the diagonal elements of the covariance
+ matrix calculated in (c).
 \end_layout
 
 \begin_layout Standard
