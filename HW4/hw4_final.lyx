@@ -129,7 +129,7 @@ Problem 1 (graded by Yiran) 40 points
 \end_layout
 
 \begin_layout Subsubsection*
-(a) - 5 points
+(a) - 8 points
 \end_layout
 
 \begin_layout Standard
@@ -151,7 +151,8 @@ Then, the posterior PDF
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m})\propto\exp\left(-F(\boldsymbol{m})\right)\approx\exp\left(-F(\boldsymbol{m}_{0})-\frac{\partial F}{\partial\boldsymbol{m}}^{T}(\boldsymbol{m}-\boldsymbol{m}_{0})-\frac{1}{2}(\boldsymbol{m}-\boldsymbol{m}_{0})^{T}\frac{\partial^{2}F}{\partial\boldsymbol{m}\partial\boldsymbol{m}}(\boldsymbol{m}-\boldsymbol{m}_{0})\right)
+P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m}) & \propto & \exp\left(-F(\boldsymbol{m})\right)\\
+ & \approx & \exp\left(-F(\boldsymbol{m}_{0})-\bigtriangledown F(\boldsymbol{m}_{0})^{T}(\boldsymbol{m}-\boldsymbol{m}_{0})-\frac{1}{2}(\boldsymbol{m}-\boldsymbol{m}_{0})^{T}\boldsymbol{H(m}_{0})(\boldsymbol{m}-\boldsymbol{m}_{0})\right)
 \end{eqnarray*}
 
 \end_inset
@@ -160,7 +161,7 @@ P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m})\propto\
  matrix is 
 \begin_inset Formula 
 \begin{eqnarray*}
-cov(\boldsymbol{m})=\left(\frac{\partial^{2}F}{\partial\boldsymbol{m}\partial\boldsymbol{m}}|_{\boldsymbol{m}=\boldsymbol{m}_{0}}\right)^{-1}=\boldsymbol{H}^{-1}
+cov(\boldsymbol{m})=\boldsymbol{H}(\boldsymbol{m_{0}})^{-1}
 \end{eqnarray*}
 
 \end_inset
@@ -305,7 +306,7 @@ we see that there are strong trade-offs between model parameters.
 \end_layout
 
 \begin_layout Subsubsection*
-(c)- 5 points
+(c)- 8 points
 \end_layout
 
 \begin_layout Standard
@@ -434,7 +435,7 @@ The eigenvectors of the covariance matrix are:
 \end_layout
 
 \begin_layout Subsubsection*
-(e)- 5 points
+(e)- 8 points
 \end_layout
 
 \begin_layout Standard
@@ -468,7 +469,7 @@ Normalize the pdf so its integral over the model space equals 1.
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(\boldsymbol{m}|\boldsymbol{d}) & = & \frac{\exp(-F(\boldsymbol{m}))}{\int\exp(F(\boldsymbol{m})d\boldsymbol{m})}
+P(\boldsymbol{m}|\boldsymbol{d}) & = & \frac{\exp(-F(\boldsymbol{m}))}{\int\exp(F(\boldsymbol{m}))d\boldsymbol{m}}
 \end{eqnarray*}
 
 \end_inset
@@ -523,7 +524,7 @@ We can approximate the integral with rectangle method:
 \end_layout
 
 \begin_layout Subsubsection*
-(f)- 5 points
+(f)- 6 points
 \end_layout
 
 \begin_layout Standard
