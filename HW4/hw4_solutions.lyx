@@ -151,8 +151,8 @@ P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m})\propto\
 
 \end_inset
 
- has the form of a multivariate Gaussian distribution, so the covariance
- matrix will be 
+ has the form of a multivariate Gaussian distribution, and the covariance
+ matrix is 
 \begin_inset Formula 
 \begin{eqnarray*}
 cov(\boldsymbol{m})=\left(\frac{\partial^{2}F}{\partial\boldsymbol{m}\partial\boldsymbol{m}}|_{\boldsymbol{m}=\boldsymbol{m}_{0}}\right)^{-1}=\boldsymbol{H}^{-1}
@@ -267,8 +267,7 @@ Diagonal element shows the variance of each parameter.
 
 \begin_layout Standard
 The off diagonal shows the covariance between parameters.
- Note also it's common to change the covariance matrix to correlation matrix
- (
+ We can scale the covariance matrix to correlation matrix (
 \begin_inset Formula $\rho_{xy}=\frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}$
 \end_inset
 
@@ -413,24 +412,22 @@ The eigenvectors of the covariance matrix are:
 -1.0000 & 0.0054\end{array}\right]$
 \end_inset
 
-, corresponds an angle of 
+, correspond to an angle of 
 \begin_inset Formula $89.7^{o}$
 \end_inset
 
-and 
+ and 
 \begin_inset Formula $179.7^{o}$
 \end_inset
 
-, the ratio of the lengths of teh semiaxes is
+ measured clockwise from x axis; the ratio of the length of the semiaxis
+ is 
 \begin_inset Formula $\sqrt{\lambda_{1}}/\sqrt{\lambda_{2}}=0.0319$
 \end_inset
 
 .
- It suggests that the error ellipse should almost be horizontal, and the
- ratio between the length of the near-verticle axis and the near-horizontal
- axis is about 0.03.
- We see that it is true for the error ellipse shown below (notice the difference
- in the scale of x and y axis).
+ We see that it is true for the error ellipse as shown below (notice the
+ difference in the scale of x and y axis).
 \end_layout
 
 \begin_layout Standard
@@ -486,6 +483,10 @@ P(\boldsymbol{m}|\boldsymbol{d}) & = & \frac{\exp(-F(\boldsymbol{m}))}{\int\exp(
 \end_layout
 
 \begin_layout Standard
+that is
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
 P(m_{1},m_{2}|\boldsymbol{d}) & = & \frac{\exp(-F(m_{1},m_{2}))}{\int\int P(m_{1},m_{2}|d)dm_{1}dm_{2}}
@@ -510,11 +511,11 @@ P(m_{2}|d) & = & \int P(m_{1},m_{2}|d)dm_{1}\\
 \end_layout
 
 \begin_layout Standard
-We can approximate the integral with rectangle method (
+We can approximate the integral with rectangle method: 
 \begin_inset Formula $\int f(x)dx=\sum_{i}f(x_{i})\triangle x$
 \end_inset
 
-).
+.
 \end_layout
 
 \begin_layout Standard
@@ -556,6 +557,74 @@ By definition
 
 , which are equal to square root of the diagonal elements of the covariance
  matrix calculated in (c).
+\end_layout
+
+\begin_layout Subsubsection*
+MATLAB code for (a)-(b)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{p1/hw2_1.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+MATLAB code for (c)-(f)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{p1_2/hw2_2.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

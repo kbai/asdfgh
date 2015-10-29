@@ -12,7 +12,7 @@ disp('*** start least squares ***');
 
 disp('model covariance matrix:');
 disp(mcov);
-[V,D] = eig(mcov)
+%[V,D] = eig(mcov)  
 
 disp('standard deviation of m1 and m2:');
 disp(sqrt(diag(mcov)));
@@ -22,17 +22,18 @@ disp(sqrt(diag(mcov)));
 disp('*** start monte carlo ***');
 %m1 = -200:0.1:50;
 %m2 = 1:0.1:10;
-m1 = (m1_ls - 0.2):0.0005:(m1_ls + 0.2);   % narrow down the search range
+% narrow the searching range
+% so dm can be small enough to show the marginal pdf
+m1 = (m1_ls - 0.2):0.0005:(m1_ls + 0.2);   
 m2 = (m2_ls - 0.01):0.0001:(m2_ls + 0.01);
+dm1 = m1(2) - m1(1);
+dm2 = m2(2) - m2(1);
 
 % L2 norm
 [m1_l2,m2_l2,err_l2,err_all_l2] = grid_search(x,y,m1,m2,2);
 
 % joint pdf
-dm1 = m1(2) - m1(1);
-dm2 = m2(2) - m2(1);
 p_m1m2 = exp( -(err_all_l2-min(err_all_l2(:)))/(2*sigma^2) );
-%p_m1m2 = exp( -(err_all_l2)/(2*sigma^2) );
 p_m1m2 = p_m1m2/(sum(p_m1m2(:))*dm1*dm2);
 
 % marginal
@@ -57,7 +58,6 @@ sigma_m1 = sqrt( dm1 * sum(p_m1 .* m1.^2) - (dm1 * sum(p_m1 .* m1)).^2 );
 sigma_m2 = sqrt( dm2 * sum(p_m2 .* m2.^2) - (dm2 * sum(p_m2 .* m2)).^2 );
 disp('standard deviation of m1 and m2:');
 disp([sigma_m1 sigma_m2]);
-
 
 end
 

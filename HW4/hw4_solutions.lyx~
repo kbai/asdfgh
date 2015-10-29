@@ -151,8 +151,8 @@ P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m})\propto\
 
 \end_inset
 
- has the form of a multivariate Gaussian distribution, so the covariance
- matrix will be 
+ has the form of a multivariate Gaussian distribution, and the covariance
+ matrix is 
 \begin_inset Formula 
 \begin{eqnarray*}
 cov(\boldsymbol{m})=\left(\frac{\partial^{2}F}{\partial\boldsymbol{m}\partial\boldsymbol{m}}|_{\boldsymbol{m}=\boldsymbol{m}_{0}}\right)^{-1}=\boldsymbol{H}^{-1}
@@ -267,8 +267,7 @@ Diagonal element shows the variance of each parameter.
 
 \begin_layout Standard
 The off diagonal shows the covariance between parameters.
- Note also it's common to change the covariance matrix to correlation matrix
- (
+ We can scale the covariance matrix to correlation matrix (
 \begin_inset Formula $\rho_{xy}=\frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}$
 \end_inset
 
@@ -395,37 +394,46 @@ The model covariance is calculated from the distribution
 \begin_inset Formula $P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m})\propto\exp(-F(\boldsymbol{m}))$
 \end_inset
 
- which is scaled to the isocontour of the error ellipse 
+ is scaled to the isocontour of the error ellipse 
 \begin_inset Formula $F(\boldsymbol{m})$
 \end_inset
 
- we plotted in HW2.
+ , which we plotted in HW2.
 \end_layout
 
 \begin_layout Standard
-The eigenvectors of the covariance matrix are
-\end_layout
-
-\begin_layout Standard
+The eigenvectors of the covariance matrix are:
 \begin_inset Formula $\left[\begin{array}{cc}
 -0.0054 & -1.0000\end{array}\right]$
 \end_inset
 
- , 
+ and 
 \begin_inset Formula $\left[\begin{array}{cc}
 -1.0000 & 0.0054\end{array}\right]$
 \end_inset
 
- 
-\end_layout
-
-\begin_layout Standard
-and the corresponding eigenvalues are 
-\begin_inset Formula $\lambda_{1}=0.0003*1e-3$
+, correspond to an angle of 
+\begin_inset Formula $89.7^{o}$
 \end_inset
 
  and 
-\begin_inset Formula $\lambda_{2}=0.3429*1e-3$
+\begin_inset Formula $179.7^{o}$
+\end_inset
+
+ measured clockwise from x axis; the ratio of the length of the semiaxis
+ is 
+\begin_inset Formula $\sqrt{\lambda_{1}}/\sqrt{\lambda_{2}}=0.0319$
+\end_inset
+
+.
+ We see that it is true for the error ellipse as shown below (notice the
+ difference in the scale of x and y axis).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename p1_figures/errorellip.jpg
+
 \end_inset
 
 
@@ -475,6 +483,10 @@ P(\boldsymbol{m}|\boldsymbol{d}) & = & \frac{\exp(-F(\boldsymbol{m}))}{\int\exp(
 \end_layout
 
 \begin_layout Standard
+that is
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
 P(m_{1},m_{2}|\boldsymbol{d}) & = & \frac{\exp(-F(m_{1},m_{2}))}{\int\int P(m_{1},m_{2}|d)dm_{1}dm_{2}}
@@ -499,11 +511,11 @@ P(m_{2}|d) & = & \int P(m_{1},m_{2}|d)dm_{1}\\
 \end_layout
 
 \begin_layout Standard
-We can approximate the integral with rectangle method (
+We can approximate the integral with rectangle method: 
 \begin_inset Formula $\int f(x)dx=\sum_{i}f(x_{i})\triangle x$
 \end_inset
 
-).
+.
 \end_layout
 
 \begin_layout Standard
@@ -545,6 +557,40 @@ By definition
 
 , which are equal to square root of the diagonal elements of the covariance
  matrix calculated in (c).
+\end_layout
+
+\begin_layout Subsubsection*
+MATLAB code for (c)-(f)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{p1_2/hw2_2.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -949,7 +995,7 @@ The hint was used in step 3.
 \end_layout
 
 \begin_layout Subsection*
-Problem 3 (graded by Stephen) - 35 points
+Problem 3 (graded by Kangchen) - 35 points
 \end_layout
 
 \begin_layout Subsubsection*
@@ -967,64 +1013,21 @@ It is not reasonable to assume that all model parameters have constant priors
 \end_inset
 
 ).
- We know that 
-\begin_inset Formula $t_{s}$
-\end_inset
-
- should occur before all of the observations (for the signal to be causal,
- at least to within errors on the data, i.e.
- 
-\begin_inset Formula $t_{s}<322$
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-s) and velocity must be positive (thus 
-\begin_inset Formula $v>0$
-\end_inset
-
-).
- We can leave these priors from 
-\begin_inset Formula $-\infty$
-\end_inset
-
- to 
-\begin_inset Formula $322$
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-s and 0 to 
-\begin_inset Formula $\infty$
-\end_inset
-
-, respectively, even though we know that there is a physical upper limit
- (for example 
-\begin_inset Formula $v$
-\end_inset
-
- cannot be faster than the speed of light).
- The prior for 
-\begin_inset Formula $z_{s}$
-\end_inset
-
- should be restricted to positve or negative values, depending on our sign
- convention for the height coordinate, because the earthquake occured below
- the surface.
- Practically, we can leave the priors on 
+ For 
 \begin_inset Formula $x_{s}$
 \end_inset
 
-, 
+and 
 \begin_inset Formula $y_{s}$
 \end_inset
 
- as constant priors, but in reality they also would be limited to the size
- of the earth.
+, we should know that it cannot be too far from where the volcano is.
+ For 
+\begin_inset Formula $z_{s}$
+\end_inset
+
+ which we defined as depth, it must be positive.
+ For P which is related to pressure, we know that it must be positive too.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1034,46 +1037,41 @@ s and 0 to
 \begin_layout Standard
 We can incorporate this information as a prior by multiplying our likelihood
  
-\begin_inset Formula $P(\{t_{k}\}|m)$
+\begin_inset Formula $P(\{d_{k}\}|m)$
 \end_inset
 
- by a prior for velocity 
-\begin_inset Formula $P\{v\}$
+ by a prior for model 
+\begin_inset Formula $P\{m\}$
 \end_inset
 
 .
- In this case we will use a Gaussian prior with 
-\begin_inset Formula $\mu=4.8$
+ In this case we will use a gaussian distribution for model parameter 
+\begin_inset Formula $p$
+\end_inset
+
+ with 
+\begin_inset Formula $\mu=35$
 \end_inset
 
  and 
-\begin_inset Formula $\sigma=0.1$
+\begin_inset Formula $\sigma=6$
 \end_inset
 
 .
- Other variables get uniform priors.
- Our expression will look like:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P\{v\}=e^{-\frac{1}{2}(\frac{v-\mu}{\sigma})^{2}}\\
-P(m|\{t_{k}\})=P(\{t_{k}\}|m)P\{v\}\\
-P(m|\{t_{k}\})=e^{-F(m)}e^{-\frac{1}{2}(\frac{v-\mu}{\sigma})^{2}}\\
-P(m|\{t_{k}\})=e^{-F(m)-\frac{1}{2}(\frac{v-\mu}{\sigma})^{2}}
+P(\boldsymbol{m})=e^{-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}\\
+P(\boldsymbol{m}|\{d_{k}\})=P(\{d_{k}\}|\boldsymbol{m})P(\boldsymbol{m})\\
+P(\boldsymbol{m}|\{d_{k}\})=e^{-F(\boldsymbol{m})}e^{-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}\\
+P(\boldsymbol{m}|\{d_{k}\})=e^{-F(\boldsymbol{m})-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}
 \end{eqnarray*}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Note also that the the velocity should be positive.
- This is only approximately the case for the Gaussian prior, but is not
- a problem, because the probability for negative velocities is very (!)
- small.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1083,15 +1081,23 @@ Note also that the the velocity should be positive.
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\int_{v_{1}}^{v_{2}}{P(v)dv}=\int_{v_{1}}^{v_{2}}{\frac{1}{v}dv}=\ln(v_{2})-\ln(v_{1})\\
-\int_{kv_{1}}^{kv_{2}}{P(v)dv}=\int_{kv_{1}}^{kv_{2}}{\frac{1}{v}dv}=\ln(kv_{2})-\ln(kv_{1})\\
-=\ln(k)+\ln(v_{2})-\ln(k)-\ln(v_{1})\\
-=\ln(v_{2})-\ln(v_{1})
+\int_{v_{1}}^{v_{2}}{P(\phi)d\phi}=\int_{v_{1}}^{v_{2}}{\frac{1}{\phi}dv}=\ln(\phi_{2})-\ln(\phi_{1})\\
+\int_{kv_{1}}^{kv_{2}}{P(\phi)dv}=\int_{kv_{1}}^{kv_{2}}{\frac{1}{\phi}dv}=\ln(k\phi_{2})-\ln(k\phi_{1})\\
+=\ln(k)+\ln(\phi_{2})-\ln(k)-\ln(\phi_{1})\\
+=\ln(\phi_{2})-\ln(\phi_{1})
 \end{eqnarray*}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+So 
+\begin_inset Formula $P(\phi)=\frac{1}{\phi}$
+\end_inset
+
+ satisfies scale independent criterion.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1101,7 +1107,7 @@ Note also that the the velocity should be positive.
 \begin_layout Standard
 We can again incorporate this information as a prior in our expression for
  
-\begin_inset Formula $P(m|\{t_{k}\})$
+\begin_inset Formula $P(\boldsymbol{m}|\{d_{k}\})$
 \end_inset
 
  by multiplying it times our likelihood (just like in part b).
@@ -1111,7 +1117,7 @@ We can again incorporate this information as a prior in our expression for
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(m|\{t_{k}\})=e^{-F(m)}\frac{1}{v}
+P(\boldsymbol{m}|\{d_{k}\})=e^{-F(m)}\frac{1}{p}
 \end{eqnarray*}
 
 \end_inset
@@ -1132,7 +1138,7 @@ We want to incorporate both independent pieces of information into our prior.
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(m|\{t_{k}\})=\frac{1}{v}e^{-F(m)}e^{-\frac{1}{2}(\frac{v-\mu}{\sigma})^{2}}
+P(\boldsymbol{m}|\{d_{k}\})=\frac{1}{p}e^{-F(\boldsymbol{m})}e^{-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}
 \end{eqnarray*}
 
 \end_inset
@@ -1159,7 +1165,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ESE118_PS4_P3_Fig1.pdf
+	filename Q2/Geo_prior.pdf
 	width 12cm
 
 \end_inset
@@ -1168,7 +1174,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Plot of the Gaussian prior for velocity.
+Plot of the Gaussian prior for p.
 \end_layout
 
 \end_inset
@@ -1190,7 +1196,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ESE118_PS4_P3_Fig2.pdf
+	filename Q2/Phy_prior.pdf
 	width 12cm
 
 \end_inset
@@ -1199,7 +1205,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Plot of the scale invariant prior for velocity.
+Plot of the scale invariant prior for p.
 \end_layout
 
 \end_inset
@@ -1221,7 +1227,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ESE118_PS4_P3_Fig3.pdf
+	filename Q2/MUl_prior.pdf
 	width 12cm
 
 \end_inset
@@ -1230,9 +1236,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Plot of combination of the Gaussian and scale invariant priors for velocity.
- Note how the plot is scaled but retains basically the same shape as the
- pure Gaussian.
+Plot of combination of the Gaussian and scale invariant priors for p.
+ 
 \end_layout
 
 \end_inset
@@ -1264,7 +1269,7 @@ It doesn't matter in what order we do things as long as priors for analysis
 
 \begin_layout Standard
 Previous expression: 
-\begin_inset Formula $P(m|\{t_{k}\})=e^{-F(m)}$
+\begin_inset Formula $P_{old}(\boldsymbol{m}|\{d_{k}\})=e^{-F_{old}(\boldsymbol{m})}$
 \end_inset
 
  
@@ -1272,7 +1277,7 @@ Previous expression:
 \end_inset
 
  New expression: 
-\begin_inset Formula $P(m|\{t_{k}\})=\frac{1}{v}e^{-F(m)}e^{-\frac{1}{2}(\frac{v-\mu}{\sigma})^{2}}$
+\begin_inset Formula $P(\boldsymbol{m}|\{d_{k}\})=\frac{1}{p}e^{-F_{old}(\boldsymbol{m})}e^{-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}$
 \end_inset
 
  
@@ -1284,7 +1289,7 @@ Previous expression:
 
 \begin_layout Standard
 Previous misfit function: 
-\begin_inset Formula $F(m)$
+\begin_inset Formula $F_{old}(m)$
 \end_inset
 
  
@@ -1294,7 +1299,7 @@ Previous misfit function:
  To find the new misfit function we will need to manipulate our expression
  to get everything into a single exponential.
  Let's start with the 
-\begin_inset Formula $\frac{1}{v}$
+\begin_inset Formula $\frac{1}{p}$
 \end_inset
 
  part:
@@ -1303,8 +1308,8 @@ Previous misfit function:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\frac{1}{v}=e^{(\ln(\frac{1}{v})}=e^{-\ln(v)}\\
-P(m|\{t_{k}\})=e^{-\ln(v)}e^{-F(m)}e^{-\frac{1}{2}(\frac{v-\mu}{\sigma})^{2}}\\
+\frac{1}{p}=e^{(\ln(\frac{1}{p})}=e^{-\ln(p)}\\
+P(\boldsymbol{m}|\{d_{k}\})=e^{-\ln(p)}e^{-F_{old}(\boldsymbol{m})}e^{-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}\\
 \end{eqnarray*}
 
 \end_inset
@@ -1314,7 +1319,7 @@ P(m|\{t_{k}\})=e^{-\ln(v)}e^{-F(m)}e^{-\frac{1}{2}(\frac{v-\mu}{\sigma})^{2}}\\
 
 \begin_layout Standard
 New misfit function: 
-\begin_inset Formula $F(m)+\ln(v)+\frac{1}{2}(\frac{v-4.8}{0.1})^{2}$
+\begin_inset Formula $F(\boldsymbol{m})=F_{old}(\boldsymbol{m})+\ln(p)+\frac{1}{2}(\frac{p-35}{6})^{2}$
 \end_inset
 
  
@@ -1327,31 +1332,7 @@ New misfit function:
 \begin_layout Standard
 We only need to make a couple simple changes to our code from HW2.
  Instead of just using the L2 norm as our error function, we now need to
- add our extra two terms to our misfit function.
- We also need to slightly change our 
-\begin_inset Formula $\gamma$
-\end_inset
-
- and our Hessian.
- Our old Hessians do not take into account the given standard deviation
- of the data: 
-\begin_inset Formula $\sigma=0.01$
-\end_inset
-
-.
- We can take this into account by doing a simple modification on them:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-H_{new}=\frac{H_{old}}{0.01^{2}}\\
-\gamma_{new}=\frac{\gamma_{old}}{0.01^{2}}
-\end{eqnarray*}
-
-\end_inset
-
-
+ add our extra two terms to our misfit function:
 \end_layout
 
 \begin_layout Standard
@@ -1360,7 +1341,7 @@ We will add a term to the last entries of
 \end_inset
 
  and the Hessian to account for the new priors on 
-\begin_inset Formula $v_{s}$
+\begin_inset Formula $p$
 \end_inset
 
 .
@@ -1377,7 +1358,7 @@ Add the first derivative of our new part of the misfit to
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\frac{dF}{dv}=\frac{1}{v}+\frac{v-\mu}{\sigma^{2}}
+\gamma=\gamma_{old}-\frac{1}{p}-\frac{p-\mu}{\sigma^{2}}
 \end{eqnarray*}
 
 \end_inset
@@ -1392,7 +1373,7 @@ And the second derivative to the last entry of the Hessian:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\frac{d^{2}F}{dv^{2}}=\frac{-1}{v^{2}}+\frac{1}{\sigma^{2}}
+\frac{\partial^{2}F}{\partial p^{2}}=\frac{\partial^{2}F_{old}}{\partial p^{2}}+\frac{-1}{p^{2}}+\frac{1}{\sigma^{2}}
 \end{eqnarray*}
 
 \end_inset
@@ -1404,334 +1385,115 @@ And the second derivative to the last entry of the Hessian:
 Here is the full code: 
 \end_layout
 
-\begin_layout Verbatim
+\begin_layout Subsection*
+\begin_inset ERT
+status open
 
-function hw4p3()
-\end_layout
-
-\begin_layout Verbatim
-
-rng(0); % this generate determined random variable
-\end_layout
-
-\begin_layout Verbatim
-
-xi=[0 10 15 6 -7 3]';
-\end_layout
-
-\begin_layout Verbatim
-
-yi=[0 0 6 13 10 7]';
-\end_layout
-
-\begin_layout Verbatim
-
-zi=[0 0 0 0 0 0]';
-\end_layout
-
-\begin_layout Verbatim
-
-ti=[322.418 321.031 321.228 323.093 324.415 322.706]';
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-sig = 0.1;
-\end_layout
-
-\begin_layout Verbatim
-
-mu = 4.8;
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-M0=do_one_ti(xi,yi,zi,ti);
-\end_layout
-
-\begin_layout Verbatim
-
-ti_0=predict(xi,yi,zi,M0);
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-function M=do_one_ti(xi,yi,zi,ti)
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-M=[300 20 -10 10 2]'; % initial guess
-\end_layout
-
-\begin_layout Verbatim
-
-for step = 1:10
-\end_layout
-
-\begin_layout Verbatim
-
-    M(5);
-\end_layout
-
-\begin_layout Verbatim
-
-    grad=zeros(5,1);
-\end_layout
-
-\begin_layout Verbatim
-
-    hess=zeros(5,5);   
-\end_layout
-
-\begin_layout Verbatim
-
-    for i=1:length(xi)
-\end_layout
-
-\begin_layout Verbatim
-
-        [tmp_grad, tmp_hess]=get_grad_hessian(xi(i),yi(i),zi(i),ti(i),M);
-    
-\end_layout
-
-\begin_layout Verbatim
-
-        grad = grad + tmp_grad;
-\end_layout
-
-\begin_layout Verbatim
-
-        hess = hess + tmp_hess;   
-\end_layout
-
-\begin_layout Verbatim
+\begin_layout Plain Layout
 
-    end
-\end_layout
-
-\begin_layout Verbatim
-
-    
-\end_layout
-
-\begin_layout Verbatim
-
-    %adjust the final values of gamma and the Hessian to account for the
-\end_layout
-
-\begin_layout Verbatim
-
-    %velocity priors
-\end_layout
-
-\begin_layout Verbatim
-
-    grad(end) = grad(end) + 1/(M(5)) + (M(5)-4.8)/(0.1)^2;
-\end_layout
-
-\begin_layout Verbatim
-
-    hess(end,end) = hess(end,end) + 1/0.1^2 - 1/M(5).^2;
-\end_layout
-
-\begin_layout Verbatim
-
-       
-\end_layout
-
-\begin_layout Verbatim
-
-    err(step) = (norm(predict(xi,yi,zi,M)-ti)^2);   
-\end_layout
-
-\begin_layout Verbatim
-
-  %  if(step > 1 && err(step) > err(step-1))
-\end_layout
-
-\begin_layout Verbatim
-
-  %      break;
-\end_layout
-
-\begin_layout Verbatim
-
-  %  end
-\end_layout
-
-\begin_layout Verbatim
-
-	M = M- inv(hess)*grad;
-\end_layout
-
-\begin_layout Verbatim
 
-end
+\backslash
+tiny
 \end_layout
 
-\begin_layout Verbatim
+\begin_layout Plain Layout
 
-M
-\end_layout
-
-\begin_layout Verbatim
-
-plot(err);
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-function [grad,hess] = get_grad_hessian(xi,yi,zi,ti,M)
-\end_layout
-
-\begin_layout Verbatim
-
-ts=M(1); xs=M(2); ys=M(3); zs=M(4); v=M(5);
-\end_layout
 
-\begin_layout Verbatim
-
-R=sqrt((xs-xi)^2 + (ys-yi)^2 + (zs-zi)^2);
+\backslash
+lstinputlisting{./Q2/HW2.m}
 \end_layout
-
-\begin_layout Verbatim
 
-nx=(xs-xi)/R;
-\end_layout
+\begin_layout Plain Layout
 
-\begin_layout Verbatim
 
-ny=(ys-yi)/R;
+\backslash
+normalsize
 \end_layout
 
-\begin_layout Verbatim
+\end_inset
 
-nz=(zs-zi)/R;
-\end_layout
 
-\begin_layout Verbatim
+\begin_inset ERT
+status open
 
-e=(ts+R/v-ti);
-\end_layout
+\begin_layout Plain Layout
 
-\begin_layout Verbatim
 
+\backslash
+tiny
 \end_layout
 
-\begin_layout Verbatim
+\begin_layout Plain Layout
 
-sig = 0.1;
-\end_layout
-
-\begin_layout Verbatim
 
+\backslash
+lstinputlisting{./Q2/compute_gradient_approx_hess.m}
 \end_layout
 
-\begin_layout Verbatim
-
-grad = e*[1 nx/v ny/v nz/v -R/v^2]';
-\end_layout
+\begin_layout Plain Layout
 
-\begin_layout Verbatim
 
-sen = [1 nx/v ny/v nz/v -R/v^2]';
+\backslash
+normalsize
 \end_layout
 
-\begin_layout Verbatim
+\end_inset
 
-hess = sen*sen'; % approximate hess
-\end_layout
 
-\begin_layout Verbatim
+\begin_inset ERT
+status open
 
-\end_layout
+\begin_layout Plain Layout
 
-\begin_layout Verbatim
 
-%need to add ajustment for sigma given for the data
+\backslash
+tiny
 \end_layout
 
-\begin_layout Verbatim
+\begin_layout Plain Layout
 
-hess = hess/0.01^2;
-\end_layout
 
-\begin_layout Verbatim
-
-grad = grad/0.01^2;
+\backslash
+lstinputlisting{./Q2/nonlinear_solver.m}
 \end_layout
-
-\begin_layout Verbatim
 
-\end_layout
+\begin_layout Plain Layout
 
-\begin_layout Verbatim
 
-%hess(end,end) = hess(end,end) + 1/sig^2 - 1/v^2;
+\backslash
+normalsize
 \end_layout
 
-\begin_layout Verbatim
+\end_inset
 
-\end_layout
 
-\begin_layout Verbatim
+\begin_inset ERT
+status open
 
-function r=predict(xi,yi,zi,M)
-\end_layout
+\begin_layout Plain Layout
 
-\begin_layout Verbatim
 
+\backslash
+tiny
 \end_layout
-
-\begin_layout Verbatim
 
-ts=M(1); xs=M(2); ys=M(3); zs=M(4); v=M(5);
-\end_layout
+\begin_layout Plain Layout
 
-\begin_layout Verbatim
 
-r=xi*0;
+\backslash
+lstinputlisting{./Q2/compute_misfit.m}
 \end_layout
-
-\begin_layout Verbatim
 
-for i=1:length(xi)
-\end_layout
+\begin_layout Plain Layout
 
-\begin_layout Verbatim
 
-    R=sqrt((xs-xi(i))^2 + (ys-yi(i))^2 + (zs-zi(i))^2);
+\backslash
+normalsize
 \end_layout
 
-\begin_layout Verbatim
-
-    r(i)=(ts+R/v);
-\end_layout
+\end_inset
 
-\begin_layout Verbatim
 
-end
 \end_layout
 
 \begin_layout Standard
