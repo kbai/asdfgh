@@ -387,11 +387,7 @@ cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
 \end_layout
 
 \begin_layout Standard
-(2) Result using estimated data error 
-\begin_inset Formula $s=26.3$
-\end_inset
-
-
+(2) Result using estimated data error
 \end_layout
 
 \begin_layout Standard
