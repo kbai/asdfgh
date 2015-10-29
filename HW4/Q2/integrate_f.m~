@@ -1,0 +1,5 @@
+
+
+for x = xmin:delta:xmax
+    sum = sum + 0.5*(f(x) + f(x+delta))*delta;
+end
