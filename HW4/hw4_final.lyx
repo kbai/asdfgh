@@ -235,7 +235,7 @@ So we need to modify the hessian in HW2 by dividing
 \end_layout
 
 \begin_layout Subsubsection*
-(b)- 5 points
+(b)- 8 points
 \end_layout
 
 \begin_layout Standard
@@ -450,7 +450,7 @@ Using this new data error, we do the same calculation as above.
 \end_layout
 
 \begin_layout Subsubsection*
-(d)- 5 points
+(d)- 8 points
 \end_layout
 
 \begin_layout Standard
@@ -517,7 +517,7 @@ The eigenvectors of the covariance matrix are:
 \end_layout
 
 \begin_layout Subsubsection*
-(e)- 8 points
+(e)- 10 points
 \end_layout
 
 \begin_layout Standard
@@ -632,7 +632,7 @@ We can approximate the integral with rectangle method:
 \end_layout
 
 \begin_layout Subsubsection*
-(f)- 6 points
+(f)- 8 points
 \end_layout
 
 \begin_layout Standard
