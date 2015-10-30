@@ -125,7 +125,7 @@ figs-within-sections
 \begin_body
 
 \begin_layout Subsection*
-Problem 1 (graded by Yiran) 40 points
+Problem 1 (graded by Yiran) 50 points
 \end_layout
 
 \begin_layout Subsubsection*
@@ -215,18 +215,22 @@ So we need to modify the hessian in HW2 by dividing
 \end_layout
 
 \begin_layout Verbatim
+
     0.0101   -0.0123    0.0095    0.0548    
 \end_layout
 
 \begin_layout Verbatim
+
    -0.0123    0.0198   -0.0156   -0.0853     
 \end_layout
 
 \begin_layout Verbatim
+
     0.0095   -0.0156    0.0237    0.1034     
 \end_layout
 
 \begin_layout Verbatim
+
     0.0548   -0.0853    0.1034    0.4985
 \end_layout
 
@@ -277,18 +281,22 @@ The off diagonal shows the covariance between parameters.
 \end_layout
 
 \begin_layout Verbatim
+
     1.0000   -0.8685    0.6127    0.7721    
 \end_layout
 
 \begin_layout Verbatim
+
    -0.8685    1.0000   -0.7200   -0.8598     
 \end_layout
 
 \begin_layout Verbatim
+
     0.6127   -0.7200    1.0000    0.9520     
 \end_layout
 
 \begin_layout Verbatim
+
     0.7721   -0.8598    0.9520    1.0000
 \end_layout
 
@@ -364,14 +372,17 @@ cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
 \end_layout
 
 \begin_layout Verbatim
+
    1.0e-03 *
 \end_layout
 
 \begin_layout Verbatim
+
     0.3429   -0.0019    
 \end_layout
 
 \begin_layout Verbatim
+
    -0.0019    0.0004
 \end_layout
 
@@ -429,10 +440,12 @@ Using this new data error, we do the same calculation as above.
 \end_layout
 
 \begin_layout Verbatim
+
    23.7090   -0.1283    
 \end_layout
 
 \begin_layout Verbatim
+
    -0.1283    0.0249
 \end_layout
 
@@ -752,6 +765,788 @@ normalsize
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Problem 2 (graded by Kangchen) - 50 points
+\end_layout
+
+\begin_layout Subsubsection*
+(a) - 5 points
+\end_layout
+
+\begin_layout Standard
+It is not reasonable to assume that all model parameters have constant priors
+ (-
+\begin_inset Formula $\infty$
+\end_inset
+
+ to 
+\begin_inset Formula $\infty$
+\end_inset
+
+).
+ For 
+\begin_inset Formula $x_{s}$
+\end_inset
+
+and 
+\begin_inset Formula $y_{s}$
+\end_inset
+
+, we should know that it cannot be too far from where the volcano is.
+ For 
+\begin_inset Formula $z_{s}$
+\end_inset
+
+ which we defined as depth, it must be positive.
+ For P which is related to pressure, we know that it must be positive too.
+\end_layout
+
+\begin_layout Subsubsection*
+(b) - 5 points
+\end_layout
+
+\begin_layout Standard
+We can incorporate this information as a prior by multiplying our likelihood
+ 
+\begin_inset Formula $P(\{d_{k}\}|\boldsymbol{m})$
+\end_inset
+
+ by a prior for model 
+\begin_inset Formula $P(\boldsymbol{m})$
+\end_inset
+
+.
+ In this case we will use a gaussian distribution for model parameter 
+\begin_inset Formula $p$
+\end_inset
+
+ with 
+\begin_inset Formula $\mu=35$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma=6$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+P(\boldsymbol{m})=e^{-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}\\
+P(\boldsymbol{m}|\{d_{k}\})=P(\{d_{k}\}|\boldsymbol{m})P(\boldsymbol{m})\\
+P(\boldsymbol{m}|\{d_{k}\})=e^{-F(\boldsymbol{m})}e^{-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}\\
+P(\boldsymbol{m}|\{d_{k}\})=e^{-F(\boldsymbol{m})-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(c.i) - 5 points
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\int_{\phi_{1}}^{\phi_{2}}{P(\phi)d\phi}=\int_{\phi_{1}}^{\phi_{2}}{\frac{1}{\phi}d\phi}=\ln(\phi_{2})-\ln(\phi_{1})\\
+\int_{k\phi_{1}}^{k\phi_{2}}{P(\phi)d\phi}=\int_{k\phi_{1}}^{k\phi_{2}}{\frac{1}{\phi}d\phi}=\ln(k\phi_{2})-\ln(k\phi_{1})\\
+=\ln(k)+\ln(\phi_{2})-\ln(k)-\ln(\phi_{1})\\
+=\ln(\phi_{2})-\ln(\phi_{1})
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So 
+\begin_inset Formula $P(\phi)=\frac{1}{\phi}$
+\end_inset
+
+ satisfies scale independent criterion.
+\end_layout
+
+\begin_layout Subsubsection*
+(c.ii) - 5 points
+\end_layout
+
+\begin_layout Standard
+We can again incorporate this information as a prior in our expression for
+ 
+\begin_inset Formula $P(\boldsymbol{m}|\{d_{k}\})$
+\end_inset
+
+ by multiplying it times our likelihood (just like in part b).
+ Our expresssion becomes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+P(\boldsymbol{m}|\{d_{k}\})=e^{-F(\boldsymbol{m})}\frac{1}{p}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(d) - 5 points
+\end_layout
+
+\begin_layout Standard
+We want to incorporate both independent pieces of information into our prior.
+ In this case we can multiply the two priors together.
+ Our new expression becomes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+P(\boldsymbol{m}|\{d_{k}\})=\frac{1}{p}e^{-F(\boldsymbol{m})}e^{-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let's plot the two priors separately and then together to see which information
+ dominates the result.
+ Figure 0.1 is the Gaussian prior.
+ Figure 0.2 is the scale independent prior.
+ Figure 0.3 is their combination.
+ We can see that the Gaussian prior is scaled by the scale invariant prior,
+ but still mainly retains it's shape and thus dominates the result.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Q2/Geo_prior.pdf
+	width 12cm
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Plot of the Gaussian prior for p.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Q2/Phy_prior.pdf
+	width 12cm
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Plot of the scale invariant prior for p.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Q2/MUl_prior.pdf
+	width 12cm
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Plot of combination of the Gaussian and scale invariant priors for p.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(e) - 5 points
+\end_layout
+
+\begin_layout Standard
+It doesn't matter in what order we do things as long as priors for analysis
+ are not biased by our data (and they shouldn't be) and your experiment
+ is not affected by prior information.
+ Suppose we have some prior information about 
+\begin_inset Formula $x_{s}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{s}$
+\end_inset
+
+ which is not the case here, we can conduct our mesasurements closer to
+ those prior points which may increase accuracy of our inversion.
+\end_layout
+
+\begin_layout Subsubsection*
+(f) - 5 points
+\end_layout
+
+\begin_layout Standard
+Previous expression: 
+\begin_inset Formula $P_{old}(\boldsymbol{m}|\{d_{k}\})=e^{-F_{old}(\boldsymbol{m})}$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ New expression: 
+\begin_inset Formula $P(\boldsymbol{m}|\{d_{k}\})=\frac{1}{p}e^{-F_{old}(\boldsymbol{m})}e^{-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Previous misfit function: 
+\begin_inset Formula $F_{old}(\boldsymbol{m})$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ To find the new misfit function we will need to manipulate our expression
+ to get everything into a single exponential.
+ Let's start with the 
+\begin_inset Formula $\frac{1}{p}$
+\end_inset
+
+ part:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{1}{p}=e^{(\ln(\frac{1}{p})}=e^{-\ln(p)}\\
+P(\boldsymbol{m}|\{d_{k}\})=e^{-\ln(p)}e^{-F_{old}(\boldsymbol{m})}e^{-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}\\
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+New misfit function: 
+\begin_inset Formula $F(\boldsymbol{m})=F_{old}(\boldsymbol{m})+\ln(p)+\frac{1}{2}(\frac{p-35}{6})^{2}$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We only need to make a couple simple changes to our code from HW2.
+ Instead of just using the L2 norm as our error function, we now need to
+ add our extra two terms to our misfit function:
+\end_layout
+
+\begin_layout Standard
+We will add a term to the last entries of 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and the Hessian to account for the new priors on 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Add the first derivative of our new part of the misfit to 
+\begin_inset Formula $\gamma$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\gamma=\gamma_{old}-\frac{1}{p}-\frac{p-\mu}{\sigma^{2}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And the second derivative to the last entry of the Hessian:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\partial^{2}F}{\partial p^{2}}=\frac{\partial^{2}F_{old}}{\partial p^{2}}+\frac{-1}{p^{2}}+\frac{1}{\sigma^{2}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here is the full code: 
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{./Q2/HW2.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{./Q2/compute_gradient_approx_hess.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{./Q2/nonlinear_solver.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{./Q2/compute_misfit.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Our best fit solution is now:
+\begin_inset Formula 
+\[
+\begin{bmatrix}x_{s}\\
+y_{s}\\
+z_{s}\\
+p
+\end{bmatrix}=\begin{bmatrix}8.5332\\
+-5.7685\\
+12.1910\\
+33.9391
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Comparing with old solution , the new solution has 
+\begin_inset Formula $p$
+\end_inset
+
+ value closer to 
+\begin_inset Formula $35$
+\end_inset
+
+ which is given by geologist's prior.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Problem 3 (graded by Kangchen) - bonus 15 points
+\end_layout
+
+\begin_layout Subsubsection*
+(a)
+\end_layout
+
+\begin_layout Standard
+The posterior probability is given by 
+\begin_inset Formula 
+\begin{equation}
+p(\mu|x)\propto\left(\sum_{k=1}^{N}(x_{k}-\mu)^{2}\right)^{-\frac{N-1}{2}}=\exp\left(-\frac{N-1}{2}\ln\left[\sum_{k=1}^{N}(x_{k}-\mu)^{2}\right]\right).
+\end{equation}
+
+\end_inset
+
+Minima of 
+\begin_inset Formula $F$
+\end_inset
+
+ maximize the probability density function.
+ We have that 
+\begin_inset Formula 
+\begin{align}
+F(\mu) & =\frac{N-1}{2}\ln\left(\sum_{k=1}^{N}(x_{k}-\mu)^{2}\right),\\
+\frac{\partial F}{\partial\mu} & =-(N-1)\frac{\sum_{k=1}^{N}(x_{k}-\mu)}{\sum_{k=1}^{N}(x_{k}-\mu)^{2}}\\
+\frac{\partial^{2}F}{\partial\mu^{2}} & =(N-1)\frac{N\sum_{k=1}^{N}(x_{k}-\mu)^{2}+2\sum_{k=1}^{N}(x_{k}-\mu)}{\left(\sum_{k=1}^{N}(x_{k}-\mu)^{2}\right)^{2}}.
+\end{align}
+
+\end_inset
+
+Because 
+\begin_inset Formula $\exp$
+\end_inset
+
+ and 
+\begin_inset Formula $\ln$
+\end_inset
+
+ are monotonic functions, we therefore need to find the minimum of the sum
+ of the equared error (least-squares) 
+\begin_inset Formula 
+\begin{equation}
+\sum_{k=1}^{N}(x_{k}-\mu)^{2}=0.
+\end{equation}
+
+\end_inset
+
+Taking the derivative with respct to 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and setting it to zero yields the minimum 
+\begin_inset Formula $\mu_{0}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+\mu_{0}=\frac{1}{N}\sum_{k=1}^{N}x_{k},
+\end{equation}
+
+\end_inset
+
+which is the sample mean of the data.
+ For the standard deviation 
+\begin_inset Formula $\sigma_{\mu}$
+\end_inset
+
+ we expand 
+\begin_inset Formula $F$
+\end_inset
+
+ to second order and insert 
+\begin_inset Formula $\mu_{0}$
+\end_inset
+
+, i.e., 
+\begin_inset Formula 
+\begin{equation}
+p(\mu|x)\propto e^{-F(\mu)}\approx e^{-F(\mu_{0})-\frac{1}{2}F''(\mu_{0})(\mu-\mu_{0})^{2}},
+\end{equation}
+
+\end_inset
+
+For the second derivate at the best fit solution we have 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial^{2}F}{\partial\mu^{2}}=\frac{N(N-1)}{\sum_{k=1}^{N}(x_{k}-\mu)^{2}}.
+\end{equation}
+
+\end_inset
+
+The standard deviation 
+\begin_inset Formula $\sigma_{\mu}$
+\end_inset
+
+ then amounts to 
+\begin_inset Formula 
+\begin{equation}
+\sigma_{\mu}=\frac{1}{F''(\mu_{0})^{1/2}}=\frac{S}{\sqrt{N}},
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{equation}
+S=\sqrt{\frac{1}{N-1}\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}}
+\end{equation}
+
+\end_inset
+
+is the sample variance of the data.
+\end_layout
+
+\begin_layout Subsubsection*
+(b)
+\end_layout
+
+\begin_layout Standard
+We assume 
+\begin_inset Formula $\boldsymbol{Q}=[\boldsymbol{e}_{1},\boldsymbol{e}_{2}]$
+\end_inset
+
+ where 
+\begin_inset Formula $||\boldsymbol{e}_{1}||=1,$
+\end_inset
+
+
+\begin_inset Formula $||\boldsymbol{e}_{2}||=1$
+\end_inset
+
+.
+ We can write 
+\begin_inset Formula $\boldsymbol{e}_{1}=(cos(\theta),sin(\theta))^{T}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{e}_{2}=(cos(\phi),sin(\phi))^{T}.$
+\end_inset
+
+ Since 
+\begin_inset Formula $\boldsymbol{Q}$
+\end_inset
+
+ is an orthongonal matrix, 
+\begin_inset Formula $\boldsymbol{e}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{e}_{2}$
+\end_inset
+
+ are orthogonal.
+ That means 
+\begin_inset Formula $cos(\theta)cos(\phi)+sin(\theta)sin(\phi)=cos(\theta-\phi)=0$
+\end_inset
+
+.
+ So 
+\begin_inset Formula $\theta-\phi=\pi/2$
+\end_inset
+
+ or 
+\begin_inset Formula $-\pi/2$
+\end_inset
+
+.
+ If we assume that 
+\begin_inset Formula $\phi=\theta+\pi/2$
+\end_inset
+
+, then 
+\begin_inset Formula $Q=\begin{bmatrix}cos(\theta) & -sin(\theta)\\
+sin(\theta) & cos(\theta)
+\end{bmatrix}$
+\end_inset
+
+.
+ This can be understood as rotating a vector by 
+\begin_inset Formula $\theta$
+\end_inset
+
+ degree counterclockwise.
+\end_layout
+
+\begin_layout Subsubsection*
+(c)
+\end_layout
+
+\begin_layout Standard
+We need to show that 
+\begin_inset Formula $\sigma_{x}^{2}=\frac{B}{AB-C^{2}}$
+\end_inset
+
+.
+ We are deadling with an integral of the form 
+\begin_inset Formula 
+\begin{align}
+\sigma_{x}^{2} & =\frac{\int dxdy\,x^{2}\exp\left(-\frac{1}{2}x^{T}Ax\right)}{\int dxdy\,\exp\left(-\frac{1}{2}x^{T}Ax\right)}\\
+ & =\frac{\int dxdy\,x^{2}\exp\left(-\frac{1}{2}(Ax^{2}+2Cxy+By^{2})\right)}{\int dxdy\,\exp\left(-\frac{1}{2}(Ax^{2}+2Cxy+By^{2})\right)}\\
+ & =\frac{\int dxdy\,x^{2}\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}-\frac{1}{2}B(y+Cx/B)^{2}\right)}{\int dxdy\,\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}-\frac{1}{2}B(y+Cx/B)^{2}\right)}\\
+ & =\frac{\int dx\,x^{2}\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}\right)}{\int dx\,\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}\right)}
+\end{align}
+
+\end_inset
+
+If we set 
+\begin_inset Formula $\sigma^{2}=1/(A-C^{2}/B)$
+\end_inset
+
+, we arrive at 
+\begin_inset Formula 
+\begin{equation}
+\sigma_{x}^{2}=\frac{\int dx\,x^{2}\exp\left(-\frac{1}{2}x^{2}/\sigma^{2}\right)}{\int dx\,\exp\left(-\frac{1}{2}x^{2}/\sigma^{2}\right)}
+\end{equation}
+
+\end_inset
+
+, which as we have seen in previous homework sets and solutions implies
+ 
+\begin_inset Formula 
+\begin{equation}
+\sigma_{x}^{2}=\langle x^{2}\rangle=\sigma^{2}=\frac{1}{A-\frac{C^{2}}{B}}=\frac{B}{AB-C^{2}}.
+\end{equation}
+
+\end_inset
+
+
 \begin_inset Newpage clearpage
 \end_inset
 
