@@ -116,9 +116,8 @@ when calculate the model covariance matrix.
     0.0095   -0.0156    0.0237    0.1034     
     0.0548   -0.0853    0.1034    0.4985
 \end{verbatim}
-\selectlanguage{english}%
 
-\subsubsection*{(b)- 5 points}
+\subsubsection*{(b)- 8 points}
 
 The covariance matrix calculated here will be similar to the Monte
 Carlo simulation in HW2.
@@ -137,7 +136,6 @@ The correlation matrix is:
     0.6127   -0.7200    1.0000    0.9520     
     0.7721   -0.8598    0.9520    1.0000
 \end{verbatim}
-\selectlanguage{english}%
 we see that there are strong trade-offs between model parameters.
 The strong negative correlation between $x_{s}$ and $y_{s}$, for
 example, is also shown in the plot in HW2.
@@ -173,7 +171,6 @@ cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
     0.3429   -0.0019    
    -0.0019    0.0004
 \end{verbatim}
-\selectlanguage{english}%
 (2) Result using estimated data error
 
 In this problem , the data error is strongly underestimated. We need
@@ -198,9 +195,8 @@ Using this new data error, we do the same calculation as above.
    23.7090   -0.1283    
    -0.1283    0.0249
 \end{verbatim}
-\selectlanguage{english}%
 
-\subsubsection*{(d)- 5 points}
+\subsubsection*{(d)- 8 points}
 
 The model covariance is calculated from the distribution $P(\boldsymbol{m}|\boldsymbol{d})$.
 The square root of the eigenvalues and eigenvectors of the model covariance
@@ -221,7 +217,7 @@ the difference in the scale of x and y axis).
 \includegraphics[scale=0.5]{p1_figures/errorellip}
 
 
-\subsubsection*{(e)- 8 points}
+\subsubsection*{(e)- 10 points}
 
 First calculate the misfit $F(\boldsymbol{m})$ for the full parameter
 space.
@@ -266,7 +262,7 @@ We can approximate the integral with rectangle method: $\int f(x)dx=\sum_{i}f(x_
 \includegraphics[scale=0.7]{p1_figures/margins}
 
 
-\subsubsection*{(f)- 6 points}
+\subsubsection*{(f)- 8 points}
 
 By definition
 
@@ -318,12 +314,12 @@ which we defined as depth, it must be positive. For P which is related
 to pressure, we know that it must be positive too.
 
 
-\subsubsection*{(b) - 5 points}
+\subsubsection*{(b) - 10 points}
 
 We can incorporate this information as a prior by multiplying our
-likelihood $P(\{d_{k}\}|\boldsymbol{m})$ by a prior for model $P(\boldsymbol{m})$.
-In this case we will use a gaussian distribution for model parameter
-$p$ with $\mu=35$ and $\sigma=6$.
+likelihood $P(\{d_{k}\}|\boldsymbol{m})$ by a prior for the model
+$P(\boldsymbol{m})$. In this case we will use a Gaussian distribution
+for model parameter $p$ with $\mu=35$ and $\sigma=6$.
 
 \begin{eqnarray*}
 P(\boldsymbol{m})=e^{-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}\\
@@ -344,7 +340,7 @@ P(\boldsymbol{m}|\{d_{k}\})=e^{-F(\boldsymbol{m})-\frac{1}{2}(\frac{p-\mu}{\sigm
 \end{eqnarray*}
 
 
-So $P(\phi)=\frac{1}{\phi}$ satisfies scale independent criterion.
+So $P(\phi)=\frac{1}{\phi}$ satisfies the scale independent criterion.
 
 
 \subsubsection*{(c.ii) - 5 points}
@@ -354,7 +350,7 @@ for $P(\boldsymbol{m}|\{d_{k}\})$ by multiplying it times our likelihood
 (just like in part b). Our expresssion becomes:
 
 \begin{eqnarray*}
-P(\boldsymbol{m}|\{d_{k}\})=e^{-F(\boldsymbol{m})}\frac{1}{p}
+P(\boldsymbol{m}|\{d_{k}\})=e^{-F(\boldsymbol{m})}\frac{1}{p}=e^{-F(\boldsymbol{m})-ln(p)}
 \end{eqnarray*}
 
 
@@ -366,7 +362,7 @@ our prior. In this case we can multiply the two priors together. Our
 new expression becomes:
 
 \begin{eqnarray*}
-P(\boldsymbol{m}|\{d_{k}\})=\frac{1}{p}e^{-F(\boldsymbol{m})}e^{-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}
+P(\boldsymbol{m}|\{d_{k}\})=\frac{1}{p}e^{-F(\boldsymbol{m})}e^{-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}=e^{-F_{old}(\boldsymbol{m})-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}-\ln(p)}
 \end{eqnarray*}
 
 
@@ -398,13 +394,14 @@ p. }
 
 It doesn't matter in what order we do things as long as priors for
 analysis are not biased by our data (and they shouldn't be) and your
-experiment is not affected by prior information. Suppose we have some
+experiment is not affected by prior information. An example of a situation
+in which the experiment is affected by prior is that if we have some
 prior information about $x_{s}$ and $y_{s}$ which is not the case
 here, we can conduct our mesasurements closer to those prior points
 which may increase accuracy of our inversion.
 
 
-\subsubsection*{(f) - 5 points}
+\subsubsection*{(f) - 15 points}
 
 Previous expression: $P_{old}(\boldsymbol{m}|\{d_{k}\})=e^{-F_{old}(\boldsymbol{m})}$
 \\
@@ -475,14 +472,14 @@ p
 \]
 
 
-Comparing with old solution , the new solution has $p$ value closer
+Comparing with old solution, the new solution has $p$ value closer
 to $35$ which is given by geologist's prior.\newpage{}
 
 
 \subsection*{Problem 3 (graded by Kangchen) - bonus 15 points}
 
 
-\subsubsection*{(a)}
+\subsubsection*{(a)-5 points}
 
 The posterior probability is given by 
 \begin{equation}
@@ -493,26 +490,16 @@ that
 \begin{align}
 F(\mu) & =\frac{N-1}{2}\ln\left(\sum_{k=1}^{N}(x_{k}-\mu)^{2}\right),\\
 \frac{\partial F}{\partial\mu} & =-(N-1)\frac{\sum_{k=1}^{N}(x_{k}-\mu)}{\sum_{k=1}^{N}(x_{k}-\mu)^{2}}\\
-\frac{\partial^{2}F}{\partial\mu^{2}} & =(N-1)\frac{N\sum_{k=1}^{N}(x_{k}-\mu)^{2}+2\sum_{k=1}^{N}(x_{k}-\mu)}{\left(\sum_{k=1}^{N}(x_{k}-\mu)^{2}\right)^{2}}.
+\frac{\partial^{2}F}{\partial\mu^{2}} & =(N-1)\frac{N\sum_{k=1}^{N}(x_{k}-\mu)^{2}-2(\sum_{k=1}^{N}(x_{k}-\mu))^{2}}{\left(\sum_{k=1}^{N}(x_{k}-\mu)^{2}\right)^{2}}.
 \end{align}
-Because $\exp$ and $\ln$ are monotonic functions, we therefore need
-to find the minimum of the sum of the equared error (least-squares)
-\begin{equation}
-\sum_{k=1}^{N}(x_{k}-\mu)^{2}=0.
-\end{equation}
 Taking the derivative with respct to $\mu$ and setting it to zero
 yields the minimum $\mu_{0}$ 
 \begin{equation}
 \mu_{0}=\frac{1}{N}\sum_{k=1}^{N}x_{k},
 \end{equation}
-which is the sample mean of the data. For the standard deviation $\sigma_{\mu}$
-we expand $F$ to second order and insert $\mu_{0}$, i.e., 
-\begin{equation}
-p(\mu|x)\propto e^{-F(\mu)}\approx e^{-F(\mu_{0})-\frac{1}{2}F''(\mu_{0})(\mu-\mu_{0})^{2}},
-\end{equation}
 For the second derivate at the best fit solution we have 
 \begin{equation}
-\frac{\partial^{2}F}{\partial\mu^{2}}=\frac{N(N-1)}{\sum_{k=1}^{N}(x_{k}-\mu)^{2}}.
+\frac{\partial^{2}F}{\partial\mu^{2}}(\mu=\mu_{0})=\frac{N(N-1)}{\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}}.
 \end{equation}
 The standard deviation $\sigma_{\mu}$ then amounts to 
 \begin{equation}
@@ -525,7 +512,7 @@ S=\sqrt{\frac{1}{N-1}\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}}
 is the sample variance of the data.
 
 
-\subsubsection*{(b)}
+\subsubsection*{(b)-5 points}
 
 We assume $\boldsymbol{Q}=[\boldsymbol{e}_{1},\boldsymbol{e}_{2}]$
 where $||\boldsymbol{e}_{1}||=1,$$||\boldsymbol{e}_{2}||=1$. We
@@ -534,22 +521,37 @@ $\boldsymbol{e}_{2}=(cos(\phi),sin(\phi))^{T}.$ Since $\boldsymbol{Q}$
 is an orthongonal matrix, $\boldsymbol{e}_{1}$ and $\boldsymbol{e}_{2}$
 are orthogonal. That means $cos(\theta)cos(\phi)+sin(\theta)sin(\phi)=cos(\theta-\phi)=0$.
 So $\theta-\phi=\pi/2$ or $-\pi/2$. If we assume that $\phi=\theta+\pi/2$,
-then $Q=\begin{bmatrix}cos(\theta) & -sin(\theta)\\
+then $\boldsymbol{Q}=\begin{bmatrix}cos(\theta) & -sin(\theta)\\
 sin(\theta) & cos(\theta)
 \end{bmatrix}$. This can be understood as rotating a vector by $\theta$ degree
-counterclockwise.
+counterclockwise. Another way to interpret what $\boldsymbol{Q}$
+did is that $\boldsymbol{Q}^{T}\begin{pmatrix}x\\
+y
+\end{pmatrix}$ gives the projection of $\begin{pmatrix}x\\
+y
+\end{pmatrix}$ onto $\boldsymbol{e}_{1}$ and $\boldsymbol{e}_{2}$ where $\boldsymbol{Q}=(\boldsymbol{e}_{1},\boldsymbol{e}_{2}).$
 
 
-\subsubsection*{(c)}
+\subsubsection*{(c)-5 points}
 
 We need to show that $\sigma_{x}^{2}=\frac{B}{AB-C^{2}}$. We are
-deadling with an integral of the form 
+dealing with an integral of the f
 \begin{align}
-\sigma_{x}^{2} & =\frac{\int dxdy\,x^{2}\exp\left(-\frac{1}{2}x^{T}Ax\right)}{\int dxdy\,\exp\left(-\frac{1}{2}x^{T}Ax\right)}\\
- & =\frac{\int dxdy\,x^{2}\exp\left(-\frac{1}{2}(Ax^{2}+2Cxy+By^{2})\right)}{\int dxdy\,\exp\left(-\frac{1}{2}(Ax^{2}+2Cxy+By^{2})\right)}\\
- & =\frac{\int dxdy\,x^{2}\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}-\frac{1}{2}B(y+Cx/B)^{2}\right)}{\int dxdy\,\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}-\frac{1}{2}B(y+Cx/B)^{2}\right)}\\
- & =\frac{\int dx\,x^{2}\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}\right)}{\int dx\,\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}\right)}
+\sigma_{x}^{2} & =\frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\,x^{2}\exp\left(-\frac{1}{2}x^{T}Ax\right)}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\,\exp\left(-\frac{1}{2}x^{T}Ax\right)}\\
+ & =\frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\,x^{2}\exp\left(-\frac{1}{2}(Ax^{2}+2Cxy+By^{2})\right)}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\,\exp\left(-\frac{1}{2}(Ax^{2}+2Cxy+By^{2})\right)}\\
+ & =\frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\,x^{2}\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}-\frac{1}{2}B(y+Cx/B)^{2}\right)}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\,\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}-\frac{1}{2}B(y+Cx/B)^{2}\right)}\\
+ & =\frac{\int_{-\infty}^{+\infty}dx\,x^{2}\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}\right)\mbox{\ensuremath{\int_{-\infty}^{+\infty}}\ensuremath{dy}exp}\left(-\frac{1}{2}B(y+Cx/B)^{2}\right)}{\int_{-\infty}^{+\infty}dx\,\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}\right)\mbox{\ensuremath{\int_{-\infty}^{+\infty}}\ensuremath{dy}exp}\left(-\frac{1}{2}B(y+Cx/B)^{2}\right)}\\
+ & =\frac{\int_{-\infty}^{+\infty}dx\,x^{2}\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}\right)}{\int_{-\infty}^{+\infty}dx\,\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}\right)}
 \end{align}
+
+
+Note that from 0.12 to 0.13:
+
+$\int_{-\infty}^{+\infty}dy\exp\left(-\frac{1}{2}B(y+Cx/B)^{2}\right)=\int_{-\infty+cx/B}^{+\infty+cx/B}dy'\exp\left(-\frac{1}{2}By'{}^{2}\right)=\int_{-\infty}^{+\infty}dy'\exp\left(-\frac{1}{2}By'^{2}\right)$ 
+
+So that integral is not related to $x.$ That's why we can cancel
+out that term from both numerator and denominator.
+
 If we set $\sigma^{2}=1/(A-C^{2}/B)$, we arrive at 
 \begin{equation}
 \sigma_{x}^{2}=\frac{\int dx\,x^{2}\exp\left(-\frac{1}{2}x^{2}/\sigma^{2}\right)}{\int dx\,\exp\left(-\frac{1}{2}x^{2}/\sigma^{2}\right)}
