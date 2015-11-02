@@ -141,6 +141,10 @@ F(\boldsymbol{m}) & = & \sum_{i}\frac{(d_{i}-g_{i}(\boldsymbol{m}))^{2}}{2\sigma
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 The posterior PDF
 \end_layout
 
@@ -153,7 +157,11 @@ P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m}) & \prop
 
 \end_inset
 
- has the form of a multivariate Gaussian distribution, and the covariance
+ 
+\end_layout
+
+\begin_layout Standard
+has the form of a multivariate Gaussian distribution, and the covariance
  matrix is 
 \begin_inset Formula 
 \begin{eqnarray*}
@@ -162,6 +170,10 @@ P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m}) & \prop
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Note we want to know the covariance matrix when 
 \begin_inset Formula $m_{0}$
 \end_inset
@@ -322,6 +334,10 @@ F(\boldsymbol{m}) & = & \frac{1}{2\sigma^{2}}(\boldsymbol{d}-\boldsymbol{Gm})^{T
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 where 
 \begin_inset Formula $\sigma$
 \end_inset
@@ -344,6 +360,10 @@ The Hessian is
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 and 
 \begin_inset Formula 
 \begin{eqnarray*}
@@ -429,7 +449,11 @@ s & = & \sqrt{\frac{1}{n-m}\mbox{||\boldsymbol{d-Gm_{L2}}||}_{2}^{2}}\approx26.3
 \begin_inset Formula $\sigma=0.1$
 \end_inset
 
- (Not a correct answer, just for your reference)
+ 
+\end_layout
+
+\begin_layout Standard
+(Not a correct answer, just for your reference)
 \end_layout
 
 \begin_layout Standard
@@ -609,11 +633,11 @@ We can approximate the integral with the midpoint numerical integration:
 \end_layout
 
 \begin_layout Standard
-Result using estimated data error 
+Using estimated data error 
 \begin_inset Formula $s=26.3$
 \end_inset
 
-
+, we have
 \end_layout
 
 \begin_layout Standard
@@ -631,7 +655,11 @@ Result using estimated data error
 \begin_inset Formula $\sigma=0.1$
 \end_inset
 
- (Not a correct answer, just for your reference)
+ 
+\end_layout
+
+\begin_layout Standard
+(Not a correct answer, just for your reference)
 \end_layout
 
 \begin_layout Standard
@@ -668,15 +696,11 @@ By definition
 \end_layout
 
 \begin_layout Standard
-Result using estimated data error 
+Using estimated data error 
 \begin_inset Formula $s=26.3$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-We get 
+, we get 
 \begin_inset Formula $\sigma_{m1}=4.8692$
 \end_inset
 
@@ -693,7 +717,11 @@ We get
 \begin_inset Formula $\sigma=0.1$
 \end_inset
 
- (Not a correct answer, just for your reference)
+ 
+\end_layout
+
+\begin_layout Standard
+(Not a correct answer, just for your reference)
 \end_layout
 
 \begin_layout Standard
@@ -821,7 +849,7 @@ and
 \end_layout
 
 \begin_layout Subsubsection*
-(b) - 5 points
+(b) - 10 points
 \end_layout
 
 \begin_layout Standard
@@ -830,12 +858,12 @@ We can incorporate this information as a prior by multiplying our likelihood
 \begin_inset Formula $P(\{d_{k}\}|\boldsymbol{m})$
 \end_inset
 
- by a prior for model 
+ by a prior for the model 
 \begin_inset Formula $P(\boldsymbol{m})$
 \end_inset
 
 .
- In this case we will use a gaussian distribution for model parameter 
+ In this case we will use a Gaussian distribution for model parameter 
 \begin_inset Formula $p$
 \end_inset
 
@@ -887,7 +915,7 @@ So
 \begin_inset Formula $P(\phi)=\frac{1}{\phi}$
 \end_inset
 
- satisfies scale independent criterion.
+ satisfies the scale independent criterion.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -907,7 +935,7 @@ We can again incorporate this information as a prior in our expression for
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(\boldsymbol{m}|\{d_{k}\})=e^{-F(\boldsymbol{m})}\frac{1}{p}
+P(\boldsymbol{m}|\{d_{k}\})=e^{-F(\boldsymbol{m})}\frac{1}{p}=e^{-F(\boldsymbol{m})-ln(p)}
 \end{eqnarray*}
 
 \end_inset
@@ -928,7 +956,7 @@ We want to incorporate both independent pieces of information into our prior.
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(\boldsymbol{m}|\{d_{k}\})=\frac{1}{p}e^{-F(\boldsymbol{m})}e^{-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}
+P(\boldsymbol{m}|\{d_{k}\})=\frac{1}{p}e^{-F(\boldsymbol{m})}e^{-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}}=e^{-F_{old}(\boldsymbol{m})-\frac{1}{2}(\frac{p-\mu}{\sigma})^{2}-\ln(p)}
 \end{eqnarray*}
 
 \end_inset
@@ -1048,7 +1076,8 @@ Plot of combination of the Gaussian and scale invariant priors for p.
 It doesn't matter in what order we do things as long as priors for analysis
  are not biased by our data (and they shouldn't be) and your experiment
  is not affected by prior information.
- Suppose we have some prior information about 
+ An example of a situation in which the experiment is affected by prior
+ is that if we have some prior information about 
 \begin_inset Formula $x_{s}$
 \end_inset
 
@@ -1061,7 +1090,7 @@ It doesn't matter in what order we do things as long as priors for analysis
 \end_layout
 
 \begin_layout Subsubsection*
-(f) - 5 points
+(f) - 15 points
 \end_layout
 
 \begin_layout Standard
@@ -1314,7 +1343,7 @@ p
 \end_layout
 
 \begin_layout Standard
-Comparing with old solution , the new solution has 
+Comparing with old solution, the new solution has 
 \begin_inset Formula $p$
 \end_inset
 
@@ -1334,7 +1363,7 @@ Problem 3 (graded by Kangchen) - bonus 15 points
 \end_layout
 
 \begin_layout Subsubsection*
-(a)
+(a)-5 points
 \end_layout
 
 \begin_layout Standard
@@ -1356,25 +1385,8 @@ Minima of
 \begin{align}
 F(\mu) & =\frac{N-1}{2}\ln\left(\sum_{k=1}^{N}(x_{k}-\mu)^{2}\right),\\
 \frac{\partial F}{\partial\mu} & =-(N-1)\frac{\sum_{k=1}^{N}(x_{k}-\mu)}{\sum_{k=1}^{N}(x_{k}-\mu)^{2}}\\
-\frac{\partial^{2}F}{\partial\mu^{2}} & =(N-1)\frac{N\sum_{k=1}^{N}(x_{k}-\mu)^{2}+2\sum_{k=1}^{N}(x_{k}-\mu)}{\left(\sum_{k=1}^{N}(x_{k}-\mu)^{2}\right)^{2}}.
+\frac{\partial^{2}F}{\partial\mu^{2}} & =(N-1)\frac{N\sum_{k=1}^{N}(x_{k}-\mu)^{2}-2(\sum_{k=1}^{N}(x_{k}-\mu))^{2}}{\left(\sum_{k=1}^{N}(x_{k}-\mu)^{2}\right)^{2}}.
 \end{align}
-
-\end_inset
-
-Because 
-\begin_inset Formula $\exp$
-\end_inset
-
- and 
-\begin_inset Formula $\ln$
-\end_inset
-
- are monotonic functions, we therefore need to find the minimum of the sum
- of the equared error (least-squares) 
-\begin_inset Formula 
-\begin{equation}
-\sum_{k=1}^{N}(x_{k}-\mu)^{2}=0.
-\end{equation}
 
 \end_inset
 
@@ -1394,31 +1406,10 @@ Taking the derivative with respct to
 
 \end_inset
 
-which is the sample mean of the data.
- For the standard deviation 
-\begin_inset Formula $\sigma_{\mu}$
-\end_inset
-
- we expand 
-\begin_inset Formula $F$
-\end_inset
-
- to second order and insert 
-\begin_inset Formula $\mu_{0}$
-\end_inset
-
-, i.e., 
-\begin_inset Formula 
-\begin{equation}
-p(\mu|x)\propto e^{-F(\mu)}\approx e^{-F(\mu_{0})-\frac{1}{2}F''(\mu_{0})(\mu-\mu_{0})^{2}},
-\end{equation}
-
-\end_inset
-
 For the second derivate at the best fit solution we have 
 \begin_inset Formula 
 \begin{equation}
-\frac{\partial^{2}F}{\partial\mu^{2}}=\frac{N(N-1)}{\sum_{k=1}^{N}(x_{k}-\mu)^{2}}.
+\frac{\partial^{2}F}{\partial\mu^{2}}(\mu=\mu_{0})=\frac{N(N-1)}{\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}}.
 \end{equation}
 
 \end_inset
@@ -1447,7 +1438,7 @@ is the sample variance of the data.
 \end_layout
 
 \begin_layout Subsubsection*
-(b)
+(b)-5 points
 \end_layout
 
 \begin_layout Standard
@@ -1504,7 +1495,7 @@ We assume
 \end_inset
 
 , then 
-\begin_inset Formula $Q=\begin{bmatrix}cos(\theta) & -sin(\theta)\\
+\begin_inset Formula $\boldsymbol{Q}=\begin{bmatrix}cos(\theta) & -sin(\theta)\\
 sin(\theta) & cos(\theta)
 \end{bmatrix}$
 \end_inset
@@ -1515,10 +1506,39 @@ sin(\theta) & cos(\theta)
 \end_inset
 
  degree counterclockwise.
+ Another way to interpret what 
+\begin_inset Formula $\boldsymbol{Q}$
+\end_inset
+
+ did is that 
+\begin_inset Formula $\boldsymbol{Q}^{T}\begin{pmatrix}x\\
+y
+\end{pmatrix}$
+\end_inset
+
+ gives the projection of 
+\begin_inset Formula $\begin{pmatrix}x\\
+y
+\end{pmatrix}$
+\end_inset
+
+ onto 
+\begin_inset Formula $\boldsymbol{e}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{e}_{2}$
+\end_inset
+
+ where 
+\begin_inset Formula $\boldsymbol{Q}=(\boldsymbol{e}_{1},\boldsymbol{e}_{2}).$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
-(c)
+(c)-5 points
 \end_layout
 
 \begin_layout Standard
@@ -1527,17 +1547,41 @@ We need to show that
 \end_inset
 
 .
- We are deadling with an integral of the form 
+ We are dealing with an integral of the f
 \begin_inset Formula 
 \begin{align}
-\sigma_{x}^{2} & =\frac{\int dxdy\,x^{2}\exp\left(-\frac{1}{2}x^{T}Ax\right)}{\int dxdy\,\exp\left(-\frac{1}{2}x^{T}Ax\right)}\\
- & =\frac{\int dxdy\,x^{2}\exp\left(-\frac{1}{2}(Ax^{2}+2Cxy+By^{2})\right)}{\int dxdy\,\exp\left(-\frac{1}{2}(Ax^{2}+2Cxy+By^{2})\right)}\\
- & =\frac{\int dxdy\,x^{2}\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}-\frac{1}{2}B(y+Cx/B)^{2}\right)}{\int dxdy\,\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}-\frac{1}{2}B(y+Cx/B)^{2}\right)}\\
- & =\frac{\int dx\,x^{2}\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}\right)}{\int dx\,\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}\right)}
+\sigma_{x}^{2} & =\frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\,x^{2}\exp\left(-\frac{1}{2}x^{T}Ax\right)}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\,\exp\left(-\frac{1}{2}x^{T}Ax\right)}\\
+ & =\frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\,x^{2}\exp\left(-\frac{1}{2}(Ax^{2}+2Cxy+By^{2})\right)}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\,\exp\left(-\frac{1}{2}(Ax^{2}+2Cxy+By^{2})\right)}\\
+ & =\frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\,x^{2}\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}-\frac{1}{2}B(y+Cx/B)^{2}\right)}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}dxdy\,\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}-\frac{1}{2}B(y+Cx/B)^{2}\right)}\\
+ & =\frac{\int_{-\infty}^{+\infty}dx\,x^{2}\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}\right)\mbox{\int_{-\infty}^{+\infty}\ensuremath{dy}exp}\left(-\frac{1}{2}B(y+Cx/B)^{2}\right)}{\int_{-\infty}^{+\infty}dx\,\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}\right)\mbox{\int_{-\infty}^{+\infty}\ensuremath{dy}exp}\left(-\frac{1}{2}B(y+Cx/B)^{2}\right)}\\
+ & =\frac{\int_{-\infty}^{+\infty}dx\,x^{2}\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}\right)}{\int_{-\infty}^{+\infty}dx\,\exp\left(-\frac{1}{2}(A-C^{2}/B)x^{2}\right)}
 \end{align}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+Note that from 0.12 to 0.13:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\int_{-\infty}^{+\infty}dy\exp\left(-\frac{1}{2}B(y+Cx/B)^{2}\right)=\int_{-\infty+cx/B}^{+\infty+cx/B}dy'\exp\left(-\frac{1}{2}By'{}^{2}\right)=\int_{-\infty}^{+\infty}dy'\exp\left(-\frac{1}{2}By'^{2}\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+So that integral is not related to 
+\begin_inset Formula $x.$
+\end_inset
+
+ That's why we can cancel out that term from both numerator and denominator.
+\end_layout
+
+\begin_layout Standard
 If we set 
 \begin_inset Formula $\sigma^{2}=1/(A-C^{2}/B)$
 \end_inset

@@ -141,6 +141,10 @@ F(\boldsymbol{m}) & = & \sum_{i}\frac{(d_{i}-g_{i}(\boldsymbol{m}))^{2}}{2\sigma
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 The posterior PDF
 \end_layout
 
@@ -153,7 +157,11 @@ P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m}) & \prop
 
 \end_inset
 
- has the form of a multivariate Gaussian distribution, and the covariance
+ 
+\end_layout
+
+\begin_layout Standard
+has the form of a multivariate Gaussian distribution, and the covariance
  matrix is 
 \begin_inset Formula 
 \begin{eqnarray*}
@@ -162,6 +170,10 @@ P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m}) & \prop
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Note we want to know the covariance matrix when 
 \begin_inset Formula $m_{0}$
 \end_inset
@@ -211,18 +223,22 @@ So we need to modify the Hessian in HW2 by dividing by
 \end_layout
 
 \begin_layout Verbatim
+
     0.0101   -0.0123    0.0095    0.0548    
 \end_layout
 
 \begin_layout Verbatim
+
    -0.0123    0.0198   -0.0156   -0.0853     
 \end_layout
 
 \begin_layout Verbatim
+
     0.0095   -0.0156    0.0237    0.1034     
 \end_layout
 
 \begin_layout Verbatim
+
     0.0548   -0.0853    0.1034    0.4985
 \end_layout
 
@@ -273,18 +289,22 @@ The off diagonal shows the covariance between parameters.
 \end_layout
 
 \begin_layout Verbatim
+
     1.0000   -0.8685    0.6127    0.7721    
 \end_layout
 
 \begin_layout Verbatim
+
    -0.8685    1.0000   -0.7200   -0.8598     
 \end_layout
 
 \begin_layout Verbatim
+
     0.6127   -0.7200    1.0000    0.9520     
 \end_layout
 
 \begin_layout Verbatim
+
     0.7721   -0.8598    0.9520    1.0000
 \end_layout
 
@@ -314,6 +334,10 @@ F(\boldsymbol{m}) & = & \frac{1}{2\sigma^{2}}(\boldsymbol{d}-\boldsymbol{Gm})^{T
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 where 
 \begin_inset Formula $\sigma$
 \end_inset
@@ -336,6 +360,10 @@ The Hessian is
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 and 
 \begin_inset Formula 
 \begin{eqnarray*}
@@ -348,7 +376,6 @@ cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
 \end_layout
 
 \begin_layout Standard
-<<<<<<< HEAD
 In this problem, the data error is strongly underestimated.
  Your friend tells you his experimental error on 
 \begin_inset Formula $y$
@@ -357,26 +384,10 @@ In this problem, the data error is strongly underestimated.
  are all 
 \begin_inset Formula $\approx0.1$
 \end_inset
-=======
-(see MATLAB code) The output covariance matrix is:
-\end_layout
-
-\begin_layout Verbatim
-   1.0e-03 *
-\end_layout
-
-\begin_layout Verbatim
-    0.3429   -0.0019    
-\end_layout
-
-\begin_layout Verbatim
-   -0.0019    0.0004
-\end_layout
->>>>>>> origin/master
 
 , it's possible that he only tells the instrument error.
  There are other sources of random errors, for example, the environmental
- factors (recall your college physics experiment class...).
+ factors, which can be large.
 \end_layout
 
 \begin_layout Standard
@@ -438,7 +449,11 @@ s & = & \sqrt{\frac{1}{n-m}\mbox{||\boldsymbol{d-Gm_{L2}}||}_{2}^{2}}\approx26.3
 \begin_inset Formula $\sigma=0.1$
 \end_inset
 
- (Not a correct answer, just for your reference)
+ 
+\end_layout
+
+\begin_layout Standard
+(Not a correct answer, just for your reference)
 \end_layout
 
 \begin_layout Standard
@@ -446,7 +461,6 @@ s & = & \sqrt{\frac{1}{n-m}\mbox{||\boldsymbol{d-Gm_{L2}}||}_{2}^{2}}\approx26.3
 \end_layout
 
 \begin_layout Verbatim
-<<<<<<< HEAD
 
    1.0e-03 *
 \end_layout
@@ -459,13 +473,6 @@ s & = & \sqrt{\frac{1}{n-m}\mbox{||\boldsymbol{d-Gm_{L2}}||}_{2}^{2}}\approx26.3
 \begin_layout Verbatim
 
    -0.0019    0.0004
-=======
-   23.7090   -0.1283    
-\end_layout
-
-\begin_layout Verbatim
-   -0.1283    0.0249
->>>>>>> origin/master
 \end_layout
 
 \begin_layout Subsubsection*
@@ -626,11 +633,11 @@ We can approximate the integral with the midpoint numerical integration:
 \end_layout
 
 \begin_layout Standard
-Result using estimated data error 
+Using estimated data error 
 \begin_inset Formula $s=26.3$
 \end_inset
 
-
+, we have
 \end_layout
 
 \begin_layout Standard
@@ -648,7 +655,11 @@ Result using estimated data error
 \begin_inset Formula $\sigma=0.1$
 \end_inset
 
- (Not a correct answer, just for your reference)
+ 
+\end_layout
+
+\begin_layout Standard
+(Not a correct answer, just for your reference)
 \end_layout
 
 \begin_layout Standard
@@ -685,15 +696,11 @@ By definition
 \end_layout
 
 \begin_layout Standard
-Result using estimated data error 
+Using estimated data error 
 \begin_inset Formula $s=26.3$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-We get 
+, we get 
 \begin_inset Formula $\sigma_{m1}=4.8692$
 \end_inset
 
@@ -710,7 +717,11 @@ We get
 \begin_inset Formula $\sigma=0.1$
 \end_inset
 
- (Not a correct answer, just for your reference)
+ 
+\end_layout
+
+\begin_layout Standard
+(Not a correct answer, just for your reference)
 \end_layout
 
 \begin_layout Standard
