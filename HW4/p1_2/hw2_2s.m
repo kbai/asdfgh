@@ -1,7 +1,4 @@
 function hw2_2s
-set(0,'defaulttextfontname','times','defaulttextfontsize',14);
-set(0,'defaultaxesfontname','times','defaultaxesfontsize',14);
-
 % load data
 load ge118_hw2.mat
 sigma = 0.1;   % data error
@@ -29,8 +26,6 @@ for i = 1:2
     disp('standard deviation of m1 and m2:');
     disp(sqrt(diag(mcov)));
 end
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % grid search
 disp('*** start monte carlo ***');

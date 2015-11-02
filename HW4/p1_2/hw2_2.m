@@ -4,7 +4,7 @@ set(0,'defaultaxesfontname','times','defaultaxesfontsize',14);
 
 % load data
 load ge118_hw2.mat
-sigma = 0.1;   % data error
+sigma = 50;   % data error
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % least squares
 disp('*** start least squares ***');
@@ -20,12 +20,12 @@ disp(sqrt(diag(mcov)));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % grid search
 disp('*** start monte carlo ***');
-%m1 = -200:0.1:50;
-%m2 = 1:0.1:10;
+m1 = -200:0.1:50;
+m2 = 1:0.1:10;
 % narrow the searching range
 % so dm can be small enough to show the marginal pdf
-m1 = (m1_ls - 0.2):0.0005:(m1_ls + 0.2);   
-m2 = (m2_ls - 0.01):0.0001:(m2_ls + 0.01);
+%m1 = (m1_ls - 0.2):0.0005:(m1_ls + 0.2);   
+%m2 = (m2_ls - 0.01):0.0001:(m2_ls + 0.01);
 dm1 = m1(2) - m1(1);
 dm2 = m2(2) - m2(1);
 

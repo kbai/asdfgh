@@ -1,7 +1,4 @@
 function hw2_1
-set(0,'defaulttextfontname','times','defaulttextfontsize',14);
-set(0,'defaultaxesfontname','times','defaultaxesfontsize',14);
-
 sigma = 0.001;
 % std_mc = [0.099670 0.137469 0.149719 0.691071]';
 %%%hw 2 problem 1d
@@ -22,7 +19,6 @@ std_m = sqrt(diag(mcov))
 s = diag(std_m);
 disp('coefficient matrix:');
 mcoef = s^(-1)*mcov*s^(-1)
-
 end
 
 function[M, mcov]=nonlinear_solver(x,y,ui,Minit,sigma)
@@ -88,5 +84,4 @@ Grad = (misfit')* Ghat;
 
 Hess = (Ghat')*Ghat;
 %this is the apprximated Hessian;
-
 end

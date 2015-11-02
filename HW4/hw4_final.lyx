@@ -133,7 +133,7 @@ Problem 1 (graded by Yiran) 50 points
 \end_layout
 
 \begin_layout Standard
-The misfit function 
+With the misfit function defined as 
 \begin_inset Formula 
 \begin{eqnarray*}
 F(\boldsymbol{m}) & = & \sum_{i}\frac{(d_{i}-g_{i}(\boldsymbol{m}))^{2}}{2\sigma_{d}^{2}}
@@ -141,11 +141,7 @@ F(\boldsymbol{m}) & = & \sum_{i}\frac{(d_{i}-g_{i}(\boldsymbol{m}))^{2}}{2\sigma
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Then, the posterior PDF
+The posterior PDF
 \end_layout
 
 \begin_layout Standard
@@ -161,7 +157,7 @@ P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m}) & \prop
  matrix is 
 \begin_inset Formula 
 \begin{eqnarray*}
-cov(\boldsymbol{m})=\boldsymbol{H}(\boldsymbol{m_{0}})^{-1}
+\boldsymbol{V}=cov(\boldsymbol{m})=\boldsymbol{H}(\boldsymbol{m_{0}})^{-1}
 \end{eqnarray*}
 
 \end_inset
@@ -202,11 +198,11 @@ To include the data error
 \end_layout
 
 \begin_layout Standard
-So we need to modify the hessian in HW2 by dividing 
+So we need to modify the Hessian in HW2 by dividing by 
 \begin_inset Formula $\sigma_{d}^{2}$
 \end_inset
 
- when calculate the model covariance matrix.
+ when we calculate the model covariance matrix.
  
 \end_layout
 
@@ -244,7 +240,7 @@ The covariance matrix calculated here will be similar to the Monte Carlo
 \end_layout
 
 \begin_layout Standard
-Diagonal element shows the variance of each parameter.
+Diagonal elements show the variance of each parameter.
  The square root of the diagonal elements gives the standard deviations:
  
 \begin_inset Formula $\sigma_{x_{s}}=0.1006$
@@ -318,14 +314,6 @@ we see that there are strong trade-offs between model parameters.
 \end_layout
 
 \begin_layout Standard
-(1) Result using given data error 
-\begin_inset Formula $\sigma=0.1$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Now 
 \begin_inset Formula 
 \begin{eqnarray*}
@@ -335,10 +323,10 @@ F(\boldsymbol{m}) & = & \frac{1}{2\sigma^{2}}(\boldsymbol{d}-\boldsymbol{Gm})^{T
 \end_inset
 
 where 
-\begin_inset Formula $\sigma=0.1$
+\begin_inset Formula $\sigma$
 \end_inset
 
-, and 
+ is the data error, and 
 \begin_inset Formula 
 \begin{eqnarray*}
 \boldsymbol{G} & = & \left[\begin{array}{cc}
@@ -368,6 +356,83 @@ cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
 \end_layout
 
 \begin_layout Standard
+In this problem, the data error is strongly underestimated.
+ Your friend tells you his experimental error on 
+\begin_inset Formula $y$
+\end_inset
+
+ are all 
+\begin_inset Formula $\approx0.1$
+\end_inset
+
+, it's possible that he only tells the instrument error.
+ There are other sources of random errors, for example, the environmental
+ factors (recall your college physics experiment class...).
+\end_layout
+
+\begin_layout Standard
+We need to re-estimate the data error, and calculate the model covariance
+ matrix based on the new data error.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $s$
+\end_inset
+
+ be our estimate of the data error, 
+\begin_inset Formula $n=30$
+\end_inset
+
+ the number of observations, 
+\begin_inset Formula $m=2$
+\end_inset
+
+ the number of model parameters, 
+\begin_inset Formula $\boldsymbol{m_{L_{2}}}$
+\end_inset
+
+ the least squares solution.
+\end_layout
+
+\begin_layout Standard
+Then, from equation (2.63) in Aster 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+s & = & \sqrt{\frac{1}{n-m}\mbox{||\boldsymbol{d-Gm_{L2}}||}_{2}^{2}}\approx26.3
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(see MATLAB code) The output covariance matrix is:
+\end_layout
+
+\begin_layout Verbatim
+
+   23.7090   -0.1283    
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.1283    0.0249
+\end_layout
+
+\begin_layout Standard
+(*) Result using given data error 
+\begin_inset Formula $\sigma=0.1$
+\end_inset
+
+ (Not a correct answer, just for your reference)
+\end_layout
+
+\begin_layout Standard
 (see MATLAB code) The output covariance matrix is:
 \end_layout
 
@@ -384,69 +449,6 @@ cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
 \begin_layout Verbatim
 
    -0.0019    0.0004
-\end_layout
-
-\begin_layout Standard
-(2) Result using estimated data error
-\end_layout
-
-\begin_layout Standard
-In this problem , the data error is strongly underestimated.
- We need to re-estimate the data error, and re-calculate the model covariance
- matrix based on the new data error.
-\end_layout
-
-\begin_layout Standard
-Let 
-\begin_inset Formula $s$
-\end_inset
-
- our estimation of the data error, 
-\begin_inset Formula $m=30$
-\end_inset
-
- the number of observation, 
-\begin_inset Formula $n=2$
-\end_inset
-
- the number of model parameter, 
-\begin_inset Formula $\boldsymbol{m_{L_{2}}}$
-\end_inset
-
- the least squares solution
-\end_layout
-
-\begin_layout Standard
-Then
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-s & = & \sqrt{\frac{1}{m-n}\mbox{||\boldsymbol{d-Gm_{L2}}||}_{2}^{2}}\approx26.3
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Using this new data error, we do the same calculation as above.
-\end_layout
-
-\begin_layout Standard
-(see MATLAB code) The output covariance matrix is:
-\end_layout
-
-\begin_layout Verbatim
-
-   23.7090   -0.1283    
-\end_layout
-
-\begin_layout Verbatim
-
-   -0.1283    0.0249
 \end_layout
 
 \begin_layout Subsubsection*
@@ -504,6 +506,16 @@ The eigenvectors of the covariance matrix are:
 .
  We see that it is true for the error ellipse as shown below (notice the
  difference in the scale of x and y axis).
+ The negative correlation between 
+\begin_inset Formula $m_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $m_{2}$
+\end_inset
+
+ is also clear from the off-diagonal element of the model covariance matrix,
+ the analysis on the eigenvectors, and the error ellipse.
 \end_layout
 
 \begin_layout Standard
@@ -588,7 +600,8 @@ P(m_{2}|d) & = & \int P(m_{1},m_{2}|d)dm_{1}\\
 \end_layout
 
 \begin_layout Standard
-We can approximate the integral with rectangle method: 
+We can approximate the integral with the midpoint numerical integration:
+ 
 \begin_inset Formula $\int f(x)dx=\sum_{i}f(x_{i})\triangle x$
 \end_inset
 
@@ -596,25 +609,7 @@ We can approximate the integral with rectangle method:
 \end_layout
 
 \begin_layout Standard
-(1) Result using given data error 
-\begin_inset Formula $\sigma=0.1$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename p1_figures/margin.jpg
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-(2) Result using estimated data error 
+Result using estimated data error 
 \begin_inset Formula $s=26.3$
 \end_inset
 
@@ -624,6 +619,24 @@ We can approximate the integral with rectangle method:
 \begin_layout Standard
 \begin_inset Graphics
 	filename p1_figures/margins.jpg
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(*) Result using given data error 
+\begin_inset Formula $\sigma=0.1$
+\end_inset
+
+ (Not a correct answer, just for your reference)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename p1_figures/margin.jpg
 	scale 70
 
 \end_inset
@@ -655,28 +668,7 @@ By definition
 \end_layout
 
 \begin_layout Standard
-(1) Result using given data error 
-\begin_inset Formula $\sigma=0.1$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We get 
-\begin_inset Formula $\sigma_{m1}=0.0185$
-\end_inset
-
-, 
-\begin_inset Formula $\sigma_{m2}=0.0006$
-\end_inset
-
-, which are very close to square root of the diagonal elements of the covariance
- matrix calculated in (c).
-\end_layout
-
-\begin_layout Standard
-(2) Result using estimated data error 
+Result using estimated data error 
 \begin_inset Formula $s=26.3$
 \end_inset
 
@@ -690,6 +682,27 @@ We get
 
 , 
 \begin_inset Formula $\sigma_{m2}=0.1577$
+\end_inset
+
+, which are very close to square root of the diagonal elements of the covariance
+ matrix calculated in (c).
+\end_layout
+
+\begin_layout Standard
+(*) Result using given data error 
+\begin_inset Formula $\sigma=0.1$
+\end_inset
+
+ (Not a correct answer, just for your reference)
+\end_layout
+
+\begin_layout Standard
+We get 
+\begin_inset Formula $\sigma_{m1}=0.0185$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{m2}=0.0006$
 \end_inset
 
 , which are very close to square root of the diagonal elements of the covariance
