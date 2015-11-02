@@ -1472,11 +1472,11 @@ y
 \begin_inset Formula $\boldsymbol{e}_{1}$
 \end_inset
 
-and 
+ and 
 \begin_inset Formula $\boldsymbol{e}_{2}$
 \end_inset
 
-where 
+ where 
 \begin_inset Formula $\boldsymbol{Q}=(\boldsymbol{e}_{1},\boldsymbol{e}_{2}).$
 \end_inset
 
@@ -1513,7 +1513,7 @@ Note that from 0.12 to 0.13:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\int_{-\infty}^{+\infty}dy\exp\left(-\frac{1}{2}B(y+Cx/B)^{2}\right)=\int_{-\infty-cx/B}^{+\infty-cx/B}dy'\exp\left(-\frac{1}{2}By'{}^{2}\right)=\int_{-\infty}^{+\infty}dy'\exp\left(-\frac{1}{2}By'^{2}\right)$
+\begin_inset Formula $\int_{-\infty}^{+\infty}dy\exp\left(-\frac{1}{2}B(y+Cx/B)^{2}\right)=\int_{-\infty+cx/B}^{+\infty+cx/B}dy'\exp\left(-\frac{1}{2}By'{}^{2}\right)=\int_{-\infty}^{+\infty}dy'\exp\left(-\frac{1}{2}By'^{2}\right)$
 \end_inset
 
  
