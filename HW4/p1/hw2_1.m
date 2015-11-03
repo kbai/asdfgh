@@ -36,7 +36,7 @@ for ii = 1:1:1000
     
     [Grad,Hess] = compute_gradient_approx_hess(x,y,M,misfit);
     
-    deltaM= -(Hess)\Grad';
+    deltaM= -(Hess)\Grad;
     
     M=M + deltaM;
     
@@ -80,7 +80,7 @@ Ghat(:,2) = (3.*p.*zs.*(dy))./((eta).^(5/2));
 Ghat(:,3) = p./(eta).^(3/2) - (3*p.*zs.^2)./(eta).^(5/2);
 Ghat(:,4) = zs./(eta).^(3/2);
 
-Grad = -(misfit')* Ghat;
+Grad = - Ghat' * misfit;
 
 Hess = (Ghat')*Ghat;
 %this is the apprximated Hessian;

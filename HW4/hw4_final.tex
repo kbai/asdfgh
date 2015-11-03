@@ -73,23 +73,34 @@
 
 \subsubsection*{(a) - 8 points}
 
-The misfit function 
+With the misfit function defined as 
 \begin{eqnarray*}
 F(\boldsymbol{m}) & = & \sum_{i}\frac{(d_{i}-g_{i}(\boldsymbol{m}))^{2}}{2\sigma_{d}^{2}}
 \end{eqnarray*}
 
 
-Then, the posterior PDF
-
+The posterior PDF
 \begin{eqnarray*}
 P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m}) & \propto & \exp\left(-F(\boldsymbol{m})\right)\\
- & \approx & \exp\left(-F(\boldsymbol{m}_{0})-\bigtriangledown F(\boldsymbol{m}_{0})^{T}(\boldsymbol{m}-\boldsymbol{m}_{0})-\frac{1}{2}(\boldsymbol{m}-\boldsymbol{m}_{0})^{T}\boldsymbol{H(m}_{0})(\boldsymbol{m}-\boldsymbol{m}_{0})\right)
+ & \approx & \exp\left(-F(\boldsymbol{m}_{0})-\bigtriangledown F(\boldsymbol{m}_{0})^{T}(\boldsymbol{m}-\boldsymbol{m}_{0})-\frac{1}{2}(\boldsymbol{m}-\boldsymbol{m}_{0})^{T}\boldsymbol{H(m}_{0})(\boldsymbol{m}-\boldsymbol{m}_{0})\right)\\
+ & \text{}
 \end{eqnarray*}
- has the form of a multivariate Gaussian distribution, and the covariance
+
+
+If $m_{0}$ is the least squares solution, $\bigtriangledown F(\boldsymbol{m}_{0})=\boldsymbol{0}$
+
+\begin{eqnarray*}
+P(\boldsymbol{m}|\boldsymbol{d}) & \propto & \exp\left(-F(\boldsymbol{m}_{0})-\frac{1}{2}(\boldsymbol{m}-\boldsymbol{m}_{0})^{T}\boldsymbol{H(m}_{0})(\boldsymbol{m}-\boldsymbol{m}_{0})\right)
+\end{eqnarray*}
+
+
+has the form of a multivariate Gaussian distribution, and the covariance
 matrix is 
 \begin{eqnarray*}
-cov(\boldsymbol{m})=\boldsymbol{H}(\boldsymbol{m_{0}})^{-1}
+\boldsymbol{V}=cov(\boldsymbol{m})=\boldsymbol{H}(\boldsymbol{m_{0}})^{-1}
 \end{eqnarray*}
+
+
 Note we want to know the covariance matrix when $m_{0}$ is the least
 squares solution. 
 
@@ -106,30 +117,30 @@ To include the data error
 \end{eqnarray*}
 
 
-So we need to modify the hessian in HW2 by dividing $\sigma_{d}^{2}$
-when calculate the model covariance matrix. 
+So we need to modify the Hessian in HW2 by dividing by $\sigma_{d}^{2}$
+when we calculate the model covariance matrix. 
 
-(See MATLAB code) The output model covariance matrix is:
+(See MATLAB code) Assuming $\sigma_{d}=0.001$, as given in HW2P1e.
+The output model covariance matrix is:
 \begin{verbatim}
     0.0101   -0.0123    0.0095    0.0548    
    -0.0123    0.0198   -0.0156   -0.0853     
     0.0095   -0.0156    0.0237    0.1034     
     0.0548   -0.0853    0.1034    0.4985
 \end{verbatim}
-\selectlanguage{english}%
 
 \subsubsection*{(b)- 8 points}
 
 The covariance matrix calculated here will be similar to the Monte
 Carlo simulation in HW2.
 
-Diagonal element shows the variance of each parameter. The square
+Diagonal elements show the variance of each parameter. The square
 root of the diagonal elements gives the standard deviations: $\sigma_{x_{s}}=0.1006$,
 $\sigma_{y_{s}}=0.1405$, $\sigma_{z_{s}}=0.1538$, $\sigma_{P}=0.7060$.
 The number is very close to that estimated before: $\sigma_{x_{s}}=0.099670,\sigma_{y_{s}}=0.137469,\sigma_{z_{s}}=0.149719,\sigma_{P}=0.691071$.
 
 The off diagonal shows the covariance between parameters. We can scale
-the covariance matrix to correlation matrix ($\rho_{xy}=\frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}$).
+the covariance matrix to the correlation matrix ($\rho_{xy}=\frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}$).
 The correlation matrix is:
 \begin{verbatim}
     1.0000   -0.8685    0.6127    0.7721    
@@ -137,7 +148,6 @@ The correlation matrix is:
     0.6127   -0.7200    1.0000    0.9520     
     0.7721   -0.8598    0.9520    1.0000
 \end{verbatim}
-\selectlanguage{english}%
 we see that there are strong trade-offs between model parameters.
 The strong negative correlation between $x_{s}$ and $y_{s}$, for
 example, is also shown in the plot in HW2.
@@ -145,13 +155,13 @@ example, is also shown in the plot in HW2.
 
 \subsubsection*{(c)- 8 points}
 
-(1) Result using given data error $\sigma=0.1$
-
 Now 
 \begin{eqnarray*}
 F(\boldsymbol{m}) & = & \frac{1}{2\sigma^{2}}(\boldsymbol{d}-\boldsymbol{Gm})^{T}(\boldsymbol{d}-\boldsymbol{Gm})
 \end{eqnarray*}
-where $\sigma=0.1$, and 
+
+
+where $\sigma$ is the data error, and 
 \begin{eqnarray*}
 \boldsymbol{G} & = & \left[\begin{array}{cc}
 \boldsymbol{1} & \boldsymbol{x}\end{array}\right]\\
@@ -161,11 +171,46 @@ The Hessian is
 \begin{eqnarray*}
 \boldsymbol{H} & = & \frac{1}{\sigma^{2}}\boldsymbol{G}^{T}\boldsymbol{G}
 \end{eqnarray*}
+
+
 and 
 \begin{eqnarray*}
 cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
 \end{eqnarray*}
 
+
+In this problem, the data error as stated by your friend is strongly
+underestimated. The plots made in HW2 suggest that the data errors
+are closer to $\sigma_{y}\approx20$. Thus, we should calculate a
+model covariance matrix using this estimated data error. Your friend
+tells you his experimental error on $y$ are all $\approx0.1$, but
+it's possible that he only tells you the instrumental error. There
+are other sources of random errors, for example, the environmental
+factors, which can be large.
+
+One could also quantitatively re-estimate the data error, with the
+following calculation.
+
+Let $s$ be our estimate of the data error, $n=30$ the number of
+observations, $m=2$ the number of model parameters, $\boldsymbol{m_{L_{2}}}$
+the least squares solution.
+
+Then, from equation (2.63) in Aster 
+
+\begin{eqnarray*}
+s & = & \sqrt{\frac{1}{n-m}\mbox{||\ensuremath{\boldsymbol{d-Gm_{L2}}}||}_{2}^{2}}\approx26.3
+\end{eqnarray*}
+
+
+(see MATLAB code) Using $s$ as an estimate for data error, the output
+covariance matrix is:
+\begin{verbatim}
+   23.7090   -0.1283    
+   -0.1283    0.0249
+\end{verbatim}
+({*}) Result using given data error $\sigma=0.1$ 
+
+(Not a correct answer, just for your reference)
 
 (see MATLAB code) The output covariance matrix is:
 \begin{verbatim}
@@ -173,32 +218,6 @@ cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
     0.3429   -0.0019    
    -0.0019    0.0004
 \end{verbatim}
-\selectlanguage{english}%
-(2) Result using estimated data error
-
-In this problem , the data error is strongly underestimated. We need
-to re-estimate the data error, and re-calculate the model covariance
-matrix based on the new data error.
-
-Let $s$ our estimation of the data error, $m=30$ the number of observation,
-$n=2$ the number of model parameter, $\boldsymbol{m_{L_{2}}}$ the
-least squares solution
-
-Then
-
-\begin{eqnarray*}
-s & = & \sqrt{\frac{1}{m-n}\mbox{||\ensuremath{\boldsymbol{d-Gm_{L2}}}||}_{2}^{2}}\approx26.3
-\end{eqnarray*}
-
-
-Using this new data error, we do the same calculation as above.
-
-(see MATLAB code) The output covariance matrix is:
-\begin{verbatim}
-   23.7090   -0.1283    
-   -0.1283    0.0249
-\end{verbatim}
-\selectlanguage{english}%
 
 \subsubsection*{(d)- 8 points}
 
@@ -216,7 +235,10 @@ The eigenvectors of the covariance matrix are:$\left[\begin{array}{cc}
 clockwise from x axis - almost a horizontal ellipse; the ratio of
 the length of the semiaxis is $\sqrt{\lambda_{1}}/\sqrt{\lambda_{2}}=0.0319$.
 We see that it is true for the error ellipse as shown below (notice
-the difference in the scale of x and y axis).
+the difference in the scale of x and y axis). The negative correlation
+between $m_{1}$ and $m_{2}$ is also clear from the off-diagonal
+element of the model covariance matrix, the analysis on the eigenvectors,
+and the error ellipse.
 
 \includegraphics[scale=0.5]{p1_figures/errorellip}
 
@@ -226,7 +248,7 @@ the difference in the scale of x and y axis).
 First calculate the misfit $F(\boldsymbol{m})$ for the full parameter
 space.
 
-From Bayesian law and uniform prior,
+From Bayes' theorem with a uniform prior,
 
 \begin{eqnarray*}
 P(\boldsymbol{m}|\boldsymbol{d}) & \propto & P(\boldsymbol{d}|\boldsymbol{m})\\
@@ -255,15 +277,18 @@ P(m_{2}|d) & = & \int P(m_{1},m_{2}|d)dm_{1}\\
 \end{eqnarray*}
 
 
-We can approximate the integral with rectangle method: $\int f(x)dx=\sum_{i}f(x_{i})\triangle x$.
+We can approximate the integral with midpoint numerical integration:
+$\int f(x)dx=\sum_{i}f(x_{i})\triangle x$.
 
-(1) Result using given data error $\sigma=0.1$
-
-\includegraphics[scale=0.7]{p1_figures/margin}
-
-(2) Result using estimated data error $s=26.3$
+Using the estimated data error $s=26.3$, we have
 
 \includegraphics[scale=0.7]{p1_figures/margins}
+
+({*}) Result using given data error $\sigma=0.1$ 
+
+(Not a correct answer, just for your reference)
+
+\includegraphics[scale=0.7]{p1_figures/margin}
 
 
 \subsubsection*{(f)- 8 points}
@@ -277,15 +302,15 @@ By definition
 
 (see MATLAB code) 
 
-(1) Result using given data error $\sigma=0.1$
+Using the estimated data error $s=26.3$, we get $\sigma_{m1}=4.8692$,
+$\sigma_{m2}=0.1577$, which are very close to square root of the
+diagonal elements of the covariance matrix calculated in (c).
+
+({*}) Result using given data error $\sigma=0.1$ 
+
+(Not a correct answer, just for your reference)
 
 We get $\sigma_{m1}=0.0185$, $\sigma_{m2}=0.0006$, which are very
-close to square root of the diagonal elements of the covariance matrix
-calculated in (c).
-
-(2) Result using estimated data error $s=26.3$
-
-We get $\sigma_{m1}=4.8692$, $\sigma_{m2}=0.1577$, which are very
 close to square root of the diagonal elements of the covariance matrix
 calculated in (c).
 

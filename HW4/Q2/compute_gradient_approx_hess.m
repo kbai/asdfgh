@@ -19,7 +19,7 @@ sigma_P = 6;
 
 P_mean = 35;
 
-Gamma = (-(misfit')* Ghat)';
+Gamma = -Ghat'*misfit;
 
 Gamma = Gamma + [0 0 0 1/p + (p-P_mean)/(sigma_P^2)]';
 

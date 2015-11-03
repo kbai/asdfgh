@@ -249,22 +249,18 @@ So we need to modify the Hessian in HW2 by dividing by
 \end_layout
 
 \begin_layout Verbatim
-
     0.0101   -0.0123    0.0095    0.0548    
 \end_layout
 
 \begin_layout Verbatim
-
    -0.0123    0.0198   -0.0156   -0.0853     
 \end_layout
 
 \begin_layout Verbatim
-
     0.0095   -0.0156    0.0237    0.1034     
 \end_layout
 
 \begin_layout Verbatim
-
     0.0548   -0.0853    0.1034    0.4985
 \end_layout
 
@@ -315,22 +311,18 @@ The off diagonal shows the covariance between parameters.
 \end_layout
 
 \begin_layout Verbatim
-
     1.0000   -0.8685    0.6127    0.7721    
 \end_layout
 
 \begin_layout Verbatim
-
    -0.8685    1.0000   -0.7200   -0.8598     
 \end_layout
 
 \begin_layout Verbatim
-
     0.6127   -0.7200    1.0000    0.9520     
 \end_layout
 
 \begin_layout Verbatim
-
     0.7721   -0.8598    0.9520    1.0000
 \end_layout
 
@@ -404,7 +396,7 @@ cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
 \begin_layout Standard
 In this problem, the data error as stated by your friend is strongly underestima
 ted.
- The plots made in HW2 suggest that the data erros are closer to 
+ The plots made in HW2 suggest that the data errors are closer to 
 \begin_inset Formula $\sigma_{y}\approx20$
 \end_inset
 
@@ -419,7 +411,7 @@ ted.
 \begin_inset Formula $\approx0.1$
 \end_inset
 
-, but it's possible that he only tells you the instrument error.
+, but it's possible that he only tells you the instrumental error.
  There are other sources of random errors, for example, the environmental
  factors, which can be large.
 \end_layout
@@ -469,16 +461,14 @@ s & = & \sqrt{\frac{1}{n-m}\mbox{||\boldsymbol{d-Gm_{L2}}||}_{2}^{2}}\approx26.3
 \begin_inset Formula $s$
 \end_inset
 
- an estimate for data error, the output covariance matrix is:
+ as an estimate for data error, the output covariance matrix is:
 \end_layout
 
 \begin_layout Verbatim
-
    23.7090   -0.1283    
 \end_layout
 
 \begin_layout Verbatim
-
    -0.1283    0.0249
 \end_layout
 
@@ -499,17 +489,14 @@ s & = & \sqrt{\frac{1}{n-m}\mbox{||\boldsymbol{d-Gm_{L2}}||}_{2}^{2}}\approx26.3
 \end_layout
 
 \begin_layout Verbatim
-
    1.0e-03 *
 \end_layout
 
 \begin_layout Verbatim
-
     0.3429   -0.0019    
 \end_layout
 
 \begin_layout Verbatim
-
    -0.0019    0.0004
 \end_layout
 
