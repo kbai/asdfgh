@@ -1,4 +1,4 @@
-function [ Grad, Hess] = compute_gradient_approx_hess( x,y,M,residue)
+function [ Grad, Hess] = compute_gradient_approx_hess2( x,y,M,residue)
 
 xs = M(1);
 ys = M(2);
