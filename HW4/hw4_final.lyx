@@ -146,18 +146,39 @@ F(\boldsymbol{m}) & = & \sum_{i}\frac{(d_{i}-g_{i}(\boldsymbol{m}))^{2}}{2\sigma
 
 \begin_layout Standard
 The posterior PDF
+\begin_inset Formula 
+\begin{eqnarray*}
+P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m}) & \propto & \exp\left(-F(\boldsymbol{m})\right)\\
+ & \approx & \exp\left(-F(\boldsymbol{m}_{0})-\bigtriangledown F(\boldsymbol{m}_{0})^{T}(\boldsymbol{m}-\boldsymbol{m}_{0})-\frac{1}{2}(\boldsymbol{m}-\boldsymbol{m}_{0})^{T}\boldsymbol{H(m}_{0})(\boldsymbol{m}-\boldsymbol{m}_{0})\right)\\
+ & \text{}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $m_{0}$
+\end_inset
+
+ is the least squares solution, 
+\begin_inset Formula $\bigtriangledown F(\boldsymbol{m}_{0})=\boldsymbol{0}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m}) & \propto & \exp\left(-F(\boldsymbol{m})\right)\\
- & \approx & \exp\left(-F(\boldsymbol{m}_{0})-\bigtriangledown F(\boldsymbol{m}_{0})^{T}(\boldsymbol{m}-\boldsymbol{m}_{0})-\frac{1}{2}(\boldsymbol{m}-\boldsymbol{m}_{0})^{T}\boldsymbol{H(m}_{0})(\boldsymbol{m}-\boldsymbol{m}_{0})\right)
+P(\boldsymbol{m}|\boldsymbol{d}) & \propto & \exp\left(-F(\boldsymbol{m}_{0})-\frac{1}{2}(\boldsymbol{m}-\boldsymbol{m}_{0})^{T}\boldsymbol{H(m}_{0})(\boldsymbol{m}-\boldsymbol{m}_{0})\right)
 \end{eqnarray*}
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
@@ -219,7 +240,12 @@ So we need to modify the Hessian in HW2 by dividing by
 \end_layout
 
 \begin_layout Standard
-(See MATLAB code) The output model covariance matrix is:
+(See MATLAB code) Assuming 
+\begin_inset Formula $\sigma_{d}=0.001$
+\end_inset
+
+, as given in HW2P1e.
+ The output model covariance matrix is:
 \end_layout
 
 \begin_layout Verbatim
@@ -280,7 +306,7 @@ Diagonal elements show the variance of each parameter.
 
 \begin_layout Standard
 The off diagonal shows the covariance between parameters.
- We can scale the covariance matrix to correlation matrix (
+ We can scale the covariance matrix to the correlation matrix (
 \begin_inset Formula $\rho_{xy}=\frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}$
 \end_inset
 
@@ -376,7 +402,15 @@ cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
 \end_layout
 
 \begin_layout Standard
-In this problem, the data error is strongly underestimated.
+In this problem, the data error as stated by your friend is strongly underestima
+ted.
+ The plots made in HW2 suggest that the data erros are closer to 
+\begin_inset Formula $\sigma_{y}\approx20$
+\end_inset
+
+.
+ Thus, we should calculate a model covariance matrix using this estimated
+ data error.
  Your friend tells you his experimental error on 
 \begin_inset Formula $y$
 \end_inset
@@ -385,14 +419,14 @@ In this problem, the data error is strongly underestimated.
 \begin_inset Formula $\approx0.1$
 \end_inset
 
-, it's possible that he only tells the instrument error.
+, but it's possible that he only tells you the instrument error.
  There are other sources of random errors, for example, the environmental
  factors, which can be large.
 \end_layout
 
 \begin_layout Standard
-We need to re-estimate the data error, and calculate the model covariance
- matrix based on the new data error.
+One could also quantitatively re-estimate the data error, with the following
+ calculation.
 \end_layout
 
 \begin_layout Standard
@@ -431,7 +465,11 @@ s & = & \sqrt{\frac{1}{n-m}\mbox{||\boldsymbol{d-Gm_{L2}}||}_{2}^{2}}\approx26.3
 \end_layout
 
 \begin_layout Standard
-(see MATLAB code) The output covariance matrix is:
+(see MATLAB code) Using 
+\begin_inset Formula $s$
+\end_inset
+
+ an estimate for data error, the output covariance matrix is:
 \end_layout
 
 \begin_layout Verbatim
@@ -565,7 +603,7 @@ First calculate the misfit
 \end_layout
 
 \begin_layout Standard
-From Bayesian law and uniform prior,
+From Bayes' theorem with a uniform prior,
 \end_layout
 
 \begin_layout Standard
@@ -624,8 +662,7 @@ P(m_{2}|d) & = & \int P(m_{1},m_{2}|d)dm_{1}\\
 \end_layout
 
 \begin_layout Standard
-We can approximate the integral with the midpoint numerical integration:
- 
+We can approximate the integral with midpoint numerical integration: 
 \begin_inset Formula $\int f(x)dx=\sum_{i}f(x_{i})\triangle x$
 \end_inset
 
@@ -633,7 +670,7 @@ We can approximate the integral with the midpoint numerical integration:
 \end_layout
 
 \begin_layout Standard
-Using estimated data error 
+Using the estimated data error 
 \begin_inset Formula $s=26.3$
 \end_inset
 
@@ -696,7 +733,7 @@ By definition
 \end_layout
 
 \begin_layout Standard
-Using estimated data error 
+Using the estimated data error 
 \begin_inset Formula $s=26.3$
 \end_inset
 

@@ -404,14 +404,11 @@ cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
 \begin_layout Standard
 In this problem, the data error as stated by your friend is strongly underestima
 ted.
- The plots made in HW2 suggest that the data erros are closer to 
-\begin_inset Formula $\sigma_{y}\approx20$
-\end_inset
+ From the misfit of the best-fit 
+\end_layout
 
-.
- Thus, we should calculate a model covariance matrix using this estimated
- data error.
- Your friend tells you his experimental error on 
+\begin_layout Standard
+Your friend tells you his experimental error on 
 \begin_inset Formula $y$
 \end_inset
 
@@ -425,8 +422,8 @@ ted.
 \end_layout
 
 \begin_layout Standard
-One could also quantitatively re-estimate the data error, with the following
- calculation.
+We need to re-estimate the data error, and calculate the model covariance
+ matrix based on the new data error.
 \end_layout
 
 \begin_layout Standard
@@ -465,11 +462,7 @@ s & = & \sqrt{\frac{1}{n-m}\mbox{||\boldsymbol{d-Gm_{L2}}||}_{2}^{2}}\approx26.3
 \end_layout
 
 \begin_layout Standard
-(see MATLAB code) Using 
-\begin_inset Formula $s$
-\end_inset
-
- an estimate for data error, the output covariance matrix is:
+(see MATLAB code) The output covariance matrix is:
 \end_layout
 
 \begin_layout Verbatim
@@ -603,7 +596,7 @@ First calculate the misfit
 \end_layout
 
 \begin_layout Standard
-From Bayes' theorem with a uniform prior,
+From Bayesian law and uniform prior,
 \end_layout
 
 \begin_layout Standard
@@ -662,7 +655,8 @@ P(m_{2}|d) & = & \int P(m_{1},m_{2}|d)dm_{1}\\
 \end_layout
 
 \begin_layout Standard
-We can approximate the integral with midpoint numerical integration: 
+We can approximate the integral with the midpoint numerical integration:
+ 
 \begin_inset Formula $\int f(x)dx=\sum_{i}f(x_{i})\triangle x$
 \end_inset
 
@@ -670,7 +664,7 @@ We can approximate the integral with midpoint numerical integration:
 \end_layout
 
 \begin_layout Standard
-Using the estimated data error 
+Using estimated data error 
 \begin_inset Formula $s=26.3$
 \end_inset
 
