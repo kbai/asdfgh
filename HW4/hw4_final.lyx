@@ -147,6 +147,7 @@ F(\boldsymbol{m}) & = & \sum_{i}\frac{(d_{i}-g_{i}(\boldsymbol{m}))^{2}}{2\sigma
 \begin_layout Standard
 The posterior PDF
 <<<<<<< HEAD
+<<<<<<< HEAD
 \begin_inset Formula 
 \begin{eqnarray*}
 P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m}) & \propto & \exp\left(-F(\boldsymbol{m})\right)\\
@@ -171,6 +172,8 @@ If
 
 =======
 >>>>>>> origin/master
+=======
+>>>>>>> origin/master
 \end_layout
 
 \begin_layout Standard
@@ -182,7 +185,11 @@ P(\boldsymbol{m}|\boldsymbol{d}) & \propto & \exp\left(-F(\boldsymbol{m}_{0})-\f
 \end_inset
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> origin/master
 =======
  
 >>>>>>> origin/master
@@ -447,6 +454,9 @@ ted.
    -0.0019    0.0004
 \end_layout
 , it's possible that he only tells the instrument error.
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
  There are other sources of random errors, for example, the environmental
  factors, which can be large.
@@ -454,9 +464,12 @@ ted.
 
 \begin_layout Standard
 <<<<<<< HEAD
+<<<<<<< HEAD
 One could also quantitatively re-estimate the data error, with the following
  calculation.
 =======
+=======
+>>>>>>> origin/master
 We need to re-estimate the data error, and calculate the model covariance
  matrix based on the new data error.
 >>>>>>> origin/master
@@ -499,11 +512,15 @@ s & = & \sqrt{\frac{1}{n-m}\mbox{||\boldsymbol{d-Gm_{L2}}||}_{2}^{2}}\approx26.3
 
 \begin_layout Standard
 <<<<<<< HEAD
+<<<<<<< HEAD
 (see MATLAB code) Using 
 \begin_inset Formula $s$
 \end_inset
 
  an estimate for data error, the output covariance matrix is:
+=======
+(see MATLAB code) The output covariance matrix is:
+>>>>>>> origin/master
 =======
 (see MATLAB code) The output covariance matrix is:
 >>>>>>> origin/master
@@ -538,14 +555,18 @@ s & = & \sqrt{\frac{1}{n-m}\mbox{||\boldsymbol{d-Gm_{L2}}||}_{2}^{2}}\approx26.3
 \begin_layout Verbatim
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    1.0e-03 *
 =======
+=======
+>>>>>>> origin/master
    23.7090   -0.1283    
 >>>>>>> origin/master
 \end_layout
 
 \begin_layout Verbatim
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     0.3429   -0.0019    
 \end_layout
@@ -554,6 +575,8 @@ s & = & \sqrt{\frac{1}{n-m}\mbox{||\boldsymbol{d-Gm_{L2}}||}_{2}^{2}}\approx26.3
 
    -0.0019    0.0004
 =======
+=======
+>>>>>>> origin/master
    -0.1283    0.0249
 >>>>>>> origin/master
 \end_layout
@@ -708,7 +731,12 @@ P(m_{2}|d) & = & \int P(m_{1},m_{2}|d)dm_{1}\\
 
 \begin_layout Standard
 <<<<<<< HEAD
+<<<<<<< HEAD
 We can approximate the integral with midpoint numerical integration: 
+=======
+We can approximate the integral with the midpoint numerical integration:
+ 
+>>>>>>> origin/master
 =======
 We can approximate the integral with the midpoint numerical integration:
  
@@ -721,7 +749,11 @@ We can approximate the integral with the midpoint numerical integration:
 
 \begin_layout Standard
 <<<<<<< HEAD
+<<<<<<< HEAD
 Using the estimated data error 
+=======
+Using estimated data error 
+>>>>>>> origin/master
 =======
 Using estimated data error 
 >>>>>>> origin/master
@@ -788,7 +820,11 @@ By definition
 
 \begin_layout Standard
 <<<<<<< HEAD
+<<<<<<< HEAD
 Using the estimated data error 
+=======
+Using estimated data error 
+>>>>>>> origin/master
 =======
 Using estimated data error 
 >>>>>>> origin/master
