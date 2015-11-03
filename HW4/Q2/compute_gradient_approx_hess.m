@@ -19,9 +19,9 @@ sigma_P = 6;
 
 P_mean = 35;
 
-Gamma = -(misfit')* Ghat;
+Gamma = (-(misfit')* Ghat)';
 
-Gamma = Gamma + [0 0 0 1/p + (p-P_mean)/(sigma_P^2)];
+Gamma = Gamma + [0 0 0 1/p + (p-P_mean)/(sigma_P^2)]';
 
 Hess = (Ghat')*Ghat ;
 
