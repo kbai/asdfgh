@@ -215,18 +215,22 @@ So we need to modify the hessian in HW2 by dividing
 \end_layout
 
 \begin_layout Verbatim
+
     0.0101   -0.0123    0.0095    0.0548    
 \end_layout
 
 \begin_layout Verbatim
+
    -0.0123    0.0198   -0.0156   -0.0853     
 \end_layout
 
 \begin_layout Verbatim
+
     0.0095   -0.0156    0.0237    0.1034     
 \end_layout
 
 \begin_layout Verbatim
+
     0.0548   -0.0853    0.1034    0.4985
 \end_layout
 
@@ -277,18 +281,22 @@ The off diagonal shows the covariance between parameters.
 \end_layout
 
 \begin_layout Verbatim
+
     1.0000   -0.8685    0.6127    0.7721    
 \end_layout
 
 \begin_layout Verbatim
+
    -0.8685    1.0000   -0.7200   -0.8598     
 \end_layout
 
 \begin_layout Verbatim
+
     0.6127   -0.7200    1.0000    0.9520     
 \end_layout
 
 \begin_layout Verbatim
+
     0.7721   -0.8598    0.9520    1.0000
 \end_layout
 
@@ -364,14 +372,17 @@ cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
 \end_layout
 
 \begin_layout Verbatim
+
    1.0e-03 *
 \end_layout
 
 \begin_layout Verbatim
+
     0.3429   -0.0019    
 \end_layout
 
 \begin_layout Verbatim
+
    -0.0019    0.0004
 \end_layout
 
@@ -429,10 +440,12 @@ Using this new data error, we do the same calculation as above.
 \end_layout
 
 \begin_layout Verbatim
+
    23.7090   -0.1283    
 \end_layout
 
 \begin_layout Verbatim
+
    -0.1283    0.0249
 \end_layout
 
@@ -918,6 +931,12 @@ Let's plot the two priors separately and then together to see which information
  Figure 0.3 is their combination.
  We can see that the Gaussian prior is scaled by the scale invariant prior,
  but still mainly retains it's shape and thus dominates the result.
+ This is primarily because the scale invariant prior is nearly constant
+ over the range of 
+\begin_inset Formula $p$
+\end_inset
+
+ that the Gaussian is significantly non-zero.
 \end_layout
 
 \begin_layout Standard
@@ -1336,7 +1355,7 @@ F(\mu) & =\frac{N-1}{2}\ln\left(\sum_{k=1}^{N}(x_{k}-\mu)^{2}\right),\\
 
 \end_inset
 
-Taking the derivative with respct to 
+Taking the derivative with respect to 
 \begin_inset Formula $\mu$
 \end_inset
 
@@ -1344,7 +1363,33 @@ Taking the derivative with respct to
 \begin_inset Formula $\mu_{0}$
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial F}{\partial\mu}=-(N-1)\frac{\sum_{k=1}^{N}(x_{k}-\mu)}{\sum_{k=1}^{N}(x_{k}-\mu)^{2}}=0
+\]
+
+\end_inset
+
  
+\end_layout
+
+\begin_layout Standard
+Because 
+\begin_inset Formula $\sum_{k=1}^{N}(x_{k}-\mu)^{2}>0$
+\end_inset
+
+, we have 
+\begin_inset Formula $\sum_{k=1}^{N}(x_{k}-\mu)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \mu_{0}=\frac{1}{N}\sum_{k=1}^{N}x_{k},
@@ -1352,14 +1397,24 @@ Taking the derivative with respct to
 
 \end_inset
 
-For the second derivate at the best fit solution we have 
+For the second derivative at the best fit solution we have
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
-\frac{\partial^{2}F}{\partial\mu^{2}}(\mu=\mu_{0})=\frac{N(N-1)}{\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}}.
-\end{equation}
+\begin{align}
+\frac{\partial^{2}F}{\partial\mu^{2}}(\mu=\mu_{0}) & =(N-1)\frac{N\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}-2(\sum_{k=1}^{N}(x_{k}-\mu_{0}))^{2}}{\left(\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}\right)^{2}}\\
+ & =(N-1)\frac{N\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}-2(\sum_{k=1}^{N}(x_{k}-\frac{1}{N}\sum_{k=1}^{N}x_{k}))^{2}}{\left(\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}\right)^{2}}\\
+ & =(N-1)\frac{N\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}}{\left(\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}\right)^{2}}\\
+ & =\frac{N(N-1)}{\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}}
+\end{align}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 The standard deviation 
 \begin_inset Formula $\sigma_{\mu}$
 \end_inset
@@ -1509,7 +1564,7 @@ We need to show that
 \end_layout
 
 \begin_layout Standard
-Note that from 0.12 to 0.13:
+Note that from 0.15 to 0.16:
 \end_layout
 
 \begin_layout Standard
