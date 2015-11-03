@@ -116,6 +116,7 @@ when calculate the model covariance matrix.
     0.0095   -0.0156    0.0237    0.1034     
     0.0548   -0.0853    0.1034    0.4985
 \end{verbatim}
+\selectlanguage{english}%
 
 \subsubsection*{(b)- 8 points}
 
@@ -136,6 +137,7 @@ The correlation matrix is:
     0.6127   -0.7200    1.0000    0.9520     
     0.7721   -0.8598    0.9520    1.0000
 \end{verbatim}
+\selectlanguage{english}%
 we see that there are strong trade-offs between model parameters.
 The strong negative correlation between $x_{s}$ and $y_{s}$, for
 example, is also shown in the plot in HW2.
@@ -171,6 +173,7 @@ cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
     0.3429   -0.0019    
    -0.0019    0.0004
 \end{verbatim}
+\selectlanguage{english}%
 (2) Result using estimated data error
 
 In this problem , the data error is strongly underestimated. We need
@@ -195,6 +198,7 @@ Using this new data error, we do the same calculation as above.
    23.7090   -0.1283    
    -0.1283    0.0249
 \end{verbatim}
+\selectlanguage{english}%
 
 \subsubsection*{(d)- 8 points}
 
@@ -371,7 +375,9 @@ information dominates the result. Figure 0.1 is the Gaussian prior.
 Figure 0.2 is the scale independent prior. Figure 0.3 is their combination.
 We can see that the Gaussian prior is scaled by the scale invariant
 prior, but still mainly retains it's shape and thus dominates the
-result.
+result. This is primarily because the scale invariant prior is nearly
+constant over the range of $p$ that the Gaussian is significantly
+non-zero.
 
 \begin{figure}
 \centering{}\includegraphics[width=12cm]{Q2/Geo_prior} \caption{Plot of the Gaussian prior for p.}
@@ -492,15 +498,29 @@ F(\mu) & =\frac{N-1}{2}\ln\left(\sum_{k=1}^{N}(x_{k}-\mu)^{2}\right),\\
 \frac{\partial F}{\partial\mu} & =-(N-1)\frac{\sum_{k=1}^{N}(x_{k}-\mu)}{\sum_{k=1}^{N}(x_{k}-\mu)^{2}}\\
 \frac{\partial^{2}F}{\partial\mu^{2}} & =(N-1)\frac{N\sum_{k=1}^{N}(x_{k}-\mu)^{2}-2(\sum_{k=1}^{N}(x_{k}-\mu))^{2}}{\left(\sum_{k=1}^{N}(x_{k}-\mu)^{2}\right)^{2}}.
 \end{align}
-Taking the derivative with respct to $\mu$ and setting it to zero
-yields the minimum $\mu_{0}$ 
+Taking the derivative with respect to $\mu$ and setting it to zero
+yields the minimum $\mu_{0}$
+
+\[
+\frac{\partial F}{\partial\mu}=-(N-1)\frac{\sum_{k=1}^{N}(x_{k}-\mu)}{\sum_{k=1}^{N}(x_{k}-\mu)^{2}}=0
+\]
+ 
+
+Because $\sum_{k=1}^{N}(x_{k}-\mu)^{2}>0$, we have $\sum_{k=1}^{N}(x_{k}-\mu)=0$
+
 \begin{equation}
 \mu_{0}=\frac{1}{N}\sum_{k=1}^{N}x_{k},
 \end{equation}
-For the second derivate at the best fit solution we have 
-\begin{equation}
-\frac{\partial^{2}F}{\partial\mu^{2}}(\mu=\mu_{0})=\frac{N(N-1)}{\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}}.
-\end{equation}
+For the second derivative at the best fit solution we have
+
+\begin{align}
+\frac{\partial^{2}F}{\partial\mu^{2}}(\mu=\mu_{0}) & =(N-1)\frac{N\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}-2(\sum_{k=1}^{N}(x_{k}-\mu_{0}))^{2}}{\left(\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}\right)^{2}}\\
+ & =(N-1)\frac{N\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}-2(\sum_{k=1}^{N}(x_{k}-\frac{1}{N}\sum_{k=1}^{N}x_{k}))^{2}}{\left(\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}\right)^{2}}\\
+ & =(N-1)\frac{N\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}}{\left(\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}\right)^{2}}\\
+ & =\frac{N(N-1)}{\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}}
+\end{align}
+
+
 The standard deviation $\sigma_{\mu}$ then amounts to 
 \begin{equation}
 \sigma_{\mu}=\frac{1}{F''(\mu_{0})^{1/2}}=\frac{S}{\sqrt{N}},
@@ -545,7 +565,7 @@ dealing with an integral of the f
 \end{align}
 
 
-Note that from 0.12 to 0.13:
+Note that from 0.15 to 0.16:
 
 $\int_{-\infty}^{+\infty}dy\exp\left(-\frac{1}{2}B(y+Cx/B)^{2}\right)=\int_{-\infty+cx/B}^{+\infty+cx/B}dy'\exp\left(-\frac{1}{2}By'{}^{2}\right)=\int_{-\infty}^{+\infty}dy'\exp\left(-\frac{1}{2}By'^{2}\right)$ 
 

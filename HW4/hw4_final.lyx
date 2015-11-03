@@ -146,6 +146,7 @@ F(\boldsymbol{m}) & = & \sum_{i}\frac{(d_{i}-g_{i}(\boldsymbol{m}))^{2}}{2\sigma
 
 \begin_layout Standard
 The posterior PDF
+<<<<<<< HEAD
 \begin_inset Formula 
 \begin{eqnarray*}
 P(\boldsymbol{m}|\boldsymbol{d})\propto P(\boldsymbol{d}|\boldsymbol{m}) & \propto & \exp\left(-F(\boldsymbol{m})\right)\\
@@ -168,6 +169,8 @@ If
 \end_inset
 
 
+=======
+>>>>>>> origin/master
 \end_layout
 
 \begin_layout Standard
@@ -178,7 +181,11 @@ P(\boldsymbol{m}|\boldsymbol{d}) & \propto & \exp\left(-F(\boldsymbol{m}_{0})-\f
 
 \end_inset
 
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> origin/master
 \end_layout
 
 \begin_layout Standard
@@ -402,6 +409,7 @@ cov(\boldsymbol{m}) & = & \boldsymbol{H}^{-1}
 \end_layout
 
 \begin_layout Standard
+<<<<<<< HEAD
 In this problem, the data error as stated by your friend is strongly underestima
 ted.
  The plots made in HW2 suggest that the data erros are closer to 
@@ -420,13 +428,38 @@ ted.
 \end_inset
 
 , but it's possible that he only tells you the instrument error.
+=======
+(see MATLAB code) The output covariance matrix is:
+\end_layout
+
+\begin_layout Verbatim
+
+   1.0e-03 *
+\end_layout
+
+\begin_layout Verbatim
+
+    0.3429   -0.0019    
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.0019    0.0004
+\end_layout
+, it's possible that he only tells the instrument error.
+>>>>>>> origin/master
  There are other sources of random errors, for example, the environmental
  factors, which can be large.
 \end_layout
 
 \begin_layout Standard
+<<<<<<< HEAD
 One could also quantitatively re-estimate the data error, with the following
  calculation.
+=======
+We need to re-estimate the data error, and calculate the model covariance
+ matrix based on the new data error.
+>>>>>>> origin/master
 \end_layout
 
 \begin_layout Standard
@@ -465,11 +498,15 @@ s & = & \sqrt{\frac{1}{n-m}\mbox{||\boldsymbol{d-Gm_{L2}}||}_{2}^{2}}\approx26.3
 \end_layout
 
 \begin_layout Standard
+<<<<<<< HEAD
 (see MATLAB code) Using 
 \begin_inset Formula $s$
 \end_inset
 
  an estimate for data error, the output covariance matrix is:
+=======
+(see MATLAB code) The output covariance matrix is:
+>>>>>>> origin/master
 \end_layout
 
 \begin_layout Verbatim
@@ -500,17 +537,25 @@ s & = & \sqrt{\frac{1}{n-m}\mbox{||\boldsymbol{d-Gm_{L2}}||}_{2}^{2}}\approx26.3
 
 \begin_layout Verbatim
 
+<<<<<<< HEAD
    1.0e-03 *
+=======
+   23.7090   -0.1283    
+>>>>>>> origin/master
 \end_layout
 
 \begin_layout Verbatim
 
+<<<<<<< HEAD
     0.3429   -0.0019    
 \end_layout
 
 \begin_layout Verbatim
 
    -0.0019    0.0004
+=======
+   -0.1283    0.0249
+>>>>>>> origin/master
 \end_layout
 
 \begin_layout Subsubsection*
@@ -662,7 +707,12 @@ P(m_{2}|d) & = & \int P(m_{1},m_{2}|d)dm_{1}\\
 \end_layout
 
 \begin_layout Standard
+<<<<<<< HEAD
 We can approximate the integral with midpoint numerical integration: 
+=======
+We can approximate the integral with the midpoint numerical integration:
+ 
+>>>>>>> origin/master
 \begin_inset Formula $\int f(x)dx=\sum_{i}f(x_{i})\triangle x$
 \end_inset
 
@@ -670,7 +720,11 @@ We can approximate the integral with midpoint numerical integration:
 \end_layout
 
 \begin_layout Standard
+<<<<<<< HEAD
 Using the estimated data error 
+=======
+Using estimated data error 
+>>>>>>> origin/master
 \begin_inset Formula $s=26.3$
 \end_inset
 
@@ -733,7 +787,11 @@ By definition
 \end_layout
 
 \begin_layout Standard
+<<<<<<< HEAD
 Using the estimated data error 
+=======
+Using estimated data error 
+>>>>>>> origin/master
 \begin_inset Formula $s=26.3$
 \end_inset
 
@@ -1009,6 +1067,12 @@ Let's plot the two priors separately and then together to see which information
  Figure 0.3 is their combination.
  We can see that the Gaussian prior is scaled by the scale invariant prior,
  but still mainly retains it's shape and thus dominates the result.
+ This is primarily because the scale invariant prior is nearly constant
+ over the range of 
+\begin_inset Formula $p$
+\end_inset
+
+ that the Gaussian is significantly non-zero.
 \end_layout
 
 \begin_layout Standard
@@ -1427,7 +1491,7 @@ F(\mu) & =\frac{N-1}{2}\ln\left(\sum_{k=1}^{N}(x_{k}-\mu)^{2}\right),\\
 
 \end_inset
 
-Taking the derivative with respct to 
+Taking the derivative with respect to 
 \begin_inset Formula $\mu$
 \end_inset
 
@@ -1435,7 +1499,33 @@ Taking the derivative with respct to
 \begin_inset Formula $\mu_{0}$
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial F}{\partial\mu}=-(N-1)\frac{\sum_{k=1}^{N}(x_{k}-\mu)}{\sum_{k=1}^{N}(x_{k}-\mu)^{2}}=0
+\]
+
+\end_inset
+
  
+\end_layout
+
+\begin_layout Standard
+Because 
+\begin_inset Formula $\sum_{k=1}^{N}(x_{k}-\mu)^{2}>0$
+\end_inset
+
+, we have 
+\begin_inset Formula $\sum_{k=1}^{N}(x_{k}-\mu)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \mu_{0}=\frac{1}{N}\sum_{k=1}^{N}x_{k},
@@ -1443,14 +1533,24 @@ Taking the derivative with respct to
 
 \end_inset
 
-For the second derivate at the best fit solution we have 
+For the second derivative at the best fit solution we have
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
-\frac{\partial^{2}F}{\partial\mu^{2}}(\mu=\mu_{0})=\frac{N(N-1)}{\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}}.
-\end{equation}
+\begin{align}
+\frac{\partial^{2}F}{\partial\mu^{2}}(\mu=\mu_{0}) & =(N-1)\frac{N\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}-2(\sum_{k=1}^{N}(x_{k}-\mu_{0}))^{2}}{\left(\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}\right)^{2}}\\
+ & =(N-1)\frac{N\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}-2(\sum_{k=1}^{N}(x_{k}-\frac{1}{N}\sum_{k=1}^{N}x_{k}))^{2}}{\left(\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}\right)^{2}}\\
+ & =(N-1)\frac{N\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}}{\left(\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}\right)^{2}}\\
+ & =\frac{N(N-1)}{\sum_{k=1}^{N}(x_{k}-\mu_{0})^{2}}
+\end{align}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 The standard deviation 
 \begin_inset Formula $\sigma_{\mu}$
 \end_inset
@@ -1600,7 +1700,7 @@ We need to show that
 \end_layout
 
 \begin_layout Standard
-Note that from 0.12 to 0.13:
+Note that from 0.15 to 0.16:
 \end_layout
 
 \begin_layout Standard
