@@ -14,7 +14,7 @@ misfit = compute_misfit(x,y,M,ui);
 
 [Gamma,Hess] = compute_gradient_approx_hess(x,y,M,misfit);
 
-deltaM= (Hess)\Gamma'; 
+deltaM= (Hess)\Gamma; 
 
 M = M - deltaM;
 
