@@ -1,0 +1,1776 @@
+#LyX file created by tex2lyx 2.1
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\title{PS5 Solutions}
+
+%TEMPLATE HEADER
+%This is the homework solution template
+
+
+%AMS-TeX packages
+\usepackage{amsthm}\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{bm}% bold math
+\usepackage{listings}
+\usepackage{color}%red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+%Redefining sections as problems
+
+\newenvironment{problem}{\@startsection
+       {section}
+       {1}
+       {-.2em}
+       {-3.5ex plus -1ex minus -.2ex}
+       {0.2ex plus .2ex}
+       {\pagebreak[3]%forces pagebreak when space is small; use \eject for better results
+       \Large\sc\noindent{Problem }}\\}{\makeatother}
+
+%Fancy-header package to modify header/page numbering 
+\usepackage{fancyhdr}
+
+\lhead{\textbf{Ge/ESE 118}} %name of the course
+\chead{\textbf{}} %topic of the homework set
+\rhead{\textbf{Solution 5}} %number of the homework set
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+
+%Include frequently used commands used for equations
+\input{math_cmds.tex}
+
+%CONTENTS OF THE HW SET SOLUTION BEGIN HERE
+
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+lstset
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+language=Matlab,
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%basicstyle=
+\backslash
+color{red},
+\end_layout
+
+\end_inset
+
+ breaklines=true,morekeywords=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+matlab2tikz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+, keywordstyle=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+color{blue}
+\end_layout
+
+\end_inset
+
+,morekeywords=[2]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+, keywordstyle=[2]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+color{black}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+, identifierstyle=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+color{black}
+\end_layout
+
+\end_inset
+
+,
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%}
+\end_layout
+
+\end_inset
+
+ stringstyle=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+color{mylilas}
+\end_layout
+
+\end_inset
+
+, commentstyle=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+color{mygreen}
+\end_layout
+
+\end_inset
+
+,showstringspaces=false,
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%without this there will be a symbol in the places where there is a space
+\end_layout
+
+\end_inset
+
+ numbers=left,numberstyle=
+\size tiny
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+color{black}
+\end_layout
+
+\end_inset
+
+
+\size default
+,
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% size of the numbers
+\end_layout
+
+\end_inset
+
+ numbersep=9pt, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% this defines how far the numbers are from the text
+\end_layout
+
+\end_inset
+
+ emph=[1]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+for,end,break
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+,emphstyle=[1]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+color{red}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%some words to emphasise
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%emph=[2]{word1,word2}, emphstyle=[2]{style},    
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Problem 1 (graded by Dunzhu & Toby) X points
+\end_layout
+
+\begin_layout Subsubsection*
+(a) - 10 points
+\end_layout
+
+\begin_layout Standard
+Using the exact hessian, the result seems harder converge to global minimum, starting from some initial guess. For example, in the following code, we perturb original ti to ti_new, and starting from the original best guess, using approximate hessian and exact hessian we get 
+\end_layout
+
+\begin_layout Verbatim
+[Mapp, M] = 
+\end_layout
+
+\begin_layout Verbatim
+          315.420926236077          981.798748762528
+\end_layout
+
+\begin_layout Verbatim
+            29.13082945887         -3197.23151318091
+\end_layout
+
+\begin_layout Verbatim
+         -15.9074484210616          2983.63633307186
+\end_layout
+
+\begin_layout Verbatim
+          15.8359059771525         -638.182236017816
+\end_layout
+
+\begin_layout Verbatim
+          5.25225424962686         -89.3648967235656
+\end_layout
+
+\begin_layout Standard
+The exact hessian converge to a local minimum, because the exact hessian is near singular at the initial guess, but the approximate hessian is much better. We can see the eigenvalue of those two hessian after the first iteration 
+\end_layout
+
+\begin_layout Verbatim
+[eigs(hess_app), eigs(hess)] =
+\end_layout
+
+\begin_layout Verbatim
+          18.0176962395304          18.0254192403416
+\end_layout
+
+\begin_layout Verbatim
+         0.098866195495413           0.1026429885873
+\end_layout
+
+\begin_layout Verbatim
+        0.0037406745666659       0.00383013080700191
+\end_layout
+
+\begin_layout Verbatim
+      3.13699101887875e-05      0.000138526270350115
+\end_layout
+
+\begin_layout Verbatim
+      1.10844438320923e-05      6.51426797439541e-09
+\end_layout
+
+\begin_layout Standard
+Note the exact hessian has an eigenvalue about 6E-9, which causes larger shift from the initial guess 
+\end_layout
+
+\begin_layout Verbatim
+[hess_app
+\backslash
+grad, hess
+\backslash
+grad] =
+\end_layout
+
+\begin_layout Verbatim
+       -0.281987601375779         -666.651385634329
+\end_layout
+
+\begin_layout Verbatim
+          1.23392027564989          3227.54405527842
+\end_layout
+
+\begin_layout Verbatim
+         -1.29604880279318         -3000.78453513507
+\end_layout
+
+\begin_layout Verbatim
+         0.116870531211363          654.168962989986
+\end_layout
+
+\begin_layout Verbatim
+        0.0190736135015402          94.6348252902216
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+lstinputlisting
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+hw1a.m
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(b) - 10 points
+\end_layout
+
+\begin_layout Subsubsection*
+(b.i)
+\end_layout
+
+\begin_layout Standard
+Change variable 
+\begin_inset Formula $t=1/\sigma$
+\end_inset
+
+, then 
+\begin_inset Formula \begin{eqnarray*}
+\int_0^{\infty} \frac{1}{\sigma^N} \exp\left( -\frac{1}{2\sigma^2} A \right) d\sigma 
+ & = &
+ \int_0^{\infty} t^{N-2} \exp\left( -\frac{A}{2} t^2 \right) dt 
+\end{eqnarray*}
+\end_inset
+
+Since 
+\begin_inset Formula \begin{eqnarray*}
+\int_0^{\infty} \exp\left( -\frac{A}{2} t^2 \right) dt = \sqrt{\frac{\pi}{2}} A^{-1/2} \propto A^{-1/2} \\
+  \int_0^{\infty} t \exp\left( -\frac{A}{2} t^2 \right) dt = A^{-1} \propto A^{-1}
+\end{eqnarray*}
+\end_inset
+
+Take derivative with respect to A, then 
+\begin_inset Formula \begin{eqnarray*}
+ \int_0^{\infty} \frac{-t^2}{2}\exp\left( -\frac{A}{2} t^2 \right) dt \propto A^{-1/2 -1} \\
+  \int_0^{\infty} t \frac{-t^2}{2}\exp\left( -\frac{A}{2} t^2 \right) dt \propto A^{-1 -1} \\
+\end{eqnarray*}
+\end_inset
+
+Continue this derivative, we have 
+\begin_inset Formula \begin{eqnarray*}
+ \int_0^{\infty} \left(\frac{-t^2}{2}\right)^{(N-2)/2}\exp\left( -\frac{A}{2} t^2 \right) dt \propto A^{-1/2 - (N-2)/2} 
+\end{eqnarray*}
+\end_inset
+
+So 
+\begin_inset Formula \begin{eqnarray*}
+ \int_0^{\infty} t^{N-2}\exp\left( -\frac{A}{2} t^2 \right) dt \propto A^{-(N-1)/2} 
+\end{eqnarray*}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(b.ii)
+\end_layout
+
+\begin_layout Standard
+Assume uniform prior, then 
+\begin_inset Formula \begin{eqnarray*}
+P(x,y | d ) &\propto & P( d | x,y)  =  \exp -F(x,y) \\
+&= & \exp \left(
+-F(x_0, y_0) 
+- grad F|_{x_0,y_0} \cdot (x-x_0, y-y_0)'
+ - \frac{1}{2} (x-x_0, y-y_0) H|_{x_0,y_0} (x-x_0, y-y_0)'
+ \right)
+\end{eqnarray*}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since at 
+\begin_inset Formula $(x_0,y_0)$
+\end_inset
+
+, 
+\begin_inset Formula $grad F = 0$
+\end_inset
+
+, thus 
+\begin_inset Formula \begin{eqnarray*}
+P(x,y | d ) &\propto &
+\exp \left(
+ - \frac{1}{2} (x-x_0, y-y_0) H|_{x_0,y_0} (x-x_0, y-y_0)'
+ \right)
+\end{eqnarray*}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+write 
+\begin_inset Formula $H$
+\end_inset
+
+ as 
+\begin_inset Formula \begin{eqnarray*}
+H= \begin{pmatrix}
+A & B \\
+B & C
+\end{pmatrix}
+\end{eqnarray*}
+\end_inset
+
+thus the joint pdf will be
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{eqnarray*}
+f(x,y) = K \exp \left(
+ - \frac{1}{2} [ A(x-x_0)^2 + 2B(x-x_0)(y-y_0) + C(y-y_0)^2 ]  
+ \right)
+\end{eqnarray*}
+\end_inset
+
+where 
+\begin_inset Formula $K$
+\end_inset
+
+ is the constant that normalize the pdf, to get it, we have
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{eqnarray*}
+\int_{-\infty}^{\infty} dy \int_{-\infty}^{\infty} dx f(x,y) & = &
+\int_{-\infty}^{\infty} dy \int_{-\infty}^{\infty} dx 
+K \exp \left(
+ - \frac{1}{2} [ A(x-x_0)^2 + 2B(x-x_0)(y-y_0) + C(y-y_0)^2 ]  
+ \right) \\
+ & = &
+ \int_{-\infty}^{\infty} dy \int_{-\infty}^{\infty} dx 
+K \exp \left(
+ - \frac{1}{2} [ Ax^2 + 2Bxy + Cy^2 ]  
+ \right) \\
+  & = &
+ \int_{-\infty}^{\infty} dy \int_{-\infty}^{\infty} dx 
+K \exp \left(
+ - \frac{1}{2} [ A(x + By/A)^2 + (C - B^2/A)y^2 ]  
+ \right) \\ 
+   & = &
+ \int_{-\infty}^{\infty} dy K \exp \left(
+ - \frac{1}{2} (C - B^2/A)y^2
+ \right)
+ \int_{-\infty}^{\infty} dx 
+\exp \left(
+ - \frac{1}{2} [ A(x + By/A)^2 ]  
+ \right) \\ 
+    & = &
+ \int_{-\infty}^{\infty} dy K \exp \left(
+ - \frac{1}{2} (C - B^2/A)y^2
+ \right)
+ \int_{-\infty}^{\infty} dx 
+\exp \left(
+ - \frac{1}{2} Ax^2  
+ \right) \\ 
+    & = &
+ \int_{-\infty}^{\infty} dy K \exp \left(
+ - \frac{1}{2} (C - B^2/A)y^2
+ \right) \sqrt{2\pi/A} \\
+   & = &
+ K \sqrt{2\pi/(C-B^2/A)}\sqrt{2\pi/A} \\
+ & = & 2 \pi K / \sqrt{ A C - B ^2} \\
+ & = & 1
+\end{eqnarray*}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we want to show 
+\begin_inset Formula $E[x]=x_0$
+\end_inset
+
+. This is true because 
+\begin_inset Formula \begin{eqnarray*}
+E[x - x_0] & = & \int_{-\infty}^{\infty} dy \int_{-\infty}^{\infty} dx \quad
+(x-x_0) f(x,y) \\
+& \propto & \int_{-\infty}^{\infty} dy \int_{-\infty}^{\infty} dx \quad
+(x-x_0)  \exp \left(
+ - \frac{1}{2} [ A(x-x_0)^2 + 2B(x-x_0)(y-y_0) + C(y-y_0)^2 ]  
+ \right) \\
+ & \propto & \int_{-\infty}^{\infty} dy \int_{-\infty}^{\infty} dx \quad
+x  \exp \left(
+ - \frac{1}{2} [ Ax^2 + 2Bx(y-y_0) + C(y-y_0)^2 ]  
+ \right) \\ 
+  & \propto & \int_{-\infty}^{\infty} dy \int_{-\infty}^{\infty} dx \quad
+x  \exp \left(
+ - \frac{1}{2} [ Ax^2 + 2Bxy + Cy^2 ]  
+ \right) \\ 
+   & \propto & \int_{-\infty}^{\infty} dy \int_{-\infty}^{\infty} dx \quad
+x  \exp \left(
+ - \frac{1}{2} [ A(x + By/A) + (C-B^2/A)y^2 ]  
+ \right) \\ 
+    & \propto & \int_{-\infty}^{\infty} dy (By/A)
+\exp \left(
+ - \frac{1}{2} [ (C-B^2/A)y^2 ]  
+ \right) \\
+   & \propto & \int_{-\infty}^{\infty} dy \quad y
+\exp \left(
+ - \frac{1}{2} [ (C-B^2/A)y^2 ]  
+ \right) \\ 
+ & = & 0
+\end{eqnarray*}
+\end_inset
+
+So similarly 
+\begin_inset Formula $E[y]=y_0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Thus 
+\begin_inset Formula \begin{eqnarray*}
+\sigma_x^2 & = & E[(x-E[x])^2] \\
+       & = & E[(x-x_0)^2] \\
+       & = & \int_{-\infty}^{\infty} dy \int_{-\infty}^{\infty} dx \quad 
+       \frac{\partial f(x,y)}{\partial A} /(-1/2) \\
+       & = & 
+       -2 \frac{\partial  }{\partial A} \int_{-\infty}^{\infty} dy \int_{-\infty}^{\infty} dx \quad 
+        f(x,y) \\
+       & = & 
+       -2 \frac{\partial  }{\partial A} 2 \pi K / \sqrt{ A C - B ^2} \\
+         & = & 
+\frac{2\pi K}{(A-B^2/C)\sqrt{AC-B^2}} \\
+& =  & \frac{C}{A C - B ^2}
+\end{eqnarray*}
+\end_inset
+
+Similarly 
+\begin_inset Formula \begin{eqnarray*}
+\sigma_y^2& =  & \frac{A}{A C - B ^2}
+\end{eqnarray*}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{eqnarray*}
+\sigma_{xy} & = & E[(x-E[x])(y-E[y])] \\
+       & = & E[(x-x_0)(y-y_0)] \\
+       & = & \int_{-\infty}^{\infty} dy \int_{-\infty}^{\infty} dx \quad 
+       \frac{\partial f(x,y)}{\partial B} /(-1) \\
+       & = & 
+       - \frac{\partial  }{\partial B} \int_{-\infty}^{\infty} dy \int_{-\infty}^{\infty} dx \quad 
+        f(x,y) \\       
+& =  & \frac{-B}{A C - B ^2}
+\end{eqnarray*}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset Formula \begin{eqnarray*}
+\begin{pmatrix}
+A & B \\
+B & C
+\end{pmatrix}^{-1} 
+= \frac{1}{AC-B^2}\begin{pmatrix}
+C & -B \\
+-B & A
+\end{pmatrix}
+\end{eqnarray*}
+\end_inset
+
+Thus we get what we want.
+\end_layout
+
+\begin_layout Subsection*
+Problem 2 (graded by Dunzhu & Toby) 20 points
+\end_layout
+
+\begin_layout Subsubsection*
+(b) (10 points)
+\end_layout
+
+\begin_layout Standard
+Here are some topics people mentioned about the ABT book: 
+\end_layout
+
+\begin_layout Itemize
+Appendix A, background knowledge 
+\end_layout
+
+\begin_layout Itemize
+Number of data points vs number of model parameter, overdetermined, underdeterminined, mixed determinied 
+\end_layout
+
+\begin_layout Itemize
+MAP and Bayes' theorem 
+\end_layout
+
+\begin_layout Itemize
+L1 norm is better when existence of outlier 
+\end_layout
+
+\begin_layout Itemize
+difficulty in inverse: existance, uniqueness, and instability 
+\end_layout
+
+\begin_layout Itemize
+Fredholm integration equation of the first kind generalize many inverse problem 
+\end_layout
+
+\begin_layout Itemize
+Chapter 11 Section 3, general multivarate normal case with prior 
+\end_layout
+
+\begin_layout Itemize
+damped Newton's method, choose the step length instead of using full newton step 
+\end_layout
+
+\begin_layout Itemize
+ABT mentioned p-values, chi-square statistics 
+\end_layout
+
+\begin_layout Itemize
+in lecture, we maximize 
+\begin_inset Formula $P(d|m)$
+\end_inset
+
+ to get the maximum likelihood, in ABT they defined 
+\begin_inset Formula $L(m|d) = P(d|m)$
+\end_inset
+
+ first, then maximize it. ABT one is more clear, because 
+\begin_inset Formula $P(d|m)$
+\end_inset
+
+ apprears to be a function of 
+\begin_inset Formula $d$
+\end_inset
+
+, where in fact we want it to be a function of 
+\begin_inset Formula $m$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Subsubsection*
+(c) (10 points)
+\end_layout
+
+\begin_layout Standard
+Here are some topics people mentioned: 
+\end_layout
+
+\begin_layout Itemize
+When estimating 
+\begin_inset Formula $\sigma^2$
+\end_inset
+
+, devided by 
+\begin_inset Formula $N-1$
+\end_inset
+
+ instead of 
+\begin_inset Formula $N$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Confused about 
+\begin_inset Formula $J(m)$
+\end_inset
+
+ and 
+\begin_inset Formula $G(m)$
+\end_inset
+
+, it's really the same thing, Jacobian 
+\end_layout
+
+\begin_layout Itemize
+class did a better job of describing prior 
+\end_layout
+
+\begin_layout Itemize
+Class and ABT does not cover the case when prior is a given range 
+\end_layout
+
+\begin_layout Itemize
+numerical calculation of derivative when it's hard to do it analytically 
+\end_layout
+
+\begin_layout Itemize
+any method for finding global minimum? 
+\end_layout
+
+\begin_layout Subsection*
+Problem 3 (graded by Toby) 35 points
+\end_layout
+
+\begin_layout Subsubsection*
+(a) (5 points)
+\end_layout
+
+\begin_layout Standard
+The data 
+\begin_inset Formula $d_k$
+\end_inset
+
+ are the measurements 
+\begin_inset Formula $u_k = (1.97, 1.81, 1.59, 1.44)^T \mathrm{ft s^{-1}}$
+\end_inset
+
+. The model parameters are 
+\begin_inset Formula $\mathbf{m} = (u^*, z_0)^T$
+\end_inset
+
+. We could have picked 
+\begin_inset Formula $\mathbf{m} = (\theta, z_0)^T$
+\end_inset
+
+, but the former choice simplifies the calculations (see hint in problem statement). The model predictions are 
+\begin_inset Formula \begin{equation}
+g_k = \frac{u^*}{\kappa} \log \left( \frac{z_k+z_0}{z_0} \right).
+\end{equation}
+\end_inset
+
+This solves problem part (a).
+\end_layout
+
+\begin_layout Subsubsection*
+(b) (5 points)
+\end_layout
+
+\begin_layout Standard
+The squared error misfit function is often denoted as 
+\begin_inset Formula $\chi^2$
+\end_inset
+
+ and is given by 
+\begin_inset Formula \begin{equation}
+\chi^2(\mathbf{m}) = \frac{1}{2}\sum_{k}\left(d_k - g_k(\mathbf{m})\right)^2.
+\end{equation}
+\end_inset
+
+This function was sometimes called 
+\begin_inset Formula $F(\mathbf{m})$
+\end_inset
+
+ in the lecture notes. As derived in the lecture notes, for the Newton-method we need to calculate the 
+\begin_inset Formula $\mathbf{G}(\mathbf{m})$
+\end_inset
+
+ matrix defined by the column vectors 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula \begin{align}
+G_{ku^*} &= \frac{1}{\kappa}\log\left(\frac{z_k + z_0}{z_0}\right),\, \forall k = 1, \hdots, 4\\
+G_{kz_0} &= -\frac{u^*}{\kappa} \left( \frac{z_k}{z_0(z_k + z_0)} \right),\, \forall k = 1, \hdots, 4
+\end{align}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+ with the simplified Hessian 
+\begin_inset Formula $\nabla \nabla \chi^2 (\mathbf{m}) \approx \mathbf{G}(\mathbf{m})^T\mathbf{G}(\mathbf{m})$
+\end_inset
+
+ so that 
+\begin_inset Formula \begin{equation}
+\mathbf{m}_{n+1} = \mathbf{m}_n - \nabla \nabla \chi^2(\mathbf{m})^{-1} \left(\mathbf{d} -\mathbf{g}(\mathbf{m}) \right).
+\end{equation}
+\end_inset
+
+Iteration with an approproate initial condition yields the best-fit answer. The MATLAB code is shown at the end of the solution set. We could have used the exact Hessian to calculate the best-fit answer, but the approximate Hessian perfroms well for reasonable initial conditions. The best-fit solution is 
+\series bold
+
+\begin_inset Formula $u^* = 0.2025~\mathrm{ft s^{-1}}$
+\end_inset
+
+ and 
+\begin_inset Formula $z_0 = 0.2394  ~\mathrm{ft}$
+\end_inset
+
+
+\series default
+.
+\end_layout
+
+\begin_layout Subsubsection*
+(c) (5 points)
+\end_layout
+
+\begin_layout Standard
+In this part of the problem we calculate the mean veclocity 
+\begin_inset Formula $U$
+\end_inset
+
+ by integrating the velocity profile in the vertical. We have 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula \begin{align}
+U &= \frac{1}{H} \int_0^H u \d{z} = \frac{1}{H} \int_0^H \frac{u^*}{\kappa} \log \left( \frac{z_k+z_0}{z_0} \right) \d{z}\\
+&= \frac{z_0}{H} \frac{u^*}{\kappa}\int_1^{\frac{H+z_0}{z_0}} \log \left( z' \right) \d{z'}\\
+&= \frac{z_0}{H} \frac{u^*}{\kappa} \left[\frac{H+z_0}{z_0} \left[\log\left(\frac{H+z_0}{z_0} \right)-1\right]+1\right]\\
+&= \frac{u^*}{\kappa} \left[\frac{H+z_0}{H} \log\left(\frac{H+z_0}{z_0} \right)-1\right]
+\end{align}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+ Plugging in our best-fit parameter, we obtain an estimate as 
+\series bold
+
+\begin_inset Formula $U = 1.5251~\mathrm{ft s^{-1}}$
+\end_inset
+
+
+\series default
+.
+\end_layout
+
+\begin_layout Subsubsection*
+(d) (5 points)
+\end_layout
+
+\begin_layout Standard
+Because the model errors are assumed to be Gaussian, we obtain a Gaussian likelihood for the data 
+\begin_inset Formula $\mathbf{d} = (d_1, \hdots, d_N)^T$
+\end_inset
+
+ 
+\begin_inset Formula \begin{equation}
+p(\mathbf{d}|\mathbf{m}, \sigma)
+= \frac{1}{(2\pi\sigma^2)^{N/2}} \exp\left( -\frac{\sum_{k=1}^N(d_k - \frac{u^*}{\kappa} \log \left( \frac{z_k+z_0}{z_0} \right))^2}{2\sigma^2} \right),
+\end{equation}
+\end_inset
+
+where 
+\begin_inset Formula $N = 4$
+\end_inset
+
+ is the number of data points. According to the lecture notes, marginalization with respect to 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ in the case of uniform priors for 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ yields a marginalized likelihood function of the form 
+\begin_inset Formula \begin{equation}
+p(\mathbf{d}|\mathbf{m}) \propto \left(\frac{1}{2}\sum_{k=1}^N(d_k - \frac{u^*}{\kappa} \log \left( \frac{z_k+z_0}{z_0} \right))^2\right)^{-\frac{N-1}{2}} = \exp(-F(\mathbf{m})),
+\end{equation}
+\end_inset
+
+which defines the function 
+\begin_inset Formula $F(\mathbf{m})$
+\end_inset
+
+ as 
+\begin_inset Formula \begin{equation}
+F(\mathbf{m}) = \frac{N-1}{2}\log \left[\frac{1}{2}\sum_{k=1}^N\left(d_k - \frac{u^*}{\kappa} \log \left( \frac{z_k+z_0}{z_0} \right)\right)^2\right] \equiv \frac{N-1}{2}\log\left[\chi^2(\mathbf{m})\right], 
+\end{equation}
+\end_inset
+
+where 
+\begin_inset Formula $\chi^2(\mathbf{m})$
+\end_inset
+
+ stands for squared error misfit. Assuming uniform priors for 
+\begin_inset Formula $\mathbf{m}$
+\end_inset
+
+ as well and using Bayes' theorem, we arrive at the posterior probability density function 
+\begin_inset Formula \begin{equation}
+p(\mathbf{m}|\mathbf{d}) = \frac{e^{-F(\mathbf{m})}}{\int \d{\mathbf{m}} e^{-F(\mathbf{m})}} = \frac{\left(\sum_{k=1}^N(d_k - \frac{u^*}{\kappa} \log \left( \frac{z_k+z_0}{z_0} \right))^2\right)^{-\frac{N-1}{2}}}{\int \left(\sum_{k=1}^N(d_k - \frac{u^*}{\kappa} \log \left( \frac{z_k+z_0}{z_0} \right))^2\right)^{-\frac{N-1}{2}} \d{\mathbf{m}}}, 
+\end{equation}
+\end_inset
+
+where we also took into account the normalization factor. As we have shown in class and on the homework sets before, because of the chain rule, the maximum a posteriori solution is given by the minimum of 
+\begin_inset Formula $F(\mathbf{m})$
+\end_inset
+
+ and thus is equivalent to the least squares solution. 
+\begin_inset Formula \begin{equation}
+\nabla_\mathbf{m} p(\mathbf{m}|\mathbf{d}) \propto \nabla_\mathbf{m} F(\mathbf{m}) \propto \nabla_\mathbf{m} \chi^2(\mathbf{m})= 0.
+\end{equation}
+\end_inset
+
+This is always the case if 
+\begin_inset Formula $F(\mathbf{m})$
+\end_inset
+
+ is a strictly monotonic function of 
+\begin_inset Formula $\chi^2(\mathbf{m})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+(e) (5 points)
+\end_layout
+
+\begin_layout Standard
+For the sample variance estimate 
+\begin_inset Formula $S^2$
+\end_inset
+
+ at the maximum a posteriori parameter values 
+\begin_inset Formula $\mathbf{m}_0$
+\end_inset
+
+ from the lecture notes and homework sets, we have 
+\begin_inset Formula \begin{equation}
+S^2 \approx \frac{2\chi^2(\mathbf{m}_0)}{N-1} = \frac{\sum_{k=1}^N(d_k - \frac{u^*_0}{\kappa} \log \left( \frac{z_k+z_{0_0}}{z_{0_0}} \right))^2}{N-1} \approx 1.958\cdot 10^{-3}~\mathrm{ft^2 s^{-2}}, 
+\end{equation}
+\end_inset
+
+which similarly to previous homework sets gives an estimate for the data variance 
+\begin_inset Formula \begin{equation}
+\sigma^2 = \frac{S}{N} \approx 4.8950\cdot 10^{-4}~\mathrm{ft^2 s^{-2}}.
+\end{equation}
+\end_inset
+
+Both of them are counted as appropriate answers to this question.
+\end_layout
+
+\begin_layout Subsubsection*
+(f) (5 points)
+\end_layout
+
+\begin_layout Standard
+For this part of the problem, we are first going to derive the covariance matrix, by approximating the posterior probability distribution as a Gaussian. We can do that by expanding the exponent to second order around the maximum a posteriori parameter values 
+\begin_inset Formula $\mathbf{m}_0$
+\end_inset
+
+. We then have that 
+\begin_inset Formula \begin{equation}
+p(\mathbf{m}|\mathbf{d}) = \frac{e^{-F(\mathbf{m})}}{\int \d{\mathbf{m}} e^{-F(\mathbf{m})}}
+\approx \frac{e^{-F(\mathbf{m_0})-\frac{1}{2}(\mathbf{m} - \mathbf{m}_0)^T\mathbf{H}(\mathbf{m_0})(\mathbf{m} - \mathbf{m}_0)}}{\int \d{\mathbf{m}} e^{-F(\mathbf{m_0})-\frac{1}{2}\mathbf{H}(\mathbf{m_0})(\mathbf{m} - \mathbf{m}_0)^2}}
+=\frac{e^{-\frac{1}{2}(\mathbf{m} - \mathbf{m}_0)^T\mathbf{H}(\mathbf{m_0})(\mathbf{m} - \mathbf{m}_0)}}{2\pi\sqrt{\text{det}(\mathbf{H}(\mathbf{m_0})^{-1})}}
+\end{equation}
+\end_inset
+
+As we have seen in class, the covariance matrix is given by the inverse of the Hessian of 
+\begin_inset Formula $F(\mathbf{m})$
+\end_inset
+
+. In this case, we have 
+\begin_inset Formula \begin{equation}
+\mathbf{H}(\mathbf{m_0}) = \frac{N-1}{2\chi^2(\mathbf{m}_0)}\nabla\nabla \chi^2(\mathbf{m}_0)
+\end{equation}
+\end_inset
+
+, where 
+\begin_inset Formula $\nabla \nabla$
+\end_inset
+
+ stands for the Hessian with respect to a function. From problem part (b), we already know that the Hessian of 
+\begin_inset Formula $\chi^2$
+\end_inset
+
+ can be approximated as 
+\begin_inset Formula $\nabla\nabla\chi^2 =\mathbf{G}^T\mathbf{G}$
+\end_inset
+
+ at the maximum a posteriori parameter values. Thus we arrive at the covariance matrix 
+\begin_inset Formula \begin{equation}
+\Sigma = \mathbf{H}(\mathbf{m_0})^{-1} = \frac{2\chi^2(\mathbf{m}_0)}{N-1}\left(\mathbf{G}(\mathbf{m}_0)^T\mathbf{G}(\mathbf{m}_0)\right)^{-1} = S^2 \left(\mathbf{G}(\mathbf{m}_0)^T\mathbf{G}(\mathbf{m}_0)\right)^{-1}.
+\end{equation}
+\end_inset
+
+The values are calculated in the MATLAB script and are given by 
+\begin_inset Formula \begin{equation}
+\Sigma = 
+\begin{pmatrix}
+0.01161 & 0.00278\\
+0.00278 & 0.00067
+\end{pmatrix}
+\end{equation}
+\end_inset
+
+in the appropriate units. This can be used to calculate an uncertainty estimate for the mean velocity 
+\begin_inset Formula $U$
+\end_inset
+
+. We can perform a Taylor expansion of 
+\begin_inset Formula $U$
+\end_inset
+
+ around the maximum a posteriori parameter values 
+\begin_inset Formula $\mathbf{m}_0$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula \begin{align}
+U(\v{m}) &= U_0 + \nabla U_\v{m_0}\cdot(\v{m}-\v{m}_0) + \frac{1}{2}(\v{m}-\v{m}_0)^T\nabla \nabla U_\v{m_0}(\v{m}-\v{m}_0) + \mathcal{O}((\mathbf{m} - \mathbf{m}_0)^3)\\
+U(\v{m})^2 &= U_0^2 + 2U_0\nabla U_\v{m_0}\cdot(\v{m}-\v{m}_0) + U_0(\v{m}-\v{m}_0)^T\nabla \nabla U_\v{m_0}(\v{m}-\v{m}_0)\\
+&+ (\v{m}-\v{m}_0)^T\nabla U_\v{m_0}\nabla U_\v{m_0}^T\cdot(\v{m}-\v{m}_0)+ \mathcal{O}((\mathbf{m} - \mathbf{m}_0)^3).
+\end{align}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+ Thus using the Gaussian approximation for the posterior probability distribution function the first moment of 
+\begin_inset Formula $U$
+\end_inset
+
+ is given by 
+\begin_inset Formula \begin{equation}
+\ex{U} = \int \d{\v{m}} U(\v{m}) p(\v{m}|\v{d}) = U_0 + U_1 + \mathcal{O}((\mathbf{m} - \mathbf{m}_0)^4)
+\end{equation}
+\end_inset
+
+, where 
+\begin_inset Formula $U_1$
+\end_inset
+
+ is just a place holder function. The second moment of 
+\begin_inset Formula $U$
+\end_inset
+
+ is 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula \begin{align}
+\ex{U^2} &= \int \d{\v{m}} U^2(\v{m}) p(\v{m}|\v{d}) = U_0^2 + 2U_0U_1\\ 
+&+ (\partial_{m_1}U)^2\Sigma_{m_1m_1}+ (\partial_{m_2}U)^2\Sigma_{m_2m_2}+ 2(\partial_{m_1}U\partial_{m_2}U)\Sigma_{m_1m_2} + \mathcal{O}((\mathbf{m} - \mathbf{m}_0)^4).
+\end{align}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+ Here we just carried out Gaussian integrations that have been treated on previous homework sets or in class. The approximations are valid, if the posterior probability distribution function is well approximated by a Gaussian (i.e, when 
+\begin_inset Formula $N$
+\end_inset
+
+ is large) and when higher order terms in the Taylor expansions for 
+\begin_inset Formula $U$
+\end_inset
+
+ and 
+\begin_inset Formula $U^2$
+\end_inset
+
+ can be neglected. The variance of 
+\begin_inset Formula $U$
+\end_inset
+
+ can then be approximated as 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula \begin{align}
+\sigma_U^2 = \Var{U} &= \ex{U^2} - \ex{U}^2 = (\partial_{m_1}U)^2\Sigma_{m_1m_1} + (\partial_{m_2}U)^2\Sigma_{m_2m_2}+ 2(\partial_{m_1}U\partial_{m_2}U)\Sigma_{m_1m_2}\\
+&+ \text{higher order terms in 1/N}.
+\end{align}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+ This is called the error propagation formalism (cf. Wikipedia). The value for 
+\begin_inset Formula $\sigma_U$
+\end_inset
+
+ using the maximum a posteriori parameter values is 
+\begin_inset Formula \begin{equation}
+\sigma_U \approx 0.8082.
+\end{equation}
+\end_inset
+
+Uncertainties can also be estimated using Monte Carlo simulations (as done on homework set 2), but the details of those simulations need to be specified and justified. The same is true for the grid search approach. Both of those alternative methods should yield uncertainties that are at most lower than the number above, as both of those methods solve the problem exactly.
+\end_layout
+
+\begin_layout Subsubsection*
+(g) (5 points)
+\end_layout
+
+\begin_layout Standard
+From a physcal point of view, both 
+\begin_inset Formula $z_0$
+\end_inset
+
+ and 
+\begin_inset Formula $u^*$
+\end_inset
+
+ need to be positive in this setup. The river flows to the right and 
+\begin_inset Formula $z_0$
+\end_inset
+
+ is the roughness legnth, which is a positive quantitiy that also ensures that the argument of the logarithm does not go to zero. The roughness length is a scaling parameter and usually small. For scaling parameters, we can use the prior 
+\begin_inset Formula $p(z_0) = 1/z_0$
+\end_inset
+
+. Because it is unlikely that our model holds for waterfalls, we need to empahsize small angles 
+\begin_inset Formula $\theta$
+\end_inset
+
+. For small angles 
+\begin_inset Formula $\sin(\theta) \approx \theta$
+\end_inset
+
+ and thus 
+\begin_inset Formula $u^* \approx \sqrt{gH\theta}$
+\end_inset
+
+. We could therefore pick a prior that emphasizes small 
+\begin_inset Formula $u^*$
+\end_inset
+
+, for example 
+\begin_inset Formula $p(u^*) = 1/u^*$
+\end_inset
+
+. For the posterior probability we find 
+\begin_inset Formula \begin{equation}
+p(\mathbf{m}|\mathbf{d}) = \frac{\left(\sum_{k=1}^N(d_k - \frac{u^*}{\kappa} \log \left( \frac{z_k+z_0}{z_0} \right))^2\right)^{-\frac{N-1}{2}}\frac{1}{z_0}\frac{1}{u^*}}{\int \left(\sum_{k=1}^N(d_k - \frac{u^*}{\kappa} \log \left( \frac{z_k+z_0}{z_0} \right))^2\right)^{-\frac{N-1}{2}} \frac{1}{z_0}\frac{1}{u^*} \d{u^*}\d{z_0}}.
+\end{equation}
+\end_inset
+
+Then, a modified 
+\begin_inset Formula $F(\mathbf{m})$
+\end_inset
+
+ is given by 
+\begin_inset Formula \begin{equation}
+F(\mathbf{m}) = \frac{N-1}{2}\log\left( \sum_{k=1}^N(d_k - \frac{u^*}{\kappa} \log \left( \frac{z_k+z_0}{z_0} \right))^2\right) + \log(z_0) + \log(u^*).
+\end{equation}
+\end_inset
+
+Notice that optimizing this 
+\begin_inset Formula $F(\mathbf{m})$
+\end_inset
+
+ is no longer equivalent to the least squares problem, because of the additional logarithmic terms. These two terms force the MAP solution to emphasize small positive values of 
+\begin_inset Formula $u^*$
+\end_inset
+
+ and 
+\begin_inset Formula $z_0$
+\end_inset
+
+ and can be thought of as regularization terms.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset VSpace 1cm
+\end_inset
+
+ Here is a plot of the profile: 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+\align center
+
+\begin_inset Graphics 
+	filename p3b.eps
+	width 12cm
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+(b): Prediction in black and data in blue for the flow profile. 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\begin_inset VSpace 1cm
+\end_inset
+
+ MATLAB code for this problem: 
+\end_layout
+
+\begin_layout Verbatim
+clc; clear all; close all;
+\end_layout
+
+\begin_layout Verbatim
+%This script finds the best-fit model parameters and returns them and the
+\end_layout
+
+\begin_layout Verbatim
+%covariance matrix. It also plots the date vs. the model prediction
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+%Problem part (b)
+\end_layout
+
+\begin_layout Verbatim
+%Measurements / data
+\end_layout
+
+\begin_layout Verbatim
+height = 12; %depth of the river
+\end_layout
+
+\begin_layout Verbatim
+z = [0.9 0.7 0.5 0.3]'*height; %depths
+\end_layout
+
+\begin_layout Verbatim
+v = [1.97 1.81 1.59 1.44]'; %velocity measurements
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+%Initialize the least squares method
+\end_layout
+
+\begin_layout Verbatim
+z0 = 0.2; %Roughness length
+\end_layout
+
+\begin_layout Verbatim
+u0 = 0.1; %Velocity amplitude
+\end_layout
+
+\begin_layout Verbatim
+tol = 1e-15; %error tolerance for iteration close to machine accuracy
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+%Physical parameters that define the problem
+\end_layout
+
+\begin_layout Verbatim
+kappa = 0.4; %von Karman constant
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+%Set up the parameter vector and initialize it
+\end_layout
+
+\begin_layout Verbatim
+m = [z0 u0]';
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+%This is the iteration loop for the Newton algorithm
+\end_layout
+
+\begin_layout Verbatim
+err = 0.2; %Initialize error. Break loop when error is small enough
+\end_layout
+
+\begin_layout Verbatim
+while err > tol
+\end_layout
+
+\begin_layout Verbatim
+    %Store old values
+\end_layout
+
+\begin_layout Verbatim
+    m_old = m;
+\end_layout
+
+\begin_layout Verbatim
+    
+\end_layout
+
+\begin_layout Verbatim
+    %Calculate the G-matrix
+\end_layout
+
+\begin_layout Verbatim
+    u = m(2)/kappa*log((z+m(1))/m(1));
+\end_layout
+
+\begin_layout Verbatim
+    G = [-m(2)/kappa*z./(m(1)+z)/m(1), 1/kappa*log((z+m(1))/m(1))];
+\end_layout
+
+\begin_layout Verbatim
+        
+\end_layout
+
+\begin_layout Verbatim
+    %Calculate gradient and approximate Hessian for the Newton step
+\end_layout
+
+\begin_layout Verbatim
+    H = G'*G;
+\end_layout
+
+\begin_layout Verbatim
+    grad = -G'*(v-u);
+\end_layout
+
+\begin_layout Verbatim
+    
+\end_layout
+
+\begin_layout Verbatim
+    %Update model parameters using the Newton step
+\end_layout
+
+\begin_layout Verbatim
+    m = m_old - inv(H)*grad;
+\end_layout
+
+\begin_layout Verbatim
+    err = norm(m-m_old);
+\end_layout
+
+\begin_layout Verbatim
+end
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+%Problem part (c)
+\end_layout
+
+\begin_layout Verbatim
+%Calculate the  average velocity
+\end_layout
+
+\begin_layout Verbatim
+U = m(2)/kappa*((height+m(1))/height*log((height+m(1))/m(1))-1);
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+%Problem part (e)
+\end_layout
+
+\begin_layout Verbatim
+%Calculate variance and covariance matrix
+\end_layout
+
+\begin_layout Verbatim
+N = length(z); %Number of data points
+\end_layout
+
+\begin_layout Verbatim
+S = 1/(N-1)*sum((v-u).^2); %Sample variance
+\end_layout
+
+\begin_layout Verbatim
+sigma2 = S/N; %Data variance estimate
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+%Problem part (f)
+\end_layout
+
+\begin_layout Verbatim
+cov = S*inv(H); %Covariance matrix
+\end_layout
+
+\begin_layout Verbatim
+sigmaU = sqrt((1/kappa*((height+m(1))/height*log((height+m(1))/m(1))-1))^2*cov(1,1) ...
+\end_layout
+
+\begin_layout Verbatim
+          + (m(2)/kappa*(log((height+m(1))/m(1))-1/m(1)))^2*cov(2,2) ...
+\end_layout
+
+\begin_layout Verbatim
+          + 2/kappa*((height+m(1))/height*log((height+m(1))/m(1))-1) ...
+\end_layout
+
+\begin_layout Verbatim
+          * m(2)/kappa*(log((height+m(1))/m(1))-1/m(1))*cov(1,2));          
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+%Plot the predictions and the data
+\end_layout
+
+\begin_layout Verbatim
+z_pred = (0:0.01:1)*height;
+\end_layout
+
+\begin_layout Verbatim
+v_pred = m(2)/kappa*log((z_pred+m(1))/m(1));
+\end_layout
+
+\begin_layout Verbatim
+plot(v_pred, z_pred, 'k-', v, z, 'bo', 'MarkerSize', 10);
+\end_layout
+
+\begin_layout Verbatim
+xlabel('Velocity (ft s^{-1})');
+\end_layout
+
+\begin_layout Verbatim
+ylabel('Height from bottom (ft)');
+\end_layout
+
+\end_body
+\end_document
