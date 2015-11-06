@@ -3,6 +3,56 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\usepackage[margin=0.75in]{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{CJK}
+\definecolor{mygreen}{RGB}{28,172,0}
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose}
+
+
+\makeatletter
+\@ifundefined{date}{}{\date{}}
+\makeatother
+
+%Fancy-header package to modify header/page numbering 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\textbf{Ge/ESE 118}} %name of the course
+\chead{\textbf{}} %topic of the homework set
+\rhead{\textbf{Solution 5}} %number of the homework set
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+
+
+% Matlab script
+\lstset{language=Matlab,%
+      %basicstyle=\color{red},
+  breaklines=true,%
+  morekeywords={matlab2tikz},
+  keywordstyle=\color{blue},%
+  morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+  identifierstyle=\color{black},%}
+  stringstyle=\color{mylilas},
+  commentstyle=\color{mygreen},%
+  showstringspaces=false,%without this there will be a symbol in the places where there is a space
+  numbers=left,%
+  numberstyle={\tiny \color{black}},% size of the numbers
+  numbersep=9pt, % this defines how far the numbers are from the text
+  emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+                                                      %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -25,6 +75,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -77,152 +128,60 @@ Problem 1 (graded by Dunzhu & Toby) X points
 \end_layout
 
 \begin_layout Standard
-Using the exact hessian, the result seems harder converge to global minimum,
- starting from some initial guess.
- For example, in the following code, we perturb original ti to ti_new, and
- starting from the original best guess, using approximate hessian and exact
- hessian we get 
-\end_layout
-
-\begin_layout Verbatim
-
-[Mapp, M] = 
-\end_layout
-
-\begin_layout Verbatim
-
-          315.420926236077          981.798748762528
-\end_layout
-
-\begin_layout Verbatim
-
-            29.13082945887         -3197.23151318091
-\end_layout
-
-\begin_layout Verbatim
-
-         -15.9074484210616          2983.63633307186
-\end_layout
-
-\begin_layout Verbatim
-
-          15.8359059771525         -638.182236017816
-\end_layout
-
-\begin_layout Verbatim
-
-          5.25225424962686         -89.3648967235656
+Using exact Hessian will take more iterations for the solution to converge
+ than approximate Hessian.
 \end_layout
 
 \begin_layout Standard
-The exact hessian converge to a local minimum, because the exact hessian
- is near singular at the initial guess, but the approximate hessian is much
- better.
- We can see the eigenvalue of those two hessian after the first iteration
- 
+With exact Hessian, the convergence is more sensitive to initial value.
 \end_layout
 
-\begin_layout Verbatim
-
-[eigs(hess_app), eigs(hess)] =
-\end_layout
-
-\begin_layout Verbatim
-
-          18.0176962395304          18.0254192403416
-\end_layout
-
-\begin_layout Verbatim
-
-         0.098866195495413           0.1026429885873
-\end_layout
-
-\begin_layout Verbatim
-
-        0.0037406745666659       0.00383013080700191
-\end_layout
-
-\begin_layout Verbatim
-
-      3.13699101887875e-05      0.000138526270350115
-\end_layout
-
-\begin_layout Verbatim
-
-      1.10844438320923e-05      6.51426797439541e-09
-\end_layout
-
-\begin_layout Standard
-Note the exact hessian has an eigenvalue about 6E-9, which causes larger
- shift from the initial guess 
-\end_layout
-
-\begin_layout Verbatim
-
-[hess_app
-\backslash
-grad, hess
-\backslash
-grad] =
-\end_layout
-
-\begin_layout Verbatim
-
-       -0.281987601375779         -666.651385634329
-\end_layout
-
-\begin_layout Verbatim
-
-          1.23392027564989          3227.54405527842
-\end_layout
-
-\begin_layout Verbatim
-
-         -1.29604880279318         -3000.78453513507
-\end_layout
-
-\begin_layout Verbatim
-
-         0.116870531211363          654.168962989986
-\end_layout
-
-\begin_layout Verbatim
-
-        0.0190736135015402          94.6348252902216
-\end_layout
-
-\begin_layout Standard
+\begin_layout Subsection*
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-lstinputlisting
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{./compute_gradient_approx_hess2.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
 \end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename exact_hessian_approx_hessian_compare.pdf
+	scale 80
+	BoundingBox 100bp 100bp 500bp 600bp
 
 \end_inset
 
-hw1a.m
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-}
 \end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename exact_hessian_approx_hessian_compare_1.pdf
+	scale 80
+	BoundingBox 100bp 100bp 500bp 600bp
 
 \end_inset
 

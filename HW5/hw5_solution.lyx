@@ -120,7 +120,7 @@
 \begin_body
 
 \begin_layout Subsection*
-Problem 1 (graded by Dunzhu & Toby) X points
+Problem 1 (graded by Kangchen) X points
 \end_layout
 
 \begin_layout Subsubsection*
@@ -128,100 +128,84 @@ Problem 1 (graded by Dunzhu & Toby) X points
 \end_layout
 
 \begin_layout Standard
-Using the exact hessian, the result seems harder converge to global minimum,
- starting from some initial guess.
- For example, in the following code, we perturb original ti to ti_new, and
- starting from the original best guess, using approximate hessian and exact
- hessian we get 
-\end_layout
-
-\begin_layout Verbatim
-[Mapp, M] = 
-\end_layout
-
-\begin_layout Verbatim
-          315.420926236077          981.798748762528
-\end_layout
-
-\begin_layout Verbatim
-            29.13082945887         -3197.23151318091
-\end_layout
-
-\begin_layout Verbatim
-         -15.9074484210616          2983.63633307186
-\end_layout
-
-\begin_layout Verbatim
-          15.8359059771525         -638.182236017816
-\end_layout
-
-\begin_layout Verbatim
-          5.25225424962686         -89.3648967235656
+Using exact Hessian will take more iterations for the solution to converge
+ than approximate Hessian.
 \end_layout
 
 \begin_layout Standard
-The exact hessian converge to a local minimum, because the exact hessian
- is near singular at the initial guess, but the approximate hessian is much
- better.
- We can see the eigenvalue of those two hessian after the first iteration
- 
+With exact Hessian, the convergence is more sensitive to initial value.
+ With some initial value, using approximate Hesian make the solution converge
+ while using exact Hessian doesn't.
 \end_layout
 
-\begin_layout Verbatim
-[eigs(hess_app), eigs(hess)] =
+\begin_layout Subsection*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
 \end_layout
 
-\begin_layout Verbatim
-          18.0176962395304          18.0254192403416
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{./compute_gradient_approx_hess2.m}
 \end_layout
 
-\begin_layout Verbatim
-         0.098866195495413           0.1026429885873
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
 \end_layout
 
-\begin_layout Verbatim
-        0.0037406745666659       0.00383013080700191
-\end_layout
+\end_inset
 
-\begin_layout Verbatim
-      3.13699101887875e-05      0.000138526270350115
-\end_layout
 
-\begin_layout Verbatim
-      1.10844438320923e-05      6.51426797439541e-09
 \end_layout
 
 \begin_layout Standard
-Note the exact hessian has an eigenvalue about 6E-9, which causes larger
- shift from the initial guess 
+\begin_inset Graphics
+	filename exact_hessian_approx_hessian_compare.pdf
+	scale 80
+	BoundingBox 100bp 100bp 500bp 600bp
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Verbatim
-[hess_app
-\backslash
-grad, hess
-\backslash
-grad] =
+\begin_layout Standard
+\begin_inset Graphics
+	filename exact_hessian_approx_hessian_compare_1.pdf
+	scale 80
+	BoundingBox 100bp 100bp 500bp 600bp
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Verbatim
-       -0.281987601375779         -666.651385634329
+\begin_layout Standard
+\begin_inset Graphics
+	filename exact_hessian_approx_hessian_compare_2.pdf
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Verbatim
-          1.23392027564989          3227.54405527842
-\end_layout
+\begin_layout Standard
+\begin_inset Graphics
+	filename exact_hessian_approx_hessian_compare_2.pdf
 
-\begin_layout Verbatim
-         -1.29604880279318         -3000.78453513507
-\end_layout
+\end_inset
 
-\begin_layout Verbatim
-         0.116870531211363          654.168962989986
-\end_layout
 
-\begin_layout Verbatim
-        0.0190736135015402          94.6348252902216
 \end_layout
 
 \begin_layout Subsubsection*
