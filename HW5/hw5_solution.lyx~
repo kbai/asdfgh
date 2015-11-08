@@ -120,11 +120,11 @@
 \begin_body
 
 \begin_layout Subsection*
-Problem 1 (graded by Dunzhu & Toby) X points
+Problem 1 50 points
 \end_layout
 
 \begin_layout Subsubsection*
-(a) - 10 points
+(a) Alternative (exact Hessian) 25 points
 \end_layout
 
 \begin_layout Standard
@@ -134,6 +134,8 @@ Using exact Hessian will take more iterations for the solution to converge
 
 \begin_layout Standard
 With exact Hessian, the convergence is more sensitive to initial value.
+ With some initial value, using approximate Hesian make the solution converge
+ while using exact Hessian doesn't.
 \end_layout
 
 \begin_layout Subsection*
@@ -188,8 +190,26 @@ normalsize
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename exact_hessian_approx_hessian_compare_2.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename exact_hessian_approx_hessian_compare_2.pdf
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection*
-(b) - 10 points
+(b) 25 points
 \end_layout
 
 \begin_layout Subsubsection*
@@ -421,11 +441,11 @@ Thus we get what we want.
 \end_layout
 
 \begin_layout Subsection*
-Problem 2 (graded by Dunzhu & Toby) 20 points
+Problem 2 50 points
 \end_layout
 
 \begin_layout Subsubsection*
-(b) (10 points)
+(b) (25 points)
 \end_layout
 
 \begin_layout Standard
@@ -438,7 +458,7 @@ Appendix A, background knowledge
 
 \begin_layout Itemize
 Number of data points vs number of model parameter, overdetermined, underdetermi
-nined, mixed determinied 
+ned, mixed determined 
 \end_layout
 
 \begin_layout Itemize
@@ -498,7 +518,7 @@ in lecture, we maximize
 \end_layout
 
 \begin_layout Subsubsection*
-(c) (10 points)
+(c) (25 points)
 \end_layout
 
 \begin_layout Standard
@@ -534,7 +554,7 @@ Confused about
 \end_layout
 
 \begin_layout Itemize
-class did a better job of describing prior 
+Class did a better job of describing prior 
 \end_layout
 
 \begin_layout Itemize

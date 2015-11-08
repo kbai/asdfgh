@@ -120,11 +120,11 @@
 \begin_body
 
 \begin_layout Subsection*
-Problem 1 (graded by Kangchen) X points
+Problem 1 50 points
 \end_layout
 
 \begin_layout Subsubsection*
-(a) - 10 points
+(a) Alternative (exact Hessian) 25 points
 \end_layout
 
 \begin_layout Standard
@@ -209,7 +209,7 @@ normalsize
 \end_layout
 
 \begin_layout Subsubsection*
-(b) - 10 points
+(b) 25 points
 \end_layout
 
 \begin_layout Subsubsection*
@@ -274,8 +274,11 @@ So
 Assume uniform prior, then 
 \begin_inset Formula 
 \begin{eqnarray*}
-P(x,y|d) & \propto & P(d|x,y)=\exp-F(x,y)\\
- & = & \exp\left(-F(x_{0},y_{0})-gradF|_{x_{0},y_{0}}\cdot(x-x_{0},y-y_{0})'-\frac{1}{2}(x-x_{0},y-y_{0})H|_{x_{0},y_{0}}(x-x_{0},y-y_{0})'\right)
+P(x,y|d) & \propto & P(d|x,y)=\exp\left(-F(x,y)\right)\\
+ & = & \exp\left(-F(x_{0},y_{0})-\nabla F|_{x_{0},y_{0}}\cdot[\begin{array}{cc}
+x-x_{0} & y-y_{0}\end{array}]'-\frac{1}{2}\left[\begin{array}{cc}
+x-x_{0} & y-y_{0}\end{array}\right]H|_{x_{0},y_{0}}[\begin{array}{cc}
+x-x_{0} & y-y_{0}\end{array}]'\right)
 \end{eqnarray*}
 
 \end_inset
@@ -289,13 +292,15 @@ Since at
 \end_inset
 
 , 
-\begin_inset Formula $gradF=0$
+\begin_inset Formula $\nabla F=0$
 \end_inset
 
 , thus 
 \begin_inset Formula 
 \begin{eqnarray*}
-P(x,y|d) & \propto & \exp\left(-\frac{1}{2}(x-x_{0},y-y_{0})H|_{x_{0},y_{0}}(x-x_{0},y-y_{0})'\right)
+P(x,y|d) & \propto & \exp\left(-\frac{1}{2}\left[\begin{array}{cc}
+x-x_{0} & y-y_{0}\end{array}\right]H|_{x_{0},y_{0}}[\begin{array}{cc}
+x-x_{0} & y-y_{0}\end{array}]'\right)
 \end{eqnarray*}
 
 \end_inset
@@ -318,6 +323,10 @@ B & C
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 thus the joint pdf will be
 \end_layout
 
@@ -329,6 +338,10 @@ f(x,y)=K\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 where 
 \begin_inset Formula $K$
 \end_inset
@@ -376,7 +389,11 @@ E[x-x_{0}] & = & \int_{-\infty}^{\infty}dy\int_{-\infty}^{\infty}dx\quad(x-x_{0}
 
 \end_inset
 
-So similarly 
+
+\end_layout
+
+\begin_layout Standard
+Similarly 
 \begin_inset Formula $E[y]=y_{0}$
 \end_inset
 
@@ -398,6 +415,10 @@ Thus
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Similarly 
 \begin_inset Formula 
 \begin{eqnarray*}
@@ -425,27 +446,31 @@ Similarly
 \end_layout
 
 \begin_layout Standard
-Note that 
+In sum 
 \begin_inset Formula 
 \begin{eqnarray*}
-\begin{pmatrix}A & B\\
+\boldsymbol{H}^{-1}=\begin{pmatrix}A & B\\
 B & C
-\end{pmatrix}^{-1}=\frac{1}{AC-B^{2}}\begin{pmatrix}C & -B\\
+\end{pmatrix}^{-1} & = & \frac{1}{AC-B^{2}}\begin{pmatrix}C & -B\\
 -B & A
-\end{pmatrix}
+\end{pmatrix}\\
+ & = & \left(\begin{array}{cc}
+\sigma_{x}^{2} & \sigma_{xy}^{2}\\
+\sigma_{xy}^{2} & \sigma_{y}^{2}
+\end{array}\right)
 \end{eqnarray*}
 
 \end_inset
 
-Thus we get what we want.
+
 \end_layout
 
 \begin_layout Subsection*
-Problem 2 (graded by Dunzhu & Toby) 20 points
+Problem 2 50 points
 \end_layout
 
 \begin_layout Subsubsection*
-(b) (10 points)
+(b) (25 points)
 \end_layout
 
 \begin_layout Standard
@@ -458,7 +483,7 @@ Appendix A, background knowledge
 
 \begin_layout Itemize
 Number of data points vs number of model parameter, overdetermined, underdetermi
-nined, mixed determinied 
+ned, mixed determined 
 \end_layout
 
 \begin_layout Itemize
@@ -518,7 +543,7 @@ in lecture, we maximize
 \end_layout
 
 \begin_layout Subsubsection*
-(c) (10 points)
+(c) (25 points)
 \end_layout
 
 \begin_layout Standard
@@ -554,7 +579,7 @@ Confused about
 \end_layout
 
 \begin_layout Itemize
-class did a better job of describing prior 
+Class did a better job of describing prior 
 \end_layout
 
 \begin_layout Itemize
