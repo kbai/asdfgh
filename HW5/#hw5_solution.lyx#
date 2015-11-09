@@ -74,7 +74,6 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\float_placement H
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -126,6 +125,15 @@ Problem 1 50 points
 
 \begin_layout Subsubsection*
 (a) Alternative (exact Hessian) 25 points
+\end_layout
+
+\begin_layout Standard
+The conclusion is that when using exact Hessian, the initial guess has to
+ be closer to the solution so as to make the iteration converge.
+ If the initial guess is not very close to the solution, approximate Hessian
+ will be more robust which means both a better chance of finding the optimal
+ solution and less iterations.
+ Only w
 \end_layout
 
 \begin_layout Standard
@@ -196,9 +204,9 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Left: In one example where initial guess is not very close to solution,
- using exact Hessian takes more iterations than using approximate Hessian.
- Right: In another example, using exact Hessian donot converge while using
+Left: In one example where initial guess is not close to solution, using
+ exact Hessian takes more iterations than using approximate Hessian.
+ Right: In another example , using exact Hessian donot converge while using
  approximate Hessian converges.
  
 \end_layout
@@ -292,39 +300,13 @@ Left:Convergence comparison of approximate Hessian and exact one.
 \end_layout
 
 \begin_layout Standard
-The conclusion is that when using exact Hessian, the initial guess has to
- be closer to the solution so as to make the iteration converge.
- If the initial guess is not very close to the solution, approximate Hessian
- will be more robust which means both a better chance of finding the optimal
- solution and less iterations.
- Only when initial guess is very close to solution, exact Hessian will take
- equal or less iterations than approximate Hessian.
- 
-\end_layout
-
-\begin_layout Subsection*
-\begin_inset ERT
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
 
-
-\backslash
-tiny
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-lstinputlisting{./compute_gradient_approx_hess2.m}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-normalsize
 \end_layout
 
 \end_inset

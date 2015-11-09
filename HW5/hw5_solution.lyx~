@@ -74,6 +74,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement ph
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -128,14 +129,177 @@ Problem 1 50 points
 \end_layout
 
 \begin_layout Standard
-Using exact Hessian will take more iterations for the solution to converge
- than approximate Hessian.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename exact_hessian_approx_hessian_compare.pdf
+	scale 50
+	BoundingBox 100bp 100bp 512bp 692bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename exact_hessian_approx_hessian_compare_2.pdf
+	scale 50
+	BoundingBox 100bp 100bp 512bp 692bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Left: In one example where initial guess is not very close to solution,
+ using exact Hessian takes more iterations than using approximate Hessian.
+ Right: In another example, using exact Hessian donot converge while using
+ approximate Hessian converges.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename convergence_comparison_appro_exact.pdf
+	scale 50
+	BoundingBox 100bp 100bp 512bp 692bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename convergence_number_iteration_comparison_appro_exact.pdf
+	scale 50
+	BoundingBox 100bp 100bp 512bp 692bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Left:Convergence comparison of approximate Hessian and exact one.
+ Dark blue region is where both methods donot converge.
+ Light blue region is where approximate Hessian converge but exact Hessian
+ don't.
+ Yellow region is where both methods converge.
+ Right:Dark blue region is where approximate Hessian takes less iterations.
+ Light blue region is where both methods take same number of iterations.
+ Yellow(very small region close to the solution) region is where exact Hessian
+ take less number of iterations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-With exact Hessian, the convergence is more sensitive to initial value.
- With some initial value, using approximate Hesian make the solution converge
- while using exact Hessian doesn't.
+The conclusion is that when using exact Hessian, the initial guess has to
+ be closer to the solution so as to make the iteration converge.
+ If the initial guess is not very close to the solution, approximate Hessian
+ will be more robust which means both a better chance of finding the optimal
+ solution and less iterations.
+ Only when initial guess is very close to solution, exact Hessian will take
+ equal or less iterations than approximate Hessian.
+ 
 \end_layout
 
 \begin_layout Subsection*
@@ -162,46 +326,6 @@ lstinputlisting{./compute_gradient_approx_hess2.m}
 \backslash
 normalsize
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename exact_hessian_approx_hessian_compare.pdf
-	scale 80
-	BoundingBox 100bp 100bp 500bp 600bp
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename exact_hessian_approx_hessian_compare_1.pdf
-	scale 80
-	BoundingBox 100bp 100bp 500bp 600bp
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename exact_hessian_approx_hessian_compare_2.pdf
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename exact_hessian_approx_hessian_compare_2.pdf
 
 \end_inset
 
@@ -274,8 +398,11 @@ So
 Assume uniform prior, then 
 \begin_inset Formula 
 \begin{eqnarray*}
-P(x,y|d) & \propto & P(d|x,y)=\exp-F(x,y)\\
- & = & \exp\left(-F(x_{0},y_{0})-gradF|_{x_{0},y_{0}}\cdot(x-x_{0},y-y_{0})'-\frac{1}{2}(x-x_{0},y-y_{0})H|_{x_{0},y_{0}}(x-x_{0},y-y_{0})'\right)
+P(x,y|d) & \propto & P(d|x,y)=\exp\left(-F(x,y)\right)\\
+ & = & \exp\left(-F(x_{0},y_{0})-\nabla F|_{x_{0},y_{0}}\cdot[\begin{array}{cc}
+x-x_{0} & y-y_{0}\end{array}]'-\frac{1}{2}\left[\begin{array}{cc}
+x-x_{0} & y-y_{0}\end{array}\right]H|_{x_{0},y_{0}}[\begin{array}{cc}
+x-x_{0} & y-y_{0}\end{array}]'\right)
 \end{eqnarray*}
 
 \end_inset
@@ -289,13 +416,15 @@ Since at
 \end_inset
 
 , 
-\begin_inset Formula $gradF=0$
+\begin_inset Formula $\nabla F=0$
 \end_inset
 
 , thus 
 \begin_inset Formula 
 \begin{eqnarray*}
-P(x,y|d) & \propto & \exp\left(-\frac{1}{2}(x-x_{0},y-y_{0})H|_{x_{0},y_{0}}(x-x_{0},y-y_{0})'\right)
+P(x,y|d) & \propto & \exp\left(-\frac{1}{2}\left[\begin{array}{cc}
+x-x_{0} & y-y_{0}\end{array}\right]H|_{x_{0},y_{0}}[\begin{array}{cc}
+x-x_{0} & y-y_{0}\end{array}]'\right)
 \end{eqnarray*}
 
 \end_inset
@@ -318,6 +447,10 @@ B & C
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 thus the joint pdf will be
 \end_layout
 
@@ -329,6 +462,10 @@ f(x,y)=K\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 where 
 \begin_inset Formula $K$
 \end_inset
@@ -376,7 +513,11 @@ E[x-x_{0}] & = & \int_{-\infty}^{\infty}dy\int_{-\infty}^{\infty}dx\quad(x-x_{0}
 
 \end_inset
 
-So similarly 
+
+\end_layout
+
+\begin_layout Standard
+Similarly 
 \begin_inset Formula $E[y]=y_{0}$
 \end_inset
 
@@ -398,6 +539,10 @@ Thus
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Similarly 
 \begin_inset Formula 
 \begin{eqnarray*}
@@ -425,19 +570,23 @@ Similarly
 \end_layout
 
 \begin_layout Standard
-Note that 
+In sum 
 \begin_inset Formula 
 \begin{eqnarray*}
-\begin{pmatrix}A & B\\
+\boldsymbol{H}^{-1}=\begin{pmatrix}A & B\\
 B & C
-\end{pmatrix}^{-1}=\frac{1}{AC-B^{2}}\begin{pmatrix}C & -B\\
+\end{pmatrix}^{-1} & = & \frac{1}{AC-B^{2}}\begin{pmatrix}C & -B\\
 -B & A
-\end{pmatrix}
+\end{pmatrix}\\
+ & = & \left(\begin{array}{cc}
+\sigma_{x}^{2} & \sigma_{xy}^{2}\\
+\sigma_{xy}^{2} & \sigma_{y}^{2}
+\end{array}\right)
 \end{eqnarray*}
 
 \end_inset
 
-Thus we get what we want.
+
 \end_layout
 
 \begin_layout Subsection*

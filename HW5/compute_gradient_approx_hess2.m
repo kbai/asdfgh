@@ -10,16 +10,15 @@ R = ((x - xs).^2 + (y - ys).^2 + zs^2);
 dx = x-xs;
 dy = y-ys;
 
-Jacob(:,1) = (3.*p.*zs.*(dx))./((R).^(5/2));
-Jacob(:,2) = (3.*p.*zs.*(dy))./((R).^(5/2));
-Jacob(:,3) = p./(R).^(3/2) - (3*p.*zs.^2)./(R).^(5/2);
-Jacob(:,4) = zs./(R).^(3/2);
+Ghat(:,1) = (3.*p.*zs.*(dx))./((R).^(5/2));
+Ghat(:,2) = (3.*p.*zs.*(dy))./((R).^(5/2));
+Ghat(:,3) = p./(R).^(3/2) - (3*p.*zs.^2)./(R).^(5/2);
+Ghat(:,4) = zs./(R).^(3/2);
 
-Gamma = - Jacob'*misfit;
+Gamma = - Ghat'*misfit;
 %this is the apprximated Hessian;
 
 
-%dHess = -(d-G(m))^T*Q
 dHess = zeros(4);
 dHess(1,2) = - misfit'*((15*p*zs*(dx).*(dy))./((R).^(7/2)));
 dHess(1,3) = - misfit'*((3*p.*(dx))./((R).^(5/2)) - (15*p*zs.^2.*(dx))./((R).^(7/2)));
@@ -37,7 +36,7 @@ dHess(4,4) = 0;
 
 
 
-Hess = (Jacob')*Jacob;
+Hess = (Ghat')*Ghat;
 %only add dHess if using exact Hessian
 Hess = Hess + dHess;
 

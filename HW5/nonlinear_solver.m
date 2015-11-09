@@ -1,4 +1,4 @@
-function[M]=nonlinear_solver(x,y,ui,Minit)
+function[con1,con2,M]=nonlinear_solver(x,y,ui,Minit)
 
 M = Minit;
 misfit_old = 0;
@@ -37,7 +37,7 @@ disp(['Number of iterations:',num2str(ii)]);
 n_iter1 = ii;
 plot(1:1:100,log(misfit_r)/log(10));
 hold on
-%mcov = inv(Hess/sigma^2);
+con1=(norm(misfit)<0.02);
 M = Minit;
 misfit_old = 0;
 misfit_r = zeros(1,100);
@@ -80,7 +80,8 @@ plot(Ms_r1(1,1:n_iter1),Ms_r1(4,1:n_iter1),'o-');
 hold on
 plot(Ms_r2(1,1:n_iter2),Ms_r2(4,1:n_iter2),'o-');
 
-
+con2=(norm(misfit)<0.002);
+con2 = 2*(n_iter2>n_iter1)+(n_iter1==n_iter2);
 
 end
 
