@@ -74,7 +74,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\float_placement H
+\float_placement !h
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -126,6 +126,47 @@ Problem 1 50 points
 
 \begin_layout Subsubsection*
 (a) Alternative (exact Hessian) 25 points
+\end_layout
+
+\begin_layout Standard
+The conclusion is that when using the exact Hessian, the initial guess has
+ to be closer to the solution so as to make the iteration converge.
+ If the initial guess is not very close to the solution, the approximate
+ Hessian will be more robust which means both a better chance of finding
+ the optimal solution and fewer iterations.
+ Only when the initial guess is very close to the solution, the exact Hessian
+ will take fewer iterations than the approximate Hessian.
+ (See figure 1 and figure 2 attached)
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{./compute_gradient_approx_hess2.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -270,61 +311,20 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Left:Convergence comparison of approximate Hessian and exact one.
- Dark blue region is where both methods donot converge.
- Light blue region is where approximate Hessian converge but exact Hessian
- don't.
+Left:Convergence comparison of the approximate Hessian and exact one.
+ Dark blue region is where both methods do not converge.
+ Light blue region is where the approximate Hessian converges but the exact
+ Hessian doesn't.
  Yellow region is where both methods converge.
- Right:Dark blue region is where approximate Hessian takes less iterations.
- Light blue region is where both methods take same number of iterations.
- Yellow(very small region close to the solution) region is where exact Hessian
- take less number of iterations.
+ Right: Dark blue region is where the approximate Hessian takes fewer iterations.
+ Light blue region is where both methods take the same number of iterations.
+ Yellow (very small region close to the solution) region is where the exact
+ Hessian takes fewer iterations.
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The conclusion is that when using exact Hessian, the initial guess has to
- be closer to the solution so as to make the iteration converge.
- If the initial guess is not very close to the solution, approximate Hessian
- will be more robust which means both a better chance of finding the optimal
- solution and less iterations.
- Only when initial guess is very close to solution, exact Hessian will take
- equal or less iterations than approximate Hessian.
- 
-\end_layout
-
-\begin_layout Subsection*
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-tiny
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-lstinputlisting{./compute_gradient_approx_hess2.m}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-normalsize
 \end_layout
 
 \end_inset
@@ -451,13 +451,40 @@ B & C
 \end_layout
 
 \begin_layout Standard
+The deviation of 
+\begin_inset Formula $x$
+\end_inset
+
+ will be:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\sigma_{x}^{2} & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}(x-x_{0})^{2}\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2}]\right)dydx}\\
+ & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 thus the joint pdf will be
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-f(x,y)=K\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2}]\right)
+\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2}]\right)=
 \end{eqnarray*}
 
 \end_inset
@@ -476,9 +503,9 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\int_{-\infty}^{\infty}dy\int_{-\infty}^{\infty}dxf(x,y) & = & \int_{-\infty}^{\infty}dy\int_{-\infty}^{\infty}dxK\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2}]\right)\\
- & = & \int_{-\infty}^{\infty}dy\int_{-\infty}^{\infty}dxK\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)\\
- & = & \int_{-\infty}^{\infty}dy\int_{-\infty}^{\infty}dxK\exp\left(-\frac{1}{2}[A(x+By/A)^{2}+(C-B^{2}/A)y^{2}]\right)\\
+\sigma_{x}^{2} & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}\\
+ & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}+C(y+\frac{B}{C}x)^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}+C(y+\frac{B}{C}x)^{2}]\right)dydx}\\
+ & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}\right)dydx}\\
  & = & \int_{-\infty}^{\infty}dyK\exp\left(-\frac{1}{2}(C-B^{2}/A)y^{2}\right)\int_{-\infty}^{\infty}dx\exp\left(-\frac{1}{2}[A(x+By/A)^{2}]\right)\\
  & = & \int_{-\infty}^{\infty}dyK\exp\left(-\frac{1}{2}(C-B^{2}/A)y^{2}\right)\int_{-\infty}^{\infty}dx\exp\left(-\frac{1}{2}Ax^{2}\right)\\
  & = & \int_{-\infty}^{\infty}dyK\exp\left(-\frac{1}{2}(C-B^{2}/A)y^{2}\right)\sqrt{2\pi/A}\\

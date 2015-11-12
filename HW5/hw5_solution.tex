@@ -3,7 +3,6 @@
 \documentclass[english]{article}
 \usepackage[T1]{fontenc}
 \usepackage[latin9]{inputenc}
-\usepackage{float}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{esint}
@@ -69,7 +68,20 @@
 
 \subsubsection*{(a) Alternative (exact Hessian) 25 points}
 
-\begin{figure}[H]
+The conclusion is that when using exact Hessian, the initial guess
+has to be closer to the solution so as to make the iteration converge.
+If the initial guess is not very close to the solution, approximate
+Hessian will be more robust which means both a better chance of finding
+the optimal solution and less iterations. Only when initial guess
+is very close to solution, exact Hessian will take equal or less iterations
+than approximate Hessian. 
+
+
+\subsection*{\tiny
+\lstinputlisting{./compute_gradient_approx_hess2.m}
+\normalsize}
+
+\begin{figure}[!h]
 \begin{minipage}[t]{0.45\columnwidth}%
 \includegraphics[bb=100bp 100bp 512bp 692bp,scale=0.5]{exact_hessian_approx_hessian_compare}%
 \end{minipage}\hfill{}%
@@ -96,19 +108,6 @@ small region close to the solution) region is where exact Hessian
 take less number of iterations.}
 \end{figure}
 
-
-The conclusion is that when using exact Hessian, the initial guess
-has to be closer to the solution so as to make the iteration converge.
-If the initial guess is not very close to the solution, approximate
-Hessian will be more robust which means both a better chance of finding
-the optimal solution and less iterations. Only when initial guess
-is very close to solution, exact Hessian will take equal or less iterations
-than approximate Hessian. 
-
-
-\subsection*{\tiny
-\lstinputlisting{./compute_gradient_approx_hess2.m}
-\normalsize}
 
 
 \subsubsection*{(b) 25 points}
