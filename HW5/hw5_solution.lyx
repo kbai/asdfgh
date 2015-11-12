@@ -238,9 +238,9 @@ status open
 
 \begin_layout Plain Layout
 Left: In one example where initial guess is not very close to solution,
- using exact Hessian takes more iterations than using approximate Hessian.
- Right: In another example, using exact Hessian donot converge while using
- approximate Hessian converges.
+ using the exact Hessian takes more iterations than using approximate Hessian.
+ Right: In another example, using the exact Hessian do not converge while
+ using the approximate Hessian converges.
  
 \end_layout
 
@@ -548,33 +548,6 @@ C & B
 \end_layout
 
 \begin_layout Standard
-The deviation of 
-\begin_inset Formula $x$
-\end_inset
-
- will be:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-\sigma_{x}^{2} & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}(x-x_{0})^{2}\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2}]\right)dydx}\\
- & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $ $
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 thus the joint pdf will be
 \end_layout
 
@@ -590,25 +563,21 @@ thus the joint pdf will be
 \end_layout
 
 \begin_layout Standard
-where 
-\begin_inset Formula $K$
+The standard deviation of 
+\begin_inset Formula $x$
 \end_inset
 
- is the constant that normalize the pdf, to get it, we have
+ will be:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\sigma_{x}^{2} & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}\\
+\sigma_{x}^{2} & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}(x-x_{0})^{2}\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2}]\right)dydx}\\
+ & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}\\
  & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}+C(y+\frac{B}{C}x)^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}+C(y+\frac{B}{C}x)^{2}]\right)dydx}\\
- & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}\right)dydx}\\
- & = & \int_{-\infty}^{\infty}dyK\exp\left(-\frac{1}{2}(C-B^{2}/A)y^{2}\right)\int_{-\infty}^{\infty}dx\exp\left(-\frac{1}{2}[A(x+By/A)^{2}]\right)\\
- & = & \int_{-\infty}^{\infty}dyK\exp\left(-\frac{1}{2}(C-B^{2}/A)y^{2}\right)\int_{-\infty}^{\infty}dx\exp\left(-\frac{1}{2}Ax^{2}\right)\\
- & = & \int_{-\infty}^{\infty}dyK\exp\left(-\frac{1}{2}(C-B^{2}/A)y^{2}\right)\sqrt{2\pi/A}\\
- & = & K\sqrt{2\pi/(C-B^{2}/A)}\sqrt{2\pi/A}\\
- & = & 2\pi K/\sqrt{AC-B^{2}}\\
- & = & 1
+ & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}+C(y+\frac{B}{C}x)^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}+C(y+\frac{B}{C}x)^{2}]\right)dydx}\\
+ & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}\right)dydx}
 \end{eqnarray*}
 
 \end_inset
@@ -617,45 +586,25 @@ where
 \end_layout
 
 \begin_layout Standard
-So
-\end_layout
+Comparing with the fact that 
+\begin_inset Formula $\frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2\sigma^{2}}x^{2}\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2\sigma^{2}}x^{2}\right)dydx}=\sigma^{2}$
+\end_inset
 
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-K & = & \sqrt{AB-C^{2}}/2\pi
-\end{eqnarray*}
-
+,
+\begin_inset Formula $\frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}\right)dydx}=\frac{1}{(A-\frac{B^{2}}{C})}=\frac{C}{AC-B^{2}}$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-Thus 
-\begin_inset Formula 
-\begin{eqnarray*}
-\sigma_{x}^{2} & = & E[(x-E[x])^{2}]\\
- & = & E[(x-x_{0})^{2}]\\
- & = & \int_{-\infty}^{\infty}dy\int_{-\infty}^{\infty}dx\quad\frac{\partial f(x,y)}{\partial A}/(-1/2)\\
- & = & -2\frac{\partial}{\partial A}\int_{-\infty}^{\infty}dy\int_{-\infty}^{\infty}dx\quad f(x,y)\\
- & = & -2\frac{\partial}{\partial A}2\pi K/\sqrt{AC-B^{2}}\\
- & = & \frac{2\pi K}{(A-B^{2}/C)\sqrt{AC-B^{2}}}\\
- & = & \frac{C}{AC-B^{2}}
-\end{eqnarray*}
-
+so 
+\begin_inset Formula $\sigma_{x}^{2}=\frac{C}{AC-B^{2}}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Similarly 
-\begin_inset Formula 
-\begin{eqnarray*}
-\sigma_{y}^{2} & = & \frac{A}{AC-B^{2}}
-\end{eqnarray*}
-
+.
+ And by using the same method, we have 
+\begin_inset Formula $\sigma_{y}^{2}=\frac{A}{AC-B^{2}}$
 \end_inset
 
 
@@ -664,11 +613,12 @@ Similarly
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\sigma_{xy} & = & E[(x-E[x])(y-E[y])]\\
- & = & E[(x-x_{0})(y-y_{0})]\\
- & = & \int_{-\infty}^{\infty}dy\int_{-\infty}^{\infty}dx\quad\frac{\partial f(x,y)}{\partial B}/(-1)\\
- & = & -\frac{\partial}{\partial B}\int_{-\infty}^{\infty}dy\int_{-\infty}^{\infty}dx\quad f(x,y)\\
- & = & \frac{-B}{AC-B^{2}}
+\sigma_{xy}^{2} & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}(x-x_{0})(y-y_{0})\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2}]\right)dydx}\\
+ & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}xy\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}\\
+ & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}[x(y+\frac{B}{C}x)-\frac{B}{C}x^{2}]\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}+C(y+\frac{B}{C}x)^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}+C(y+\frac{B}{C}x)^{2}]\right)dydx}\\
+ & = & \frac{-\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\frac{B}{C}x^{2}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}+C(y+\frac{B}{C}x)^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}+C(y+\frac{B}{C}x)^{2}]\right)dydx}\\
+ & = & -\frac{B}{C}\frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}\right)dydx}\\
+ & = & -\frac{B}{C}\frac{C}{AC-B^{2}}=-\frac{B}{AC-B^{2}}
 \end{eqnarray*}
 
 \end_inset
@@ -677,20 +627,29 @@ Similarly
 \end_layout
 
 \begin_layout Standard
-In sum 
-\begin_inset Formula 
-\begin{eqnarray*}
-\boldsymbol{H}^{-1}=\begin{pmatrix}A & B\\
-B & C
-\end{pmatrix}^{-1} & = & \frac{1}{AC-B^{2}}\begin{pmatrix}C & -B\\
--B & A
-\end{pmatrix}\\
- & = & \left(\begin{array}{cc}
-\sigma_{x}^{2} & \sigma_{xy}^{2}\\
+\begin_inset Formula $\begin{bmatrix}\sigma_{x}^{2} & \sigma_{xy}^{2}\\
 \sigma_{xy}^{2} & \sigma_{y}^{2}
-\end{array}\right)
-\end{eqnarray*}
+\end{bmatrix}=\frac{1}{AC-B^{2}}\begin{bmatrix}C & -B\\
+-B & A
+\end{bmatrix}$
+\end_inset
 
+,
+\begin_inset Formula $\frac{1}{AC-B^{2}}\begin{bmatrix}A & B\\
+B & C
+\end{bmatrix}\begin{bmatrix}C & -B\\
+-B & A
+\end{bmatrix}=\begin{bmatrix}1 & 0\\
+0 & 1
+\end{bmatrix}$
+\end_inset
+
+, so 
+\begin_inset Formula $\begin{bmatrix}\sigma_{x}^{2} & \sigma_{xy}^{2}\\
+\sigma_{xy}^{2} & \sigma_{y}^{2}
+\end{bmatrix}=\begin{bmatrix}\frac{\partial^{2}F}{\partial x^{2}} & \frac{\partial^{2}F}{\partial x\partial y}\\
+\frac{\partial^{2}F}{\partial x\partial y} & \frac{\partial^{2}F}{\partial y^{2}}
+\end{bmatrix}^{-1}$
 \end_inset
 
 
