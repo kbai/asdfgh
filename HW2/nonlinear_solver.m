@@ -1,4 +1,4 @@
-function[M, mcov]=nonlinear_solver(x,y,ui,Minit,sigma)
+function[M, mcov]=nonlinear_solver(x,y,ui,Minit)
 
 M = Minit;
 misfit_old = 0;
@@ -20,7 +20,7 @@ for ii = 1:1:1000
     misfit_old = misfit;
 end
 
-mcov = inv(Hess/sigma^2);
+%mcov = inv(Hess/sigma^2);
 
 %disp(['Number of iterations:',num2str(ii)]);
 end
