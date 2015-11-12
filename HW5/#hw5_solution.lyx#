@@ -392,7 +392,7 @@ Let
 \end_layout
 
 \begin_layout Standard
-Iteratively using integration by part as above:
+Iteratively using integration by part as above
 \end_layout
 
 \begin_layout Standard
@@ -548,7 +548,7 @@ C & B
 \end_layout
 
 \begin_layout Standard
-then
+thus the joint pdf will be
 \end_layout
 
 \begin_layout Standard
@@ -592,20 +592,12 @@ The last step satisfies because
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\int_{-\infty}^{+\infty}dy\exp\left(-\frac{1}{2}B(y+\frac{C}{B}x)^{2}\right) & = & \sqrt{2\pi}B^{-1/2}\int_{-\infty}^{+\infty}dy\frac{1}{\sqrt{2\pi}B^{-1/2}}\exp\left(-\frac{(y+\frac{C}{B}x)^{2}}{2(B^{-1/2})^{2}}\right)=\sqrt{2\pi}B^{-1/2}
+\int_{-\infty}^{+\infty}dy\exp\left(-\frac{1}{2}B(y+\frac{C}{B}x)^{2}\right) & = & \int_{-\infty}^{+\infty}dy\exp\left(-\frac{1}{2}B(y+\frac{C}{B}x)^{2}\right)
 \end{eqnarray*}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-is a constant (not a function of 
-\begin_inset Formula $x$
-\end_inset
-
-).
 \end_layout
 
 \begin_layout Standard
@@ -646,11 +638,11 @@ We have
 \end_layout
 
 \begin_layout Standard
-Similarly, we have 
+And by using the same method, we have 
 \begin_inset Formula $\sigma_{y}^{2}=\frac{A}{AB-C^{2}}$
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard

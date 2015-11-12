@@ -238,9 +238,9 @@ status open
 
 \begin_layout Plain Layout
 Left: In one example where initial guess is not very close to solution,
- using exact Hessian takes more iterations than using approximate Hessian.
- Right: In another example, using exact Hessian donot converge while using
- approximate Hessian converges.
+ using the exact Hessian takes more iterations than using approximate Hessian.
+ Right: In another example, using the exact Hessian do not converge while
+ using the approximate Hessian converges.
  
 \end_layout
 
@@ -379,7 +379,7 @@ Let
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
--\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & = & \int_{0}^{\infty}t^{N-2}f(t)dt\\
+\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & = & \int_{0}^{\infty}t^{N-2}f(t)dt\\
  & = & -A^{-1}\int_{0}^{\infty}t^{N-3}f'(t)dt\\
  & = & -A^{-1}\left[t^{N-3}f(t)\vert_{0}^{\infty}-\int_{0}^{\infty}(N-3)t^{N-4}f(t)dt\right]\\
  & = & -A^{-1}\left[0-(N-3)\int_{0}^{\infty}t^{N-4}f(t)dt\right]\\
@@ -392,7 +392,7 @@ Let
 \end_layout
 
 \begin_layout Standard
-Iteratively using integration by part as above
+Iteratively using integration by part as above:
 \end_layout
 
 \begin_layout Standard
@@ -402,7 +402,7 @@ Iteratively using integration by part as above
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
--\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & \propto & (A^{-1})^{(N-2)/2}\int_{0}^{\infty}t^{N-N}f(t)dt\\
+\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & \propto & (A^{-1})^{(N-2)/2}\int_{0}^{\infty}t^{N-N}f(t)dt\\
  & = & A^{-(N-2)/2}\int_{0}^{\infty}f(t)dt
 \end{eqnarray*}
 
@@ -430,7 +430,7 @@ Iteratively using integration by part as above
 \color none
 \begin_inset Formula 
 \begin{eqnarray*}
--\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & \propto & (A^{-1})^{((N-1)-2)/2}\int_{0}^{\infty}t^{(N-(N-1))}f(t)dt\\
+\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & \propto & (A^{-1})^{((N-1)-2)/2}\int_{0}^{\infty}t^{(N-(N-1))}f(t)dt\\
  & = & A^{-(N-3)/2}\int_{0}^{\infty}tf(t)dt
 \end{eqnarray*}
 
@@ -443,8 +443,8 @@ Iteratively using integration by part as above
 Since 
 \begin_inset Formula 
 \begin{eqnarray*}
-\int_{0}^{\infty}\exp\left(-\frac{A}{2}t^{2}\right)dt=\sqrt{\frac{\pi}{2}}A^{-1/2}\propto A^{-1/2}\\
-\int_{0}^{\infty}t\exp\left(-\frac{A}{2}t^{2}\right)dt=A^{-1}\propto A^{-1}
+\int_{0}^{\infty}\exp\left(-\frac{A}{2}t^{2}\right)dt & = & \sqrt{2\pi}A^{-1/2}\int_{0}^{\infty}\frac{1}{\sqrt{2\pi}A^{-1/2}}\exp\left(-\frac{t^{2}}{2(A^{-1/2})^{2}}\right)dt=\sqrt{2\pi}A^{-1/2}\\
+\int_{0}^{\infty}t\exp\left(-\frac{A}{2}t^{2}\right)dt & = & A^{-1}\int_{0}^{\infty}\exp\left(-\frac{A}{2}t^{2}\right)d\left(\frac{A}{2}t^{2}\right)=A^{-1}
 \end{eqnarray*}
 
 \end_inset
@@ -471,12 +471,20 @@ That is
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\int_{0}^{\infty}\frac{1}{\sigma^{N}}\exp\left(-\frac{1}{2\sigma^{2}}A\right)d\sigma & = & \int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)\propto A^{-(N-1)/2}
+\int_{0}^{\infty}\frac{1}{\sigma^{N}}\exp\left(-\frac{1}{2\sigma^{2}}A\right)d\sigma & \propto & A^{-(N-1)/2}
 \end{eqnarray*}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $A=\sum(x_{k}-\mu)^{2}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -540,7 +548,22 @@ C & B
 \end_layout
 
 \begin_layout Standard
-The deviation of 
+thus the joint pdf will be
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+P(x,y|d) & \propto & \exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2C(x-x_{0})(y-y_{0})+B(y-y_{0})^{2}]\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The standard deviation of 
 \begin_inset Formula $x$
 \end_inset
 
@@ -550,8 +573,64 @@ The deviation of
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\sigma_{x}^{2} & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}(x-x_{0})^{2}\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2}]\right)dydx}\\
- & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}
+\sigma_{x}^{2} & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}(x-x_{0})^{2}\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2C(x-x_{0})(y-y_{0})+B(y-y_{0})^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2C(x-x_{0})(y-y_{0})+B(y-y_{0})^{2}]\right)dydx}\\
+ & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[Ax^{2}+2Cxy+By^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[Ax^{2}+2Cxy+By]\right)dydx}\\
+ & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[(A-\frac{C^{2}}{B})x^{2}+B(y+\frac{C}{B}x)^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{C^{2}}{B})x^{2}+B(y+\frac{C}{B}x)^{2}]\right)dydx}\\
+ & = & \frac{\int_{-\infty}^{+\infty}dxx^{2}\exp\left(-\frac{1}{2}(A-\frac{C^{2}}{B})x^{2}\right)\int_{-\infty}^{+\infty}dy\exp\left(-\frac{1}{2}B(y+\frac{C}{B}x)^{2}\right)}{\int_{-\infty}^{+\infty}dx\exp\left(-\frac{1}{2}(A-\frac{C^{2}}{B})x^{2}\right)\int_{-\infty}^{+\infty}dy\exp\left(-\frac{1}{2}B(y+\frac{C}{B}x)^{2}\right)}\\
+ & = & \frac{\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}(A-\frac{C^{2}}{B})x^{2}\right)dx}{\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}(A-\frac{C^{2}}{B})x^{2}\right)dx}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The last step satisfies because
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\int_{-\infty}^{+\infty}dy\exp\left(-\frac{1}{2}B(y+\frac{C}{B}x)^{2}\right) & = & \sqrt{2\pi}B^{-1/2}\int_{-\infty}^{+\infty}dy\frac{1}{\sqrt{2\pi}B^{-1/2}}\exp\left(-\frac{(y+\frac{C}{B}x)^{2}}{2(B^{-1/2})^{2}}\right)=\sqrt{2\pi}B^{-1/2}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+is a constant (not a function of 
+\begin_inset Formula $x$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Comparing with the fact that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\int_{-\infty}^{+\infty}x\exp\left(-\frac{1}{2\sigma^{2}}x^{2}\right)dx}{\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2\sigma^{2}}x^{2}\right)dx} & = & \sigma^{2}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\sigma_{x}^{2} & = & \frac{1}{(A-\frac{C^{2}}{B})}=\frac{B}{AB-C^{2}}
 \end{eqnarray*}
 
 \end_inset
@@ -567,17 +646,22 @@ The deviation of
 \end_layout
 
 \begin_layout Standard
-thus the joint pdf will be
+Similarly, we have 
+\begin_inset Formula $\sigma_{y}^{2}=\frac{A}{AB-C^{2}}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-
-\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2}]\right)=
-
-
-
+\sigma_{xy}^{2} & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}(x-x_{0})(y-y_{0})\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2C(x-x_{0})(y-y_{0})+B(y-y_{0})^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2C(x-x_{0})(y-y_{0})+B(y-y_{0})^{2}]\right)dydx}\\
+ & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}xy\exp\left(-\frac{1}{2}[Ax^{2}+2Cxy+By^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[Ax^{2}+2Cxy+By^{2}]\right)dydx}\\
+ & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}[x(y+\frac{C}{B}x)-\frac{C}{B}x^{2}]\exp\left(-\frac{1}{2}[(A-\frac{C^{2}}{B})x^{2}+B(y+\frac{C}{B}x)^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{C^{2}}{B})x^{2}+B(y+\frac{C}{B}x)^{2}]\right)dydx}\\
+ & = & \frac{-\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\frac{C}{B}x^{2}\exp\left(-\frac{1}{2}[(A-\frac{C^{2}}{B})x^{2}+B(y+\frac{C}{B}x)^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{C^{2}}{B})x^{2}+B(y+\frac{C}{B}x)^{2}]\right)dydx}\\
+ & = & -\frac{C}{B}\frac{\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[(A-\frac{C^{2}}{B})x^{2}\right)dx}{\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{C^{2}}{B})x^{2}\right)dx}\\
+ & = & -\frac{C}{B}\frac{B}{AB-C^{2}}=-\frac{C}{AB-C^{2}}
 \end{eqnarray*}
 
 \end_inset
@@ -586,107 +670,59 @@ thus the joint pdf will be
 \end_layout
 
 \begin_layout Standard
-where 
-\begin_inset Formula $K$
-\end_inset
-
- is the constant that normalize the pdf, to get it, we have
+Therefore
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-
-\sigma_{x}^{2} & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}\\
- & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}+C(y+\frac{B}{C}x)^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}+C(y+\frac{B}{C}x)^{2}]\right)dydx}\\
- & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}\right)dydx}\\
- & = & \int_{-\infty}^{\infty}dyK\exp\left(-\frac{1}{2}(C-B^{2}/A)y^{2}\right)\int_{-\infty}^{\infty}dx\exp\left(-\frac{1}{2}[A(x+By/A)^{2}]\right)\\
- & = & \int_{-\infty}^{\infty}dyK\exp\left(-\frac{1}{2}(C-B^{2}/A)y^{2}\right)\int_{-\infty}^{\infty}dx\exp\left(-\frac{1}{2}Ax^{2}\right)\\
- & = & \int_{-\infty}^{\infty}dyK\exp\left(-\frac{1}{2}(C-B^{2}/A)y^{2}\right)\sqrt{2\pi/A}\\
- & = & K\sqrt{2\pi/(C-B^{2}/A)}\sqrt{2\pi/A}\\
- & = & 2\pi K/\sqrt{AC-B^{2}}\\
-
- & = & 1
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-So
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-K & = & \sqrt{AB-C^{2}}/2\pi
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Thus 
-\begin_inset Formula 
-\begin{eqnarray*}
-\sigma_{x}^{2} & = & E[(x-E[x])^{2}]\\
- & = & E[(x-x_{0})^{2}]\\
- & = & \int_{-\infty}^{\infty}dy\int_{-\infty}^{\infty}dx\quad\frac{\partial f(x,y)}{\partial A}/(-1/2)\\
- & = & -2\frac{\partial}{\partial A}\int_{-\infty}^{\infty}dy\int_{-\infty}^{\infty}dx\quad f(x,y)\\
- & = & -2\frac{\partial}{\partial A}2\pi K/\sqrt{AC-B^{2}}\\
- & = & \frac{2\pi K}{(A-B^{2}/C)\sqrt{AC-B^{2}}}\\
- & = & \frac{C}{AC-B^{2}}
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Similarly 
-\begin_inset Formula 
-\begin{eqnarray*}
-\sigma_{y}^{2} & = & \frac{A}{AC-B^{2}}
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-\sigma_{xy} & = & E[(x-E[x])(y-E[y])]\\
- & = & E[(x-x_{0})(y-y_{0})]\\
- & = & \int_{-\infty}^{\infty}dy\int_{-\infty}^{\infty}dx\quad\frac{\partial f(x,y)}{\partial B}/(-1)\\
- & = & -\frac{\partial}{\partial B}\int_{-\infty}^{\infty}dy\int_{-\infty}^{\infty}dx\quad f(x,y)\\
- & = & \frac{-B}{AC-B^{2}}
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In sum 
-\begin_inset Formula 
-\begin{eqnarray*}
-\boldsymbol{H}^{-1}=\begin{pmatrix}A & B\\
-B & C
-\end{pmatrix}^{-1} & = & \frac{1}{AC-B^{2}}\begin{pmatrix}C & -B\\
--B & A
-\end{pmatrix}\\
- & = & \left(\begin{array}{cc}
-\sigma_{x}^{2} & \sigma_{xy}^{2}\\
+\begin{bmatrix}\sigma_{x}^{2} & \sigma_{xy}^{2}\\
 \sigma_{xy}^{2} & \sigma_{y}^{2}
-\end{array}\right)
+\end{bmatrix} & = & \frac{1}{AB-C^{2}}\begin{bmatrix}B & -C\\
+-C & A
+\end{bmatrix}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{1}{AB-C^{2}}\begin{bmatrix}B & -C\\
+-C & A
+\end{bmatrix}\begin{bmatrix}A & C\\
+C & B
+\end{bmatrix} & = & I=\begin{bmatrix}\sigma_{x}^{2} & \sigma_{xy}^{2}\\
+\sigma_{xy}^{2} & \sigma_{y}^{2}
+\end{bmatrix}\begin{bmatrix}\frac{\partial^{2}F}{\partial x^{2}} & \frac{\partial^{2}F}{\partial x\partial y}\\
+\frac{\partial^{2}F}{\partial x\partial y} & \frac{\partial^{2}F}{\partial y^{2}}
+\end{bmatrix}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\begin{bmatrix}\sigma_{x}^{2} & \sigma_{xy}^{2}\\
+\sigma_{xy}^{2} & \sigma_{y}^{2}
+\end{bmatrix} & = & \begin{bmatrix}\frac{\partial^{2}F}{\partial x^{2}} & \frac{\partial^{2}F}{\partial x\partial y}\\
+\frac{\partial^{2}F}{\partial x\partial y} & \frac{\partial^{2}F}{\partial y^{2}}
+\end{bmatrix}^{-1}
 \end{eqnarray*}
 
 \end_inset
@@ -711,8 +747,8 @@ Appendix A, background knowledge
 \end_layout
 
 \begin_layout Itemize
-Number of data points vs number of model parameter, overdetermined, underdetermi
-ned, mixed determined 
+Number of data points vs number of model parameters, overdetermined, underdeterm
+ined, mixed determined 
 \end_layout
 
 \begin_layout Itemize
@@ -720,55 +756,29 @@ MAP and Bayes' theorem
 \end_layout
 
 \begin_layout Itemize
-L1 norm is better when existence of outlier 
+L1 norm is better when outliers exist 
 \end_layout
 
 \begin_layout Itemize
-difficulty in inverse: existance, uniqueness, and instability 
+difficulties in inverse: existence, uniqueness, and instability 
 \end_layout
 
 \begin_layout Itemize
-Fredholm integration equation of the first kind generalize many inverse
- problem 
+Fredholm integral equation of the first kind generalizes many inverse problems
+ 
 \end_layout
 
 \begin_layout Itemize
-Chapter 11 Section 3, general multivarate normal case with prior 
+Chapter 11 Section 3, general multivariate normal case with prior 
 \end_layout
 
 \begin_layout Itemize
-damped Newton's method, choose the step length instead of using full newton
- step 
+damped Newton's method, choose the step length instead of using the full
+ Newton step 
 \end_layout
 
 \begin_layout Itemize
 ABT mentioned p-values, chi-square statistics 
-\end_layout
-
-\begin_layout Itemize
-in lecture, we maximize 
-\begin_inset Formula $P(d|m)$
-\end_inset
-
- to get the maximum likelihood, in ABT they defined 
-\begin_inset Formula $L(m|d)=P(d|m)$
-\end_inset
-
- first, then maximize it.
- ABT one is more clear, because 
-\begin_inset Formula $P(d|m)$
-\end_inset
-
- apprears to be a function of 
-\begin_inset Formula $d$
-\end_inset
-
-, where in fact we want it to be a function of 
-\begin_inset Formula $m$
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Subsubsection*
@@ -784,7 +794,7 @@ When estimating
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
-, devided by 
+, divided by 
 \begin_inset Formula $N-1$
 \end_inset
 
@@ -804,15 +814,11 @@ Confused about
 \begin_inset Formula $G(m)$
 \end_inset
 
-, it's really the same thing, Jacobian 
+; it's really the same thing, the Jacobian 
 \end_layout
 
 \begin_layout Itemize
-Class did a better job of describing prior 
-\end_layout
-
-\begin_layout Itemize
-Class and ABT does not cover the case when prior is a given range 
+Class did a better job of describing priors 
 \end_layout
 
 \begin_layout Itemize
