@@ -379,7 +379,7 @@ Let
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
--\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & = & \int_{0}^{\infty}t^{N-2}f(t)dt\\
+\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & = & \int_{0}^{\infty}t^{N-2}f(t)dt\\
  & = & -A^{-1}\int_{0}^{\infty}t^{N-3}f'(t)dt\\
  & = & -A^{-1}\left[t^{N-3}f(t)\vert_{0}^{\infty}-\int_{0}^{\infty}(N-3)t^{N-4}f(t)dt\right]\\
  & = & -A^{-1}\left[0-(N-3)\int_{0}^{\infty}t^{N-4}f(t)dt\right]\\
@@ -402,7 +402,7 @@ Iteratively using integration by part as above
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
--\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & \propto & (A^{-1})^{(N-2)/2}\int_{0}^{\infty}t^{N-N}f(t)dt\\
+\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & \propto & (A^{-1})^{(N-2)/2}\int_{0}^{\infty}t^{N-N}f(t)dt\\
  & = & A^{-(N-2)/2}\int_{0}^{\infty}f(t)dt
 \end{eqnarray*}
 
@@ -430,7 +430,7 @@ Iteratively using integration by part as above
 \color none
 \begin_inset Formula 
 \begin{eqnarray*}
--\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & \propto & (A^{-1})^{((N-1)-2)/2}\int_{0}^{\infty}t^{(N-(N-1))}f(t)dt\\
+\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & \propto & (A^{-1})^{((N-1)-2)/2}\int_{0}^{\infty}t^{(N-(N-1))}f(t)dt\\
  & = & A^{-(N-3)/2}\int_{0}^{\infty}tf(t)dt
 \end{eqnarray*}
 
@@ -443,8 +443,8 @@ Iteratively using integration by part as above
 Since 
 \begin_inset Formula 
 \begin{eqnarray*}
-\int_{0}^{\infty}\exp\left(-\frac{A}{2}t^{2}\right)dt=\sqrt{\frac{\pi}{2}}A^{-1/2}\propto A^{-1/2}\\
-\int_{0}^{\infty}t\exp\left(-\frac{A}{2}t^{2}\right)dt=A^{-1}\propto A^{-1}
+\int_{0}^{\infty}\exp\left(-\frac{A}{2}t^{2}\right)dt & = & \sqrt{2\pi}A^{-1/2}\int_{0}^{\infty}\frac{1}{\sqrt{2\pi}A^{-1/2}}\exp\left(-\frac{t^{2}}{2(A^{-1/2})^{2}}\right)dt=\sqrt{2\pi}A^{-1/2}\\
+\int_{0}^{\infty}t\exp\left(-\frac{A}{2}t^{2}\right)dt & = & A^{-1}\int_{0}^{\infty}\exp\left(-\frac{A}{2}t^{2}\right)d\left(\frac{A}{2}t^{2}\right)=A^{-1}
 \end{eqnarray*}
 
 \end_inset
@@ -471,12 +471,20 @@ That is
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\int_{0}^{\infty}\frac{1}{\sigma^{N}}\exp\left(-\frac{1}{2\sigma^{2}}A\right)d\sigma & = & \int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)\propto A^{-(N-1)/2}
+\int_{0}^{\infty}\frac{1}{\sigma^{N}}\exp\left(-\frac{1}{2\sigma^{2}}A\right)d\sigma & \propto & A^{-(N-1)/2}
 \end{eqnarray*}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $A=\sum(x_{k}-\mu)^{2}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -573,11 +581,7 @@ thus the joint pdf will be
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-
 \exp\left(-\frac{1}{2}[A(x-x_{0})^{2}+2B(x-x_{0})(y-y_{0})+C(y-y_{0})^{2}]\right)=
-
-
-
 \end{eqnarray*}
 
 \end_inset
@@ -596,7 +600,6 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-
 \sigma_{x}^{2} & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[Ax^{2}+2Bxy+Cy^{2}]\right)dydx}\\
  & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}+C(y+\frac{B}{C}x)^{2}]\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}+C(y+\frac{B}{C}x)^{2}]\right)dydx}\\
  & = & \frac{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}x^{2}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}\right)dydx}{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp\left(-\frac{1}{2}[(A-\frac{B^{2}}{C})x^{2}\right)dydx}\\
@@ -605,7 +608,6 @@ where
  & = & \int_{-\infty}^{\infty}dyK\exp\left(-\frac{1}{2}(C-B^{2}/A)y^{2}\right)\sqrt{2\pi/A}\\
  & = & K\sqrt{2\pi/(C-B^{2}/A)}\sqrt{2\pi/A}\\
  & = & 2\pi K/\sqrt{AC-B^{2}}\\
-
  & = & 1
 \end{eqnarray*}
 
