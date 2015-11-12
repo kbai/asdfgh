@@ -356,7 +356,7 @@ Change variable
 , then 
 \begin_inset Formula 
 \begin{eqnarray*}
-\int_{0}^{\infty}\frac{1}{\sigma^{N}}\exp\left(-\frac{1}{2\sigma^{2}}A\right)d\sigma & = & -\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt
+\int_{0}^{\infty}\frac{1}{\sigma^{N}}\exp\left(-\frac{1}{2\sigma^{2}}A\right)d\sigma & = & \int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt
 \end{eqnarray*}
 
 \end_inset
@@ -379,11 +379,11 @@ Let
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
--\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & = & -\int_{0}^{\infty}t^{N-2}f(t)dt\\
- & = & A^{-1}\int_{0}^{\infty}t^{N-3}f'(t)dt\\
- & = & A^{-1}\left[t^{N-3}f(t)\vert_{0}^{\infty}-\int_{0}^{\infty}(N-3)t^{N-4}f(t)dt\right]\\
- & = & A^{-1}\left[0-(N-3)\int_{0}^{\infty}t^{N-4}f(t)dt\right]\\
- & \propto & -A^{-1}\int_{0}^{\infty}t^{N-4}f(t)dt
+-\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & = & \int_{0}^{\infty}t^{N-2}f(t)dt\\
+ & = & -A^{-1}\int_{0}^{\infty}t^{N-3}f'(t)dt\\
+ & = & -A^{-1}\left[t^{N-3}f(t)\vert_{0}^{\infty}-\int_{0}^{\infty}(N-3)t^{N-4}f(t)dt\right]\\
+ & = & -A^{-1}\left[0-(N-3)\int_{0}^{\infty}t^{N-4}f(t)dt\right]\\
+ & \propto & A^{-1}\int_{0}^{\infty}t^{N-4}f(t)dt
 \end{eqnarray*}
 
 \end_inset
@@ -402,7 +402,7 @@ Iteratively using integration by part as above
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
--\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & \propto & (-A^{-1})^{(N-2)/2}\int_{0}^{\infty}t^{N-N}f(t)dt\\
+-\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & \propto & (A^{-1})^{(N-2)/2}\int_{0}^{\infty}t^{N-N}f(t)dt\\
  & = & A^{-(N-2)/2}\int_{0}^{\infty}f(t)dt
 \end{eqnarray*}
 
@@ -430,7 +430,7 @@ Iteratively using integration by part as above
 \color none
 \begin_inset Formula 
 \begin{eqnarray*}
--\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & \propto & (-A^{-1})^{((N-1)-2)/2}\int_{0}^{\infty}t^{(N-(N-1))}f(t)dt\\
+-\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt & \propto & (A^{-1})^{((N-1)-2)/2}\int_{0}^{\infty}t^{(N-(N-1))}f(t)dt\\
  & = & A^{-(N-3)/2}\int_{0}^{\infty}tf(t)dt
 \end{eqnarray*}
 
@@ -456,7 +456,7 @@ Since
 Then, (1) & (2) both give 
 \begin_inset Formula 
 \begin{eqnarray*}
--\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt\propto A^{-(N-1)/2}
+\int t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)dt\propto A^{-(N-1)/2}
 \end{eqnarray*}
 
 \end_inset
@@ -471,7 +471,7 @@ That is
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\int_{0}^{\infty}\frac{1}{\sigma^{N}}\exp\left(-\frac{1}{2\sigma^{2}}A\right)d\sigma & = & -\int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)\propto A^{-(N-1)/2}
+\int_{0}^{\infty}\frac{1}{\sigma^{N}}\exp\left(-\frac{1}{2\sigma^{2}}A\right)d\sigma & = & \int_{0}^{\infty}t^{N-2}\exp\left(-\frac{A}{2}t^{2}\right)\propto A^{-(N-1)/2}
 \end{eqnarray*}
 
 \end_inset
