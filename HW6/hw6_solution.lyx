@@ -304,29 +304,8 @@ Our G matrices only know about where we took the measurements (x-values);
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../latex_solutions/ps6-solutions/FullSizeRender_1_.jpg
-	width 12cm
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Example Sketch for datasets that fit with each G matrix.
-\end_layout
-
-\end_inset
-
-
-\end_layout
+	filename p2/p21.jpg
 
 \end_inset
 
@@ -350,7 +329,7 @@ We plug in
 \begin_inset Formula $G_{3}$
 \end_inset
 
- into Matlab and simply use the svd function to get the singular value decompost
+ into Matlab and simply use the SVD function to get the singular value decompost
 ions.
  See attached matlab code after part c.
  The outputs are:
@@ -544,9 +523,9 @@ We can compare these to the orthogonal eigendecomposition discussed in class.
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
-G^{T}G=V\Sigma^{T}U^{T}U\Sigma V^{T}
-\end{equation}
+\[
+G^{T}G=V\Sigma^{T}U^{T}U\Sigma V^{T}=V\Sigma^{T}\Sigma V^{T}
+\]
 
 \end_inset
 
@@ -554,12 +533,12 @@ G^{T}G=V\Sigma^{T}U^{T}U\Sigma V^{T}
 \end_layout
 
 \begin_layout Standard
-From this we know that 
+Note that 
 \begin_inset Formula $U^{T}U$
 \end_inset
 
- should multiply out to the identity.
- We can check this within Matlab for 
+ should multiply out to the identity, we can check this within Matlab for
+ 
 \begin_inset Formula $U_{1}$
 \end_inset
 
@@ -571,7 +550,7 @@ From this we know that
 \begin_inset Formula $U_{3}$
 \end_inset
 
- and see that it checks out.
+.
  We also want to show that the columns of the V matrix do indeed contain
  the eigenvectors of 
 \begin_inset Formula $G^{T}G$
@@ -588,15 +567,14 @@ If we use the eig() function in Matlab we can find the eigenvectors and
 \end_inset
 
 .
- (see attached Matlab code) We compare the first output to the vectors that
- make up V in each case and see that they match (great!).
+ We compare the first output to the vectors that make up V in each case
+ and see that they match.
  Then we compare the eigenvalue output to the singular values by taking
  the square root of the eigenvalues to get the singular values.
- They also match in each case (fantastic!).
+ They also match in each case.
 \end_layout
 
 \begin_layout Verbatim
-
 EIGVECTORS1 =
 \end_layout
 
@@ -605,12 +583,10 @@ EIGVECTORS1 =
 \end_layout
 
 \begin_layout Verbatim
-
    -0.9895    0.1442
 \end_layout
 
 \begin_layout Verbatim
-
     0.1442    0.9895
 \end_layout
 
@@ -623,7 +599,6 @@ EIGVECTORS1 =
 \end_layout
 
 \begin_layout Verbatim
-
 EIG1 =
 \end_layout
 
@@ -632,12 +607,10 @@ EIG1 =
 \end_layout
 
 \begin_layout Verbatim
-
     2.9796         0
 \end_layout
 
 \begin_layout Verbatim
-
          0   52.0204
 \end_layout
 
@@ -650,7 +623,6 @@ EIG1 =
 \end_layout
 
 \begin_layout Verbatim
-
 SV1 =
 \end_layout
 
@@ -659,12 +631,10 @@ SV1 =
 \end_layout
 
 \begin_layout Verbatim
-
     1.7262         0
 \end_layout
 
 \begin_layout Verbatim
-
          0    7.2125
 \end_layout
 
@@ -677,7 +647,6 @@ SV1 =
 \end_layout
 
 \begin_layout Verbatim
-
 EIGVECTORS2 =
 \end_layout
 
@@ -686,12 +655,10 @@ EIGVECTORS2 =
 \end_layout
 
 \begin_layout Verbatim
-
     0.0850   -0.9964
 \end_layout
 
 \begin_layout Verbatim
-
    -0.9964   -0.0850
 \end_layout
 
@@ -704,7 +671,6 @@ EIGVECTORS2 =
 \end_layout
 
 \begin_layout Verbatim
-
 EIG2 =
 \end_layout
 
@@ -713,12 +679,10 @@ EIG2 =
 \end_layout
 
 \begin_layout Verbatim
-
     0.4844         0
 \end_layout
 
 \begin_layout Verbatim
-
          0    4.0256
 \end_layout
 
@@ -731,7 +695,6 @@ EIG2 =
 \end_layout
 
 \begin_layout Verbatim
-
 SV2 =
 \end_layout
 
@@ -740,12 +703,10 @@ SV2 =
 \end_layout
 
 \begin_layout Verbatim
-
     0.6960         0
 \end_layout
 
 \begin_layout Verbatim
-
          0    2.0064
 \end_layout
 
@@ -758,7 +719,6 @@ SV2 =
 \end_layout
 
 \begin_layout Verbatim
-
 EIGVECTORS3 =
 \end_layout
 
@@ -767,12 +727,10 @@ EIGVECTORS3 =
 \end_layout
 
 \begin_layout Verbatim
-
    -1.0000    0.0098
 \end_layout
 
 \begin_layout Verbatim
-
     0.0098    1.0000
 \end_layout
 
@@ -785,7 +743,6 @@ EIGVECTORS3 =
 \end_layout
 
 \begin_layout Verbatim
-
 EIG3 =
 \end_layout
 
@@ -794,7 +751,6 @@ EIG3 =
 \end_layout
 
 \begin_layout Verbatim
-
    1.0e+04 *
 \end_layout
 
@@ -803,12 +759,10 @@ EIG3 =
 \end_layout
 
 \begin_layout Verbatim
-
     0.0000         0
 \end_layout
 
 \begin_layout Verbatim
-
          0    4.1455
 \end_layout
 
@@ -821,7 +775,6 @@ EIG3 =
 \end_layout
 
 \begin_layout Verbatim
-
 SV3 =
 \end_layout
 
@@ -830,12 +783,10 @@ SV3 =
 \end_layout
 
 \begin_layout Verbatim
-
     0.0611         0
 \end_layout
 
 \begin_layout Verbatim
-
          0  203.6050
 \end_layout
 
@@ -1060,19 +1011,6 @@ Realizing that
 \end_inset
 
 , the approximation can be derived by looking at 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{subequations}
-\end_layout
-
-\end_inset
-
- 
 \begin_inset Formula 
 \begin{align}
 \log(F(M)) & \approx N\log(N)-M\log(M)-(N-M)\log(N-M)-N\log(2)\\
@@ -1081,19 +1019,6 @@ begin{subequations}
  & =N\left[-p\log(p)+(1-p)\log(1-p)\right]-N\log(2)\\
  & =NS(p)-N\log(2).
 \end{align}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{subequations}
-\end_layout
 
 \end_inset
 

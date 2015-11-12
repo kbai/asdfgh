@@ -29,7 +29,7 @@
 \pagestyle{fancy}
 \lhead{\textbf{Ge/ESE 118}} %name of the course
 \chead{\textbf{}} %topic of the homework set
-\rhead{\textbf{Solution 5}} %number of the homework set
+\rhead{\textbf{Solution 6}} %number of the homework set
 \lfoot{}
 \cfoot{}
 \rfoot{\thepage}
@@ -120,7 +120,797 @@
 \begin_body
 
 \begin_layout Subsection*
-Problem 1 (graded by Toby) 25 points
+Problem 1 (graded by Dunzhu) 20 points
+\end_layout
+
+\begin_layout Subsubsection*
+(a) - 10 points
+\end_layout
+
+\begin_layout Standard
+The code is shown below.
+ Note that Gauss-Newton is just a special case of Levenberg-Marquardt when
+ 
+\begin_inset Formula $\lambda=0$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+hw6p2.m
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(b) - 10 points
+\end_layout
+
+\begin_layout Standard
+LM method should converge to the same value as GN for this problem.
+ The contour of misfit function is ploted assuming 
+\begin_inset Formula $y_{s},z_{s},v$
+\end_inset
+
+ is the same as the best model.
+ Note that 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lambda$
+\end_inset
+
+ control the length of updating step for LM method.
+ First 3 step (
+\begin_inset Formula $\lambda=10$
+\end_inset
+
+), the updating is smaller compaired with GN method.
+ 
+\end_layout
+
+\begin_layout Itemize
+updating becomes smaller and smaller as the gradient goes to 0 
+\end_layout
+
+\begin_layout Itemize
+the initial updating for LM is not along the gradient direction even when
+ 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is large.
+ If we use 
+\begin_inset Formula $H+\lambda I$
+\end_inset
+
+ instead, when 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is large, updating of the model will along the gradient direction 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../latex_solutions/ps6-solutions/LM.eps
+	width 12cm
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Problem 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Problem 2 (graded by Stephen) 20 points
+\end_layout
+
+\begin_layout Subsubsection*
+(a) - 5 points
+\end_layout
+
+\begin_layout Standard
+For the case of a linear regression model, we know that our G matrices always
+ have the form:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+G=\begin{pmatrix}1 & x_{1}\\
+1 & x_{2}\\
+1 & x_{3}\\
+1 & x_{4}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Our G matrices only know about where we took the measurements (x-values);
+ they don't know anything about the corresponding y-values at these points.
+ Thus there are infinitely many datasets that can correspond to these G
+ matrices.
+ The points DO NOT need to be on a line, or even nearly linear for that
+ matter, for we can still find a "best fit linear model" for any arbitrary
+ dataset.
+ The only requirement is that the points be at x=1, -3, 4, 5 for 
+\begin_inset Formula $G_{1}$
+\end_inset
+
+, x=-0.1, 0.3, -0.4, 0.5 for 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+, and x= 101, 97, 104, 105 for 
+\begin_inset Formula $G_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename p2/p21.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(b) - 5 points
+\end_layout
+
+\begin_layout Standard
+We plug in 
+\begin_inset Formula $G_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $G_{3}$
+\end_inset
+
+ into Matlab and simply use the SVD function to get the singular value decompost
+ions.
+ See attached matlab code after part c.
+ The outputs are:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U_{1}=\begin{pmatrix}0.1572 & 0.4897 & -0.5885 & -0.6239\\
+-0.3916 & 0.8240 & 0.2055 & 0.3543\\
+0.5688 & 0.2390 & 0.7102 & -0.3390\\
+0.7060 & 0.1554 & -0.3272 & 0.6086
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S_{1}=\begin{pmatrix}7.2125 & 0\\
+0 & 1.7262\\
+0 & 0\\
+0 & 0
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{1}=\begin{pmatrix}0.1442 & 0.9895\\
+0.9895 & -0.1442
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U_{2}=\begin{pmatrix}-0.4924 & 0.2653 & -0.8186 & -0.1304\\
+-0.5093 & -0.3073 & 0.3239 & -0.7357\\
+-0.4797 & 0.6948 & 0.4738 & 0.2504\\
+-0.5178 & -0.5936 & 0.0210 & 0.6157
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S_{2}=\begin{pmatrix}2.0064 & 0\\
+0 & 0.6960\\
+0 & 0\\
+0 & 0
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{2}=\begin{pmatrix}-0.9964 & 0.0850\\
+-0.0850 & -0.9964
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U_{3}=\begin{pmatrix}0.4961 & 0.1357 & -0.5885 & -0.6239\\
+0.4764 & 0.7780 & 0.2055 & 0.3543\\
+0.5108 & -0.3460 & 0.7102 & -0.3390\\
+0.5157 & -0.5066 & -0.3272 & 0.6086
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S_{3}=\begin{pmatrix}203.6050 & 0\\
+0 & 0.0611\\
+0 & 0\\
+0 & 0
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{3}=\begin{pmatrix}0.0098 & 1.0000\\
+1.0000 & -0.0098
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(c) - 5 points
+\end_layout
+
+\begin_layout Standard
+We can calculate 
+\begin_inset Formula $G^{T}G$
+\end_inset
+
+ for each of the matrices by hand.
+ The results are:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+G_{1}^{T}G_{1}=\begin{pmatrix}4 & 7\\
+7 & 51
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+G_{2}^{T}G_{2}=\begin{pmatrix}4.00 & 0.30\\
+0.30 & 0.51
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+G_{3}^{T}G_{3}=\begin{pmatrix}4 & 407\\
+407 & 41451
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can compare these to the orthogonal eigendecomposition discussed in class.
+ Here is the form of the orthogonal eigendecomposition:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+G^{T}G=V\Sigma^{T}U^{T}U\Sigma V^{T}=V\Sigma^{T}\Sigma V^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset Formula $U^{T}U$
+\end_inset
+
+ should multiply out to the identity, we can check this within Matlab for
+ 
+\begin_inset Formula $U_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $U_{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $U_{3}$
+\end_inset
+
+.
+ We also want to show that the columns of the V matrix do indeed contain
+ the eigenvectors of 
+\begin_inset Formula $G^{T}G$
+\end_inset
+
+ and that the corresponding eigenvalues are the squares of the singular
+ values.
+\end_layout
+
+\begin_layout Standard
+If we use the eig() function in Matlab we can find the eigenvectors and
+ eigenvalues for each 
+\begin_inset Formula $G^{T}G$
+\end_inset
+
+.
+ (see attached Matlab code) We compare the first output to the vectors that
+ make up V in each case and see that they match.
+ Then we compare the eigenvalue output to the singular values by taking
+ the square root of the eigenvalues to get the singular values.
+ They also match in each case.
+\end_layout
+
+\begin_layout Verbatim
+EIGVECTORS1 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+   -0.9895    0.1442
+\end_layout
+
+\begin_layout Verbatim
+    0.1442    0.9895
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+EIG1 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+    2.9796         0
+\end_layout
+
+\begin_layout Verbatim
+         0   52.0204
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+SV1 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+    1.7262         0
+\end_layout
+
+\begin_layout Verbatim
+         0    7.2125
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+EIGVECTORS2 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+    0.0850   -0.9964
+\end_layout
+
+\begin_layout Verbatim
+   -0.9964   -0.0850
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+EIG2 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+    0.4844         0
+\end_layout
+
+\begin_layout Verbatim
+         0    4.0256
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+SV2 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+    0.6960         0
+\end_layout
+
+\begin_layout Verbatim
+         0    2.0064
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+EIGVECTORS3 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+   -1.0000    0.0098
+\end_layout
+
+\begin_layout Verbatim
+    0.0098    1.0000
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+EIG3 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+   1.0e+04 *
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+    0.0000         0
+\end_layout
+
+\begin_layout Verbatim
+         0    4.1455
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+SV3 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+    0.0611         0
+\end_layout
+
+\begin_layout Verbatim
+         0  203.6050
+\end_layout
+
+\begin_layout Subsubsection*
+(d) - 5 points
+\end_layout
+
+\begin_layout Standard
+We can see that the singular values vary for each of the G matrices from
+ part a.
+ Both singular values for 
+\begin_inset Formula $G_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+ are close to each other.
+ In each case they are only separated by 1 order of magnitude.
+ This is due to the fact that the measurement points (x-values) were separated
+ by the roughly the same order of magnitude as their values.
+ For example, for 
+\begin_inset Formula $G_{1}$
+\end_inset
+
+ the measurement points are on the order of 
+\begin_inset space ~
+\end_inset
+
+1 and are separated by just 2 or 3 each.
+ For 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+ the measurement points are on the order of 
+\begin_inset space ~
+\end_inset
+
+0.1 and are separated by 0.2 or 0.3 each.
+\end_layout
+
+\begin_layout Standard
+However, the singular values for 
+\begin_inset Formula $G_{3}$
+\end_inset
+
+ show a much greater disparity (4 orders of magnitude).
+ This is due to the fact that the measurement points are on the order of
+ 
+\begin_inset space ~
+\end_inset
+
+100 but are only separated by 2 or 3 each (2 orders of magnitude difference).
+ This can lead to difficulties when trying to use 
+\begin_inset Formula $G_{3}$
+\end_inset
+
+ to find a best fitting model because the singular values are so far apart.
+ It would be helpful in this situation to have measured points further apart
+ along the x-axis.
+ A cluster of measurements very near to each other relative to the overall
+ data space can lead to a great disparity in singular values.
+ We can think about this in the extreme case that we measure the same point
+ (x-value) over and over.
+ Due to measurement error, this will return different values.
+ However, the G matrix will have all the same values in the second column.
+ When we calculate 
+\begin_inset Formula $G^{T}G$
+\end_inset
+
+ we will see that it's columns are not linearly independent.
+ This means that 
+\begin_inset Formula $G^{T}G$
+\end_inset
+
+ is not invertible and will have one singular value that is 0.
+\end_layout
+
+\begin_layout Standard
+In our problem, 
+\begin_inset Formula $G_{3}^{T}G_{3}'s$
+\end_inset
+
+ columns are still linearly independent, but they are much closer to linear
+ dependence than either of the first two cases.
+ Thus, it gives a singular value that is much closer to 0 than the first
+ two cases.
+\end_layout
+
+\begin_layout Standard
+The V matrices are made up of two orthogonal vectors (the eigenvectors in
+ the model space in this case) that make the rotated axes of our new reference
+ frame.
+ Thus, those eigenvectors associated with large singular values are stably
+ determined (well constrained) and those associated with small singular
+ values are not.
+ If we look at the case for 
+\begin_inset Formula $G_{3}$
+\end_inset
+
+ we see that the first singular value is large and the second is not.
+ The eigenvector associated with the small value is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{pmatrix}1.0000\\
+-0.0098
+\end{pmatrix}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(This is not really complete...)
+\end_layout
+
+\begin_layout Subsection*
+Problem 3 (graded by Toby) 25 points
 \end_layout
 
 \begin_layout Subsubsection*
@@ -322,845 +1112,6 @@ Thus, the maximum entropy solution is given by
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Subsection*
-Problem 2 (graded by Dunzhu) 20 points
-\end_layout
-
-\begin_layout Subsubsection*
-(a) - 10 points
-\end_layout
-
-\begin_layout Standard
-The code is shown below.
- Note that Gauss-Newton is just a special case of Levenberg-Marquardt when
- 
-\begin_inset Formula $\lambda=0$
-\end_inset
-
-.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lstinputlisting
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-hw6p2.m
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Subsubsection*
-(b) - 10 points
-\end_layout
-
-\begin_layout Standard
-LM method should converge to the same value as GN for this problem.
- The contour of misfit function is ploted assuming 
-\begin_inset Formula $y_{s},z_{s},v$
-\end_inset
-
- is the same as the best model.
- Note that 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\lambda$
-\end_inset
-
- control the length of updating step for LM method.
- First 3 step (
-\begin_inset Formula $\lambda=10$
-\end_inset
-
-), the updating is smaller compaired with GN method.
- 
-\end_layout
-
-\begin_layout Itemize
-updating becomes smaller and smaller as the gradient goes to 0 
-\end_layout
-
-\begin_layout Itemize
-the initial updating for LM is not along the gradient direction even when
- 
-\begin_inset Formula $\lambda$
-\end_inset
-
- is large.
- If we use 
-\begin_inset Formula $H+\lambda I$
-\end_inset
-
- instead, when 
-\begin_inset Formula $\lambda$
-\end_inset
-
- is large, updating of the model will along the gradient direction 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../latex_solutions/ps6-solutions/LM.eps
-	width 12cm
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Problem 2
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection*
-Problem 3 (graded by Stephen) 20 points
-\end_layout
-
-\begin_layout Subsubsection*
-(a) - 5 points
-\end_layout
-
-\begin_layout Standard
-For the case of a linear regression model, we know that our G matrices always
- have the form:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-G=\begin{pmatrix}1 & x_{1}\\
-1 & x_{2}\\
-1 & x_{3}\\
-1 & x_{4}
-\end{pmatrix}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Our G matrices only know about where we took the measurements (x-values);
- they don't know anything about the corresponding y-values at these points.
- Thus there are infinitely many datasets that can correspond to these G
- matrices.
- The points DO NOT need to be on a line, or even nearly linear for that
- matter, for we can still find a "best fit linear model" for any arbitrary
- dataset.
- The only requirement is that the points be at x=1, -3, 4, 5 for 
-\begin_inset Formula $G_{1}$
-\end_inset
-
-, x=-0.1, 0.3, -0.4, 0.5 for 
-\begin_inset Formula $G_{2}$
-\end_inset
-
-, and x= 101, 97, 104, 105 for 
-\begin_inset Formula $G_{3}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../latex_solutions/ps6-solutions/FullSizeRender_1_.jpg
-	width 12cm
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Example Sketch for datasets that fit with each G matrix.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection*
-(b) - 5 points
-\end_layout
-
-\begin_layout Standard
-We plug in 
-\begin_inset Formula $G_{1}$
-\end_inset
-
-, 
-\begin_inset Formula $G_{2}$
-\end_inset
-
-, and 
-\begin_inset Formula $G_{3}$
-\end_inset
-
- into Matlab and simply use the svd function to get the singular value decompost
-ions.
- See attached matlab code after part c.
- The outputs are:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-U_{1}=\begin{pmatrix}0.1572 & 0.4897 & -0.5885 & -0.6239\\
--0.3916 & 0.8240 & 0.2055 & 0.3543\\
-0.5688 & 0.2390 & 0.7102 & -0.3390\\
-0.7060 & 0.1554 & -0.3272 & 0.6086
-\end{pmatrix}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-S_{1}=\begin{pmatrix}7.2125 & 0\\
-0 & 1.7262\\
-0 & 0\\
-0 & 0
-\end{pmatrix}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-V_{1}=\begin{pmatrix}0.1442 & 0.9895\\
-0.9895 & -0.1442
-\end{pmatrix}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-U_{2}=\begin{pmatrix}-0.4924 & 0.2653 & -0.8186 & -0.1304\\
--0.5093 & -0.3073 & 0.3239 & -0.7357\\
--0.4797 & 0.6948 & 0.4738 & 0.2504\\
--0.5178 & -0.5936 & 0.0210 & 0.6157
-\end{pmatrix}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-S_{2}=\begin{pmatrix}2.0064 & 0\\
-0 & 0.6960\\
-0 & 0\\
-0 & 0
-\end{pmatrix}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-V_{2}=\begin{pmatrix}-0.9964 & 0.0850\\
--0.0850 & -0.9964
-\end{pmatrix}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-U_{3}=\begin{pmatrix}0.4961 & 0.1357 & -0.5885 & -0.6239\\
-0.4764 & 0.7780 & 0.2055 & 0.3543\\
-0.5108 & -0.3460 & 0.7102 & -0.3390\\
-0.5157 & -0.5066 & -0.3272 & 0.6086
-\end{pmatrix}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-S_{3}=\begin{pmatrix}203.6050 & 0\\
-0 & 0.0611\\
-0 & 0\\
-0 & 0
-\end{pmatrix}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-V_{3}=\begin{pmatrix}0.0098 & 1.0000\\
-1.0000 & -0.0098
-\end{pmatrix}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection*
-(c) - 5 points
-\end_layout
-
-\begin_layout Standard
-We can calculate 
-\begin_inset Formula $G^{T}G$
-\end_inset
-
- for each of the matrices by hand.
- The results are:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-G_{1}^{T}G_{1}=\begin{pmatrix}4 & 7\\
-7 & 51
-\end{pmatrix}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-G_{2}^{T}G_{2}=\begin{pmatrix}4.00 & 0.30\\
-0.30 & 0.51
-\end{pmatrix}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-G_{3}^{T}G_{3}=\begin{pmatrix}4 & 407\\
-407 & 41451
-\end{pmatrix}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We can compare these to the orthogonal eigendecomposition discussed in class.
- Here is the form of the orthogonal eigendecomposition:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-G^{T}G=V\Sigma^{T}U^{T}U\Sigma V^{T}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-From this we know that 
-\begin_inset Formula $U^{T}U$
-\end_inset
-
- should multiply out to the identity.
- We can check this within Matlab for 
-\begin_inset Formula $U_{1}$
-\end_inset
-
-, 
-\begin_inset Formula $U_{2}$
-\end_inset
-
-, and 
-\begin_inset Formula $U_{3}$
-\end_inset
-
- and see that it checks out.
- We also want to show that the columns of the V matrix do indeed contain
- the eigenvectors of 
-\begin_inset Formula $G^{T}G$
-\end_inset
-
- and that the corresponding eigenvalues are the squares of the singular
- values.
-\end_layout
-
-\begin_layout Standard
-If we use the eig() function in Matlab we can find the eigenvectors and
- eigenvalues for each 
-\begin_inset Formula $G^{T}G$
-\end_inset
-
-.
- (see attached Matlab code) We compare the first output to the vectors that
- make up V in each case and see that they match (great!).
- Then we compare the eigenvalue output to the singular values by taking
- the square root of the eigenvalues to get the singular values.
- They also match in each case (fantastic!).
-\end_layout
-
-\begin_layout Verbatim
-
-EIGVECTORS1 =
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-   -0.9895    0.1442
-\end_layout
-
-\begin_layout Verbatim
-
-    0.1442    0.9895
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-EIG1 =
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-    2.9796         0
-\end_layout
-
-\begin_layout Verbatim
-
-         0   52.0204
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-SV1 =
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-    1.7262         0
-\end_layout
-
-\begin_layout Verbatim
-
-         0    7.2125
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-EIGVECTORS2 =
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-    0.0850   -0.9964
-\end_layout
-
-\begin_layout Verbatim
-
-   -0.9964   -0.0850
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-EIG2 =
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-    0.4844         0
-\end_layout
-
-\begin_layout Verbatim
-
-         0    4.0256
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-SV2 =
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-    0.6960         0
-\end_layout
-
-\begin_layout Verbatim
-
-         0    2.0064
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-EIGVECTORS3 =
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-   -1.0000    0.0098
-\end_layout
-
-\begin_layout Verbatim
-
-    0.0098    1.0000
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-EIG3 =
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-   1.0e+04 *
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-    0.0000         0
-\end_layout
-
-\begin_layout Verbatim
-
-         0    4.1455
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-SV3 =
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-
-    0.0611         0
-\end_layout
-
-\begin_layout Verbatim
-
-         0  203.6050
-\end_layout
-
-\begin_layout Subsubsection*
-(d) - 5 points
-\end_layout
-
-\begin_layout Standard
-We can see that the singular values vary for each of the G matrices from
- part a.
- Both singular values for 
-\begin_inset Formula $G_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $G_{2}$
-\end_inset
-
- are close to each other.
- In each case they are only separated by 1 order of magnitude.
- This is due to the fact that the measurement points (x-values) were separated
- by the roughly the same order of magnitude as their values.
- For example, for 
-\begin_inset Formula $G_{1}$
-\end_inset
-
- the measurement points are on the order of 
-\begin_inset space ~
-\end_inset
-
-1 and are separated by just 2 or 3 each.
- For 
-\begin_inset Formula $G_{2}$
-\end_inset
-
- the measurement points are on the order of 
-\begin_inset space ~
-\end_inset
-
-0.1 and are separated by 0.2 or 0.3 each.
-\end_layout
-
-\begin_layout Standard
-However, the singular values for 
-\begin_inset Formula $G_{3}$
-\end_inset
-
- show a much greater disparity (4 orders of magnitude).
- This is due to the fact that the measurement points are on the order of
- 
-\begin_inset space ~
-\end_inset
-
-100 but are only separated by 2 or 3 each (2 orders of magnitude difference).
- This can lead to difficulties when trying to use 
-\begin_inset Formula $G_{3}$
-\end_inset
-
- to find a best fitting model because the singular values are so far apart.
- It would be helpful in this situation to have measured points further apart
- along the x-axis.
- A cluster of measurements very near to each other relative to the overall
- data space can lead to a great disparity in singular values.
- We can think about this in the extreme case that we measure the same point
- (x-value) over and over.
- Due to measurement error, this will return different values.
- However, the G matrix will have all the same values in the second column.
- When we calculate 
-\begin_inset Formula $G^{T}G$
-\end_inset
-
- we will see that it's columns are not linearly independent.
- This means that 
-\begin_inset Formula $G^{T}G$
-\end_inset
-
- is not invertible and will have one singular value that is 0.
-\end_layout
-
-\begin_layout Standard
-In our problem, 
-\begin_inset Formula $G_{3}^{T}G_{3}'s$
-\end_inset
-
- columns are still linearly independent, but they are much closer to linear
- dependence than either of the first two cases.
- Thus, it gives a singular value that is much closer to 0 than the first
- two cases.
-\end_layout
-
-\begin_layout Standard
-The V matrices are made up of two orthogonal vectors (the eigenvectors in
- the model space in this case) that make the rotated axes of our new reference
- frame.
- Thus, those eigenvectors associated with large singular values are stably
- determined (well constrained) and those associated with small singular
- values are not.
- If we look at the case for 
-\begin_inset Formula $G_{3}$
-\end_inset
-
- we see that the first singular value is large and the second is not.
- The eigenvector associated with the small value is:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\begin{pmatrix}1.0000\\
--0.0098
-\end{pmatrix}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-(This is not really complete...)
 \end_layout
 
 \end_body
