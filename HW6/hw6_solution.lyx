@@ -853,7 +853,7 @@ For this problem, it means the intercept is not well constrained.
  If set a local coordinate centered at the data points, the error in data
  can result in similar error in the intercept, just as data points close
  to 0.
- However, for the leverage effect, the error in slope will be much larger
+ However, for the leverage effect, the error in intercept will be much larger
  looking at the original coordinate.
  
 \end_layout
