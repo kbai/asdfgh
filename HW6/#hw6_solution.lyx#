@@ -861,18 +861,17 @@ The V matrices are made up of two orthogonal vectors (the eigenvectors in
 \end_layout
 
 \begin_layout Standard
-For this problem, it means the intercept is not well constrained.
- It is same as our intuition.
- Because the data points associated with 
+For this problem, it means the slope is not well constrained.
+ It is same as out intuition.
+ Because the data points assocaited with 
 \begin_inset Formula $G_{3}$
 \end_inset
 
- are far away from 0.
- If set a local coordinate centered at the data points, the error in data
- can result in similar error in the intercept, just as data points with
- similar separation close to 0.
- However, for the leverage effect, the error in slope will be much larger
- in the original coordinate.
+ are far away from 
+\begin_inset Formula $0$
+\end_inset
+
+, and yet are not well separated.
  
 \end_layout
 

@@ -774,7 +774,7 @@ SV3 =
 \begin_layout Standard
 We can see that the singular values vary for each of the G matrices from
  part a.
- Both singular values for 
+ For 
 \begin_inset Formula $G_{1}$
 \end_inset
 
@@ -782,32 +782,20 @@ We can see that the singular values vary for each of the G matrices from
 \begin_inset Formula $G_{2}$
 \end_inset
 
- are close to each other.
- In each case they are only separated by 1 order of magnitude.
+.
+ the singular values are only separated by 1 order of magnitude.
  This is due to the fact that the measurement points (x-values) were separated
- by the roughly the same order of magnitude as their values.
- For example, for 
+ by the roughly the same order of magnitude as their values: order of 1
+ for 
 \begin_inset Formula $G_{1}$
 \end_inset
 
- the measurement points are on the order of 
-\begin_inset space ~
-\end_inset
-
-1 and are separated by just 2 or 3 each.
- For 
+, and order of 0.1 for 
 \begin_inset Formula $G_{2}$
 \end_inset
 
- the measurement points are on the order of 
-\begin_inset space ~
-\end_inset
-
-0.1 and are separated by 0.2 or 0.3 each.
-\end_layout
-
-\begin_layout Standard
-However, the singular values for 
+.
+ However, the singular values for 
 \begin_inset Formula $G_{3}$
 \end_inset
 
@@ -817,50 +805,22 @@ However, the singular values for
 \begin_inset space ~
 \end_inset
 
-100 but are only separated by 2 or 3 each (2 orders of magnitude difference).
- This can lead to difficulties when trying to use 
-\begin_inset Formula $G_{3}$
-\end_inset
-
- to find a best fitting model because the singular values are so far apart.
- It would be helpful in this situation to have measured points further apart
- along the x-axis.
- A cluster of measurements very near to each other relative to the overall
- data space can lead to a great disparity in singular values.
- We can think about this in the extreme case that we measure the same point
- (x-value) over and over.
- Due to measurement error, this will return different values.
- However, the G matrix will have all the same values in the second column.
- When we calculate 
-\begin_inset Formula $G^{T}G$
-\end_inset
-
- we will see that it's columns are not linearly independent.
- This means that 
-\begin_inset Formula $G^{T}G$
-\end_inset
-
- is not invertible and will have one singular value that is 0.
+100 but are only separated by 1 or 4 each (2 orders of magnitude difference).
+ 
 \end_layout
 
 \begin_layout Standard
-In our problem, 
-\begin_inset Formula $G_{3}^{T}G_{3}'s$
-\end_inset
-
- columns are still linearly independent, but they are much closer to linear
- dependence than either of the first two cases.
- Thus, it gives a singular value that is much closer to 0 than the first
- two cases.
+The ratio between the singular value is related with the error propagation
+ from the data to the model parameters, as we will show.
 \end_layout
 
 \begin_layout Standard
 The V matrices are made up of two orthogonal vectors (the eigenvectors in
- the model space in this case) that make the rotated axes of our new reference
- frame.
- Thus, those eigenvectors associated with large singular values are stably
- determined (well constrained) and those associated with small singular
- values are not.
+ the model space) that make the rotated axes of our new reference frame.
+ Those paramters that are more projected to the eigenvectors with large
+ singular values are stably determined (well constrained), and those that
+ are more projected to the eigenvectors with small singular values are not
+ well constrained.
  If we look at the case for 
 \begin_inset Formula $G_{3}$
 \end_inset
@@ -871,11 +831,11 @@ The V matrices are made up of two orthogonal vectors (the eigenvectors in
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \begin{pmatrix}1.0000\\
 -0.0098
 \end{pmatrix}
-\end{equation}
+\]
 
 \end_inset
 
@@ -883,7 +843,19 @@ The V matrices are made up of two orthogonal vectors (the eigenvectors in
 \end_layout
 
 \begin_layout Standard
-(This is not really complete...)
+For this problem, it means the intercept is not well constrained.
+ It is same as our intuition.
+ Because the data points associated with 
+\begin_inset Formula $G_{3}$
+\end_inset
+
+ are far away from 0.
+ If set a local coordinate centered at the data points, the error in data
+ can result in similar error in the intercept, just as data points close
+ to 0.
+ However, for the leverage effect, the error in slope will be much larger
+ looking at the original coordinate.
+ 
 \end_layout
 
 \begin_layout Subsection*
@@ -911,9 +883,9 @@ In the absence of testable information, our intuition should tell us that
 
 , we find 
 \begin_inset Formula 
-\begin{equation}
+\[
 p(A)=p(B)=\frac{1}{2}.
-\end{equation}
+\]
 
 \end_inset
 
@@ -925,7 +897,7 @@ p(A)=p(B)=\frac{1}{2}.
 \end_layout
 
 \begin_layout Standard
-THe general formula for choosing 
+The number of ways for choosing 
 \begin_inset Formula $M$
 \end_inset
 
@@ -933,12 +905,31 @@ THe general formula for choosing
 \begin_inset Formula $N$
 \end_inset
 
- items is given by the binomial coefficient so that the fraction of choices
- is given by 
+ items is: 
+\begin_inset Formula $\left(\begin{array}{c}
+M\\
+N
+\end{array}\right)=\frac{N!}{M!(N-M)!}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Since the total number of ways to distribute 
+\begin_inset Formula $N$
+\end_inset
+
+ iterms is 
+\begin_inset Formula $2^{N}$
+\end_inset
+
+, the fraction of the above choice is given by 
 \begin_inset Formula 
-\begin{equation}
+\[
 F(M)=\frac{N!}{M!(N-M)!2^{N}}.
-\end{equation}
+\]
 
 \end_inset
 
@@ -950,8 +941,7 @@ F(M)=\frac{N!}{M!(N-M)!2^{N}}.
 \end_layout
 
 \begin_layout Standard
-From high school math, we know that the binomial coefficients can be arranged
- in Pascale's triangle.
+We know that the binomial coefficients can be arranged in Pascale's triangle.
  It is easy to see that the maximum values in Pascale's triange are exacly
  the center values.
  Thus, the 
@@ -969,9 +959,9 @@ From high school math, we know that the binomial coefficients can be arranged
 .
  Thus, we have 
 \begin_inset Formula 
-\begin{equation}
+\[
 p=\frac{M}{N}=\frac{1}{2}.
-\end{equation}
+\]
 
 \end_inset
 
@@ -989,21 +979,21 @@ Realizing that
 
 , the approximation can be derived by looking at 
 \begin_inset Formula 
-\begin{align}
+\begin{align*}
 \log(F(M)) & \approx N\log(N)-M\log(M)-(N-M)\log(N-M)-N\log(2)\\
  & =-N\log(2)+N\log(N)-Np\log(N)-Np\log(p)\\
  & -N(1-p)\log(1-p)-N(1-p)\log(N)\\
  & =N\left[-p\log(p)+(1-p)\log(1-p)\right]-N\log(2)\\
- & =NS(p)-N\log(2).
-\end{align}
+ & =NS(p)-N\log(2)
+\end{align*}
 
 \end_inset
 
-, where we assumed large 
+where we assumed large 
 \begin_inset Formula $N,M,N-M$
 \end_inset
 
- (unsing Stirling's approximation for the factorials).
+ (using Stirling's approximation for the factorials).
  Thus, we can maximize 
 \begin_inset Formula $S$
 \end_inset
@@ -1031,13 +1021,13 @@ In order to find the maximum, we need to take the first derivative of
  and set it to zero.
  We have 
 \begin_inset Formula 
-\begin{equation}
+\[
 S'(p)=-[1+\log(p)-\frac{1}{1-p}+\frac{p}{1-p}-\log(1-p)]=-\log\left(\frac{p}{1-p}\right)=0.
-\end{equation}
+\]
 
 \end_inset
 
-THis is equivalent to 
+This is equivalent to 
 \begin_inset Formula $1-p=p$
 \end_inset
 
@@ -1045,16 +1035,17 @@ THis is equivalent to
 \begin_inset Formula $p=1/2$
 \end_inset
 
-.In order for this to be a maximum, we need that 
+.
+ In order for this to be a maximum, we need that 
 \begin_inset Formula $S''<0$
 \end_inset
 
 .
  The second derivate is given by 
 \begin_inset Formula 
-\begin{equation}
+\[
 S''(p)=-\frac{1-p}{p}\frac{1-p+p}{1-p}=-\frac{1}{p}<0,\,\,\forall p>0.
-\end{equation}
+\]
 
 \end_inset
 
