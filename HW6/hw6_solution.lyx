@@ -120,7 +120,7 @@
 \begin_body
 
 \begin_layout Subsection*
-Problem 1 (graded by Dunzhu) 20 points
+Problem 1 (graded by Kangchen) 20 points
 \end_layout
 
 \begin_layout Subsubsection*
@@ -136,51 +136,51 @@ The code is shown below.
 
 .
  
+\end_layout
+
+\begin_layout Subsubsection*
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-lstinputlisting
+tiny
 \end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
 
 \begin_layout Plain Layout
 
-{
+
+\backslash
+lstinputlisting{./p1/nonlinear_solver.m}
 \end_layout
-
-\end_inset
-
-hw6p2.m
-\begin_inset ERT
-status collapsed
 
 \begin_layout Plain Layout
 
-}
+
+\backslash
+normalsize
 \end_layout
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Subsubsection*
-(b) - 10 points
+(b)
+\end_layout
+
+\begin_layout Subsubsection*
+10 points
 \end_layout
 
 \begin_layout Standard
-LM method should converge to the same value as GN for this problem.
+Levenberg Marquardt method should converge to the same value as Gauss-Newton
+ method for this problem.
  The contour of misfit function is ploted assuming 
-\begin_inset Formula $y_{s},z_{s},v$
+\begin_inset Formula $y_{s},z_{s}$
 \end_inset
 
  is the same as the best model.
@@ -196,30 +196,16 @@ LM method should converge to the same value as GN for this problem.
 \begin_inset Formula $\lambda=10$
 \end_inset
 
-), the updating is smaller compaired with GN method.
+), the updating is smaller compaired with Gauss-Newton method.
  
 \end_layout
 
 \begin_layout Itemize
-updating becomes smaller and smaller as the gradient goes to 0 
-\end_layout
-
-\begin_layout Itemize
-the initial updating for LM is not along the gradient direction even when
- 
-\begin_inset Formula $\lambda$
+The Gauss-Newton method failed to converge because 
+\begin_inset Formula $G^{T}G$
 \end_inset
 
- is large.
- If we use 
-\begin_inset Formula $H+\lambda I$
-\end_inset
-
- instead, when 
-\begin_inset Formula $\lambda$
-\end_inset
-
- is large, updating of the model will along the gradient direction 
+ is not always invertible.
 \end_layout
 
 \begin_layout Standard
@@ -230,21 +216,12 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../latex_solutions/ps6-solutions/LM.eps
+	filename p1/fig1b.pdf
 	width 12cm
 
 \end_inset
 
  
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Problem 2
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
