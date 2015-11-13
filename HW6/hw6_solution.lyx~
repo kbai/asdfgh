@@ -120,7 +120,7 @@
 \begin_body
 
 \begin_layout Subsection*
-Problem 1 (graded by Kangchen) 20 points
+Problem 1 (graded by Kangchen) 30 points
 \end_layout
 
 \begin_layout Subsubsection*
@@ -230,7 +230,7 @@ status open
 \end_layout
 
 \begin_layout Subsection*
-Problem 2 (graded by Stephen) 20 points
+Problem 2 (graded by Yiran) 30 points
 \end_layout
 
 \begin_layout Subsubsection*
@@ -283,6 +283,9 @@ Our G matrices only know about where we took the measurements (x-values);
 \begin_layout Standard
 \begin_inset Graphics
 	filename p2/p21.jpg
+	scale 50
+	BoundingBox 0bp 100bp 1036bp 500bp
+	clip
 
 \end_inset
 
@@ -308,7 +311,6 @@ We plug in
 
  into Matlab and simply use the SVD function to get the singular value decompost
 ions.
- See attached matlab code after part c.
  The outputs are:
 \end_layout
 
@@ -514,7 +516,7 @@ Note that
 \begin_inset Formula $U^{T}U$
 \end_inset
 
- should multiply out to the identity, we can check this within Matlab for
+ should multiply out to the identity, we can check this with Matlab for
  
 \begin_inset Formula $U_{1}$
 \end_inset
@@ -528,30 +530,23 @@ Note that
 \end_inset
 
 .
- We also want to show that the columns of the V matrix do indeed contain
- the eigenvectors of 
+ We also want to show that eigenvalues of 
 \begin_inset Formula $G^{T}G$
 \end_inset
 
- and that the corresponding eigenvalues are the squares of the singular
- values.
-\end_layout
-
-\begin_layout Standard
-If we use the eig() function in Matlab we can find the eigenvectors and
- eigenvalues for each 
+ are the squares of the singular values, and the corresponding eigenvectors
+ are also shown in the columns of the V matrix.
+ We can use the eig() function in Matlab to find the eigenvectors and eigenvalue
+s for each 
 \begin_inset Formula $G^{T}G$
 \end_inset
 
 .
- We compare the first output to the vectors that make up V in each case
- and see that they match.
- Then we compare the eigenvalue output to the singular values by taking
- the square root of the eigenvalues to get the singular values.
- They also match in each case.
+ 
 \end_layout
 
 \begin_layout Verbatim
+
 EIGVECTORS1 =
 \end_layout
 
@@ -560,10 +555,12 @@ EIGVECTORS1 =
 \end_layout
 
 \begin_layout Verbatim
+
    -0.9895    0.1442
 \end_layout
 
 \begin_layout Verbatim
+
     0.1442    0.9895
 \end_layout
 
@@ -576,6 +573,7 @@ EIGVECTORS1 =
 \end_layout
 
 \begin_layout Verbatim
+
 EIG1 =
 \end_layout
 
@@ -584,10 +582,12 @@ EIG1 =
 \end_layout
 
 \begin_layout Verbatim
+
     2.9796         0
 \end_layout
 
 \begin_layout Verbatim
+
          0   52.0204
 \end_layout
 
@@ -600,6 +600,7 @@ EIG1 =
 \end_layout
 
 \begin_layout Verbatim
+
 SV1 =
 \end_layout
 
@@ -608,10 +609,12 @@ SV1 =
 \end_layout
 
 \begin_layout Verbatim
+
     1.7262         0
 \end_layout
 
 \begin_layout Verbatim
+
          0    7.2125
 \end_layout
 
@@ -624,6 +627,7 @@ SV1 =
 \end_layout
 
 \begin_layout Verbatim
+
 EIGVECTORS2 =
 \end_layout
 
@@ -632,10 +636,12 @@ EIGVECTORS2 =
 \end_layout
 
 \begin_layout Verbatim
+
     0.0850   -0.9964
 \end_layout
 
 \begin_layout Verbatim
+
    -0.9964   -0.0850
 \end_layout
 
@@ -648,6 +654,7 @@ EIGVECTORS2 =
 \end_layout
 
 \begin_layout Verbatim
+
 EIG2 =
 \end_layout
 
@@ -656,10 +663,12 @@ EIG2 =
 \end_layout
 
 \begin_layout Verbatim
+
     0.4844         0
 \end_layout
 
 \begin_layout Verbatim
+
          0    4.0256
 \end_layout
 
@@ -672,6 +681,7 @@ EIG2 =
 \end_layout
 
 \begin_layout Verbatim
+
 SV2 =
 \end_layout
 
@@ -680,10 +690,12 @@ SV2 =
 \end_layout
 
 \begin_layout Verbatim
+
     0.6960         0
 \end_layout
 
 \begin_layout Verbatim
+
          0    2.0064
 \end_layout
 
@@ -696,6 +708,7 @@ SV2 =
 \end_layout
 
 \begin_layout Verbatim
+
 EIGVECTORS3 =
 \end_layout
 
@@ -704,10 +717,12 @@ EIGVECTORS3 =
 \end_layout
 
 \begin_layout Verbatim
+
    -1.0000    0.0098
 \end_layout
 
 \begin_layout Verbatim
+
     0.0098    1.0000
 \end_layout
 
@@ -720,6 +735,7 @@ EIGVECTORS3 =
 \end_layout
 
 \begin_layout Verbatim
+
 EIG3 =
 \end_layout
 
@@ -728,6 +744,7 @@ EIG3 =
 \end_layout
 
 \begin_layout Verbatim
+
    1.0e+04 *
 \end_layout
 
@@ -736,10 +753,12 @@ EIG3 =
 \end_layout
 
 \begin_layout Verbatim
+
     0.0000         0
 \end_layout
 
 \begin_layout Verbatim
+
          0    4.1455
 \end_layout
 
@@ -752,6 +771,7 @@ EIG3 =
 \end_layout
 
 \begin_layout Verbatim
+
 SV3 =
 \end_layout
 
@@ -760,10 +780,12 @@ SV3 =
 \end_layout
 
 \begin_layout Verbatim
+
     0.0611         0
 \end_layout
 
 \begin_layout Verbatim
+
          0  203.6050
 \end_layout
 
@@ -784,9 +806,9 @@ We can see that the singular values vary for each of the G matrices from
 
 .
  the singular values are only separated by 1 order of magnitude.
- This is due to the fact that the measurement points (x-values) were separated
- by the roughly the same order of magnitude as their values: order of 1
- for 
+ This is due to the fact that the measurement points (x-values) are separated
+ by roughly the same order of magnitude as their values: order of 1 for
+ 
 \begin_inset Formula $G_{1}$
 \end_inset
 
@@ -815,12 +837,31 @@ The ratio between the singular value is related with the error propagation
 \end_layout
 
 \begin_layout Standard
-The V matrices are made up of two orthogonal vectors (the eigenvectors in
- the model space) that make the rotated axes of our new reference frame.
- Those paramters that are more projected to the eigenvectors with large
- singular values are stably determined (well constrained), and those that
- are more projected to the eigenvectors with small singular values are not
- well constrained.
+The V matrices are made up of two vectors that are the orthonormal basis
+ of the model space (eigenvectors of 
+\begin_inset Formula $G^{T}G$
+\end_inset
+
+).
+ 
+\begin_inset Formula $(G^{T}G)m$
+\end_inset
+
+ is a stretch of 
+\begin_inset Formula $m$
+\end_inset
+
+ vector in the eigenvector directions by the eigenvalues, which should equal
+ to the projection of data vector in the model space (
+\begin_inset Formula $G^{T}d$
+\end_inset
+
+).
+ If there is an error in the data vector, the model parameters that are
+ more related to the eigenvectors with large eigenvalues (or singular values)
+ are more well constrained (with less error in the model parameters), and
+ those that are related to the eigenvectors with smaller eigenvalues are
+ not well constrained.
  If we look at the case for 
 \begin_inset Formula $G_{3}$
 \end_inset
@@ -843,8 +884,8 @@ The V matrices are made up of two orthogonal vectors (the eigenvectors in
 \end_layout
 
 \begin_layout Standard
-For this problem, it means the intercept is not well constrained.
- It is same as our intuition.
+It means the first paramter (intercept) is not well constrained.
+ It is the same as our intuition.
  Because the data points associated with 
 \begin_inset Formula $G_{3}$
 \end_inset
@@ -853,13 +894,13 @@ For this problem, it means the intercept is not well constrained.
  If set a local coordinate centered at the data points, the error in data
  can result in similar error in the intercept, just as data points close
  to 0.
- However, for the leverage effect, the error in slope will be much larger
- looking at the original coordinate.
+ However, for the leverage effect, the error in intercept will be much larger
+ in the original coordinate.
  
 \end_layout
 
 \begin_layout Subsection*
-Problem 3 (graded by Toby) 25 points
+Problem 3 (graded by Yiran) 40 points
 \end_layout
 
 \begin_layout Subsubsection*
