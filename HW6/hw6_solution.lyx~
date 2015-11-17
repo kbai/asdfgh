@@ -196,7 +196,7 @@ Levenberg Marquardt method should converge to the same value as Gauss-Newton
 \begin_inset Formula $\lambda=10$
 \end_inset
 
-), the updating is smaller compaired with Gauss-Newton method.
+), the updating is smaller compared with Gauss-Newton method.
  
 \end_layout
 
@@ -230,7 +230,7 @@ status open
 \end_layout
 
 \begin_layout Subsection*
-Problem 2 (graded by Yiran) 30 points
+Problem 2 (graded by Kangchen) 30 points
 \end_layout
 
 \begin_layout Subsubsection*
@@ -546,7 +546,6 @@ s for each
 \end_layout
 
 \begin_layout Verbatim
-
 EIGVECTORS1 =
 \end_layout
 
@@ -555,12 +554,10 @@ EIGVECTORS1 =
 \end_layout
 
 \begin_layout Verbatim
-
    -0.9895    0.1442
 \end_layout
 
 \begin_layout Verbatim
-
     0.1442    0.9895
 \end_layout
 
@@ -573,7 +570,6 @@ EIGVECTORS1 =
 \end_layout
 
 \begin_layout Verbatim
-
 EIG1 =
 \end_layout
 
@@ -582,12 +578,10 @@ EIG1 =
 \end_layout
 
 \begin_layout Verbatim
-
     2.9796         0
 \end_layout
 
 \begin_layout Verbatim
-
          0   52.0204
 \end_layout
 
@@ -600,7 +594,6 @@ EIG1 =
 \end_layout
 
 \begin_layout Verbatim
-
 SV1 =
 \end_layout
 
@@ -609,12 +602,10 @@ SV1 =
 \end_layout
 
 \begin_layout Verbatim
-
     1.7262         0
 \end_layout
 
 \begin_layout Verbatim
-
          0    7.2125
 \end_layout
 
@@ -627,7 +618,6 @@ SV1 =
 \end_layout
 
 \begin_layout Verbatim
-
 EIGVECTORS2 =
 \end_layout
 
@@ -636,12 +626,10 @@ EIGVECTORS2 =
 \end_layout
 
 \begin_layout Verbatim
-
     0.0850   -0.9964
 \end_layout
 
 \begin_layout Verbatim
-
    -0.9964   -0.0850
 \end_layout
 
@@ -654,7 +642,6 @@ EIGVECTORS2 =
 \end_layout
 
 \begin_layout Verbatim
-
 EIG2 =
 \end_layout
 
@@ -663,12 +650,10 @@ EIG2 =
 \end_layout
 
 \begin_layout Verbatim
-
     0.4844         0
 \end_layout
 
 \begin_layout Verbatim
-
          0    4.0256
 \end_layout
 
@@ -681,7 +666,6 @@ EIG2 =
 \end_layout
 
 \begin_layout Verbatim
-
 SV2 =
 \end_layout
 
@@ -690,12 +674,10 @@ SV2 =
 \end_layout
 
 \begin_layout Verbatim
-
     0.6960         0
 \end_layout
 
 \begin_layout Verbatim
-
          0    2.0064
 \end_layout
 
@@ -708,7 +690,6 @@ SV2 =
 \end_layout
 
 \begin_layout Verbatim
-
 EIGVECTORS3 =
 \end_layout
 
@@ -717,12 +698,10 @@ EIGVECTORS3 =
 \end_layout
 
 \begin_layout Verbatim
-
    -1.0000    0.0098
 \end_layout
 
 \begin_layout Verbatim
-
     0.0098    1.0000
 \end_layout
 
@@ -735,7 +714,6 @@ EIGVECTORS3 =
 \end_layout
 
 \begin_layout Verbatim
-
 EIG3 =
 \end_layout
 
@@ -744,7 +722,6 @@ EIG3 =
 \end_layout
 
 \begin_layout Verbatim
-
    1.0e+04 *
 \end_layout
 
@@ -753,12 +730,10 @@ EIG3 =
 \end_layout
 
 \begin_layout Verbatim
-
     0.0000         0
 \end_layout
 
 \begin_layout Verbatim
-
          0    4.1455
 \end_layout
 
@@ -771,7 +746,6 @@ EIG3 =
 \end_layout
 
 \begin_layout Verbatim
-
 SV3 =
 \end_layout
 
@@ -780,12 +754,10 @@ SV3 =
 \end_layout
 
 \begin_layout Verbatim
-
     0.0611         0
 \end_layout
 
 \begin_layout Verbatim
-
          0  203.6050
 \end_layout
 
@@ -823,11 +795,7 @@ We can see that the singular values vary for each of the G matrices from
 
  show a much greater disparity (4 orders of magnitude).
  This is due to the fact that the measurement points are on the order of
- 
-\begin_inset space ~
-\end_inset
-
-100 but are only separated by 1 or 4 each (2 orders of magnitude difference).
+ 100 but are only separated by 1 or 4 each (2 orders of magnitude difference).
  
 \end_layout
 
@@ -884,18 +852,21 @@ The V matrices are made up of two vectors that are the orthonormal basis
 \end_layout
 
 \begin_layout Standard
-It means the first paramter (intercept) is not well constrained.
- It is the same as our intuition.
- Because the data points associated with 
+It means the first parameter (intercept) is not well constrained.
+ It is same as our intuition.
+ Let's think about two patches of data points.
+ The first patch includes the data points associated with 
 \begin_inset Formula $G_{3}$
 \end_inset
 
- are far away from 0.
- If set a local coordinate centered at the data points, the error in data
- can result in similar error in the intercept, just as data points close
- to 0.
- However, for the leverage effect, the error in intercept will be much larger
- in the original coordinate.
+, which are far away from 0; the second patch includes data points with
+ similar separations but much closer to 0.
+ For each patch, we can set a local coordinate centered at the data points.
+ The errors in the slope and the intercept (because of the errors in data),
+ would be similar for the two patches viewing from the local coordinate
+ of each.
+ However, viewing from the origional coordinate, the error in the intercept
+ will be much larger for the first patch because of the leverage effect.
  
 \end_layout
 
@@ -947,29 +918,15 @@ The number of ways for choosing
 \end_inset
 
  items is: 
-\begin_inset Formula $\left(\begin{array}{c}
-M\\
-N
-\end{array}\right)=\frac{N!}{M!(N-M)!}$
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Standard
-Since the total number of ways to distribute 
-\begin_inset Formula $N$
-\end_inset
-
- iterms is 
-\begin_inset Formula $2^{N}$
-\end_inset
-
-, the fraction of the above choice is given by 
 \begin_inset Formula 
 \[
-F(M)=\frac{N!}{M!(N-M)!2^{N}}.
+\left(\begin{array}{c}
+M\\
+N
+\end{array}\right)=\frac{N!}{M!(N-M)!}.
 \]
 
 \end_inset
@@ -1009,23 +966,45 @@ p=\frac{M}{N}=\frac{1}{2}.
 
 \end_layout
 
+\begin_layout Standard
+It agrees with the intuitive answer in (a).
+\end_layout
+
 \begin_layout Subsubsection*
 (d)
 \end_layout
 
 \begin_layout Standard
-Realizing that 
+Let 
+\begin_inset Formula $F(M)=\frac{N!}{M!(N-M)!}$
+\end_inset
+
+.
+ Maximizing 
+\begin_inset Formula $F(M)$
+\end_inset
+
+ is equivalent to maximize 
+\begin_inset Formula $\log(F(M))$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Note that 
 \begin_inset Formula $M=pN$
 \end_inset
 
-, the approximation can be derived by looking at 
+.
 \begin_inset Formula 
 \begin{align*}
-\log(F(M)) & \approx N\log(N)-M\log(M)-(N-M)\log(N-M)-N\log(2)\\
- & =-N\log(2)+N\log(N)-Np\log(N)-Np\log(p)\\
+\log(F(M)) & \approx N\log(N)-M\log(M)-(N-M)\log(N-M)\\
+ & =N\log(N)-Np\log(N)-Np\log(p)\\
  & -N(1-p)\log(1-p)-N(1-p)\log(N)\\
- & =N\left[-p\log(p)+(1-p)\log(1-p)\right]-N\log(2)\\
- & =NS(p)-N\log(2)
+ & =N\left[-p\log(p)+(1-p)\log(1-p)\right]\\
+ & =NS(p)
 \end{align*}
 
 \end_inset
