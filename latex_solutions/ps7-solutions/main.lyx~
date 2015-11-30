@@ -1,0 +1,1407 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage[margin=0.75in]{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{CJK}
+\definecolor{mygreen}{RGB}{28,172,0}
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose}
+
+
+\makeatletter
+\@ifundefined{date}{}{\date{}}
+\makeatother
+
+%Fancy-header package to modify header/page numbering 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\textbf{Ge/ESE 118}} %name of the course
+\chead{\textbf{}} %topic of the homework set
+\rhead{\textbf{Solution 7}} %number of the homework set
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+
+
+% Matlab script
+\lstset{language=Matlab,%
+      %basicstyle=\color{red},
+  breaklines=true,%
+  morekeywords={matlab2tikz},
+  keywordstyle=\color{blue},%
+  morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+  identifierstyle=\color{black},%}
+  stringstyle=\color{mylilas},
+  commentstyle=\color{mygreen},%
+  showstringspaces=false,%without this there will be a symbol in the places where there is a space
+  numbers=left,%
+  numberstyle={\tiny \color{black}},% size of the numbers
+  numbersep=9pt, % this defines how far the numbers are from the text
+  emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+                                                      %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection*
+Problem 1 (graded by Kangchen) 30 points
+\end_layout
+
+\begin_layout Subsubsection*
+(a)- 5 points
+\end_layout
+
+\begin_layout Standard
+if 
+\begin_inset Formula $[U,S,V]=svd(G)$
+\end_inset
+
+, so 
+\begin_inset Formula $G=U*S*V^{T}$
+\end_inset
+
+, thus 
+\begin_inset Formula $G_{g}^{-1}=V*S^{-1}*U^{T}$
+\end_inset
+
+.
+ Note 
+\begin_inset Formula $S_{i,i}^{-1}=1/S_{i,i}$
+\end_inset
+
+ for 
+\begin_inset Formula $S_{i,i}\neq0$
+\end_inset
+
+, and 
+\begin_inset Formula $S_{i,i}^{-1}=0$
+\end_inset
+
+ for 
+\begin_inset Formula $S_{i,i}=0$
+\end_inset
+
+.
+ The result is 
+\end_layout
+
+\begin_layout Verbatim
+
+R1 =
+\end_layout
+
+\begin_layout Verbatim
+
+    0.2839    0.4645    0.1484    0.1032
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.0194   -0.1226    0.0581    0.0839
+\end_layout
+
+\begin_layout Verbatim
+
+R2 =
+\end_layout
+
+\begin_layout Verbatim
+
+    0.2769    0.2154    0.3231    0.1846
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.3590    0.4615   -0.9744    0.8718
+\end_layout
+
+\begin_layout Verbatim
+
+R3 =
+\end_layout
+
+\begin_layout Verbatim
+
+    2.2194   12.7226   -5.6581   -8.2839
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.0194   -0.1226    0.0581    0.0839
+\end_layout
+
+\begin_layout Verbatim
+
+R4 =
+\end_layout
+
+\begin_layout Verbatim
+
+    0.0250    0.0250    0.0250    0.0250
+\end_layout
+
+\begin_layout Verbatim
+
+    0.0750    0.0750    0.0750    0.0750
+\end_layout
+
+\begin_layout Subsubsection*
+(b)- 5 points
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $G_{LLS}^{-1}=inv(G^{T}*G)*G^{T}$
+\end_inset
+
+.
+ But if 
+\begin_inset Formula $\det{G^{T}*G}=0$
+\end_inset
+
+, then the least square problem will have infinitely many solutions that
+ gives the same minimized error, which means 
+\begin_inset Formula $G_{LLS}^{-1}$
+\end_inset
+
+ is not well defined in this case.
+ 
+\end_layout
+
+\begin_layout Verbatim
+
+L1 =
+\end_layout
+
+\begin_layout Verbatim
+
+    0.2839    0.4645    0.1484    0.1032
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.0194   -0.1226    0.0581    0.0839
+\end_layout
+
+\begin_layout Verbatim
+
+L2 =
+\end_layout
+
+\begin_layout Verbatim
+
+    0.2769    0.2154    0.3231    0.1846
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.3590    0.4615   -0.9744    0.8718
+\end_layout
+
+\begin_layout Verbatim
+
+L3 =
+\end_layout
+
+\begin_layout Verbatim
+
+    2.2194   12.7226   -5.6581   -8.2839
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.0194   -0.1226    0.0581    0.0839
+\end_layout
+
+\begin_layout Verbatim
+
+L4 =
+\end_layout
+
+\begin_layout Verbatim
+
+   Inf   Inf   Inf   Inf
+\end_layout
+
+\begin_layout Verbatim
+
+   Inf   Inf   Inf   Inf
+\end_layout
+
+\begin_layout Subsubsection*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{./hw7p1.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(c)- 5 points
+\end_layout
+
+\begin_layout Standard
+When least square inverse is unique, 
+\begin_inset Formula $\det{G^{T}*G}\neq0$
+\end_inset
+
+, 
+\begin_inset Formula $G_{LLS}^{-1}$
+\end_inset
+
+ is the same as general inverse, because 
+\begin_inset Formula 
+\begin{eqnarray*}
+G & = & U*S*V^{T}\\
+G^{T} & = & V*S^{T}*U^{T}\\
+G^{T}*G & = & V*(S^{T}*S)*V^{T}\\
+(G^{T}*G)^{-1} & = & V*(S^{T}*S)^{-1}*V^{T}\\
+(G^{T}*G)^{-1}*G^{T} & = & V*(S^{T}*S)^{-1}*S^{T}*U^{T}\\
+ & = & V*S^{-}*U^{T}\\
+ & = & G_{g}^{-1}
+\end{eqnarray*}
+
+\end_inset
+
+which is the same as generalized inverse.
+ Note in the above derivation, 
+\begin_inset Formula $U$
+\end_inset
+
+,
+\begin_inset Formula $V$
+\end_inset
+
+ is square orthgonal matrix, where 
+\begin_inset Formula $S$
+\end_inset
+
+, 
+\begin_inset Formula $S^{-}$
+\end_inset
+
+ is diagnoal but not square matrix, and 
+\begin_inset Formula $S^{T}*S$
+\end_inset
+
+ has inverse.
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $\det{G^{T}*G}=0$
+\end_inset
+
+ , 
+\begin_inset Formula $G_{LLS}^{-1}$
+\end_inset
+
+ is not well defined, and general inverse gives the solution that satisfies
+ least square problem and at the same time minimizes the L2 norm of the
+ model.
+\end_layout
+
+\begin_layout Subsubsection*
+(d)- 5 points
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset Formula $G_{g}^{-1}d$
+\end_inset
+
+ gives the estimation of intercept and slope of the 4 points least square
+ problem, whose 
+\begin_inset Formula $X$
+\end_inset
+
+ is given by second column of 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ This explains why 
+\begin_inset Formula $G_{1g}^{-1}$
+\end_inset
+
+ has the same second row as 
+\begin_inset Formula $G_{3g}^{-1}$
+\end_inset
+
+, because 
+\begin_inset Formula $X$
+\end_inset
+
+ in 
+\begin_inset Formula $G_{3}$
+\end_inset
+
+ is just a shift of 
+\begin_inset Formula $X$
+\end_inset
+
+ in 
+\begin_inset Formula $G_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $G_{1},G_{2},G_{3}$
+\end_inset
+
+, the two columns are linearly independent, so they have full column rank,
+ then 
+\begin_inset Formula 
+\begin{eqnarray*}
+G_{g}^{-1}*G & = & V*S^{-}*U^{T}*U*S*V^{T}\\
+ & = & V*S^{-}*S*V^{T}\\
+ & = & V*V^{T}\\
+ & = & I
+\end{eqnarray*}
+
+\end_inset
+
+So the 1st row of 
+\begin_inset Formula $G_{g}^{-1}$
+\end_inset
+
+ dot product with 1st column of 
+\begin_inset Formula $G$
+\end_inset
+
+ will be 1, the 2nd row of 
+\begin_inset Formula $G_{g}^{-1}$
+\end_inset
+
+ dot product with 2nd column of 
+\begin_inset Formula $G$
+\end_inset
+
+ will be 1, and the 1st row of 
+\begin_inset Formula $G_{g}^{-1}$
+\end_inset
+
+ dot product with 2nd column of 
+\begin_inset Formula $G$
+\end_inset
+
+ will be 0, the 2nd row of 
+\begin_inset Formula $G_{g}^{-1}$
+\end_inset
+
+ dot product with 1st column of 
+\begin_inset Formula $G$
+\end_inset
+
+ will be 0.
+ This explains roughly, for example, the relative higher amplitude of the
+ first row of 
+\begin_inset Formula $G_{3}^{-}$
+\end_inset
+
+ compared with the 2nd row of 
+\begin_inset Formula $G_{3}^{-}$
+\end_inset
+
+.
+ However, we must be careful about such amplitude comparison, because for
+ example the 2nd row of 
+\begin_inset Formula $G_{1}^{-1}$
+\end_inset
+
+ and the 2nd row of 
+\begin_inset Formula $G_{3}^{-1}$
+\end_inset
+
+ is the same, although amplitude in 
+\begin_inset Formula $G_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $G_{3}$
+\end_inset
+
+ is quite different.
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $G_{4}$
+\end_inset
+
+, whose rank is 1, note that the least square solution will require 
+\begin_inset Formula $m_{1}+3m_{2}=const$
+\end_inset
+
+.
+ This is a line in 
+\begin_inset Formula $m_{1}~m_{2}$
+\end_inset
+
+ plane.
+ The L2 norm of the model, will corresponding to a line segment from origin
+ to this line, which got minimized when it's perpendicular to this line,
+ or 
+\begin_inset Formula $m_{1}/m_{2}=1/3$
+\end_inset
+
+.
+ This explains why 
+\begin_inset Formula $G_{4}^{-1}$
+\end_inset
+
+, also a rank 1 matrix, has two rows whose amplitude ratio is 1/3.
+\end_layout
+
+\begin_layout Subsection*
+Problem 2 (graded by Yiran) 38 points
+\end_layout
+
+\begin_layout Subsubsection*
+(a)- 5 points
+\end_layout
+
+\begin_layout Standard
+Looking at the SVDs of the G matrices from problem 1, we see a couple inverses
+ that would potentially benefit from a truncated SVD.
+ Truncation is a useful strategy when there is a large disparity between
+ sizes of singular values.
+ We don't care about the absolute value of the singular values (unless they
+ are close to machine precision 
+\begin_inset Formula $(~10^{-}16)$
+\end_inset
+
+), we only care about the relative size of the singular values to one another.
+ The first 3 G matrices each have two singular values, so we can take the
+ ratio of these two values to see which matrices might require truncation.
+ G4 only has 1 nonzero singular value, so it is effictively already truncated.
+ If we look at the ratios of singular values 
+\begin_inset Formula $\frac{s_{2}}{s_{1}}$
+\end_inset
+
+ we get:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+G1:\frac{s_{2}}{s_{1}}=0.2393
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+G2:\frac{s_{2}}{s_{1}}=0.3469
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+G3:\frac{s_{2}}{s_{1}}=3.000*10^{-4}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+G3 has the smallest ratio by several orders of magnitude, so it is out best
+ candidate for truncation.
+ G1 has a smaller ratio than G2, so it would be our second most amenable
+ matrix for truncation.
+\end_layout
+
+\begin_layout Standard
+Truncation has the advantage of removing errors potentially caused by small
+ singular values; thus, not allowing these errors to propagate through the
+ rest of our calculations.
+ However, the disadvantage here is that we are removing information and
+ often the smallest singular values also contain the most information.
+ We want to use truncation in order to keep the most amount of information
+ that isn't dominated by errors or noise.
+\end_layout
+
+\begin_layout Subsubsection*
+(b)- 5 points
+\end_layout
+
+\begin_layout Standard
+We select G3 as the most amenable to a truncated SVD.
+ The recalculation yields:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+G3_{GeneralizedInverseTruncated}=\begin{pmatrix}0.0000 & 0.0000 & 0.0000 & 0.0000\\
+0.0024 & 0.0023 & 0.0025 & 0.0025
+\end{pmatrix}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(c)- 5 points
+\end_layout
+
+\begin_layout Standard
+The second most amenable matrix is G1.
+ The recalculation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+G3_{GeneralizedInverseTruncated}=\begin{pmatrix}0.0031 & -0.0078 & 0.0114 & 0.0141\\
+0.0216 & -0.0537 & 0.0780 & 0.0969
+\end{pmatrix}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{./hw7p2.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(d)- 5 points
+\end_layout
+
+\begin_layout Standard
+We calculate the generalized inverse model solutions using both the original
+ SVD and the truncated versions for both G1 and G3 for each of the datasets
+ 
+\begin_inset Formula $d_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $d_{2}$
+\end_inset
+
+.
+ The plots are attached below.
+ Here are the solutions:
+\end_layout
+
+\begin_layout Verbatim
+
+m1d1 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+   10.5226
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.0129
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+m1d2 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+   10.4652
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.2658
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+m3d1 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+   11.8129
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.0129
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+m3d2 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+   37.0458
+\end_layout
+
+\begin_layout Verbatim
+
+   -0.2658
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+mt1d1 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+    0.2171
+\end_layout
+
+\begin_layout Verbatim
+
+    1.4893
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+mt1d2 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+    0.1798
+\end_layout
+
+\begin_layout Verbatim
+
+    1.2335
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+mt3d1 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+    0.0010
+\end_layout
+
+\begin_layout Verbatim
+
+    0.1031
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+mt3d2 =
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+    0.0010
+\end_layout
+
+\begin_layout Verbatim
+
+    0.0979
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename p2fig1.eps
+	width 12cm
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename p2fig2.eps
+	width 12cm
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename p2fig3.eps
+	width 12cm
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename p2fig4.eps
+	width 12cm
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(e)- 5 points
+\end_layout
+
+\begin_layout Standard
+Looking at the plots we can see a large difference between the original
+ and the truncated cases.
+ We have truncated the smallest singular value, which influences both rows
+ of the generalized inverse.
+ However, it more significantly influences the first row, which controls
+ our model parameter 
+\begin_inset Formula $m_{1}$
+\end_inset
+
+ (the y-intercept).
+ If we look at our original models, most seem to fit the data reasonably
+ (as reasonably as a line can fit) and all have a negative slope.
+ Our truncated models all have positive slopes and many don't seem to explain
+ the data well at all.
+ This is because our truncation eliminated any information about y-intercept,
+ and thus all the models have y-intercepts of 0 no matter what the data.
+ We can see this behavior clearly on the y-intercept on Toby's plots in
+ the solution for problem 3.
+ As far as which models we would prefer, it would depend on what we know
+ about the dataset.
+ In all cases besides G3-data 1 we would likely prefer the original models
+ because they seem to fit the data better, unless we had some prior information
+ about the y-intercept.
+ For the G3-data 1 neither model seems to fit very well, so it may be better
+ to prefer the truncated model as it is more likely to avoid errors.
+\end_layout
+
+\begin_layout Subsection*
+Problem 3 (graded by Toby) 32 points
+\end_layout
+
+\begin_layout Subsubsection*
+(a)- 5 points
+\end_layout
+
+\begin_layout Standard
+The MATLAB code that generates the matrices is attached at the end of this
+ section.
+ The matrices are calculated using 
+\begin_inset Formula $\v{m}=(\v{G}^{T}\v{G}+\alpha^{2}\v{I})^{-1}\v{G}^{T}\v{d}$
+\end_inset
+
+.
+ The matrices are 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+\v{G}_{1,g,T,\alpha_{1}}^{-1} & =\begin{pmatrix}0.282931351378109 & 0.462937664456661 & 0.147926616569195 & 0.102925038299558\\
+-0.019222102718031 & -0.122340004924458 & 0.058116323936789 & 0.083895799488396
+\end{pmatrix}\\
+\v{G}_{2,g,T,\alpha_{1}}^{-1} & =\begin{pmatrix}0.275661587810746 & 0.215517241379310 & 0.320769847634322 & 0.185445068163593\\
+-0.351343223736969 & 0.452586206896552 & -0.954290296712109 & 0.854550922213312
+\end{pmatrix}\\
+\v{G}_{3,g,T,\alpha_{1}}^{-1} & =\begin{pmatrix}0.604003054340609 & 3.462399532543330 & -1.539794304311428 & -2.254393423862098\\
+-0.003493985867091 & -0.031656565418916 & 0.017627948796778 & 0.024668593684735
+\end{pmatrix}\\
+\v{G}_{4,g,T,\alpha_{1}}^{-1} & =\begin{pmatrix}0.024993751562093 & 0.024993751562093 & 0.024993751562093 & 0.024993751562093\\
+0.074981254686328 & 0.074981254686328 & 0.074981254686328 & 0.074981254686328
+\end{pmatrix}\\
+\v{G}_{1,g,T,\alpha_{2}}^{-1} & =\begin{pmatrix}0.262125138837468 & 0.427989633469086 & 0.137726767863754 & 0.096260644205850\\
+-0.016290262865605 & -0.116993706034802 & 0.059237319511292 & 0.084413180303591
+\end{pmatrix}\\
+\v{G}_{2,g,T,\alpha_{2}}^{-1} & =\begin{pmatrix}0.251592356687898 & 0.213375796178344 & 0.280254777070064 & 0.194267515923567\\
+-0.230891719745223 & 0.310509554140127 & -0.636942675159236 & 0.581210191082802
+\end{pmatrix}\\
+\v{G}_{3,g,T,\alpha_{2}}^{-1} & =\begin{pmatrix}0.032727078270480 & 0.187497400490787 & -0.083350663394751 & -0.122043243949828\\
+0.002115257782188 & 0.000499105768831 & 0.003327371792206 & 0.003731409795545
+\end{pmatrix}\\
+\v{G}_{4,g,T,\alpha_{2}}^{-1} & =\begin{pmatrix}0.024844720496894 & 0.024844720496894 & 0.024844720496894 & 0.024844720496894\\
+0.074534161490683 & 0.074534161490683 & 0.074534161490683 & 0.074534161490683
+\end{pmatrix}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(b)- 5 points
+\end_layout
+
+\begin_layout Standard
+For the generalized inverse we have that 
+\begin_inset Formula 
+\begin{equation}
+\v{G}_{g}^{-1}=\sum_{i=1}^{p}\frac{s_{i}^{2}}{s_{i}^{2}+\alpha^{2}}\frac{1}{s_{i}}\v{v}_{i}\v{u}_{i}^{T},
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $p$
+\end_inset
+
+ is the index of the last nonzero singular value.
+ For the regularized inverse, we have extra factors in the expansion that
+ introduce a 
+\begin_inset Quotes eld
+\end_inset
+
+smooth
+\begin_inset Quotes erd
+\end_inset
+
+ truncation, i.e., for large 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ the term is 1 and for small 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ it is zero.
+ This means that the similarity between the truncated and regularized matrices
+ is determined by the relative size of the singular values compared to 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $\v{G}_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\v{G}_{2}$
+\end_inset
+
+ the singular values are larger than the Tikhonov parameters, implying that
+ the truncated and regularized inverses should look different.
+ For 
+\begin_inset Formula $\v{G}_{3}$
+\end_inset
+
+ we have that 
+\begin_inset Formula $s_{1}^{2}>>\alpha_{1}^{2},\alpha_{2}^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $s_{2}^{2}\sim\alpha_{1}^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $s_{2}^{2}<<\alpha_{2}^{2}$
+\end_inset
+
+.
+ According to the equation above, this implies that the truncated and regularize
+d inverses are different for 
+\begin_inset Formula $\alpha=0.1$
+\end_inset
+
+, but similar for 
+\begin_inset Formula $\alpha=0.5$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $\v{G}_{4}$
+\end_inset
+
+ the truncated and the regularized must be different, because we only have
+ two singular values, one of which is 
+\begin_inset Formula $0$
+\end_inset
+
+ anyway.
+\end_layout
+
+\begin_layout Subsubsection*
+(c)- 5 points
+\end_layout
+
+\begin_layout Standard
+The four plots are
+\end_layout
+
+\begin_layout Standard
+\noindent
+Here is a plot of the profile: 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename p3b1.eps
+	width 12cm
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename p3b2.eps
+	width 12cm
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename p3b3.eps
+	width 12cm
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename p3b4.eps
+	width 12cm
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(d)- 5 points
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $\v{G}_{3}$
+\end_inset
+
+ the truncated model and the Tikhonov model with 
+\begin_inset Formula $\alpha=0.5$
+\end_inset
+
+ are very close.
+ This is because of a term 
+\begin_inset Formula $s_{i}^{2}/(s_{i}^{2}+\alpha^{2})$
+\end_inset
+
+ in the expansision for the generalized inverse in terms of its singular
+ values is almost zero for the smallest singular value of 
+\begin_inset Formula $G_{3}$
+\end_inset
+
+ and almost 
+\begin_inset Formula $1$
+\end_inset
+
+ for the largest singular value when 
+\begin_inset Formula $\alpha=0.5$
+\end_inset
+
+.
+ Thus the truncated and the regularized models are very close.
+ This is not the case for 
+\begin_inset Formula $\v{G}_{1}$
+\end_inset
+
+, because the singular values are not as far apart and always larger than
+ 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, but not by several orders of magnitude.
+ Thus the truncated and the regularized models are giving different answers.
+ In fact, for small truncation parameters, the regurlazied model is close
+ to the generalized inverse model.
+\end_layout
+
+\begin_layout Standard
+\noindent
+MATLAB script:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tiny
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting{./p3.m}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
