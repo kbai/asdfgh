@@ -1,0 +1,193 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+1
+\end_layout
+
+\begin_layout Standard
+We find the following relation between 
+\begin_inset Formula $D$
+\end_inset
+
+ ,
+\begin_inset Formula $(x-\xi)$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $cos\theta=\frac{D}{(D^{2}+(x-\xi)^{2})^{1/2}}$
+\end_inset
+
+ 
+\begin_inset Formula $sin\theta=\frac{(x-\xi)}{(D^{2}+(x-\xi)^{2})^{1/2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The directional vector: 
+\begin_inset Formula $\hat{r}=\begin{bmatrix}cos\theta\\
+sin\theta
+\end{bmatrix}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Delta F=\begin{bmatrix}M\Delta g_{z}\\
+M\Delta g_{x}
+\end{bmatrix}=\frac{GM\Delta m}{r^{2}}\hat{r}=\frac{GM\Delta m}{D^{2}+(x-\xi)^{2}}\begin{bmatrix}cos\theta\\
+sin\theta
+\end{bmatrix}=\begin{bmatrix}\frac{GM\Delta mD}{(D^{2}+(x-\xi)^{2})^{3/2}}\\
+\frac{GM\Delta m(x-\xi)}{(D^{2}+(x-\xi)^{2})^{3/2}}
+\end{bmatrix}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so 
+\begin_inset Formula $\Delta g_{z}=\frac{G\Delta mD}{(D^{2}+(x-\xi)^{2})^{3/2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+2
+\end_layout
+
+\begin_layout Standard
+Because the anomalies are at 0.1 meter intervals from 0 to 10, we consider
+ the k anomaly:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\xi=0.1(k-1)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g(x,\Delta m_{k})=\frac{GD\Delta m_{k}}{[D^{2}+(x-0.1(k-1))^{2}]^{3/2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so the total contribution of all anomalies can be calculated as 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g(x,m)=\underset{k=1}{\overset{101}{\sum}}\frac{GD\Delta m_{k}}{[D^{2}+(x-0.1(k-1))^{2}]^{3/2}}$
+\end_inset
+
+ where 
+\begin_inset Formula $m=[\Delta m_{1}\Delta m_{2}...\Delta m_{101}]'$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+3
+\end_layout
+
+\begin_layout Standard
+Linear.
+ Because the model is a linear function of 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+4
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_body
+\end_document
