@@ -81,8 +81,8 @@ print('figure/f.png','-dpng');
 p=10;
 figure(4)
 
-for p = 10:5:20
-    
+%for p = 10:5:20
+ for p = 5:10   
 [GI_Dm_trunc,Rg{p}] = generalized_inverse(di,GG,p);   %generalized inverse with truncation
 
 plot(xi,GI_Dm_trunc);
@@ -134,7 +134,7 @@ figure(7)
 
 plot(xi,Tik1_Dm);
 
-L2 = diag(ones(1,Lm),0) + diag(-2*ones(1,Lm-1),1) + diag(ones(1,Lm-1),2);
+L2 = diag(ones(1,Lm),0) + diag(-2*ones(1,Lm-1),1) + diag(ones(1,Lm-2),2);
 L2(end,:) = [];
 L2(end,:) = [];
 
