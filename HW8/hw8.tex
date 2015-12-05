@@ -1,0 +1,366 @@
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[margin=0.75in]{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{CJK}
+\definecolor{mygreen}{RGB}{28,172,0}
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose}
+
+
+\makeatletter
+\@ifundefined{date}{}{\date{}}
+\makeatother
+
+%Fancy-header package to modify header/page numbering 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\textbf{ESE 101}} %name of the course
+\chead{\textbf{Kangchen Bai}} %topic of the homework set
+\rhead{\textbf{HW 8}} %number of the homework set
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+
+
+% Matlab script
+\lstset{language=Matlab,%
+      %basicstyle=\color{red},
+  breaklines=true,%
+  morekeywords={matlab2tikz},
+  keywordstyle=\color{blue},%
+  morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+  identifierstyle=\color{black},%}
+  stringstyle=\color{mylilas},
+  commentstyle=\color{mygreen},%
+  showstringspaces=false,%without this there will be a symbol in the places where there is a space
+  numbers=left,%
+  numberstyle={\tiny \color{black}},% size of the numbers
+  numbersep=9pt, % this defines how far the numbers are from the text
+  emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+                                                      %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\subsection*{1}
+
+
+\subsubsection*{(a)}
+
+incompressible of water:
+
+$\nabla\cdotp x=\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}+\frac{\partial w}{\partial z}=0$
+
+integrate along $z$
+
+we have $0=\frac{Dh}{Dt}+h(\nabla\cdotp v)$
+
+Since $\nabla\cdotp(hv)=\nabla h\cdotp v+h(\nabla\cdotp v)$
+
+and $\frac{Dh}{Dt}=\frac{\partial h}{\partial t}+\nabla h\cdotp v$
+
+so $\frac{\partial h}{\partial t}+\nabla\cdotp(hv)=\frac{Dh}{Dt}+h(\nabla\cdotp v)=0$
+
+
+\subsubsection*{(b)}
+
+Because $p=p_{a}+\rho g[h(x,y,t)-z]$
+
+so $\frac{1}{\rho}(\nabla p)=\frac{1}{\rho}(\nabla(\rho g[h(x,y,t)-z]))$
+
+If we assume $z=h=const$ and $\rho$ is constant (because we assume
+water to be incompressible)
+
+$-\frac{1}{\rho}(\nabla p)=\frac{1}{\rho}(\nabla(\rho g[h(x,y,t)-z]))=-g\nabla h$
+
+Besides this pressure force, the water also bear the coriolis force:
+
+$-f\hat{k}\times v$
+
+$a=-f\hat{k}\times v-g\nabla h$
+
+and $a=\frac{Dv}{Dt}$
+
+so $\frac{Dv}{Dt}=\frac{\partial v}{\partial t}+v\cdotp(\nabla v)$
+here $\nabla v$ is a 2 order tensor $\begin{array}{cc}
+\frac{\partial u}{\partial x} & \frac{\partial u}{\partial y}\\
+\frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}
+\end{array}$
+
+so $\frac{Dv}{Dt}=\frac{\partial v}{\partial t}+u\frac{\partial v}{\partial x}+v\frac{\partial v}{\partial y}$
+
+so we have equation (3)
+
+
+\subsubsection*{(c)}
+
+$u\frac{\partial v}{\partial x}+v\frac{\partial v}{\partial y}=\hat{i}(uu_{x}+vu_{y})+\hat{j}(uv_{x}+vv_{y})$
+
+
+\subsection*{2}
+
+
+\subsubsection*{(a)}
+
+$\frac{\partial u}{\partial t}+u\frac{\partial u}{\partial x}+v\frac{\partial u}{\partial y}=-g\frac{\partial h}{\partial x}$
+(1)
+
+$\frac{\partial v}{\partial t}+u\frac{\partial v}{\partial x}+v\frac{\partial v}{\partial y}=-g\frac{\partial h}{\partial y}$
+(2)
+
+neglecting those $v\cdotp\nabla v$ terms in (1) and (2)
+
+$\frac{\partial^{2}u}{\partial x\partial t}=-g\frac{\partial^{2}h}{\partial x^{2}}$
+and $\frac{\partial^{2}v}{\partial y\partial t}=-g\frac{\partial^{2}h}{\partial y^{2}}$
+
+so $\frac{\partial^{2}u}{\partial x\partial t}+\frac{\partial^{2}v}{\partial y\partial t}=-g(\frac{\partial^{2}h}{\partial x^{2}}+\frac{\partial^{2}h}{\partial y^{2}})$
+
+and from (1) we know that
+
+$h(\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y})=-\frac{\partial h}{\partial t}$
+
+so 
+
+$\frac{\partial^{2}u}{\partial x\partial t}+\frac{\partial^{2}v}{\partial y\partial t}=\frac{\partial}{\partial t}(\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y})=-\frac{1}{h}\frac{\partial^{2}h}{\partial t^{2}}$
+
+so $\frac{1}{h}\frac{\partial^{2}h}{\partial t^{2}}=g(\frac{\partial^{2}h}{\partial x^{2}}+\frac{\partial^{2}h}{\partial y^{2}})=g\nabla^{2}h$
+
+and the tsunami wave speed is thus $\sqrt{gh_{0}}$
+
+
+\subsubsection*{(b)}
+
+The wave number is $K=(k,m)$
+
+The frequency of the wave is $\omega$
+
+so the wave speed is $\frac{\omega}{|K|}=\frac{\omega}{\sqrt{m^{2}+k^{2}}}$
+
+for average ocean depth of 4km
+
+$c=\sqrt{gh_{0}}=\sqrt{9.8*4000}=197.98m/s$
+
+for average thickness of troposphere
+
+$c=\sqrt{gh_{0}}=\sqrt{9.8*9000}=296.98m/s$
+
+
+\section*{3}
+
+
+\subsection*{(a)}
+
+The governing equations are now:
+
+$\frac{\partial u}{\partial t}+fv+g\frac{\partial h}{\partial x}=0$
+
+$\frac{\partial v}{\partial t}-fu+g\frac{\partial h}{\partial y}=0$
+
+$\frac{\partial h}{\partial t}+h(\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y})=0$
+
+If we assume the form
+
+$u=u_{0}exp(ikx+imy-i\omega t)$
+
+$v=v_{0}exp(ikx+imy-i\omega t)$
+
+$h=h_{0}exp(ikx+imy-i\omega t)$
+
+then
+
+$-i\omega u_{0}+fv_{0}+igkh_{0}=0$
+
+$-i\omega v_{0}-fu_{0}+igmh_{0}=0$
+
+$-i\omega h_{0}+iHku_{0}+iHmv_{0}=0$
+
+so det$\begin{bmatrix}-i\omega & f & igk\\
+-f & -i\omega & igm\\
+iHk & iHm & -i\omega
+\end{bmatrix}=0$
+
+so $\omega^{3}-\omega(gH(k^{2}+m^{2})+f^{2})=0$
+
+so $\omega=0,\sqrt{gH(k^{2}+m^{2})+f^{2}},-\sqrt{gH(k^{2}+m^{2})+f^{2}}$
+
+Because $c=\frac{\omega}{\sqrt{m^{2}+k^{2}}}=\sqrt{gH+f^{2}/(k^{2}+m^{2})}$
+
+so it propagates faster.
+
+
+\subsubsection*{(c)}
+
+Because if $\omega=0$ then the determinant must be 0.
+
+So the three equations must be linearly dependent.
+
+that is 
+
+$fv+g\frac{\partial h}{\partial x}=0$
+
+$-fu+g\frac{\partial h}{\partial y}$
+
+$\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}=0$
+
+That is just the geostrophic balance.
+
+
+\subsection*{4}
+
+$\frac{\partial u}{\partial t}+u\frac{\partial u}{\partial x}+v\frac{\partial u}{\partial y}=fv-g\frac{\partial h}{\partial x}$
+(1)
+
+$\frac{\partial v}{\partial t}+u\frac{\partial v}{\partial x}+v\frac{\partial v}{\partial y}=-fu-g\frac{\partial h}{\partial y}$
+(2)
+
+$u_{yt}+u_{y}u_{x}+uu_{xy}+v_{y}u_{y}+vu_{yy}=fv_{y}-gh_{xy}+vf_{y}$(3)
+
+$v_{xt}+u_{x}v_{x}+uv_{xx}+v_{x}v_{y}+vv_{xy}=-fu_{x}-gh_{xy}$(4)
+
+(3)-(4)
+
+$u_{yt}-v_{xt}+u_{y}u_{x}+v_{y}u_{y}-u_{x}v_{x}-v_{x}v_{y}+uu_{xy}+vu_{yy}-uv_{xx}-vv_{xy}$
+
+$=fv_{y}+fu_{x}$
+
+taking in $\xi=(v_{x}-u_{y})$
+
+$-(u\xi_{x}+v\xi_{y})-\xi(\nabla\cdotp V)=f(\nabla\cdotp V)+vf_{y}$
+
+$V\cdotp\nabla\xi+(\xi+f)(\nabla\cdotp V)+vf_{y}=0$
+
+$\frac{D\xi}{Dt}=\frac{\partial\xi}{\partial t}+V\cdot\nabla\xi$
+
+If we assume a stationary solution , then $\frac{\partial\xi}{\partial t}=0$
+
+so we have $\frac{D\xi}{Dt}+(\xi+f)(\nabla\cdotp V)+vf_{y}=0$
+
+Because $vf_{y}=\frac{Df}{Dt}$
+
+so $\frac{D(\xi+f)}{Dt}+(\xi+f)\delta=0$
+
+combing with eq (1)
+
+$\frac{DQ}{Dt}=D(\frac{\xi+f}{h})/Dt=\frac{1}{h^{2}}(\frac{D(\xi+f)}{Dt}h-\frac{Dh}{Dt}(\xi+f))=\frac{1}{h^{2}}(-(\xi+f)\delta h+(h\delta)(\xi+f))=0$
+
+
+\subsection*{5}
+
+
+\subsubsection*{(a)}
+
+The leading terms in eq(1)
+
+$h_{t}+h(u_{x}+v_{y})=0$
+
+leading terms in eq(3)
+
+$v_{t}+f\hat{k}\times v+g\nabla h=0$
+
+if we also neglect the time dependent term:
+
+$-fv+gh_{x}=0$(a)
+
+and 
+
+$fu+gh_{y}=0$(b)
+
+if we take $y$ derivative of (a) minus $x$ derivative of (b)
+
+then
+
+$-fv_{y}-fu_{x}=0$
+
+so $v_{y}+u_{x}=0$ which is the quasistatic version of eq(1).
+
+
+\subsubsection*{(b)}
+
+if $u=-\psi_{y}$ and $v=\psi_{x}$
+
+then $v_{y}+u_{x}=-\psi_{xy}+\psi_{xy}=0$ this equation is automatically
+satisfied.
+
+so $-f\psi_{x}+gh'_{x}=0$ and $-f\psi_{y}+gh'_{y}=0$ (10)
+
+$\xi=(v_{x}-u_{y})=\psi_{xx}+\psi_{yy}=\nabla^{2}\psi$
+
+Because of (10)
+
+$\psi=\frac{g}{f}h'+Const$ (11)
+
+
+\subsubsection*{(c)}
+
+$v=(-\psi_{y},\psi_{x})$ and $\nabla\psi=(\psi_{x},\psi_{y})$
+
+so $v\cdot\nabla\psi=0$
+
+so they are perpendicular to each other.
+
+From the form of $v$ and $\psi$ we know that $\nabla\psi$ is a
+clockwise rotation of $v.$
+
+So to the right of $v$ , $\psi$ always increases, this is no difference
+for northern and southern hemisphere, this is just a natural outcome
+of how you define your stream function. But if you link $\psi$ with
+pressure, that is difference from Northern to Southern hemisphere
+because the sign of $f$ is changed.
+
+In northern hemisphere, $f$ is positive, so high $\psi$ means high
+pressure, in southern hemisphere , high $\psi$ means low pressure.
+So in northern hemisphere , high pressure is on the right of the flow
+and in southern hemisphere, high pressure is on the left of the flow.
+
+
+\subsubsection*{(d)}
+
+$Q=\frac{\xi+f}{h}=\frac{\xi+f_{0}+\beta y}{h_{0}+h'(x,y,t)}=\frac{(\xi+f_{0}+\beta y)}{h_{0}(1+h'/h_{0})}=(1-\frac{h'}{h_{0}})(\frac{1}{h_{0}})(\xi+f_{0}+\beta y)=\frac{f_{0}}{h_{0}}+(\frac{\xi+\beta y-\frac{f_{0}h'}{h_{0}}}{h_{0}})$
+
+and $\xi=\nabla^{2}\psi$ ,$h'=\frac{f_{0}}{g}\psi+C$ (we can take
+$C=0$ for convenience)
+
+Also there are some other small terms that are second order things:
+
+$\frac{\xi h'}{h_{0}^{2}}$ that we neglect.
+
+
+\subsubsection*{(e)}
+
+Comparing the $q$ given here and my result in 4(d),
+
+$(1/L_{d}^{2})=\frac{f_{0}^{2}}{h_{0}g}$ so $L_{d}=\frac{\sqrt{h_{0}g}}{f_{0}}$,
+take in $h_{0}=4km$ and $f_{0}=10^{-4}s^{-1}$
+
+$L_{d}=19798.98m/s^{2}$
+
+Since $DQ/Dt=0$
+
+$D(\frac{\nabla^{2}\psi+\beta y-(1/L_{d})^{2}\psi}{h_{0}})=\frac{1}{h_{0}}$
+
+\begin{eqnarray*}
+\frac{D(\nabla^{2}\psi+\beta y-(1/L_{d})^{2}\psi)}{Dt} & = & (\nabla\psi-(1/L_{d})^{2}\psi+\beta y)_{t}\\
+ &  & -\psi_{y}(\nabla^{2}\psi-(1/L_{d})^{2}\psi)_{x}+\psi_{x}(\nabla^{2}\psi-(1/L_{d})^{2}\psi+\beta y)_{y}\\
+ & = & (\nabla\psi-(1/L_{d})^{2}\psi+\beta y)_{t}+J(\psi,\nabla^{2}\psi)+\beta\psi_{x}
+\end{eqnarray*}
+
+\end{document}

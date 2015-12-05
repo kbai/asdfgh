@@ -63,7 +63,6 @@ ylabel('log_1_0 (S)');
 title('singular values');
 print('figure/e_snv.png','-dpng');
 
-
 Ginv_LLS = (GG'*GG)\GG';
 
 Re_LLS = Ginv_LLS*GG;  %resolution matrix for least squares
@@ -121,7 +120,7 @@ ne = [ne,norm(GG*Tik_Dm-di)];
 figure(5)
 plot(xi,Tik_Dm);
 hold on
-Rt{i} = (GG'*GG + alpha_s^2 * eye(Lm))\(GG'*GG);
+Rt{i} = 
 end
 
 
@@ -159,20 +158,8 @@ Ri2 = (GG'*GG + alpha^2 * (L2'*L2))\(GG'*GG);
 hold on
 
 plot(xi,Tik2_Dm);
+
 %% part(j)
-figure(12)
-imagesc(Re_LLS);
-figure(13)
-imagesc(Rf);
-figure(14)
-
-imagesc(Rg{11});
-figure(15)
-
-imagesc(Rg{16});
-figure(16)
-
-imagesc(Rg{21});
 
 
 

@@ -17,7 +17,7 @@ end
 
 model = VV*I_DD*UU'*data;
 
-Resolution = VV*I_DD*DD*VV';
+Resolution = VV*I_DD*UU'*UU*DD*VV';
 
 end
 
