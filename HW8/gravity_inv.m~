@@ -42,16 +42,22 @@ GG = (1/unit)*G*D./(D^2+(xd*ones(1,Lm) - ones(Ld,1)*xi).^2).^1.5;
 % Least square solution
 LS_Dm = (GG'*GG)\(GG'*di);
 
+%model prediction
+d_pred = GG*LS_Dm;
 % plot the data
 figure(11)
 subplot(211)
-plot(xd, di, 'ko-');
-xlabel('x (m)'); ylabel('\muGal'); xlim([-5 15]);
-title('data');
-subplot(212)
 plot(xi, LS_Dm);
 xlabel('x (m)'); ylabel(' \Deltam (kg)'); xlim([-5 15]);
 title('standard least square');
+
+subplot(212)
+plot(xd, di, 'ko-');
+hold on
+plot(xd,d_pred,'b*-');
+legend('data','model prediction');
+xlabel('x (m)'); ylabel('\muGal'); xlim([-5 15]);
+title('data');
 print('figure/e_result.png','-dpng');
 
 % SVD of GG
@@ -72,9 +78,12 @@ Re_LLS = Ginv_LLS*GG;  %resolution matrix for least squares
 %% part (f)
 
 [GI_Dm,Rf] = generalized_inverse(di,GG);   %generalized inverse without truncation
-
+d_predf = GG*GI_Dm;
 figure(3)
+subplot(211)
 
+
+subplot(212)
 plot(xi,LS_Dm,'k-');
 hold on
 plot(xi,GI_Dm,'r-');
@@ -99,10 +108,14 @@ figure(20);
 loglog(nm,ne,'-o'); 
 text(nm,ne,strread(num2str(5:1:30),'%s'));
 legend('truncation number')
+xlabel('||m||^2');
+ylabel('||d-Gm||^2');
 print('figure/g_trunc.png','-dpng');
 hold on
 xlim([3150,3450]);
 ylim([0.1345,0.1395]);
+xlabel('||m||^2');
+ylabel('||d-Gm||^2');
 print('figure/g_trunc_zoomin.png','-dpng');
 
 %% part (h)
@@ -128,7 +141,7 @@ for i= 1:length(alpha_all);
     end
     Rt{i} = (GG'*GG + alpha_all(i)^2 * eye(Lm))\(GG'*GG);
 end
-xlabel('m'); ylabel('\Deltamkg');
+xlabel('x (m)'); ylabel('\Deltamkg');
 legend('\alpha=1e-5','\alpha=1e-4','\alpha=1e-3');
 print('figure/h_solutions.png','-dpng');
 
@@ -214,7 +227,7 @@ Ri2 = (GG'*GG + alpha^2 * (L2'*L2))\(GG'*GG);  % resolution matrix
 figure(7)
 hold on
 plot(xi,Tik2_Dm,'r-');
-xlabel('m'); ylabel('\Deltamkg');
+xlabel('x (m)'); ylabel('\Deltamkg');
 legend('first-order','second-order');
 print('figure/i_solution.png','-dpng');
 
@@ -224,6 +237,7 @@ plot(xd,di,'ko-');
 hold on;
 plot(xd,GG * Tik1_Dm,'r-');
 plot(xd,GG * Tik2_Dm,'b-');
+xlabel('x (m)'); ylabel('\muGal');
 hold off;
 legend('data','first order','second order');
 print('figure/i_pred.png','-dpng');

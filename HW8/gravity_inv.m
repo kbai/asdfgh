@@ -78,13 +78,22 @@ Re_LLS = Ginv_LLS*GG;  %resolution matrix for least squares
 %% part (f)
 
 [GI_Dm,Rf] = generalized_inverse(di,GG);   %generalized inverse without truncation
-
+d_predf = GG*GI_Dm;
 figure(3)
+subplot(211)
 
 plot(xi,LS_Dm,'k-');
 hold on
 plot(xi,GI_Dm,'r-');
 legend('LS','SVD');
+
+subplot(212)
+plot(xd, di, 'ko-');
+hold on
+plot(xd,d_predf,'b*-');
+legend('data','model prediction');
+
+
 print('figure/f.png','-dpng');
 
 %% part (g)
@@ -105,10 +114,14 @@ figure(20);
 loglog(nm,ne,'-o'); 
 text(nm,ne,strread(num2str(5:1:30),'%s'));
 legend('truncation number')
+xlabel('||m||^2');
+ylabel('||d-Gm||^2');
 print('figure/g_trunc.png','-dpng');
 hold on
 xlim([3150,3450]);
 ylim([0.1345,0.1395]);
+xlabel('||m||^2');
+ylabel('||d-Gm||^2');
 print('figure/g_trunc_zoomin.png','-dpng');
 
 %% part (h)

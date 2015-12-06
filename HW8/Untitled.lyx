@@ -319,7 +319,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Upper: The model 
+Upper: The model given by least squares method; Lower:Model prediction versus
+ data.
 \end_layout
 
 \end_inset
@@ -342,10 +343,42 @@ We see that the inversion result is messy.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename figure/e_snv.png
 	lyxscale 50
 	width 15cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Singular values distribution of 
+\begin_inset Formula $\mathbf{G}$
+\end_inset
+
+ matrix.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -355,12 +388,12 @@ We see that the inversion result is messy.
 \begin_layout Standard
 We see that, the singular values range around 18 order of magnitude.
  In this case, the inverse of the matrix 
-\begin_inset Formula $(G^{T}G)$
+\begin_inset Formula $(\mathbf{G}^{T}\mathbf{G})$
 \end_inset
 
- will be unstable which means if you give it a small perturbation to your
- data 
-\begin_inset Formula $d$
+ will be unstable which means if you give it a small perturbation to data
+ 
+\begin_inset Formula $\mathbf{d}$
 \end_inset
 
 ,
@@ -368,7 +401,7 @@ We see that, the singular values range around 18 order of magnitude.
 
 \begin_layout Standard
 the solution 
-\begin_inset Formula $(G^{T}G)^{-1}G^{T}d$
+\begin_inset Formula $(\mathbf{G}^{T}\mathbf{G})^{-1}\mathbf{G}^{T}\mathbf{d}$
 \end_inset
 
  will change dramatically.
@@ -378,6 +411,9 @@ the solution
  The solution doesn't make sense although the model prediction fits data
  exactly, because it is impossible to find that huge mass anomalies on the
  earth.
+ (Note: if you use inv() to calculate inverse, you may not get the solution
+ that gives a good fit to the data.
+ Here we are using backslash.)
 \end_layout
 
 \begin_layout Subsection*
@@ -385,14 +421,63 @@ the solution
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename figure/f.png
-	lyxscale 20
+	lyxscale 50
 	width 15cm
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Upper: The solution given by generalized inverse method comparing with the
+ previous least squares solution.Lower: Model prediction given by generalized
+ inverse comparing with the data.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We see that generalized inverse method yields an even worse solution in
+ terms of magnitude of the norm.
+ The model prediction fits the data worse too.
+ This is still because of the singular value distribution.
+ If we get the generalized inverse solution without truncating any small
+ singular values, we will get the solution having amplitude this huge.
+ In this case, theoretically, generalized inverse method should give same
+ solution as the least squares method in a sense that both of them are calculati
+ng 
+\begin_inset Formula $(G^{T}G)\(G^{T}d).$
+\end_inset
+
+Generalized inverse method calculates this through singular value decomposition
+ while in least squares method, this is done by some more sophisticated
+ numerical methods.
+ So the least squares method gives better solution in this case.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -410,10 +495,66 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/g_trunc.png
+	lyxscale 50
+	width 7.5cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/g_trunc_zoomin.png
+	lyxscale 50
+	width 7.5cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
+Trade off relation between model norm and misfit norm.
+ The right figure is a local zoom in of the left one.
+ There is a clear turning point between p=16 or 17.
 \end_layout
 
 \end_inset
@@ -431,25 +572,13 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset Graphics
-	filename figure/g_trunc.png
-	lyxscale 20
-	width 15cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename figure/g_trunc_zoomin.png
-	lyxscale 20
-	width 15cm
-
-\end_inset
-
-
+We see that if we as trucation value become larger, the misfit become bigger
+ and the solution norm become smaller.
+ At the turning point(p=16 or 17), if we increase truncation number, the
+ misfit doesn't decrease too much but the model norm increase rapidly and
+ vice versa.
+ So an optimal p value should be around 16 or 17.
+ 
 \end_layout
 
 \begin_layout Subsection*
