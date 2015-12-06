@@ -6,7 +6,7 @@
 \begin_preamble
 \usepackage[margin=0.75in]{geometry} % see geometry.pdf on how to lay out the page. There's lots.
 \usepackage{graphicx}
-%\usepackage{cleveref}
+\usepackage{cleveref}
 \usepackage{amsmath}
 \usepackage{multirow}
 \usepackage{listings}
@@ -27,8 +27,8 @@
 %Fancy-header package to modify header/page numbering 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\lhead{\textbf{ESE 101}} %name of the course
-\chead{\textbf{Kangchen Bai}} %topic of the homework set
+\lhead{\textbf{Ge/ESE 101}} %name of the course
+\chead{\textbf{}} %topic of the homework set
 \rhead{\textbf{HW 8}} %number of the homework set
 \lfoot{}
 \cfoot{}
@@ -120,54 +120,51 @@
 \begin_body
 
 \begin_layout Subsection*
+1
+\end_layout
+
+\begin_layout Subsubsection*
 (a)
 \end_layout
 
 \begin_layout Standard
-We find the following relation between 
-\begin_inset Formula $D$
-\end_inset
-
- ,
-\begin_inset Formula $(x-\xi)$
-\end_inset
-
- and 
-\begin_inset Formula $\theta$
-\end_inset
-
-:
+incompressible of water:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $cos\theta=\frac{D}{(D^{2}+(x-\xi)^{2})^{1/2}}$
-\end_inset
-
- 
-\begin_inset Formula $sin\theta=\frac{(x-\xi)}{(D^{2}+(x-\xi)^{2})^{1/2}}$
+\begin_inset Formula $\nabla\cdotp x=\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}+\frac{\partial w}{\partial z}=0$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-The directional vector: 
-\begin_inset Formula $\hat{r}=\begin{bmatrix}cos\theta\\
-sin\theta
-\end{bmatrix}$
+integrate along 
+\begin_inset Formula $z$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\Delta F=\begin{bmatrix}M\Delta g_{z}\\
-M\Delta g_{x}
-\end{bmatrix}=\frac{GM\Delta m}{r^{2}}\hat{r}=\frac{GM\Delta m}{D^{2}+(x-\xi)^{2}}\begin{bmatrix}cos\theta\\
-sin\theta
-\end{bmatrix}=\begin{bmatrix}\frac{GM\Delta mD}{(D^{2}+(x-\xi)^{2})^{3/2}}\\
-\frac{GM\Delta m(x-\xi)}{(D^{2}+(x-\xi)^{2})^{3/2}}
-\end{bmatrix}$
+we have 
+\begin_inset Formula $0=\frac{Dh}{Dt}+h(\nabla\cdotp v)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $\nabla\cdotp(hv)=\nabla h\cdotp v+h(\nabla\cdotp v)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\begin_inset Formula $\frac{Dh}{Dt}=\frac{\partial h}{\partial t}+\nabla h\cdotp v$
 \end_inset
 
 
@@ -175,209 +172,871 @@ sin\theta
 
 \begin_layout Standard
 so 
-\begin_inset Formula $\Delta g_{z}=\frac{G\Delta mD}{(D^{2}+(x-\xi)^{2})^{3/2}}$
+\begin_inset Formula $\frac{\partial h}{\partial t}+\nabla\cdotp(hv)=\frac{Dh}{Dt}+h(\nabla\cdotp v)=0$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsubsection*
 (b)
 \end_layout
 
 \begin_layout Standard
-Because the anomalies are at 0.1 meter intervals from 0 to 10, we consider
- the k anomaly:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\xi=0.1(k-1)$
+Because 
+\begin_inset Formula $p=p_{a}+\rho g[h(x,y,t)-z]$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $g(x,\Delta m_{k})=\frac{GD\Delta m_{k}}{[D^{2}+(x-0.1(k-1))^{2}]^{3/2}}$
+so 
+\begin_inset Formula $\frac{1}{\rho}(\nabla p)=\frac{1}{\rho}(\nabla(\rho g[h(x,y,t)-z]))$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-so the total contribution of all anomalies can be calculated as 
+If we assume 
+\begin_inset Formula $z=h=const$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is constant (because we assume water to be incompressible)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $g(x,m)=\underset{k=1}{\overset{101}{\sum}}\frac{GD\Delta m_{k}}{[D^{2}+(x-0.1(k-1))^{2}]^{3/2}}$
-\end_inset
-
- where 
-\begin_inset Formula $m=[\Delta m_{1}\Delta m_{2}...\Delta m_{101}]'$
+\begin_inset Formula $-\frac{1}{\rho}(\nabla p)=\frac{1}{\rho}(\nabla(\rho g[h(x,y,t)-z]))=-g\nabla h$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Standard
+Besides this pressure force, the water also bear the coriolis force:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-f\hat{k}\times v$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $a=-f\hat{k}\times v-g\nabla h$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\begin_inset Formula $a=\frac{Dv}{Dt}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so 
+\begin_inset Formula $\frac{Dv}{Dt}=\frac{\partial v}{\partial t}+v\cdotp(\nabla v)$
+\end_inset
+
+ here 
+\begin_inset Formula $\nabla v$
+\end_inset
+
+ is a 2 order tensor 
+\begin_inset Formula $\begin{array}{cc}
+\frac{\partial u}{\partial x} & \frac{\partial u}{\partial y}\\
+\frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so 
+\begin_inset Formula $\frac{Dv}{Dt}=\frac{\partial v}{\partial t}+u\frac{\partial v}{\partial x}+v\frac{\partial v}{\partial y}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so we have equation (3)
+\end_layout
+
+\begin_layout Subsubsection*
 (c)
 \end_layout
 
 \begin_layout Standard
-Linear.
- Because the model predication is a linear function of 
-\begin_inset Formula $m$
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-\boldsymbol{d_{i}} & = & \boldsymbol{G_{i,:}}\mbox{\boldsymbol{m}}
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-where
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-\boldsymbol{G_{ij}} & = & \frac{GD}{\left[D^{2}+(x_{i}-0.1\cdot(j-1))^{2}\right]^{3/2}}
-\end{eqnarray*}
-
+\begin_inset Formula $u\frac{\partial v}{\partial x}+v\frac{\partial v}{\partial y}=\hat{i}(uu_{x}+vu_{y})+\hat{j}(uv_{x}+vv_{y})$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Subsection*
+2
+\end_layout
+
+\begin_layout Subsubsection*
+(a)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\partial u}{\partial t}+u\frac{\partial u}{\partial x}+v\frac{\partial u}{\partial y}=-g\frac{\partial h}{\partial x}$
+\end_inset
+
+ (1)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\partial v}{\partial t}+u\frac{\partial v}{\partial x}+v\frac{\partial v}{\partial y}=-g\frac{\partial h}{\partial y}$
+\end_inset
+
+ (2)
+\end_layout
+
+\begin_layout Standard
+neglecting those 
+\begin_inset Formula $v\cdotp\nabla v$
+\end_inset
+
+ terms in (1) and (2)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\partial^{2}u}{\partial x\partial t}=-g\frac{\partial^{2}h}{\partial x^{2}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\partial^{2}v}{\partial y\partial t}=-g\frac{\partial^{2}h}{\partial y^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so 
+\begin_inset Formula $\frac{\partial^{2}u}{\partial x\partial t}+\frac{\partial^{2}v}{\partial y\partial t}=-g(\frac{\partial^{2}h}{\partial x^{2}}+\frac{\partial^{2}h}{\partial y^{2}})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and from (1) we know that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $h(\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y})=-\frac{\partial h}{\partial t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\partial^{2}u}{\partial x\partial t}+\frac{\partial^{2}v}{\partial y\partial t}=\frac{\partial}{\partial t}(\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y})=-\frac{1}{h}\frac{\partial^{2}h}{\partial t^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so 
+\begin_inset Formula $\frac{1}{h}\frac{\partial^{2}h}{\partial t^{2}}=g(\frac{\partial^{2}h}{\partial x^{2}}+\frac{\partial^{2}h}{\partial y^{2}})=g\nabla^{2}h$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and the tsunami wave speed is thus 
+\begin_inset Formula $\sqrt{gh_{0}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(b)
+\end_layout
+
+\begin_layout Standard
+The wave number is 
+\begin_inset Formula $K=(k,m)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The frequency of the wave is 
+\begin_inset Formula $\omega$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so the wave speed is 
+\begin_inset Formula $\frac{\omega}{|K|}=\frac{\omega}{\sqrt{m^{2}+k^{2}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+for average ocean depth of 4km
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $c=\sqrt{gh_{0}}=\sqrt{9.8*4000}=197.98m/s$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+for average thickness of troposphere
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $c=\sqrt{gh_{0}}=\sqrt{9.8*9000}=296.98m/s$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+3
+\end_layout
+
+\begin_layout Subsection*
+(a)
+\end_layout
+
+\begin_layout Standard
+The governing equations are now:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\partial u}{\partial t}+fv+g\frac{\partial h}{\partial x}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\partial v}{\partial t}-fu+g\frac{\partial h}{\partial y}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\partial h}{\partial t}+h(\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y})=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we assume the form
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u=u_{0}exp(ikx+imy-i\omega t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v=v_{0}exp(ikx+imy-i\omega t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $h=h_{0}exp(ikx+imy-i\omega t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-i\omega u_{0}+fv_{0}+igkh_{0}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-i\omega v_{0}-fu_{0}+igmh_{0}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-i\omega h_{0}+iHku_{0}+iHmv_{0}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so det
+\begin_inset Formula $\begin{bmatrix}-i\omega & f & igk\\
+-f & -i\omega & igm\\
+iHk & iHm & -i\omega
+\end{bmatrix}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so 
+\begin_inset Formula $\omega^{3}-\omega(gH(k^{2}+m^{2})+f^{2})=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so 
+\begin_inset Formula $\omega=0,\sqrt{gH(k^{2}+m^{2})+f^{2}},-\sqrt{gH(k^{2}+m^{2})+f^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because 
+\begin_inset Formula $c=\frac{\omega}{\sqrt{m^{2}+k^{2}}}=\sqrt{gH+f^{2}/(k^{2}+m^{2})}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so it propagates faster.
+\end_layout
+
+\begin_layout Subsubsection*
+(c)
+\end_layout
+
+\begin_layout Standard
+Because if 
+\begin_inset Formula $\omega=0$
+\end_inset
+
+ then the determinant must be 0.
+\end_layout
+
+\begin_layout Standard
+So the three equations must be linearly dependent.
+\end_layout
+
+\begin_layout Standard
+that is 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $fv+g\frac{\partial h}{\partial x}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-fu+g\frac{\partial h}{\partial y}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+That is just the geostrophic balance.
+\end_layout
+
+\begin_layout Subsection*
+4
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\partial u}{\partial t}+u\frac{\partial u}{\partial x}+v\frac{\partial u}{\partial y}=fv-g\frac{\partial h}{\partial x}$
+\end_inset
+
+ (1)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\partial v}{\partial t}+u\frac{\partial v}{\partial x}+v\frac{\partial v}{\partial y}=-fu-g\frac{\partial h}{\partial y}$
+\end_inset
+
+ (2)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u_{yt}+u_{y}u_{x}+uu_{xy}+v_{y}u_{y}+vu_{yy}=fv_{y}-gh_{xy}+vf_{y}$
+\end_inset
+
+(3)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v_{xt}+u_{x}v_{x}+uv_{xx}+v_{x}v_{y}+vv_{xy}=-fu_{x}-gh_{xy}$
+\end_inset
+
+(4)
+\end_layout
+
+\begin_layout Standard
+(3)-(4)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u_{yt}-v_{xt}+u_{y}u_{x}+v_{y}u_{y}-u_{x}v_{x}-v_{x}v_{y}+uu_{xy}+vu_{yy}-uv_{xx}-vv_{xy}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $=fv_{y}+fu_{x}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+taking in 
+\begin_inset Formula $\xi=(v_{x}-u_{y})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-(u\xi_{x}+v\xi_{y})-\xi(\nabla\cdotp V)=f(\nabla\cdotp V)+vf_{y}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $V\cdotp\nabla\xi+(\xi+f)(\nabla\cdotp V)+vf_{y}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{D\xi}{Dt}=\frac{\partial\xi}{\partial t}+V\cdot\nabla\xi$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we assume a stationary solution , then 
+\begin_inset Formula $\frac{\partial\xi}{\partial t}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so we have 
+\begin_inset Formula $\frac{D\xi}{Dt}+(\xi+f)(\nabla\cdotp V)+vf_{y}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because 
+\begin_inset Formula $vf_{y}=\frac{Df}{Dt}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so 
+\begin_inset Formula $\frac{D(\xi+f)}{Dt}+(\xi+f)\delta=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+combing with eq (1)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{DQ}{Dt}=D(\frac{\xi+f}{h})/Dt=\frac{1}{h^{2}}(\frac{D(\xi+f)}{Dt}h-\frac{Dh}{Dt}(\xi+f))=\frac{1}{h^{2}}(-(\xi+f)\delta h+(h\delta)(\xi+f))=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+5
+\end_layout
+
+\begin_layout Subsubsection*
+(a)
+\end_layout
+
+\begin_layout Standard
+The leading terms in eq(1)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $h_{t}+h(u_{x}+v_{y})=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+leading terms in eq(3)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v_{t}+f\hat{k}\times v+g\nabla h=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+if we also neglect the time dependent term:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-fv+gh_{x}=0$
+\end_inset
+
+(a)
+\end_layout
+
+\begin_layout Standard
+and 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $fu+gh_{y}=0$
+\end_inset
+
+(b)
+\end_layout
+
+\begin_layout Standard
+if we take 
+\begin_inset Formula $y$
+\end_inset
+
+ derivative of (a) minus 
+\begin_inset Formula $x$
+\end_inset
+
+ derivative of (b)
+\end_layout
+
+\begin_layout Standard
+then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-fv_{y}-fu_{x}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so 
+\begin_inset Formula $v_{y}+u_{x}=0$
+\end_inset
+
+ which is the quasistatic version of eq(1).
+\end_layout
+
+\begin_layout Subsubsection*
+(b)
+\end_layout
+
+\begin_layout Standard
+if 
+\begin_inset Formula $u=-\psi_{y}$
+\end_inset
+
+ and 
+\begin_inset Formula $v=\psi_{x}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+then 
+\begin_inset Formula $v_{y}+u_{x}=-\psi_{xy}+\psi_{xy}=0$
+\end_inset
+
+ this equation is automatically satisfied.
+\end_layout
+
+\begin_layout Standard
+so 
+\begin_inset Formula $-f\psi_{x}+gh'_{x}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $-f\psi_{y}+gh'_{y}=0$
+\end_inset
+
+ (10)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\xi=(v_{x}-u_{y})=\psi_{xx}+\psi_{yy}=\nabla^{2}\psi$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because of (10)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\psi=\frac{g}{f}h'+Const$
+\end_inset
+
+ (11)
+\end_layout
+
+\begin_layout Subsubsection*
+(c)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v=(-\psi_{y},\psi_{x})$
+\end_inset
+
+ and 
+\begin_inset Formula $\nabla\psi=(\psi_{x},\psi_{y})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so 
+\begin_inset Formula $v\cdot\nabla\psi=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so they are perpendicular to each other.
+\end_layout
+
+\begin_layout Standard
+From the form of 
+\begin_inset Formula $v$
+\end_inset
+
+ and 
+\begin_inset Formula $\psi$
+\end_inset
+
+ we know that 
+\begin_inset Formula $\nabla\psi$
+\end_inset
+
+ is a clockwise rotation of 
+\begin_inset Formula $v.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So to the right of 
+\begin_inset Formula $v$
+\end_inset
+
+ , 
+\begin_inset Formula $\psi$
+\end_inset
+
+ always increases, this is no difference for northern and southern hemisphere,
+ this is just a natural outcome of how you define your stream function.
+ But if you link 
+\begin_inset Formula $\psi$
+\end_inset
+
+ with pressure, that is difference from Northern to Southern hemisphere
+ because the sign of 
+\begin_inset Formula $f$
+\end_inset
+
+ is changed.
+\end_layout
+
+\begin_layout Standard
+In northern hemisphere, 
+\begin_inset Formula $f$
+\end_inset
+
+ is positive, so high 
+\begin_inset Formula $\psi$
+\end_inset
+
+ means high pressure, in southern hemisphere , high 
+\begin_inset Formula $\psi$
+\end_inset
+
+ means low pressure.
+ So in northern hemisphere , high pressure is on the right of the flow and
+ in southern hemisphere, high pressure is on the left of the flow.
+\end_layout
+
+\begin_layout Subsubsection*
 (d)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figure/d.png
-	lyxscale 20
-	width 15cm
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\end_layout
-
+\begin_inset Formula $Q=\frac{\xi+f}{h}=\frac{\xi+f_{0}+\beta y}{h_{0}+h'(x,y,t)}=\frac{(\xi+f_{0}+\beta y)}{h_{0}(1+h'/h_{0})}=(1-\frac{h'}{h_{0}})(\frac{1}{h_{0}})(\xi+f_{0}+\beta y)=\frac{f_{0}}{h_{0}}+(\frac{\xi+\beta y-\frac{f_{0}h'}{h_{0}}}{h_{0}})$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
+\begin_layout Standard
+and 
+\begin_inset Formula $\xi=\nabla^{2}\psi$
 \end_inset
 
+ ,
+\begin_inset Formula $h'=\frac{f_{0}}{g}\psi+C$
+\end_inset
 
+ (we can take 
+\begin_inset Formula $C=0$
+\end_inset
+
+ for convenience)
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Standard
+Also there are some other small terms that are second order things:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\xi h'}{h_{0}^{2}}$
+\end_inset
+
+ that we neglect.
+\end_layout
+
+\begin_layout Subsubsection*
 (e)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Graphics
-	filename figure/e_result.png
-	lyxscale 20
-	width 15cm
+Comparing the 
+\begin_inset Formula $q$
+\end_inset
 
+ given here and my result in 4(d),
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $(1/L_{d}^{2})=\frac{f_{0}^{2}}{h_{0}g}$
+\end_inset
+
+ so 
+\begin_inset Formula $L_{d}=\frac{\sqrt{h_{0}g}}{f_{0}}$
+\end_inset
+
+, take in 
+\begin_inset Formula $h_{0}=4km$
+\end_inset
+
+ and 
+\begin_inset Formula $f_{0}=10^{-4}s^{-1}$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-We see that the inversion result is messy.
- To understand it, we calculate the singular values, and plot them in logarithm.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename figure/e_snv.png
-	lyxscale 20
-	width 15cm
-
+\begin_inset Formula $L_{d}=19798.98m/s^{2}$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-We see that, ..
-\end_layout
-
-\begin_layout Subsection*
-(f)
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename figure/f.png
-	lyxscale 20
-	width 15cm
-
+Since 
+\begin_inset Formula $DQ/Dt=0$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-(g)
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename figure/g_trunc.png
-	lyxscale 20
-	width 15cm
-
+\begin_inset Formula $D(\frac{\nabla^{2}\psi+\beta y-(1/L_{d})^{2}\psi}{h_{0}})=\frac{1}{h_{0}}$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Graphics
-	filename figure/g_trunc_zoomin.png
-	lyxscale 20
-	width 15cm
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{D(\nabla^{2}\psi+\beta y-(1/L_{d})^{2}\psi)}{Dt} & = & (\nabla\psi-(1/L_{d})^{2}\psi+\beta y)_{t}\\
+ &  & -\psi_{y}(\nabla^{2}\psi-(1/L_{d})^{2}\psi)_{x}+\psi_{x}(\nabla^{2}\psi-(1/L_{d})^{2}\psi+\beta y)_{y}\\
+ & = & (\nabla\psi-(1/L_{d})^{2}\psi+\beta y)_{t}+J(\psi,\nabla^{2}\psi)+\beta\psi_{x}
+\end{eqnarray*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 

@@ -74,6 +74,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement H
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -404,7 +405,587 @@ status open
 
 \end_layout
 
+\begin_layout Subsection*
+(h)
+\end_layout
+
 \begin_layout Standard
+We use the L-curve method (see Aster) to find the best 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ We solve for a series of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ (
+\begin_inset Formula $\alpha=1e[-10:-1]$
+\end_inset
+
+), and plot the misfit and model norm of each solution in loglog scale.
+ 
+\begin_inset Formula $\alpha=$
+\end_inset
+
+1e-4, which corresponds to the corner of the L-curve, is the one that we
+ choose.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/h_alphas.png
+	lyxscale 20
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+L-curve for choosing 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ The red asterisk denotes the solution corresponding to 
+\begin_inset Formula $\alpha=1e-4$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The solutions with 
+\begin_inset Formula $\alpha=$
+\end_inset
+
+1e-5, 1e-4 and 1e-3 are plotted.
+ The solution is different, because for larger 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, a model with smaller norm (simpler) is preferred.
+ Adding regularization term helps to stablize the inverse of 
+\begin_inset Formula $\boldsymbol{G_{g}}$
+\end_inset
+
+ matrix, for very small 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{G_{g}}$
+\end_inset
+
+ can still be close to singular and result in an unreasonable solution as
+ shown in the black line.
+\end_layout
+
+\begin_layout Standard
+The misfit function to be minimized is: 
+\begin_inset Formula $\boldsymbol{F(m)}=||\boldsymbol{d-Gm}||_{2}^{2}+\mbox{\alpha}^{2}\mbox{||\boldsymbol{m}||}_{2}^{2}$
+\end_inset
+
+.
+ It is equivalent to maximize the probability function:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\boldsymbol{P(m|d)} & \propto & \exp(-\boldsymbol{F(m)})\propto\exp(-\frac{\boldsymbol{F(m)}}{\sigma_{d}^{2}})\\
+ & = & \exp(||\frac{\boldsymbol{d-Gm}}{\sigma_{d}}||_{2}^{2})\cdot\exp(||\frac{\boldsymbol{m}}{\sigma_{d}/\alpha}||_{2}^{2})
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We soon recognize that the second term in the RHS is the prior distribution
+ of 
+\begin_inset Formula $m$
+\end_inset
+
+, which has a mean of 
+\begin_inset Formula $\boldsymbol{0}$
+\end_inset
+
+, and standard deviation 
+\begin_inset Formula $\sigma_{m}=\sigma_{d}/\alpha$
+\end_inset
+
+ (
+\begin_inset Formula $\sigma_{d}$
+\end_inset
+
+ is data error).
+ From the misfit of the solution with 
+\begin_inset Formula $\alpha=$
+\end_inset
+
+1e-4, we estimate that 
+\begin_inset Formula $\sigma_{d}=0.01$
+\end_inset
+
+, therefore, 
+\begin_inset Formula $\sigma_{m}=100$
+\end_inset
+
+ kg.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/h_solutions.png
+	lyxscale 20
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(i)
+\end_layout
+
+\begin_layout Standard
+Similar as in (h), we use L-curve to find a resonable 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ For the first-order Tikhonov, 
+\begin_inset Formula $\alpha=$
+\end_inset
+
+1e-5; and for the second-order, 
+\begin_inset Formula $\alpha=$
+\end_inset
+
+1e-4.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/i_alphas.png
+	lyxscale 20
+	width 15cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We see that both of the two methods result in a smooth model, and can fit
+ the data almost perfectly.
+ 
+\end_layout
+
+\begin_layout Standard
+The first-order Tikhonov regularization damps on the first-derivatives of
+ the model, and the second-order on the second-derivatives, therefore, both
+ result in a smooth model.
+ From the peaks at the model, we see that second-order Tikhonov do favor
+ a smaller curvature.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/i_solution.png
+	lyxscale 20
+	width 12cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/i_pred.png
+	lyxscale 20
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(j)
+\end_layout
+
+\begin_layout Standard
+The resolution matrix 
+\begin_inset Formula $\boldsymbol{R}$
+\end_inset
+
+ tells how well a model parameter (
+\begin_inset Formula $\boldsymbol{m_{in}}$
+\end_inset
+
+) can be resolved: 
+\begin_inset Formula $\boldsymbol{m_{out}=Rm_{in}}$
+\end_inset
+
+.
+ It assumes no data error, therefore represents the best outcome from the
+ experiment.
+ It can tell whether the experiment design is good, for example, whether
+ the locations chosen to do the measurement are good for detecting the gravity
+ anomalies underground.
+ The model parameters can be fully recovered if 
+\begin_inset Formula $\boldsymbol{R=I}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/j1.png
+	lyxscale 20
+	width 7cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figure/j2.png
+	lyxscale 20
+	width 7cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+For the least squares, since the inverse of the near-singular 
+\begin_inset Formula $G^{T}G$
+\end_inset
+
+ is also involved in the calculation of resolution matrix, the resolution
+ matrix also contains elements with very large values and is not close to
+ identity at all.
+ For the generalized inverse, the matrix inversion is performed in a more
+ stable way, however, with no trunction, small singular values also cause
+ some instability, and we can see some off-diagonal elements with large
+ values.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/j3.png
+	lyxscale 20
+	width 6cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figure/j4.png
+	lyxscale 20
+	width 6cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figure/j5.png
+	lyxscale 20
+	width 6cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Using a truncated SVD, we get a resolution matrix that is closer to identity
+ - large values near the diagonal, and almost-zero values elsewhere.
+ For larger p, the large values are more concentrated to the diagonal, which
+ means that the model parameters are better resolved.
+ Also noticed that the first and last model parameters have the highest
+ resolution.
+ It is because they are close to the peak of the observation, which well
+ constrain the location of the anomalies.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/j6.png
+	lyxscale 20
+	width 6cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figure/j7.png
+	lyxscale 20
+	width 6cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figure/j8.png
+	lyxscale 20
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/j9.png
+	lyxscale 20
+	width 6cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figure/j10.png
+	lyxscale 20
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+For the Tikhonov regularizations, the resolution matrices outperform the
+ previous methods (e-g) in that the large values are more concetrated to
+ the diagonal.
+ With larger damping (
+\begin_inset Formula $\alpha$
+\end_inset
+
+), the resolution decreases, which means the resolved model will not be
+ as sharp as input model.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
