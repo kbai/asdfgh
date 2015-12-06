@@ -236,7 +236,7 @@ Linear.
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\boldsymbol{d_{i}} & = & \boldsymbol{G_{i,:}}\mbox{\boldsymbol{m}}
+\boldsymbol{d} & = & \boldsymbol{G}\mbox{\boldsymbol{m}}
 \end{eqnarray*}
 
 \end_inset
@@ -289,10 +289,6 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -303,10 +299,37 @@ status open
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename figure/e_result.png
-	lyxscale 20
+	lyxscale 50
 	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Upper: The model 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -321,7 +344,7 @@ We see that the inversion result is messy.
 \begin_layout Standard
 \begin_inset Graphics
 	filename figure/e_snv.png
-	lyxscale 20
+	lyxscale 50
 	width 15cm
 
 \end_inset
@@ -330,7 +353,31 @@ We see that the inversion result is messy.
 \end_layout
 
 \begin_layout Standard
-We see that, ..
+We see that, the singular values range around 18 order of magnitude.
+ In this case, the inverse of the matrix 
+\begin_inset Formula $(G^{T}G)$
+\end_inset
+
+ will be unstable which means if you give it a small perturbation to your
+ data 
+\begin_inset Formula $d$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+the solution 
+\begin_inset Formula $(G^{T}G)^{-1}G^{T}d$
+\end_inset
+
+ will change dramatically.
+ Also , some eigenvector component corresponding to the smallest eigenvalue
+ is going to be amplified and will dominate the whole solution.
+ That's why will see strong oscillations of large amplitude in the solution.
+ The solution doesn't make sense although the model prediction fits data
+ exactly, because it is impossible to find that huge mass anomalies on the
+ earth.
 \end_layout
 
 \begin_layout Subsection*

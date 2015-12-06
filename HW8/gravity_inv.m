@@ -42,16 +42,22 @@ GG = (1/unit)*G*D./(D^2+(xd*ones(1,Lm) - ones(Ld,1)*xi).^2).^1.5;
 % Least square solution
 LS_Dm = (GG'*GG)\(GG'*di);
 
+%model prediction
+d_pred = GG*LS_Dm;
 % plot the data
 figure(11)
 subplot(211)
-plot(xd, di, 'ko-');
-xlabel('x (m)'); ylabel('\muGal'); xlim([-5 15]);
-title('data');
-subplot(212)
 plot(xi, LS_Dm);
 xlabel('x (m)'); ylabel(' \Deltam (kg)'); xlim([-5 15]);
 title('standard least square');
+
+subplot(212)
+plot(xd, di, 'ko-');
+hold on
+plot(xd,d_pred,'b*-');
+legend('data','model prediction');
+xlabel('x (m)'); ylabel('\muGal'); xlim([-5 15]);
+title('data');
 print('figure/e_result.png','-dpng');
 
 % SVD of GG
